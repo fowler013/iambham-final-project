@@ -5,3 +5,4 @@ server/lib
 ENV_VAR
 **/env/development.js
 development.js
+.ENV
