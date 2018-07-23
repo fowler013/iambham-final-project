@@ -5,13 +5,8 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <Fragment>
-                    <Switch>
-                    </Switch>
-                </Fragment>
-            </Router>
-        )
+            <h1>hello world</h1>
+        );
     }
 }
 
