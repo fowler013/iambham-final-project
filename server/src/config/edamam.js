@@ -82,6 +82,19 @@ function MakeURL(props) {
             urlstring += `&excluded=${word}`
         })
     }
+    if (calories !== undefined) {
+        range = calories
+        console.log(range)
+        if (range.includes('+')) {
+            range = range.split('').map(letter => {
+                if (letter === '+') {
+                    letter = '%2B'
+                }
+                return letter
+            }).join('')
+            urlstring += `&calories=${range}`
+        }
+    }
 
     console.log(urlstring)
     return urlstring
