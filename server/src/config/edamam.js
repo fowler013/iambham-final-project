@@ -6,7 +6,7 @@ function MakeURL(props) {
     console.log(props)
     let urlstring = `${url}`;
 
-    let { uri, keyword, health, diet, excluded, from, to, calories, time, nutrients } = props;
+    let { uri, keyword, health, diet, excluded, from, to, ingredients, calories, time, nutrients } = props;
     if (uri !== undefined) {
         let theuri = encodeURIComponent(uri);
         return urlstring += `?r=${theuri}&app_id=${ID}&app_key=${KEY}`
@@ -32,6 +32,37 @@ function MakeURL(props) {
       urlstring +=`?q=${newword.join("%20")}&app_id=${ID}&app_key=${KEY}`;
     }
 
+    if (calories !== undefined) {
+        let range = calories
+        console.log(range)
+        if (range.includes('+')) {
+            range = range.split('').map(letter => {
+                if (letter === '+') {
+                    letter = '%2B'
+                }
+                return letter
+            }).join('')
+        }
+        urlstring += `&calories=${range}`
+    }
+
+    if (time !== undefined) {
+      let range = time;
+      console.log(range);
+      if (range.includes("+")) {
+        range = range
+          .split("")
+          .map(letter => {
+            if (letter === "+") {
+              letter = "%2B";
+            }
+            return letter;
+          })
+          .join("");
+      }
+      urlstring += `&time=${range}`;
+    }
+
     if (health !== undefined) {
         health.forEach(
             healthitem => {
@@ -49,7 +80,7 @@ function MakeURL(props) {
 
     if (excluded !== undefined) {
         let removeunwanted = new RegExp(/['\sa-zA-Z0-9]+/gmi);
-        let words = keyword.match(removeunwanted);
+        let words = excluded.match(removeunwanted);
         let newword = words.map(word => {
             if (word[0] === ` `) {
                 word = word.slice(1);
@@ -82,19 +113,7 @@ function MakeURL(props) {
             urlstring += `&excluded=${word}`
         })
     }
-    if (calories !== undefined) {
-        range = calories
-        console.log(range)
-        if (range.includes('+')) {
-            range = range.split('').map(letter => {
-                if (letter === '+') {
-                    letter = '%2B'
-                }
-                return letter
-            }).join('')
-            urlstring += `&calories=${range}`
-        }
-    }
+
 
     console.log(urlstring)
     return urlstring
