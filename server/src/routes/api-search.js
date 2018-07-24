@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import edamam from '../config/edamam'
+import goEdamam from '../config/edamam'
 
 let router = Router();
 
 router.get('/', (req, res) => {
     console.log(req.body)
-    edamam(req.body)
+    goEdamam(req.body)
     res.sendStatus(200)
 });
 
@@ -18,10 +18,9 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    console.log(req.body)
-    let {keyword} = req.body
-    console.log(keyword)
-    res.sendStatus(200)
+    console.log(req.body);
+    goEdamam(req.body);
+    res.sendStatus(200);
 });
 
 router.put('/:id', (req, res) => {
