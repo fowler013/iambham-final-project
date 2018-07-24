@@ -1,14 +1,18 @@
 import { Router } from 'express';
+import edamam from '../config/edamam'
 
 let router = Router();
 
 router.get('/', (req, res) => {
     console.log(req.body)
+    edamam(req.body)
     res.sendStatus(200)
 });
 
 router.get('/:id', (req, res) => {
     console.log(req.body)
+    let {uri} = req.body
+
     res.sendStatus(200)
 });
 
