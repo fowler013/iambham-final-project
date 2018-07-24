@@ -1,3 +1,17 @@
+-- DIETS / HEALTH TABLE
+drop table if exists Diets;
+create table Diets (
+id int not null auto_increment primary key,
+type varchar(256) not null
+);
+-- USER DIET
+drop table if exists UserDiets;
+create table UserDiets (
+id int not null auto_increment primary key,
+dietid int not null,
+userid int not null
+);
+
 -- USERS TABLES
 drop table if exists Users;
 create table Users (
