@@ -4,23 +4,38 @@ import goEdamam from '../config/edamam'
 let router = Router();
 
 router.get('/', (req, res) => {
-    console.log(req.body)
-    goEdamam(req.body)
-    res.sendStatus(200)
+    fetch(goEdamam(req.body), {
+      method: "Get",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(results => results.json())
+      .then(results => {
+        res.send(results);
+      });
 });
 
 router.get('/:id', (req, res) => {
-    console.log(req.body)
-    let {uri} = req.body
+    fetch(goEdamam(req.body), {
+      method: "Get",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(results => results.json())
+      .then(results => {
+        res.send(results);
+      });
 
-    res.sendStatus(200)
 });
 
 
 router.post('/', (req, res) => {
     console.log(req.body);
-    goEdamam(req.body);
-    res.sendStatus(200);
+    fetch(goEdamam(req.body), {
+        method: 'Get',
+        headers: { 'Content-Type': 'application/json' }
+    }).then
+        (results => results.json()).then((results) => {
+            res.send(results)
+        })
 });
 
 router.put('/:id', (req, res) => {
