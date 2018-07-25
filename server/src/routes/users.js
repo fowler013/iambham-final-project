@@ -21,6 +21,8 @@ base.read('spGetUser', [id]).then(results => res.send(results))
       res.status(400).send('Invalid info')
     }else if (!validator.validate(email)){
       res.status(400).send('Invalid email')  
+    }else if((firstname || lastname) ==="") {
+      res.status(400).send('Invalid info')
     } else {
 
       res.send('got it')
