@@ -44,6 +44,7 @@ allergy varchar(256) not null
 -- USER/STORAGE CROSS REFERNECE
 drop table if exists UserStorage
 create table UserStorage (
+id int not null auto_increment primary key,
 userid int not null,
 storageid int not null
 );

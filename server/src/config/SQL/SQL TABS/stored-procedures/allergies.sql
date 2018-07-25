@@ -11,7 +11,7 @@ END //
 delimiter ;
 --CREATE ALLERGY
 delimiter //
-CREATE PROCEDURE spCreateAllergies( 
+CREATE PROCEDURE spCreateAllergy( 
 in p_userid int,
 	p_allergy varchar(256))
 
@@ -22,23 +22,23 @@ BEGIN
 	VALUES (
     p_userid,
     p_allergy);
+	SELECT last_insert_id();
     
     END //
 delimiter ;
 --GET ALLERGY
 delimiter //
 CREATE PROCEDURE spGetAllergy(
-in p_allergyid int)
+in p_id int)
 	
 
 BEGIN 
 	SELECT  
-		userid,
-        allergy
+		*
 	FROM
 		Allergies
 	WHERE
-		Allergies.id = p_allergyid;
+		id = p_id;
 	END //
 delimiter ;
 --DELETE ALLERGY
@@ -53,7 +53,7 @@ BEGIN
 	FROM
 		Allergies
 	WHERE
-		Allergies.id = p_allergyid;
+		id = p_id;
 	END //
 delimiter ;
 --UPDATE ALLERGY
@@ -67,9 +67,9 @@ in p_id int,
 BEGIN 
 	UPDATE Allergies 
 	SET
-		title = coalesce(p_userid, userid),
+		userid = coalesce(p_userid, userid),
         allergy = coalesce(p_allergy, allergy)
 	WHERE
-		Allergies.id = p_id;
+		id = p_id;
 	END //
 delimiter ;
