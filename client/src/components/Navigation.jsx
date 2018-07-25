@@ -22,9 +22,8 @@ class Navigation extends React.Component {
                             </div>
                         </a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                            <span className="navbar-toggler-icon" placeholder= "Menu"></span>
                         </button>
-                        <Link className="navbar-brand text-dark cardFont" to="/">  test </Link>
 
 
                         <form className="form-inline ml-auto"><Link to="/about" className="navbar-brand text-dark cardFont" >  Sign in </Link>
