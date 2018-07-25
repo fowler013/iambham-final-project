@@ -33,8 +33,19 @@ base.read('spGetUser', [id]).then(results => res.send(results))
 
   .put('/:id?', (req, res, next) => {
     let id = req.params.id;
+    let { firstname, lastname, email } = req.body
+    console.log(firstname, lastname, email)
+    console.log((firstname || lastname || email) === undefined)
+    if ((firstname || lastname || email) === undefined) {
+      res.status(400).send('Invalid info')
+    } else if (!validator.validate(email)) {
+      res.status(400).send('Invalid email')
+    } else if ((firstname || lastname) === "") {
+      res.status(400).send('Invalid info')
+    } else {
 
-
+      res.send('got it')
+      }
   })
 
   .delete('/:id?', (req, res, next) => {
