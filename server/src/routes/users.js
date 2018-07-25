@@ -45,11 +45,18 @@ base.read('spGetUser', [id]).then(results => res.send(results))
     } else {
 
       res.send('got it')
+      // base.update('spUpdateUser', [id, email, firstname, lastname,])
+      // .then(results => res.send(results))
       }
   })
 
   .delete('/:id?', (req, res, next) => {
     let id = req.params.id;
+    if (id) {
+base.destroy('spDeleteUser', [id]).then(results => res.send(results))
+    } else {
+
+    }
 
   });
 
