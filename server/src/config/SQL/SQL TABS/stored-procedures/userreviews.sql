@@ -51,5 +51,15 @@ end $$
 delimiter ;
 
 -- DELETE User
+drop procedure if exists spDeleteUserReview;
+delimiter $$
+create procedure spDeleteUserReview(p_id int)
+begin
+
+delete from UserReviews
+where id = p_id;
+
+end $$
+delimiter ;
 
 
