@@ -4,24 +4,25 @@ import { create } from 'domain';
 
 let base = {
 
-    read() {
-
+    read(procedureName, arg) {
+       return row(procedureName, arg)
     },
 
-    readall() {
+    readall(procedureName, arg) {
+        return row(procedureName, arg)
+     },
 
-    },
+     create(procedureName, arg) {
+        return row(procedureName, arg)
+     },
 
-    create() {
-
-    },
-
-    update() {
-
-    },
-    destory() {
-
-    }
+     update(procedureName, arg) {
+        return row(procedureName, arg)
+     },
+     
+     destroy(procedureName, arg) {
+        return row(procedureName, arg)
+     }
 }
 
 export default base;
