@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import base from './base'
-import 'email-validator'
+import validator from 'email-validator' 
 let router = Router();
 
 router
@@ -16,13 +16,16 @@ base.read('spGetUser', [id]).then(results => res.send(results))
   .post('/', (req, res, next) => {
     let{firstname, lastname, email} = req.body
     console.log(firstname, lastname, email)
-    if(firstname || lastname || email === undefined) {
+    console.log((firstname || lastname || email) === undefined)
+    if((firstname || lastname || email) === undefined) {
       res.status(400).send('Invalid info')
-    }else if (){
-
+    }else if (!validator.validate(email)){
+      res.status(400).send('Invalid email')  
     } else {
-      base.create('spCreateUser', [email, firstname, lastname,])
-      .then(results => res.send(results))
+
+      res.send('got it')
+      // base.create('spCreateUser', [email, firstname, lastname,])
+      // .then(results => res.send(results))
     }
   })
 
