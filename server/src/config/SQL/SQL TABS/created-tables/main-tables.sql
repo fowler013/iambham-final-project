@@ -12,7 +12,7 @@ firstname varchar(256) not null,
 lastname varchar(256) not null,
 email varchar(256) not null unique,
 );
--- STORAGE TABLES
+-- STORAGE TABLES **MIGHT BE GOING AWAY
 drop table if exists Storages;
 create table Storages (
 id int not null auto_increment primary key,
