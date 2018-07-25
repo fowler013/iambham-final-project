@@ -6,12 +6,16 @@ class App extends Component {
 
     render() {
         return (
-          <div>
-            <h1>hello world</h1>
-            <Form />
-          </div>
-           
-            
+          <Router>
+          <Fragment>
+          <Navigation />
+          <Switch>
+              <Route exact path="/" component={Form} />
+              <Route path="/search" component={Login} />
+              <Route path="/user" component={Logout} />
+          </Switch> 
+            </Fragment>
+          </Router>  
             
         );
     }
