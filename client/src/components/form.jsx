@@ -8,49 +8,50 @@ export default class Form extends Component {
     this.state = {
       data: {
         // change these *****
-        title: '',
-        content: ''
+        items: '',
+        exclusions: ''
       }
     }
   }
   handleBlogSubmit() {
-    // POST Blogs
-    let url = '';
+    // POST
+    let url = '/api/search/';
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(this.state.data),
       headers: { "Content-Type": "application/json" }
 
     }).then((res) => {
-      return res.json();
+      console.log(res.json())
+      //return res.json();
     }).catch((err) => {
       console.log(err);
     });
   }
-  handleTitleChange(title) {
+  handleItemsChange(items) {
     // change these ***** ALSO NAME
-    let data = Object.assign({}, this.state.data, { title });
+    let data = Object.assign({}, this.state.data, { items });
     this.setState({ data });
   }
-  handleContentChange(content) {
+  handleExclusionsChange(exclusions) {
     // change these ***** ALSO NAME
-    let data = Object.assign({}, this.state.data, { content });
+    let data = Object.assign({}, this.state.data, { exclusions });
     this.setState({ data });
   }
   render() {
     return (
       <div className="form-container">
-        <form className="blog-form" action="/" method="POST" className="blog-form">
+        <form className="form" action="/" method="POST">
           <div className="form-group">
-            <label className="form-label-content" htmlFor="exampleFormControlInput1">Content Type</label>
-            <input className="form-control" id="exampleFormControlInput1" placeholder='Placeholder!' onChange={(e) => {
-              this.handleTitleChange(e.target.value)
-            }} name="title" />
+            <label className="form-label-content" htmlFor="exampleFormControlInput1">Food Item</label>
+            <input className="form-control" id="exampleFormControlInput1" placeholder='Enter food item!' onChange={(e) => {
+              this.handleItemsChange(e.target.value)
+            }} name="items" />
           </div>
           <div className="form-group">
-            <label className="form-label-content" htmlFor="exampleFormControlTextarea1">Content Type</label>
-            <input className="form-control" id="exampleFormControlTextarea1" placeholder='Placeholder!' onChange={(e) => {
-              this.handleContentChange(e.target.value)
+            <label className="form-label-content" htmlFor="exampleFormControlInput2">Exclusions</label>
+            <input className="form-control" id="exampleFormControlInput2" placeholder='Enter any food exclusions!' onChange={(e) => {
+              this.handleExclusionsChange(e.target.value)
             }} name="content" />
           </div>
           <Diets />

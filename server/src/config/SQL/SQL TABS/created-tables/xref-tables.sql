@@ -1,8 +1,9 @@
--- DIETS / HEALTH TABLE
-drop table if exists Diets;
-create table Diets (
+-- USER PASSWORD TABLES
+drop table if exists Password;
+create table Passwords (
 id int not null auto_increment primary key,
-type varchar(256) not null
+userid int not null,
+password text not null
 );
 -- USER DIET
 drop table if exists UserDiets;
@@ -11,22 +12,6 @@ id int not null auto_increment primary key,
 dietid int not null,
 userid int not null
 );
-
--- USERS TABLES
-drop table if exists Users;
-create table Users (
-id int not null auto_increment primary key,
-firstname varchar(256) not null,
-lastname varchar(256) not null,
-email varchar(256) not null unique,
-);
--- PASSWORD TABLES
-drop table if exists Password;
-create table Passwords (
-id int not null auto_increment primary key,
-userid int not null,
-password text not null
-);
 -- USER REVIEWS TABLE
 drop table if exists UserReviews;
 create table UserReviews (
@@ -34,15 +19,7 @@ id int not null auto_increment primary key,
 userid int not null,
 review text not null
 );
--- STORAGE TABLES
-drop table if exists Storages;
-create table Storages (
-id int not null auto_increment primary key,
-itemname varchar(256),
-container varchar(256) not null
-
-);
--- FAVORITES TABLE
+-- USER FAVORITES TABLE
 drop table if exists Favorites;
 create table Favorites (
 id int not null auto_increment primary key,
