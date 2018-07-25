@@ -14,13 +14,17 @@ class Navigation extends React.Component {
                 <div className=" fixed-top  mt-0 pt-0 pb-3" >
                     <nav className="navbar navbar-light formNav bg-light">
                         <a className="navbar-brand" href="#" className="navbar-brand text-dark">
-                            <div class="collapse" id="navbarToggleExternalContent">
-                                <div class="bg-dark p-4">
-                                    <h5 class="text-white h4">Collapsed content</h5>
-                                    <span class="text-muted">Toggleable via the navbar brand.</span>
+                            <div className="collapse" id="navbarToggleExternalContent">
+                                <div className="bg-dark p-4">
+                                    <h5 className="text-white h4">Collapsed content</h5>
+                                    <span className="text-muted">Toggleable via the navbar brand.</span>
                                 </div>
                             </div>
-                        </a> <Link className="navbar-brand text-dark cardFont" to="/">  test </Link>
+                        </a>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <Link className="navbar-brand text-dark cardFont" to="/">  test </Link>
 
 
                         <form className="form-inline ml-auto"><Link to="/about" className="navbar-brand text-dark cardFont" >  Sign in </Link>
