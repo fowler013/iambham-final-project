@@ -1,10 +1,3 @@
--- USER PASSWORD TABLES
-drop table if exists Password;
-create table Passwords (
-id int not null auto_increment primary key,
-userid int not null,
-password text not null
-);
 -- USER DIET
 drop table if exists UserDiets;
 create table UserDiets (
@@ -17,32 +10,33 @@ drop table if exists UserReviews;
 create table UserReviews (
 id int not null auto_increment primary key,
 userid int not null,
-review text not null
+review text not null,
+ratings int not  null
 );
 -- USER FAVORITES TABLE
-drop table if exists Favorites;
-create table Favorites (
+drop table if exists UserFavorites;
+create table UserFavorites (
 id int not null auto_increment primary key,
 food varchar(256) not null
 
 );
 -- USER HISTORY TABLE
-drop table if exists History;
-create table History (
+drop table if exists UserHistory;
+create table UserHistory (
 id int not null auto_increment primary key,
 userid int not null,
--- -- previous orders text not null
+previousorder text not null
 );
 -- USER ALLERGIES TABLE
-drop table if exists Allergies;
-create table Allergies (
+drop table if exists UserAllergies;
+create table UserAllergies (
 id int not null auto_increment primary key,
 userid int not null,
 allergy varchar(256) not null
 );
 
 -- USER/STORAGE CROSS REFERNECE
-drop table if exists UserStorage
+drop table if exists UserStorage;
 create table UserStorage (
 id int not null auto_increment primary key,
 userid int not null,

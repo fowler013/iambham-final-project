@@ -45,8 +45,13 @@ export default class Diets extends Component {
   }
   toggleCheckbox() {
     let dietsCopy = JSON.parse(JSON.stringify(this.state.diets))
-    dietsCopy[0].toggled = true;
-    this.setState({diets: dietsCopy})
+    //dietsCopy[0].toggled = true;
+    //this.setState({diets: dietsCopy});
+    Object.values(dietsCopy).forEach((diet) => {
+      let { name, toggled } = diet;
+      console.log(name);
+    })
+
   }
   render() {
     return (

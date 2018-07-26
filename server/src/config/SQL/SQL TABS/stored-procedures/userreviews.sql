@@ -22,7 +22,7 @@ where id = p_id;
 
 end $$
 delimiter ;
--- CREATE User
+-- CREATE User Review
 drop procedure if exists spCreateUserReview;
 delimiter $$
 create procedure spCreateUserReview(p_userid int, p_rating int, p_review text)
@@ -34,7 +34,7 @@ select last_insert_id() as id;
 
 end $$
 delimiter ;
--- UPDATE User
+-- UPDATE User Review
 drop procedure if exists spUpdateUserReview;
 delimiter $$
 create procedure spUpdateUserReview(p_id int, p_rating int, p_review text)
@@ -49,7 +49,7 @@ where id = p_id;
 end $$
 delimiter ;
 
--- DELETE User
+-- DELETE User Review
 drop procedure if exists spDeleteUserReview;
 delimiter $$
 create procedure spDeleteUserReview(p_id int)
@@ -57,6 +57,20 @@ begin
 
 delete from userreviews
 where id = p_id;
+
+end $$
+delimiter ;
+
+-- grab all reviews by a certain user
+-- probably won't use this if we are plannig on limiting one review per user
+drop procedure if exists spGetReviewsByUser;
+delimiter $$
+create procedure spGetReviewsByUser(p_userid int)
+begin
+
+select *
+from userreviews
+where userid = p_userid;
 
 end $$
 delimiter ;
