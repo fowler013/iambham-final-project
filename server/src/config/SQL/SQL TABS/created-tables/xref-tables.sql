@@ -17,8 +17,8 @@ ratings int not  null
 drop table if exists UserFavorites;
 create table UserFavorites (
 id int not null auto_increment primary key,
+userid int not null,
 food varchar(256) not null
-
 );
 -- USER HISTORY TABLE
 drop table if exists UserHistory;

@@ -18,7 +18,11 @@ alter table UserDiets
 add constraint fk_DietidUserDiet
 foreign key (dietid)
 references Diets(id);
-
+-- fk for userid in Favorites table
+alter table UserFavorites
+add constraint fk_UseridFavorites
+foreign key (userid)
+references Users(id);
 
 
 --- 
