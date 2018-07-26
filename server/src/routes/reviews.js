@@ -19,9 +19,6 @@ router
 
     .post('/', (req, res, next) => {
         let {userid, review, rating} = req.body
-        console.log(review)
-        console.log(rating)
-        console.log(userid)
         if (!review|| !rating) {
             res.status(400).send("Invaid post")
         } else {
@@ -34,8 +31,6 @@ router
     .put('/:id?', (req, res, next) => {
         let {rating, review} = req.body;
         let id = req.params.id;
-        console.log(review);
-        console.log(rating);
         if (!review || !rating) {
             res.status(400).send("Invaid update")
         }else{

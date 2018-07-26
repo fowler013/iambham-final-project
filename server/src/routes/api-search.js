@@ -3,29 +3,29 @@ import goEdamam from '../config/edamam'
 
 let router = Router();
 
-router.get('/', (req, res) => {
-    fetch(goEdamam(req.body), {
-      method: "Get",
-      headers: { "Content-Type": "application/json" }
+router.get('/:id?', (req, res) => {
+let id = req.params.id;
+if (id) {
+    fetch(goEdamam({ uri: `http://www.edamam.com/ontologies/edamam.owl#recipe_${id}` }), {
+        method: "Get",
+        headers: { "Content-Type": "application/json" }
     })
-      .then(results => results.json())
-      .then(results => {
-        res.send(results);
-      });
-});
+        .then(results => results.json())
+        .then(results => {
+            res.send(results);
+        });
 
-router.get('/:id', (req, res) => {
-    fetch(goEdamam(req.body), {
-      method: "Get",
-      headers: { "Content-Type": "application/json" }
+} else {
+    fetch(goEdamam({keyword: 'all'}), {
+        method: "Get",
+        headers: { "Content-Type": "application/json" }
     })
-      .then(results => results.json())
-      .then(results => {
-        res.send(results);
-      });
-
+        .then(results => results.json())
+        .then(results => {
+            res.send(results);
+        });
+    }
 });
-
 
 router.post('/', (req, res) => {
     console.log(req.body);

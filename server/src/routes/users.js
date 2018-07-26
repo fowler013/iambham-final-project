@@ -34,10 +34,9 @@ base.read('spGetUser', [id]).then(results => res.send(results))
       res.status(400).send('Invalid info')
     }else if (!emailValidator.validate(email)){
       res.status(400).send('Invalid email')  
-    }else if((firstname || lastname) ==="") {
+    }else if((/[^a-zA-Z']/gm).test(firstname || lastname)) {
       res.status(400).send('Invalid info')
     } else if (!isPasswordValid.validate(password)) {
-      console.log(isPasswordValid.validate(password, { list: true }))
       res.status(400).send('Invalid password');
     } else {
 

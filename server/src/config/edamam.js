@@ -32,6 +32,10 @@ function MakeURL(props) {
       urlstring +=`?q=${newword.join("%20")}&app_id=${ID}&app_key=${KEY}`;
     }
 
+    if(from !== undefined && to !== undefined) {
+        urlstring += `&from=${from}&to=${to}`;
+    } 
+
     if (calories !== undefined) {
         let range = calories
         console.log(range)
