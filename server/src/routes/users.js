@@ -10,7 +10,7 @@ isPasswordValid
 .has().uppercase()                              // Must have uppercase letters
 .has().lowercase()                              // Must have lowercase letters
 .has().digits()                                 // Must have digits
-.has().symbols()                                 // Must have digits
+.has().symbols()                                 // Must have symbols
 .has().not().spaces()                           // Should not have spaces
 .is().not().oneOf(['Passw0rd', 'Password123', 'password', '12345678',]); // Blacklist these values
 
@@ -27,15 +27,18 @@ base.read('spGetUser', [id]).then(results => res.send(results))
   })
 
   .post('/', (req, res, next) => {
-    let{firstname, lastname, email} = req.body
-    console.log(firstname, lastname, email)
+    let{firstname, lastname, email, password, username} = req.body
+
     console.log((firstname || lastname || email) === undefined)
-    if((firstname || lastname || email) === undefined) {
+    if((firstname && lastname && email) === undefined) {
       res.status(400).send('Invalid info')
     }else if (!emailValidator.validate(email)){
       res.status(400).send('Invalid email')  
     }else if((firstname || lastname) ==="") {
       res.status(400).send('Invalid info')
+    } else if (!isPasswordValid.validate(password)) {
+      console.log(isPasswordValid.validate(password, { list: true }))
+      res.status(400).send('Invalid password');
     } else {
 
       res.send('got it')
@@ -47,16 +50,14 @@ base.read('spGetUser', [id]).then(results => res.send(results))
   .put('/:id?', (req, res, next) => {
     let id = req.params.id;
     let { firstname, lastname, email, password, username } = req.body
-    console.log(firstname, lastname, email)
-    console.log((firstname || lastname || email || password || username) === undefined)
-    if ((firstname || lastname || email) === undefined) {
+    if (!firstname || !lastname || !email) {
       res.status(400).send('Invalid info')
     } else if (!validator.validate(email)) {
       res.status(400).send('Invalid email')
     } else if ((firstname || lastname || username) === "") {
       res.status(400).send('Invalid info');
     } else if (!isPasswordValid.validate(password)) {
-
+      res.status(400).send('Invalid password');
     } else {
       res.send("got it");
       // base.update('spUpdateUser', [id, email, firstname, lastname,])
