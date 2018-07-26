@@ -19,9 +19,6 @@ router
 
     .post('/', (req, res, next) => {
         let {userid, review, rating} = req.body
-        console.log(review)
-        console.log(rating)
-        console.log(userid)
         if (!review|| !rating) {
             res.status(400).send("Invaid post")
         } else {
