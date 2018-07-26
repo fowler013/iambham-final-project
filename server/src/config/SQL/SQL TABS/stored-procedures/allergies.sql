@@ -1,75 +1,61 @@
---PROCEDURES FOR ALLERGIES TABLE
---GET ALL ALLERGIES
-delimiter //
+-- PROCEDURES FOR ALLERGIES TABLE
+-- GET ALL ALLERGIES
+drop procedure if exists spGetAllAllergies;
+delimiter $$
 CREATE PROCEDURE spGetAllAllergies() 
 BEGIN 
-	SELECT
-		*
-	FROM
-		Allergies;
-END //
-delimiter ;
---CREATE ALLERGY
-delimiter //
-CREATE PROCEDURE spCreateAllergy( 
-in p_userid int,
-	p_allergy varchar(256))
+	
+	SELECT *
+	FROM Allergies;
 
+END $$
+delimiter ;
+-- GET ALLERGY
+drop procedure if exists spGetAllergy;
+delimiter $$
+CREATE PROCEDURE spGetAllergy(in p_id int)
 BEGIN 
-	INSERT INTO Allergies (
-		userid,
-        allergy)
-	VALUES (
-    p_userid,
-    p_allergy);
+	
+	SELECT *
+	FROM Allergies
+	WHERE id = p_id;
+
+END $$
+delimiter ;
+-- CREATE ALLERGY
+drop procedure if exists spCreateAllergy;
+delimiter $$
+CREATE PROCEDURE spCreateAllergy(in p_userid int, p_allergy varchar(256))
+BEGIN 
+	
+	INSERT INTO Allergies (userid, allergy)
+	VALUES (p_userid, p_allergy);
 	SELECT last_insert_id();
     
-    END //
+END $$
 delimiter ;
---GET ALLERGY
-delimiter //
-CREATE PROCEDURE spGetAllergy(
-in p_id int)
-	
-
+-- DELETE ALLERGY
+drop procedure if exists spDeleteAllergy;
+delimiter $$
+CREATE PROCEDURE spDeleteAllergy(in p_allergyid int)
 BEGIN 
-	SELECT  
-		*
-	FROM
-		Allergies
-	WHERE
-		id = p_id;
-	END //
+	
+	DELETE FROM Allergies
+	WHERE id = p_id;
+
+END $$
 delimiter ;
---DELETE ALLERGY
-delimiter //
-CREATE PROCEDURE spDeleteAllergy(  
-in p_allergyid int)
-	
-
+-- UPDATE ALLERGY
+drop procedure if exists spUpdateAllergy;
+delimiter $$
+CREATE PROCEDURE spUpdateAllergy(in p_id int, p_userid int, p_allergy varchar(256))
 BEGIN 
-	DELETE  
-		
-	FROM
-		Allergies
-	WHERE
-		id = p_id;
-	END //
-delimiter ;
---UPDATE ALLERGY
-delimiter //
-CREATE PROCEDURE spUpdateAllergy(  
-in p_id int,
-	p_userid int,
-    p_allergy varchar(256))
 	
-
-BEGIN 
-	UPDATE Allergies 
+	UPDATE Allergies
 	SET
 		userid = coalesce(p_userid, userid),
         allergy = coalesce(p_allergy, allergy)
-	WHERE
-		id = p_id;
-	END //
+	WHERE id = p_id;
+
+END $$
 delimiter ;
