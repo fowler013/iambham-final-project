@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { row, rows, generatePlaceholders } from '../config/db'
+import { row, rows, empty} from '../config/db'
 import { create } from 'domain';
 
 let base = {
@@ -17,11 +17,11 @@ let base = {
      },
 
      update(procedureName, arg) {
-        return row(procedureName, arg)
+        return empty(procedureName, arg)
      },
      
      destroy(procedureName, arg) {
-        return row(procedureName, arg)
+        return empty(procedureName, arg)
      }
 }
 
