@@ -1,69 +1,75 @@
---PROCEDURES FOR FAVORITES TABLE
---GET ALL FAVORITES
+
+drop procedure if exists spGetAllFavorites;
 delimiter //
-CREATE PROCEDURE spGetFavorites() 
+CREATE PROCEDURE spGetAllFavorites() 
 BEGIN 
 	SELECT
 		*
 	FROM
-		Favorites;
+		UserFavorites;
 END //
 delimiter ;
---CREATE FAVORITE
+-- CREATE FAVORITE
+drop procedure if exists spCreateFavorite;
 delimiter //
-CREATE PROCEDURE spCreateFavorites( 
-in 	p_food varchar(256))
+CREATE PROCEDURE spCreateFavorite( 
+in p_userid int, p_recipeid int)
 
 BEGIN 
-	INSERT INTO Favorites (
-        food)
+	INSERT INTO UserFavorites (
+        recipeid)
 	VALUES (
-    p_food);
+    p_recipeid);
+	select last_insert_id() as id;
     
     END //
 delimiter ;
---GET FAVORITE
+-- GET FAVORITE
+drop procedure if exists spGetFavorite;
 delimiter //
 CREATE PROCEDURE spGetFavorite(
-in p_favoriteid int)
+in p_id int)
 	
 
 BEGIN 
 	SELECT  
-        food
+        *
 	FROM
-		Favorites
+		UserFavorites
 	WHERE
-		Favorites.id = p_favoriteid;
+		id = p_id;
 	END //
 delimiter ;
---DELETE FAVORITE
+-- DELETE FAVORITE
+drop procedure if exists spDeleteFavorite;
 delimiter //
 CREATE PROCEDURE spDeleteFavorite(  
-in p_favoriteid int)
+in p_id int)
 	
 
 BEGIN 
 	DELETE  
 		
 	FROM
-		Favorites
+		UserFavorites
 	WHERE
-		Favorites.id = p_favoriteid;
+		id = p_id;
 	END //
 delimiter ;
---UPDATE FAVORITE
+-- UPDATE FAVORITE
+drop procedure if exists spUpdateFavorite;
 delimiter //
 CREATE PROCEDURE spUpdateFavorite(  
-in p_id int,
-    p_food varchar(256))
+in p_id int, userid int,
+    p_recipeid int)
 	
 
 BEGIN 
-	UPDATE Favorites 
+	UPDATE UserFavorites 
 	SET
-        food = coalesce(p_food, food)
+		userid = coalesce(p_userid, userid),
+        recipeid = coalesce(p_recipeid, recipeid)
 	WHERE
-		Favorites.id = p_id;
+		id = p_id;
 	END //
 delimiter ;
