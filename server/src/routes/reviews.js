@@ -31,8 +31,6 @@ router
     .put('/:id?', (req, res, next) => {
         let {rating, review} = req.body;
         let id = req.params.id;
-        console.log(review);
-        console.log(rating);
         if (!review || !rating) {
             res.status(400).send("Invaid update")
         }else{
