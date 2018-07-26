@@ -11,5 +11,5 @@ let router = Router();
 router.use('/search', searchRouter);
 router.use('/user/', userRouter);
 router.use('/review/', reviewRouter);
-router.use("/review/", favoriteRouter);
+router.use("/favorite/", favoriteRouter);
 export default router;
