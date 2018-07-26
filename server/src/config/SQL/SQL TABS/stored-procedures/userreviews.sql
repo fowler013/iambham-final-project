@@ -6,7 +6,7 @@ create procedure spGetAllUserReviews()
 begin
 
 select *
-from UserReviews;
+from userreviews;
 
 end $$
 delimiter ;
@@ -14,11 +14,10 @@ delimiter ;
 drop procedure if exists spGetUserReview;
 delimiter $$
 create procedure spGetUserReview(p_id int)
-delimiter $$
 begin
 
 select *
-from UserReviews
+from userreviews
 where id = p_id;
 
 end $$
@@ -26,11 +25,11 @@ delimiter ;
 -- CREATE User
 drop procedure if exists spCreateUserReview;
 delimiter $$
-create procedure spCreateUserReview(p_userid int, p_review text)
+create procedure spCreateUserReview(p_userid int, p_rating int, p_review text)
 begin
 
-insert into UserReviews(userid, review)
-values(p_userid, p_review);
+insert into userreviews(userid, review, ratings)
+values(p_userid, p_review, p_rating);
 select last_insert_id() as id;
 
 end $$
@@ -38,12 +37,12 @@ delimiter ;
 -- UPDATE User
 drop procedure if exists spUpdateUserReview;
 delimiter $$
-create procedure spUpdateUserReview(p_id int, p_userid int, p_review text)
+create procedure spUpdateUserReview(p_id int, p_rating int, p_review text)
 begin
 
-update UserReviews
+update userreviews
 set
-    userid = coalesce(p_userid, userid),
+    ratings = coalesce(p_rating, ratings),
     review = coalesce(p_review, review)
 where id = p_id;
 
@@ -56,10 +55,9 @@ delimiter $$
 create procedure spDeleteUserReview(p_id int)
 begin
 
-delete from UserReviews
+delete from userreviews
 where id = p_id;
 
 end $$
 delimiter ;
-
 
