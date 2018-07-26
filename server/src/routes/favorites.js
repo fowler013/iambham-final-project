@@ -5,20 +5,20 @@ let router = Router();
 
 
 router.get('/',(req,res,next) => {
-    
-    base.readall('spGetAllFavorites', [id]).then(results => res.send(results))
+
+    base.readall('spGetAllFavorites').then(results => res.send(results))
 })
 
 
-router.get('/:id?', (req, res) => {
-    let id = req.params.id;
-    if (id) {
-        base.read('spGetFavorites', [id]).then(results => res.send(results))
-    } else {
+// router.get('/:id?', (req, res) => {
+//     let id = req.params.id;
+//     if (id) {
+//         base.read('spGetFavorites', [id]).then(results => res.send(results))
+//     } else {
 
-    }
+//     }
 
-});
+// });
 
 router.post('/', (req, res) => {
     let {userid, recipeid} = req.body;
@@ -29,17 +29,29 @@ router.post('/', (req, res) => {
     }else if(!recipeid){
         res.status(400).send('Invaild Recipe Id')
     }else{
-        res.send('got favorites')
+        res.send('post favorites');
+        // base.create('spCreateFavorite', [userid, rating, review])
+            // .then(results => res.send(results)) 
     }
 
 });
 
-router.put('/:id', (req, res) => {
-    let {userid,}
-});
+// router.put('/:id', (req, res) => {
+//     let id = req.params.id;
+//     let {userid,recipeid} = req.body;
+//     console.log(userid);
+//     console.log(recipeid);
+//     if(!userid){
+
+//     }
+
+// });
 
 router.delete('/:id', (req, res) => {
-
+    let id = req.params.id;
+    if (id) {
+base.destroy('spDeleteFavorites', [id]).then(results => res.send(results))
+    } 
 });
 
 export default router;
