@@ -4,6 +4,7 @@ create table Diets (
 id int not null auto_increment primary key,
 type varchar(256) not null
 );
+
 -- USERS TABLES
 drop table if exists Users;
 create table Users (
@@ -14,6 +15,7 @@ email varchar(56) not null unique,
 username varchar(256) not null,
 passwordid int not null
 );
+
 -- STORAGE TABLES **MIGHT BE GOING AWAY
 drop table if exists Storages;
 create table Storages (
@@ -21,6 +23,7 @@ id int not null auto_increment primary key,
 itemname varchar(256) not null,
 container varchar(256) not null
 );
+
 -- USER PASSWORD TABLES
 drop table if exists Passwords;
 create table Passwords (
