@@ -1,3 +1,7 @@
 .nav-logo svg{
     width: 6.5rem;
 }
+
+.btn-group{
+    position: fixed;
+}
