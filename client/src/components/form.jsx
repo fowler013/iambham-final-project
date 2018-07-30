@@ -40,7 +40,7 @@ export default class Form extends Component {
   }
   render() {
     return (
-      <div className="form-container">
+      <div className="form-container col-xs-3">
         <form className="form" action="/" method="POST">
           <div className="form-group">
             <label className="form-label-content" htmlFor="exampleFormControlInput1">Food Item</label>
