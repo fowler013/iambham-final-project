@@ -8,7 +8,7 @@ import {
   NavLink
 } from "react-router-dom";
 
-class NotFound extends React.Component {
+class User extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -22,4 +22,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export default User;
