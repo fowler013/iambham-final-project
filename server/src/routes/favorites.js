@@ -39,26 +39,25 @@ router
     })
 
     .post("/", (req, res, next) => {
-        let { recipeid, userid, review, rating } = req.body;
-        if (!review || !rating || !recipeid || !userid) {
+        let { recipeid, userid} = req.body;
+        if (!recipeid || !userid) {
             res.status(400).send("Invaid post");
         } else {
-            res.send("got post");
-            // base.create('spCreateFavorites', [userid, recipeid, rating, review])
-            // .then(results => res.send(results))
+            base.create('spCreateFavorites', [userid, recipeid, rating, review])
+            .then(results => res.send(results))
         }
     })
-    .put("/:id?", (req, res, next) => {
-        let id = req.params.id;
-        let { recipeid, userid, review, rating } = req.body;
-        if (!review || !rating || !recipeid || !userid) {
-            res.status(400).send("Invaid update");
-        } else {
-            res.send("got update");
-            // base.update('spUpdateFavorites', [id, +rating, review])
-            // res.sendStatus(200)
-        }
-    })
+    // .put("/:id?", (req, res, next) => {
+    //     let id = req.params.id;
+    //     let { recipeid, userid, review, rating } = req.body;
+    //     if (!review || !rating || !recipeid || !userid) {
+    //         res.status(400).send("Invaid update");
+    //     } else {
+    //         res.send("got update");
+    //         // base.update('spUpdateFavorites', [id, +rating, review])
+    //         // res.sendStatus(200)
+    //     }
+    // })
 
     .delete("recipe/:id", (req, res, next) => {
         let id = req.params.id;

@@ -43,9 +43,8 @@ router
     if (!review || !rating || !recipeid || !userid) {
       res.status(400).send("Invaid post");
     } else {
-      res.send("got post");
-      // base.create('spCreateUserReview', [userid, recipeid, rating, review])
-      // .then(results => res.send(results))
+      base.create('spCreateUserReview', [userid, recipeid, rating, review])
+      .then(results => res.send(results))
     }
   })
   .put("/:id?", (req, res, next) => {
@@ -54,9 +53,8 @@ router
       if (!review || !rating || !recipeid || !userid) {
       res.status(400).send("Invaid update");
     } else {
-      res.send("got update");
-      // base.update('spUpdateUserReview', [id, +rating, review])
-      // res.sendStatus(200)
+      base.update('spUpdateUserReview', [id, +rating, review])
+      res.sendStatus(200)
     }
   })
 

@@ -40,9 +40,8 @@ base.read('spGetUser', [id]).then(results => res.send(results))
       res.status(400).send('Invalid password');
     } else {
 
-      res.send('got it')
-      // base.create('spCreateUser', [email, firstname, lastname,])
-      // .then(results => res.send(results))
+      base.create('spCreateUser', [email, firstname, lastname,])
+      .then(results => res.send(results))
     }
   })
 
@@ -58,16 +57,15 @@ base.read('spGetUser', [id]).then(results => res.send(results))
     } else if (!isPasswordValid.validate(password)) {
       res.status(400).send('Invalid password');
     } else {
-      res.send("got it");
-      // base.update('spUpdateUser', [id, email, firstname, lastname,])
-      // .then(results => res.send(results))
+      base.update('spUpdateUser', [id, email, firstname, lastname,])
+      .then(results => res.send(results))
     }
   })
 
   .delete('/:id?', (req, res, next) => {
     let id = req.params.id;
     if (id) {
-base.destroy('spDeleteUser', [id]).then(results => res.send(results))
+    base.destroy('spDeleteUser', [id]).then(results => res.sendStatus(200))
     } else {
 
     }
