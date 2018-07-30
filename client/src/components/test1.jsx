@@ -13,23 +13,24 @@ class Navigation extends React.Component {
             <React.Fragment>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-item-baseline fixed-top  mt-0 pt-0 pb-3">
                     <div className="nav-bar nav-logo-centered">
-                        <div className="nav-bar-container d-flex flex-row mb-3" >
-                            <a className="nav-button nav-sidepanel-button" href="/sitemap/" title="Navigation">
+                        <div className="nav-bar-container d-flex flex-row mb-0" >
+                            {/* <a className="nav-button nav-sidepanel-button" href="/sitemap/" title="Navigation">
                                 <span className="icon icon-menu"></span>
-                            </a>
-
-                            <a className="nav-logo" href="/">
-                                <img src="https://freeiconshop.com/wp-content/uploads/edd/eat-flat-1.png" width="50" height="50" className="d-inline-block align-top " alt="" />
-                            </a>
+                            </a> */}
+                            <div className = "d-flex align-self-center">
+                                <a className="nav-logo " href="/">
+                                    <img src="https://freeiconshop.com/wp-content/uploads/edd/eat-flat-1.png" width="60" height="60" className=" d-flex align-self-center" alt="" />
+                                </a>
+                            </div>
 
                             <div className="nav-swipeable ">
 
                                 {/* this is the links area   THIS WILL PROBABLY BE CHANGED */}
-                                <div className="btn-group p-2" role="group" aria-label="Basic example">
-                                    <button type="button" className="btn btn-secondary">Diet-Health</button>
-                                    <button type="button" className="btn btn-secondary">Ingridents</button>
-                                    <button type="button" className="btn btn-secondary">Meals</button>
-                                </div>
+                                {/* <div className="btn-group p-2" role="group" aria-label="Basic example">
+                                  <NavLink to="/search/"><button type="button" className="btn btn-secondary">Diet-Health</button></NavLink> 
+                                   <NavLink to = "/recipe/"> <button type="button" className="btn btn-secondary">Recipe</button></NavLink>
+                                   <NavLink to = "/"> <button type="button" className="btn btn-secondary">Meals</button></NavLink>
+                                </div> */}
                             </div>
                             <a className="nav-button nav-search-button" href="/search/" title="Search">
                                 <span className="icon icon-search"></span>
