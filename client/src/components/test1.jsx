@@ -17,7 +17,7 @@ class Navigation extends React.Component {
                             {/* <a className="nav-button nav-sidepanel-button" href="/sitemap/" title="Navigation">
                                 <span className="icon icon-menu"></span>
                             </a> */}
-                            <div className = "d-flex align-self-center">
+                            <div className="d-flex align-self-center">
                                 <a className="nav-logo " href="/">
                                     <img src="https://freeiconshop.com/wp-content/uploads/edd/eat-flat-1.png" width="60" height="60" className=" d-flex align-self-center" alt="" />
                                 </a>
@@ -38,12 +38,24 @@ class Navigation extends React.Component {
 
                         </div>
                     </div>
-                    {/* this is the search bar */}
+                                    {/* this is Modal for the search bar */}
                     <div>
-                        <form className="form-inline my-2 my-lg-0">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    this is the search bar <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        {/* <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                        </form> */}
                     </div>
 
                     {/* this is the search the dropdown button */}
