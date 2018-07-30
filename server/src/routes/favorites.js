@@ -10,7 +10,7 @@ router
         let id = req.params.id;
         base
             .readall(
-                "spGetFavoritesBasedonRecipeID",
+                "spGetFavoriteBasedonRecipeID",
                 [id]
             )
             .then(results => res.send(results));
@@ -20,7 +20,7 @@ router
         let id = req.params.id;
         base
             .readall(
-                "spGetFavoritesBasedonUserID",
+                "spGetFavoriteBasedonUserID",
                 [id]
             )
             .then(results => res.send(results));
@@ -30,7 +30,7 @@ router
         let id = req.params.id;
         base
             .read(
-                "spGetFavorites",
+                "spGetFavorite",
                 [id]
             )
             .then(results =>
@@ -43,7 +43,7 @@ router
         if (!recipeid || !userid) {
             res.status(400).send("Invaid post");
         } else {
-            base.create('spCreateFavorites', [userid, recipeid, rating, review])
+            base.create('spCreateFavorites', [userid, recipeid])
             .then(results => res.send(results))
         }
     })
