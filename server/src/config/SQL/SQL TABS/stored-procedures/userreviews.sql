@@ -75,3 +75,68 @@ where userid = p_userid;
 end $$
 delimiter ;
 
+drop procedure if exists spGetUserReviewBasedonRecipeID;
+delimiter $$
+CREATE PROCEDURE spGetUserReviewBasedonRecipeID(p_recipeid varchar(256))
+BEGIN
+SELECT 
+	`userreviews`.`id`,
+    `userreviews`.`userid`,
+    `userreviews`.`review`,
+    `userreviews`.`ratings`
+FROM `heroku_095c413572425f3`.`userreviews`
+WHERE `userreviews`.`recipeid` = p_recipeid;
+
+END
+delimiter ;
+
+drop procedure if exists spGetUserReviewBasedonUserID
+delimiter $$
+CREATE PROCEDURE spGetUserReviewBasedonUserID(p_userid int)
+BEGIN
+SELECT 
+	`userreviews`.`id`,
+    `userreviews`.`recipeid`,
+    `userreviews`.`review`,
+    `userreviews`.`ratings`
+FROM `heroku_095c413572425f3`.`userreviews`
+WHERE `userreviews`.`userid` = p_userid;
+
+END
+delimiter ;
+
+DROP procedure IF EXISTS `spDeleteUserReviewBasedonRecipeID`;
+
+DELIMITER $$
+USE `heroku_095c413572425f3`$$
+CREATE PROCEDURE `spDeleteUserReviewBasedonRecipeID` (p_recipeid varchar(256))
+BEGIN
+DELETE FROM `heroku_095c413572425f3`.`userreviews`
+WHERE `userreviews`.`recipeid` = p_recipeid;
+END$$
+
+DELIMITER ;
+
+DROP procedure IF EXISTS `spDeleteUserReviewBasedonUserID`;
+
+DELIMITER $$
+USE `heroku_095c413572425f3`$$
+CREATE DEFINER=`b1b1c890b1170e`@`%` PROCEDURE `spDeleteUserReviewBasedonUserID`(p_userid int)
+BEGIN
+DELETE FROM `heroku_095c413572425f3`.`userreviews`
+WHERE `userreviews`.`userid` = p_userid;
+END$$
+
+DELIMITER ;
+
+DROP procedure IF EXISTS `spDeleteUserReviewBasedonRecipeIDandUserID`;
+
+DELIMITER $$
+USE `heroku_095c413572425f3`$$
+CREATE DEFINER=`b1b1c890b1170e`@`%` PROCEDURE `spDeleteUserReviewBasedonRecipeIDandUserID`(p_recipeis varchar(256), p_userid int)
+BEGIN
+DELETE FROM `heroku_095c413572425f3`.`userreviews`
+WHERE `userreviews`.`userid` = p_userid AND `userreviews`.`recipeid` = p_recipeid;
+END$$
+
+DELIMITER ;
