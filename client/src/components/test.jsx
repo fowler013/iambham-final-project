@@ -31,11 +31,11 @@ class Navigation extends React.Component {
 
 
 
-<section ng-controller="ar_controllers_top_nav" ng-init="init()" className="ng-scope">
+<section controller="ar_controllers_top_nav" init="init()" className="ng-scope">
     <ul className="ar-nav-section">
         <li className="ar-logo-tab">
             <a href="https://www.allrecipes.com" aria-label="Allrecipes home page" target="_self">
-                <div className="ar-logo" ng-click="setAnalyticsCookie('ARlogo')">
+                <div className="ar-logo" click="setAnalyticsCookie('ARlogo')">
 <img alt="Allrecipes" height="36" src="https://secureimages.allrecipes.com/ar-images/ARlogo.svg" width="96"/>                </div>
             </a>
         </li>
