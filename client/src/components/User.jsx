@@ -14,7 +14,7 @@ class User extends React.Component {
 
 
     this.state = {
-      firstName: '', // adding the author to the blog//
+      firstName: '',
       lastName: '',
       email: ''
     };
@@ -33,7 +33,49 @@ class User extends React.Component {
     this.setState({ email });
   }
 
+
+
+  componentDidMount() {
+    this.getUser();
+}
+
+getUser() {
+    fetch(`/api/user/${this.props.match.params.id}`)
+        .then((response) => {
+            return response.json();
+        }).then((movie) => {
+            console.log(movie);
+
+            this.setState({
+                movie: movie
+            });
+        }).catch((err) => {
+            console.log(err);
+        });
+}
+
+updateUser(post) {
+    fetch(`/api/user/${this.props.match.params.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(post)
+    }).then(() => {
+        this.setState({
+            user: post
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
+
+
   render() {
+
+    let post = this.state.firstName
+    
     return (
       <React.Fragment>
         <form className="card p-3 formContainer bg-dark" style={{ marginTop: '5rem', width: '20rem' }}>
@@ -62,7 +104,6 @@ class User extends React.Component {
 
           <button
             onClick={() => { this.props.updateUser(this.state) }}
-            // onClick={() => { this.refreshPage() }}
             type="button"
             className="btn btn-light btn-sm text-secondary m-2 cardFont">update!
                 </button>
@@ -72,13 +113,13 @@ class User extends React.Component {
         <div className="card p-2 m-5" style={{width: '18rem'}}>
           <img className="card-img-top" src="https://www.drupal.org/files/issues/default-avatar.png" alt="Card image cap"/>
             <div className="card-body">
-              <p className="card-text">First Name.</p>
+              <p className="card-text">{post.firstName}</p>
             </div>
             <div className="card-body">
-              <p className="card-text">Last Name.</p>
+              <p className="card-text">{post.lastName}</p>
             </div>
             <div className="card-body">
-              <p className="card-text">Email.</p>
+              <p className="card-text">{post.email}</p>
             </div>
         </div>
             
