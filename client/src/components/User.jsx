@@ -16,7 +16,7 @@ class User extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Hello</h1>
+        <h1>THis is the user page</h1>
       </React.Fragment>
     );
   }
