@@ -47,17 +47,21 @@ base.read('spGetUser', [id]).then(results => res.send(results))
 
   .put('/:id?', (req, res, next) => {
     let id = req.params.id;
+    console.log(id);
     let { firstname, lastname, email, password, username } = req.body
+    console.log(firstname, lastname, email,username);
     if (!firstname || !lastname || !email) {
-      res.status(400).send('Invalid info')
-    } else if (!validator.validate(email)) {
+      res.status(400).send('Invalid first name')
+    } else if (!emailValidator.validate(email)) {
       res.status(400).send('Invalid email')
     } else if ((firstname || lastname || username) === "") {
-      res.status(400).send('Invalid info');
-    } else if (!isPasswordValid.validate(password)) {
+      res.status(400).send('Invalid Last name');
+    } else if ((password)) {
+      if(!isPasswordValid.validate(password)) {
       res.status(400).send('Invalid password');
+      }
     } else {
-      base.update('spUpdateUser', [id, email, firstname, lastname,])
+      base.update('spUpdateUser', [id, email, firstname, lastname,username])
       .then(results => res.send(results))
     }
   })
