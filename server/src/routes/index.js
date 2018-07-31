@@ -8,7 +8,7 @@ import "isomorphic-fetch";
 
 let router = Router();
 
-router.use('/search', searchRouter);
+router.use('/search/', searchRouter);
 router.use('/user/', userRouter);
 router.use('/review/', reviewRouter);
 router.use("/favorite/", favoriteRouter);

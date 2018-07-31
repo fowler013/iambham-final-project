@@ -5,3 +5,7 @@
 /* .btn-group{
     position: fixed;
 } */
+
+.card{
+    display: inline-table;
+}

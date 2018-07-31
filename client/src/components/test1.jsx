@@ -32,18 +32,15 @@ class Navigation extends React.Component {
                                    <NavLink to = "/"> <button type="button" className="btn btn-secondary">Meals</button></NavLink>
                                 </div> */}
                             </div>
-                            <a className="nav-button nav-search-button" href="/search/" title="Search">
-                                <span className="icon icon-search"></span>
-                            </a>
 
                         </div>
                     </div>
-                                    {/* this is Modal for the search bar */}
+                                    
                     <div>
                        
                         <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                            <NavLink to = "/search"><button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button></NavLink>
+                            <input className="form-control mr-sm-2" id="SearchBar" type="search" placeholder="Search" aria-label="Search" />
+                            <NavLink to = {`/search/keyword=${$('#SearchBar').val()}`}><button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button></NavLink>
                         </form>
                     </div>
 
