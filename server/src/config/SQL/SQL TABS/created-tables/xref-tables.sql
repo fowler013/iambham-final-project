@@ -9,6 +9,7 @@ userid int not null
 drop table if exists UserReviews;
 create table UserReviews (
 id int not null auto_increment primary key,
+recipeid int not null,
 userid int not null,
 review text not null,
 ratings int not  null

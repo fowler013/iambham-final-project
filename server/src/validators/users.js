@@ -62,17 +62,11 @@ export function update(args) {
             return;
         }
 
-        if (!emailValidator.validate(email)) {
-            err = true;
-            message = 'Email is not an email';
-        }
-
         if (
             !(
                 lodash.isString(firstname) &&
                 lodash.isString(lastname) &&
-                lodash.isString(username) &&
-                lodash.isString(password)
+                lodash.isString(username)
             )
         ) {
             err = true;
@@ -85,10 +79,10 @@ export function update(args) {
             return;
         }
 
-        resolve([id, email, firstname, lastname, password, username]);
+        resolve([id, firstname, lastname, username]);
     });
 }
-export function destroy() {
+export function destroy(args) {
     let id = +args.id;
 
     return new Promise((resolve, reject) => {
@@ -97,6 +91,6 @@ export function destroy() {
             return;
         }
 
-        resolve([]);
+        resolve([id]);
     });
 }

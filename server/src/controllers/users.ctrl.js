@@ -52,10 +52,10 @@ export function update(req, res, next) {
 
     UserValidators.update({
         id,
-        email,
+        //email,
         firstname,
         lastname,
-        password,
+        //password,
         username,
     })
         .then((sqlArgs) => {
