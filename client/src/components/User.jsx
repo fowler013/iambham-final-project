@@ -30,7 +30,7 @@ class User extends React.Component {
 
 
   handleFirstNameChange(e) {
-    
+
     this.setState({ firstName: e.target.value });
   }
 
@@ -43,13 +43,17 @@ class User extends React.Component {
   }
 
   handleUserNameChange(e) {
-    this.setState({userName: e.target.value})
+    this.setState({ userName: e.target.value })
   }
 
-
+  
 
   componentDidMount() {
     this.getUser();
+    
+  }
+
+  componentDidUpdate(){
     this.updateUser();
   }
 
@@ -79,21 +83,21 @@ class User extends React.Component {
         username: this.state.userName
       })
     })
-    .then((res)=> res.json())
-    // .then(() => {
-    //   this.setState({
-    //     user: post
-    //   });
-    // })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => res.json())
+      // .then(() => {
+      //   this.setState({
+      //     user: post
+      //   });
+      // })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
 
 
   render() {
-    console.log('user state',this.state.user)
+    console.log('user state', this.state.user)
     console.log(this.props)
     let post = this.state.user;
 
@@ -104,7 +108,7 @@ class User extends React.Component {
             htmlFor="title-input"
             className="d-block m-1 text-light cardFont">{this.props.action} post:
                 </label>
-                <input
+          <input
             value={this.state.userName}
             onChange={this.handleUserNameChange}
             className="form-control w-5 m-1 d-inline text formAuthor cardFont"
@@ -130,7 +134,7 @@ class User extends React.Component {
           </div>
 
           <button
-            onClick={() => {this.updateUser(this.state)}}
+            onClick={() => { this.updateUser(post) }}
             type="button"
             className="btn btn-light btn-sm text-secondary m-2 cardFont">update!
                 </button>
