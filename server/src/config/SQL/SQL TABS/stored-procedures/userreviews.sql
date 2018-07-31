@@ -63,7 +63,7 @@ delimiter ;
 -- -- -- -- GET REVIEW BY RECIPE ID
 drop procedure if exists spGetUserReviewBasedonRecipeID;
 delimiter $$
-CREATE PROCEDURE spGetUserReviewBasedonRecipeID(p_recipeid int)
+CREATE PROCEDURE spGetUserReviewBasedonRecipeID(p_recipeid varchar(256))
 BEGIN
 
 SELECT 
@@ -95,7 +95,7 @@ delimiter ;
 -- -- -- -- DELETE REVIEW BY RECIPE ID
 DROP procedure IF EXISTS spDeleteUserReviewBasedonRecipeID;
 DELIMITER $$
-CREATE PROCEDURE spDeleteUserReviewBasedonRecipeID (p_recipeid int)
+CREATE PROCEDURE spDeleteUserReviewBasedonRecipeID (p_recipeid varchar(256))
 BEGIN
 
 DELETE FROM UserReviews
@@ -117,7 +117,7 @@ DELIMITER ;
 -- -- -- -- DELETE REVIEW BY USER ID & RECIPE ID
 DROP procedure IF EXISTS spDeleteUserReviewBasedonRecipeIDandUserID;
 DELIMITER $$
-CREATE PROCEDURE spDeleteUserReviewBasedonRecipeIDandUserID(p_recipeid int, p_userid int)
+CREATE PROCEDURE spDeleteUserReviewBasedonRecipeIDandUserID(p_recipeid varchar(256), p_userid int)
 BEGIN
 
 DELETE FROM UserReviews
