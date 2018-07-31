@@ -52,7 +52,7 @@ gogetdata() {
   render() {
     return (
       <React.Fragment>
-        <h1>Hello</h1>
+        <h1>Search Page</h1>
       </React.Fragment>
     );
   }

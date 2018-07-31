@@ -40,22 +40,11 @@ class Navigation extends React.Component {
                     </div>
                                     {/* this is Modal for the search bar */}
                     <div>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-                        <div className="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                            <div className="modal-dialog modal-lg">
-                                <div className="modal-content">
-                                    this is the search bar <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        {/* <form className="form-inline my-2 my-lg-0">
+                       
+                        <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                        </form> */}
+                            <NavLink to = "/search"><button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button></NavLink>
+                        </form>
                     </div>
 
                     {/* this is the search the dropdown button */}
