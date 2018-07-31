@@ -1,5 +1,5 @@
 import * as UserProcedures from '../procedures/users';
-import * as userValidators from '../validators/users';
+import * as UserValidators from '../validators/users';
 
 export function all(req, res, next) {
     UserProcedures.all()
@@ -10,18 +10,32 @@ export function all(req, res, next) {
             console.log(err);
         });
 }
-export function read(req, res, next) {}
+export function read(req, res, next) {
+    let id = req.params.id;
+
+    UserValidators.read({
+        id,
+    })
+        .then((user) => {
+            return UserProcedures.read(user);
+        })
+        .then((result) => {
+            res.json(result);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
 export function create(req, res, next) {
     let { email, firstname, lastname, password, username } = req.body;
 
-    userValidators
-        .create({
-            email,
-            firstname,
-            lastname,
-            password,
-            username,
-        })
+    UserValidators.create({
+        email,
+        firstname,
+        lastname,
+        password,
+        username,
+    })
         .then((sqlArgs) => {
             return UserProcedures.create(sqlArgs);
         })
