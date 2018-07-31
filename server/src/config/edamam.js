@@ -8,12 +8,12 @@ function MakeURL(props) {
 
     let { uri, keyword, health, diet, excluded, from, to, ingredients, calories, time, nutrients } = props;
     if (uri !== undefined) {
-        let theuri = encodeURIComponent(uri);
+        let theuri = encodeURIComponent(uri[0]);
         return urlstring += `?r=${theuri}&app_id=${ID}&app_key=${KEY}`
     }
     if (keyword !== undefined) {
         let removeunwanted = new RegExp(/['a-zA-Z0-9]+/gim);
-      let words = keyword.match(removeunwanted);
+      let words = keyword[0].match(removeunwanted);
       let newword = words.map(word => {
         if (word.includes(`'`)) {
           let test = word.split("");
@@ -33,7 +33,7 @@ function MakeURL(props) {
     }
 
     if(from !== undefined && to !== undefined) {
-        urlstring += `&from=${from}&to=${to}`;
+        urlstring += `&from=${from[0]}&to=${to[0]}`;
     } 
 
     if (calories !== undefined) {
