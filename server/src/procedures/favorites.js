@@ -1,15 +1,15 @@
-import { crud, row, SQL_PREFIX, SQL_GET } from '../procedures/base';
+import { crud, row, SQL_PREFIX, SQL_GET, SQL_DELETE } from '../procedures/base';
 
 const MODEL_NAME = `Favorite`;
 
 export let { all, create, read, update, destroy } = crud(MODEL_NAME);
 
 export function getBasedOnRecipeId(args) {
-    return row(`${SQL_PREFIX}${SQL_GET}BasedOnRecipeId`, args);
+    return row(`${SQL_PREFIX}${SQL_GET}BasedOnRecipeID`, args);
 };
 
 export function getBasedOnUserId(args) {
-    return row(`${SQL_PREFIX}${SQL_GET}BasedOnUserId`, args);
+    return row(`${SQL_PREFIX}${SQL_GET}BasedOnUserID`, args);
 };
 
 export function deleteBasedOnRecipeID(args) {
@@ -17,5 +17,5 @@ export function deleteBasedOnRecipeID(args) {
 };
 
 export function deleteBasedOnUserId(args) {
-    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnUserId`, args);
-};
+    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnUserID`, args);
+}
