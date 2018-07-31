@@ -7,7 +7,7 @@ export function all(req, res, next) {
             res.json(users);
         })
         .catch((err) => {
-            console.log(err);
+            console.error(err);
         });
 }
 export function read(req, res, next) {
@@ -46,5 +46,37 @@ export function create(req, res, next) {
             console.error(err);
         });
 }
-export function update(req, res, next) {}
-export function destroy(req, res, next) {}
+export function update(req, res, next) {
+    let id = req.params.id;
+    let { email, firstname, lastname, password, username } = req.body;
+
+    UserValidators.update({
+        id,
+        email,
+        firstname,
+        lastname,
+        password,
+        username,
+    })
+        .then((sqlArgs) => {
+            return UserProcedures.update(sqlArgs);
+        })
+        .then((user) => {
+            res.json(user);
+        }).catch((err) => {
+            console.error(err);
+        })
+}
+export function destroy(req, res, next) {
+    let id = req.params.id;
+
+    UserValidators.destroy({
+        id,
+    })
+        .then((sqlArgs) => {
+        return UserProcedures.destroy(sqlArgs);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}

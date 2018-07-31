@@ -24,43 +24,17 @@ delimiter ;
 -- CREATE User
 drop procedure if exists spCreateUser;
 delimiter $$
-create procedure spCreateUser(
-    p_email varchar(256), 
-    p_firstname varchar(256), 
-    p_lastname varchar(256),
-    p_password varchar(256),
-    p_username varchar(256)
-)
+create procedure spCreateUser(p_email varchar(256), p_firstname varchar(256), p_lastname varchar(256), p_password varchar(256), p_username varchar(256))
 begin
 
-    insert into Passwords (
-        `password`
-    )
-    values (
-        p_password
-    );
+insert into Passwords (`password`)
+values (p_password);
+set 
+    @pass_id = last_insert_id();
 
-    set @pass_id = last_insert_id();
-
-    insert into Users (
-        passwordid,
-        email, 
-        firstname, 
-        lastname,
-        username
-    )
-    values (
-        @pass_id,
-        p_email, 
-        p_firstname, 
-        p_lastname,
-        p_username
-    );
-    
-    select 
-        last_insert_id() 
-    as 
-        `id`;
+insert into Users (passwordid, email, firstname, lastname, username)
+values (@pass_id, p_email, p_firstname, p_lastname, p_username);
+select last_insert_id() as `id`;
 
 end $$
 delimiter ;

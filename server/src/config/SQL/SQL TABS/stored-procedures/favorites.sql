@@ -26,11 +26,11 @@ delimiter ;
 drop procedure if exists spCreateFavorite;
 delimiter $$
 CREATE PROCEDURE spCreateFavorite( 
-in p_userid int, p_recipeid int)
+in p_recipeid int, p_userid int)
 BEGIN
 
-	INSERT INTO UserFavorites (recipeid)
-	VALUES (p_recipeid);
+	INSERT INTO UserFavorites (recipeid, p_userid)
+	VALUES (p_recipeid, p_userid);
 	select last_insert_id() as id;
     
 END $$
@@ -49,13 +49,13 @@ delimiter ;
 -- UPDATE FAVORITE
 drop procedure if exists spUpdateFavorite;
 delimiter $$
-CREATE PROCEDURE spUpdateFavorite(in p_id int, userid int, p_recipeid int)
+CREATE PROCEDURE spUpdateFavorite(in p_id int, p_recipeid int, p_userid int)
 BEGIN 
 	
 	UPDATE UserFavorites 
 	SET
-		userid = coalesce(p_userid, userid),
-        recipeid = coalesce(p_recipeid, recipeid)
+		recipeid = coalesce(p_recipeid, recipeid),
+		userid = coalesce(p_userid, userid)
 	WHERE id = p_id;
 	
 END $$
