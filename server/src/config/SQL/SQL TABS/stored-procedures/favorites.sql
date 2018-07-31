@@ -49,14 +49,67 @@ delimiter ;
 -- UPDATE FAVORITE
 drop procedure if exists spUpdateFavorite;
 delimiter $$
-CREATE PROCEDURE spUpdateFavorite(in p_id int, p_recipeid int, p_userid int)
+CREATE PROCEDURE spUpdateFavorite(in p_id int, p_recipeid int)
 BEGIN 
 	
 	UPDATE UserFavorites 
 	SET
-		recipeid = coalesce(p_recipeid, recipeid),
-		userid = coalesce(p_userid, userid)
+		recipeid = coalesce(p_recipeid, recipeid)
 	WHERE id = p_id;
 	
 END $$
+delimiter ;
+
+-- -- -- -- GET FAVORITE BY RECIPE ID
+drop procedure if exists spGetFavoriteByRecipeID;
+delimiter $$
+create procedure spGetFavoriteByRecipeId(in recipeid int)
+BEGIN
+
+SELECT
+	id,
+    userid
+FROM UserFavorites
+WHERE recipeid = p_recipeid;
+
+end $$
+delimiter ;
+-- -- -- -- GET FAVORITE BY USER ID
+drop procedure if exists spGetFavoriteByUserID;
+delimiter $$
+create procedure spGetFavoriteByUserId(in userid int)
+BEGIN
+
+SELECT
+	id,
+    recipeid
+FROM UserFavorites
+WHERE userid = p_userid;
+
+end $$
+delimiter ;
+
+-- -- -- -- DELETE FAVORITE BY RECIPE ID
+drop procedure if exists spDeleteFavoriteByRecipeID;
+delimiter $$
+create procedure spDeleteFavoriteByRecipeID(in recipeid int)
+BEGIN
+
+DELETE 
+FROM UserFavorites 
+WHERE recipeid = p_recipeid;
+
+end $$
+delimiter ;
+-- -- -- -- DELETE FAVORITE BY USER ID
+drop procedure if exists spDeleteFavoriteByUserID;
+delimiter $$
+create procedure spDeleteFavoriteByUserID(in userid int)
+BEGIN
+
+DELETE 
+FROM UserFavorites 
+WHERE userid = p_userid;
+
+end $$
 delimiter ;
