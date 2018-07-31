@@ -43,3 +43,36 @@ export function create(req, res, next) {
             console.error(err);
         });
 }
+export function update(req, res, next) {
+    let id = req.params.id;
+    let { recipeid } = req.body;
+
+    FavoriteValidators.update({
+        id,
+        recipeid
+    })
+        .then((sqlArgs) => {
+            return FavoriteProcedures.update(sqlArgs);
+        })
+        .then((favorite) => {
+            res.json(favorite);
+        }).catch((err) => {
+            console.error(err);
+        })
+}
+export function destroy(req, res, next) {
+    let id = req.params.id;
+
+    UserValidators.destroy({
+        id,
+    })
+        .then((sqlArgs) => {
+        return UserProcedures.destroy(sqlArgs);
+        })
+        .then(() => {
+            res.json();
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}

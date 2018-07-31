@@ -16,8 +16,7 @@ export function read(args) {
     });
 }
 export function create(args) {
-    let recipeid = +args.recipeid;
-    let userid = +args.userid;
+    let { recipeid, userid } = +args;
 
     return new Promise((resolve, reject) => {
         let err = false;
@@ -36,3 +35,36 @@ export function create(args) {
         resolve([recipeid, userid]);
     });
 }
+export function update(args) {
+    let { id, recipeid } = +args;
+
+    return new Promise((resolve, reject) => {
+        let err = false;
+        let message = '';
+
+        if (!lodash.isFinite(id, recipeid)) {
+            reject(new Error('Id or recipeid is not a number'));
+            return;
+        }
+
+        if (err) {
+            reject(new Error(message));
+            return;
+        }
+
+        resolve([id, recipeid]);
+    });
+}
+export function destroy(args) {
+    let id = +args.id;
+
+    return new Promise((resolve, reject) => {
+        if (!lodash.isFinite(id)) {
+            reject(new Error('Id is not a number'));
+            return;
+        }
+
+        resolve([id]);
+    });
+}
+////////////////////////////////////////////////////////////

@@ -9,6 +9,8 @@ router
     .get('/:id', Favorites.read)
 
     .post('/', Favorites.create)
+    .put('/:id', Favorites.update)
+    .delete('/:id', Favorites.destroy)
 
 
 export default router;

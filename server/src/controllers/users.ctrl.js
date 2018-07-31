@@ -76,6 +76,9 @@ export function destroy(req, res, next) {
         .then((sqlArgs) => {
         return UserProcedures.destroy(sqlArgs);
         })
+        .then(() => {
+            res.json();
+        })
         .catch((err) => {
             console.error(err);
         })
