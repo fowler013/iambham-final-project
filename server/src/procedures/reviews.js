@@ -4,7 +4,7 @@ const MODEL_NAME = `UserReview`;
 
 export let { all, create, read, update, destroy } = crud(MODEL_NAME);
 
-export function getBasedOnUserId(args) {
+export function getBasedOnRecipeIDandUserId(args) {
     return row(`${SQL_PREFIX}${SQL_GET}BasedOnRecipeIDandUserId`, args);
 };
 
