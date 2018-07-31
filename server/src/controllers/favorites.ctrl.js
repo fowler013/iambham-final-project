@@ -49,7 +49,7 @@ export function update(req, res, next) {
 
     FavoriteValidators.update({
         id,
-        recipeid
+        recipeid,
     })
         .then((sqlArgs) => {
             return FavoriteProcedures.update(sqlArgs);
@@ -63,14 +63,82 @@ export function update(req, res, next) {
 export function destroy(req, res, next) {
     let id = req.params.id;
 
-    UserValidators.destroy({
+    FavoriteValidators.destroy({
         id,
     })
         .then((sqlArgs) => {
-        return UserProcedures.destroy(sqlArgs);
+            return FavoriteProcedures.destroy(sqlArgs);
         })
         .then(() => {
-            res.json();
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}
+/// read by recipeid
+export function readByRecipeId(req, res, next) {
+    let recipeid = req.params.id;
+
+    FavoriteValidators.readByRecipeId({
+        recipeid,
+    })
+        .then((sqlArgs) => {
+            return FavoriteProcedures.readByRecipeId(sqlArgs);
+        })
+        .then((favorite) => {
+            res.json(favorite);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}
+/// read by userid
+export function readByUserId(req, res, next) {
+    let userid = req.params.id;
+
+    FavoriteValidators.readByUserId({
+        userid,
+    })
+        .then((sqlArgs) => {
+            return FavoriteProcedures.readByUserId(sqlArgs);
+        })
+        .then((favorite) => {
+            res.json(favorite);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}
+/// delete by recipeid
+export function deleteByRecipeId(req, res, next) {
+    let recipeid = req.params.id;
+
+    FavoriteValidators.readByRecipeId({
+        recipeid,
+    })
+        .then((sqlArgs) => {
+            return FavoriteProcedures.DeleteByRecipeId(sqlArgs);
+        })
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+}
+/// delete by userid
+export function deleteByUserId(req, res, next) {
+    let userid = req.params.id;
+
+    FavoriteValidators.readByUserId({
+        userid,
+    })
+        .then((sqlArgs) => {
+            return FavoriteProcedures.DeleteByUserId(sqlArgs);
+        })
+        .then(() => {
+            res.sendStatus(200);
         })
         .catch((err) => {
             console.error(err);

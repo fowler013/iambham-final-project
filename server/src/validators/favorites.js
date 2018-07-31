@@ -1,5 +1,6 @@
 import lodash from 'lodash';
 
+//////////////////////// CRUD ////////////////////////////////////
 export function all() {
     return Promise.resolve([]);
 }
@@ -16,15 +17,26 @@ export function read(args) {
     });
 }
 export function create(args) {
-    let { recipeid, userid } = +args;
+    let userid = +args.userid;
+    let recipeid = args.recipeid;
 
     return new Promise((resolve, reject) => {
         let err = false;
         let message = '';
 
-        if (!lodash.isFinite(recipeid, userid)) {
+        if (!lodash.isFinite(userid)) {
             reject(new Error('Recipeid or userid is not a number'));
             return;
+        }
+        
+        if (
+            !(
+                lodash.isString(recipeid)
+            )
+        ) {
+            err = true;
+            message =
+                'Make sure recipeid is alphanumeric values';
         }
 
         if (err) {
@@ -36,15 +48,26 @@ export function create(args) {
     });
 }
 export function update(args) {
-    let { id, recipeid } = +args;
+    let id = +args.id;
+    let recipeid = args.recipeid;
 
     return new Promise((resolve, reject) => {
         let err = false;
         let message = '';
 
-        if (!lodash.isFinite(id, recipeid)) {
+        if (!lodash.isFinite(id)) {
             reject(new Error('Id or recipeid is not a number'));
             return;
+        }
+        
+        if (
+            !(
+                lodash.isString(recipeid)
+            )
+        ) {
+            err = true;
+            message =
+                'Make sure recipeid is alphanumeric values';
         }
 
         if (err) {
@@ -65,6 +88,46 @@ export function destroy(args) {
         }
 
         resolve([id]);
+    });
+}
+////////////////////////////////////////////////////////////
+export function readByRecipeId(args) {
+    let recipeid = args;
+
+    return new Promise((resolve, reject) => {
+        if (
+            !(
+                lodash.isString(recipeid)
+            )
+        ) {
+            err = true;
+            message =
+                'Make sure recipeid is alphanumeric values';
+        }
+        
+        if (err) {
+            reject(new Error(message));
+            return;
+        }
+
+        resolve([recipeid]);
+    });
+}
+export function readByUserId(args) {
+    let userid = +args;
+
+    return new Promise((resolve, reject) => {
+        if (!lodash.isFinite(userid)) {
+            reject(new Error('userid is not a number'));
+            return;
+        }
+
+        if (err) {
+            reject(new Error(message));
+            return;
+        }
+
+        resolve([userid]);
     });
 }
 ////////////////////////////////////////////////////////////

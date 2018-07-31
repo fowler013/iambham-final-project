@@ -7,10 +7,13 @@ let router = Router();
 router
     .get('/', Favorites.all)
     .get('/:id', Favorites.read)
-
+    .get('/recipe/:id', Favorites.readByRecipeId)
+    .get('/user/:id', Favorites.readByUserId)
     .post('/', Favorites.create)
     .put('/:id', Favorites.update)
     .delete('/:id', Favorites.destroy)
+    .delete('/recipe/:id', Favorites.deleteByRecipeId)
+    .delete('/user/:id', Favorites.deleteByUserId);
 
 
 export default router;

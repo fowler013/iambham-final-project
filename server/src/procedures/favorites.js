@@ -4,18 +4,18 @@ const MODEL_NAME = `Favorite`;
 
 export let { all, create, read, update, destroy } = crud(MODEL_NAME);
 
-export function getBasedOnRecipeId(args) {
+export function getByRecipeId(args) {
     return row(`${SQL_PREFIX}${SQL_GET}ByRecipeID`, args);
 };
 
-export function getBasedOnUserId(args) {
+export function getByUserId(args) {
     return row(`${SQL_PREFIX}${SQL_GET}ByUserID`, args);
 };
 
-export function deleteBasedOnRecipeID(args) {
+export function deleteByRecipeID(args) {
     return row(`${SQL_PREFIX}${SQL_DELETE}ByRecipeID`, args);
 };
 
-export function deleteBasedOnUserId(args) {
+export function deleteByUserId(args) {
     return row(`${SQL_PREFIX}${SQL_DELETE}ByUserID`, args);
 }

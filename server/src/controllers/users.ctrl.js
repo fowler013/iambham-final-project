@@ -74,10 +74,10 @@ export function destroy(req, res, next) {
         id,
     })
         .then((sqlArgs) => {
-        return UserProcedures.destroy(sqlArgs);
+            return UserProcedures.destroy(sqlArgs);
         })
         .then(() => {
-            res.json();
+            res.sendStatus(200);
         })
         .catch((err) => {
             console.error(err);
