@@ -16,11 +16,11 @@ export function read(req, res, next) {
     UserValidators.read({
         id,
     })
-        .then((user) => {
-            return UserProcedures.read(user);
+        .then((sqlArgs) => {
+            return UserProcedures.read(sqlArgs);
         })
-        .then((result) => {
-            res.json(result);
+        .then((user) => {
+            res.json(user);
         })
         .catch((err) => {
             console.error(err);
