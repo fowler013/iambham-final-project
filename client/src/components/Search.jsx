@@ -13,17 +13,20 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageid: '0',
       keyword: '',
       hits: '',
       searchlist: [],
     }
   }
-  //q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free"
 
-  componentDidMount() {
-    let search = this.queryStringToJSON(this.props.location.pathname.slice(8))
-this.gogetdata(search)
+  setdata() {
+    let search = this.props.location.pathname.slice(8)
+    if (search !== this.state.pageid) {
+      this.gogetdata(this.queryStringToJSON(search))
+    }
   }
+
 
   gogetdata(sending) {
     fetch('/api/search/', {
@@ -46,6 +49,7 @@ this.gogetdata(search)
         }
 
         this.setState({
+          pageid: this.props.location.pathname.slice(8),
           keyword: data.q,
           hits: data.count,
           searchlist: data.hits,
@@ -78,6 +82,10 @@ this.gogetdata(search)
       return acc;
     }, {});
 
+    if(!obj.from && !obj.to) {
+      obj.from=['0']
+      obj.to=['12']
+    }
     return JSON.stringify(obj);
   }
 
@@ -85,17 +93,21 @@ this.gogetdata(search)
     console.log(this.state.hits)
     console.log(this.state.keyword)
     console.log(this.state.searchlist)
+    this.setdata()
 
     return(
       <React.Fragment>
-        <div className=" container d-flex justify-content-between">
+
+        <div className=" d-flex justify-content-between bg-dark fixed-top" style={{marginTop: "4.5rem"}}>
         <h1>Keywords: {this.state.keyword}</h1>
         <h1>{this.state.hits} Total Recipes</h1>
         </div>
-        <div>
+        <div className="container">
+        <div className="row">
         {this.state.searchlist.map(element => {
           return SearchTabs(element)
         })}
+        </div>
         </div>
       </React.Fragment >
     )
