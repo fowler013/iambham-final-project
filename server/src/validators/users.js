@@ -64,6 +64,7 @@ export function update(args) {
 
         if (
             !(
+                lodash.isString(email) &&
                 lodash.isString(firstname) &&
                 lodash.isString(lastname) &&
                 lodash.isString(username)
@@ -71,7 +72,7 @@ export function update(args) {
         ) {
             err = true;
             message =
-                'Make sure firstname, lastname, username, and password are alphanumeric values';
+                'Make sure firstname, lastname, username, and email are alphanumeric values';
         }
 
         if (err) {
@@ -79,7 +80,7 @@ export function update(args) {
             return;
         }
 
-        resolve([id, firstname, lastname, username]);
+        resolve([id, email, firstname, lastname, username]);
     });
 }
 export function destroy(args) {

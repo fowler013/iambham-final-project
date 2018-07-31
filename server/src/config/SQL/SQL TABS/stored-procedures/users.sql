@@ -42,11 +42,12 @@ delimiter ;
 -- UPDATE User
 drop procedure if exists spUpdateUser;
 delimiter $$
-create procedure spUpdateUser (p_id int, p_firstname varchar(256), p_lastname varchar(256), p_username varchar(256))
+create procedure spUpdateUser (p_id int, p_email varchar(56), p_firstname varchar(256), p_lastname varchar(256), p_username varchar(256))
 begin
 
 UPDATE Users
 set
+    email = coalesce(p_email, email),
     firstname = coalesce(p_firstname, firstname),
     lastname = coalesce(p_lastname, lastname),
     username = coalesce(p_username, username)
