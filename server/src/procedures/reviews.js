@@ -1,4 +1,4 @@
-import { crud, row, SQL_PREFIX, SQL_GET } from '../procedures/base';
+import { crud, row, SQL_PREFIX, SQL_GET, SQL_DELETE } from '../procedures/base';
 
 const MODEL_NAME = `UserReview`;
 
@@ -10,4 +10,12 @@ export function getBasedOnRecipeIDandUserId(args) {
 
 export function getBasedOnUserId(args) {
     return row(`${SQL_PREFIX}${SQL_GET}BasedOnUserId`, args);
+};
+
+export function deleteBasedOnRecipeIDandUserId(args) {
+    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnRecipeIDandUserId`, args);
+};
+
+export function deleteBasedOnUserId(args) {
+    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnUserId`, args);
 };

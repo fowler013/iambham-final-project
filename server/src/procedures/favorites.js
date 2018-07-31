@@ -11,3 +11,11 @@ export function getBasedOnRecipeId(args) {
 export function getBasedOnUserId(args) {
     return row(`${SQL_PREFIX}${SQL_GET}BasedOnUserId`, args);
 };
+
+export function deleteBasedOnRecipeID(args) {
+    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnRecipeID`, args);
+};
+
+export function deleteBasedOnUserId(args) {
+    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnUserId`, args);
+};
