@@ -28,10 +28,11 @@ export function read(req, res, next) {
 }
 
 export function create(req, res, next) {
-    let { userid, review, ratings } = req.body;
+    let { userid, recipeid, review, ratings } = req.body;
 
     ReviewValidators.create({
         userid,
+        recipeid,
         review,
         ratings
     })

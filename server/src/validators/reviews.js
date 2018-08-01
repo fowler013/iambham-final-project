@@ -20,8 +20,9 @@ export function read(args) {
 }
 
 export function create(args) {
+    let userid = +args.userid
     let ratings = +args.ratings 
-    let { review } = args;
+    let { review, recipeid } = args;
 
     return new Promise(((resolve, reject) => {
         let err = false;
@@ -31,16 +32,24 @@ export function create(args) {
             err = true
             message = 'Make sure review is alphanumeric values'
         }
+        if (!lodash.toString(recipeid)) {
+            err = true
+            message = 'Make sure recipeid is alphanumeric values'
+        }
 
-        if (!lodash.isFinite(ratings) && !(ratings <= 5)) {
+        if (!lodash.isFinite(ratings)) {
             err = true
             message = 'Make sure rating is numeric value'
+        }
+        if (!lodash.isFinite(userid)) {
+            err = true
+            message = 'Make sure userid is numeric value'
         }
         if (err) {
             reject(new Error(message));
             return;
         }
-        resolve([review, ratings])
+        resolve([userid, recipeid, review, ratings])
     }))
 }
 
@@ -51,15 +60,16 @@ export function update(args) {
 
     
 
-    // if (!lodash.isFinite(id)) {
-    //     reject(new Error('ID is not a number'));
-    //     return;
-    // }
+
 
     return new Promise(((resolve, reject) => {
         let err = false;
         let message = '';
 
+    if (!lodash.isFinite(id)) {
+        reject(new Error('ID is not a number'));
+        return;
+    }
         if (!lodash.toString(review)) {
             err = true
             message = 'Make sure review is alphanumeric values'

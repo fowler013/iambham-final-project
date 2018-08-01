@@ -25,11 +25,11 @@ delimiter ;
 -- CREATE User Review
 drop procedure if exists spCreateUserReview;
 delimiter $$
-create procedure spCreateUserReview(p_userid int, p_rating int, p_review text)
+create procedure spCreateUserReview(p_userid int, p_recipeid varchar(256), p_rating int, p_review text)
 begin
 
-insert into userreviews(userid, review, ratings)
-values(p_userid, p_review, p_rating);
+insert into userreviews(userid, recipeid, review, ratings)
+values(p_userid, p_recipeid, p_review, p_rating);
 select last_insert_id() as id;
 
 end $$
