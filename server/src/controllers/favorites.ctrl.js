@@ -85,11 +85,9 @@ export function readByRecipeId(req, res, next) {
         recipeid,
     })
         .then((sqlArgs) => {
-            console.log('sql args', sqlArgs);
             return FavoriteProcedures.readByRecipeId(sqlArgs);
         })
         .then((favorite) => {
-            console.log('favroite', favorite);
             res.json(favorite);
         })
         .catch((err) => {
