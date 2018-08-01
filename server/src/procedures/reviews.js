@@ -21,10 +21,10 @@ export function deleteBasedOnUserId(args) {
     return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnUserID`, args);
 };
 
-export function deleteByRecipeID(args) {
+export function deleteBasedOnRecipeID(args) {
     return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnRecipeID`, args);
 };
 
-export function getByRecipeId(args) {
+export function getBasedonRecipeId(args) {
     return row(`${SQL_PREFIX}${SQL_GET}BasedOnRecipeID`, args);
 };
