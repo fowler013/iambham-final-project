@@ -14,7 +14,7 @@ class App extends Component {
             <Router>
                 <Fragment>
                     <Navigation />
-                    <div style={{height: "7em"}}></div>
+                    <div style={{height: "4.666em"}}></div>
                     <Switch>
                         <Route path="/search/" component={Search} />
                         <Route path="/recipe" component={Recipe} />

@@ -8,10 +8,16 @@ class Navigation extends React.Component {
         super(props);
     }
 
+handleSubmitClick() {
+    let keywords = $('#SearchBar').val()
+    console.log(keywords)
+    window.location.href = `${window.location.origin}/search/keyword=${keywords}`
+}
+
     render() {
         return (
             <React.Fragment>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-item-baseline fixed-top  mt-0 pt-0 pb-3">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-item-baseline fixed-top my-0 pb-auto">
                     <div className="nav-bar nav-logo-centered">
                         <div className="nav-bar-container d-flex flex-row mb-0" >
                             {/* <a className="nav-button nav-sidepanel-button" href="/sitemap/" title="Navigation">
@@ -40,7 +46,9 @@ class Navigation extends React.Component {
                        
                         <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" id="SearchBar" type="search" placeholder="Search" aria-label="Search" />
-                            <NavLink to = {`/search/keyword=${$('#SearchBar').val()}`}><button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button></NavLink>
+                            <button className="btn btn-outline-info my-2 my-sm-0" type="button" onClick={event => {
+                                this.handleSubmitClick();
+                            }}>Search</button>
                         </form>
                     </div>
 

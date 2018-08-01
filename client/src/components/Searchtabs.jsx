@@ -9,17 +9,20 @@ let SearchTabs = (data) => {
     let { calories, dietLabels, healthLabels, image, label: title, source, totalTime: time, yield: servings, ingredientLines: ingr, url: insturctionurl, uri: recipeIDurl } = recipe
 
         return <React.Fragment>
-            <div className="col my-1">
-              <div className="card m-auto" style={{ height: "24rem", width: "18rem" }}>
-                    <NavLink to={`/recipe/${recipeIDurl.split('recipe_')[1]}`}><div className="card-img-top" style={{ height: "10rem", width: "18rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-                  <div className="d-flex justify-content-end">
-                    <div className="text-center bg-warning p-2" style={{borderBottomLeftRadius: '25%'}}>
-                                <i className="far fa-clock"style={{fontSize: "2rem"}}></i>
-                                
-                      <p className="mb-0"><small>{time} mins</small></p>
+            <div className="col my-1 d-flex justify-content-center">
+              <div className="card" style={{ height: "24rem", width: "18rem" }}>
+                <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
+                  <div className="card-img-top" style={{ height: "10rem", width: "18rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+                    <div className="d-flex justify-content-end">
+                      <div className="text-center bg-warning p-2" style={{ borderBottomLeftRadius: "15%" }}>
+                        <i className="far fa-clock" style={{ fontSize: "2rem" }} />
+
+                        <p className="mb-0">
+                          <small>{time} mins</small>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </NavLink>
                 <div className="card-body">
                   <h6 className="card-subtitle mb-2 text-muted">

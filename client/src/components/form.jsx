@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Diets from './diets';
+import React, { Component } from "react";
+import Diets from "./diets";
 
 export default class Form extends Component {
   constructor() {
@@ -8,25 +8,26 @@ export default class Form extends Component {
     this.state = {
       data: {
         // change these *****
-        items: '',
-        exclusions: ''
+        items: "",
+        exclusions: ""
       }
-    }
+    };
   }
   handleBlogSubmit() {
     // POST
-    let url = '/api/search/';
+    let url = "/api/search/";
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(this.state.data),
       headers: { "Content-Type": "application/json" }
-
-    }).then((res) => {
-      console.log(res.json())
-      //return res.json();
-    }).catch((err) => {
-      console.log(err);
-    });
+    })
+      .then(res => {
+        console.log(res.json());
+        //return res.json();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   handleItemsChange(items) {
     // change these ***** ALSO NAME
@@ -39,28 +40,14 @@ export default class Form extends Component {
     this.setState({ data });
   }
   render() {
+    console.log("form is here");
     return (
-      <div className="form-container col-xs-3">
-        <form className="form" action="/" method="POST">
-          <div className="form-group">
-            <label className="form-label-content" htmlFor="exampleFormControlInput1">Food Item</label>
-            <input className="form-control" id="exampleFormControlInput1" placeholder='Enter food item!' onChange={(e) => {
-              this.handleItemsChange(e.target.value)
-            }} name="items" />
-          </div>
-          <div className="form-group">
-            <label className="form-label-content" htmlFor="exampleFormControlInput2">Exclusions</label>
-            <input className="form-control" id="exampleFormControlInput2" placeholder='Enter any food exclusions!' onChange={(e) => {
-              this.handleExclusionsChange(e.target.value)
-            }} name="content" />
-          </div>
-          <Diets />
-          <button className="form-btn" onClick={() => {
-            this.handleBlogSubmit()
-          }}>Submit</button>
-
-        </form>
+      <div
+        className="position-absolute m-2 bg-primary"
+        style={{ height: "95vh", width: "19rem" }}
+      >
+      
       </div>
-    )
+    );
   }
-};
+}

@@ -8,6 +8,7 @@ import {
   NavLink
 } from "react-router-dom";
 import SearchTabs from "./Searchtabs";
+import Form from './form'
 
 class Search extends React.Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class Search extends React.Component {
 
     if(!obj.from && !obj.to) {
       obj.from=['0']
-      obj.to=['12']
+      obj.to=['20']
     }
     return JSON.stringify(obj);
   }
@@ -95,22 +96,20 @@ class Search extends React.Component {
     console.log(this.state.searchlist)
     this.setdata()
 
-    return(
-      <React.Fragment>
+    return <React.Fragment>
+        <div className=" d-flex justify-content-between bg-dark" style={{ marginLeft: "3rem", marginRight: "3rem" }}>
+          <h1>Keywords: {this.state.keyword}</h1>
+          <h1>{this.state.hits} Total Recipes</h1>
+        </div>
 
-        <div className=" d-flex justify-content-between bg-dark fixed-top" style={{marginTop: "4.5rem"}}>
-        <h1>Keywords: {this.state.keyword}</h1>
-        <h1>{this.state.hits} Total Recipes</h1>
+        <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
+          <div className="row">
+            {this.state.searchlist.map(element => {
+              return SearchTabs(element);
+            })}
+          </div>
         </div>
-        <div className="container">
-        <div className="row">
-        {this.state.searchlist.map(element => {
-          return SearchTabs(element)
-        })}
-        </div>
-        </div>
-      </React.Fragment >
-    )
+      </React.Fragment>;
   }
 }
 
