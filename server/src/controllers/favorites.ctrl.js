@@ -31,7 +31,7 @@ export function create(req, res, next) {
 
     FavoriteValidators.create({
         recipeid,
-        userid
+        userid,
     })
         .then((sqlArgs) => {
             return FavoriteProcedures.create(sqlArgs);
@@ -56,9 +56,10 @@ export function update(req, res, next) {
         })
         .then((favorite) => {
             res.json(favorite);
-        }).catch((err) => {
-            console.error(err);
         })
+        .catch((err) => {
+            console.error(err);
+        });
 }
 export function destroy(req, res, next) {
     let id = req.params.id;
@@ -74,7 +75,7 @@ export function destroy(req, res, next) {
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }
 /// read by recipeid
 export function readByRecipeId(req, res, next) {
@@ -84,14 +85,16 @@ export function readByRecipeId(req, res, next) {
         recipeid,
     })
         .then((sqlArgs) => {
+            console.log('sql args', sqlArgs);
             return FavoriteProcedures.readByRecipeId(sqlArgs);
         })
         .then((favorite) => {
+            console.log('favroite', favorite);
             res.json(favorite);
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }
 /// read by userid
 export function readByUserId(req, res, next) {
@@ -108,7 +111,7 @@ export function readByUserId(req, res, next) {
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }
 /// delete by recipeid
 export function deleteByRecipeId(req, res, next) {
@@ -118,14 +121,14 @@ export function deleteByRecipeId(req, res, next) {
         recipeid,
     })
         .then((sqlArgs) => {
-            return FavoriteProcedures.DeleteByRecipeId(sqlArgs);
+            return FavoriteProcedures.deleteByRecipeId(sqlArgs);
         })
         .then(() => {
             res.sendStatus(200);
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }
 /// delete by userid
 export function deleteByUserId(req, res, next) {
@@ -135,12 +138,12 @@ export function deleteByUserId(req, res, next) {
         userid,
     })
         .then((sqlArgs) => {
-            return FavoriteProcedures.DeleteByUserId(sqlArgs);
+            return FavoriteProcedures.deleteByUserId(sqlArgs);
         })
         .then(() => {
             res.sendStatus(200);
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }

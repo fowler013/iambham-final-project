@@ -92,7 +92,10 @@ export function destroy(args) {
 }
 ////////////////////////////////////////////////////////////
 export function readByRecipeId(args) {
-    let recipeid = args;
+    let err = false;
+    let message = '';
+
+    let recipeid = args.recipeid;
 
     return new Promise((resolve, reject) => {
         if (
@@ -114,7 +117,10 @@ export function readByRecipeId(args) {
     });
 }
 export function readByUserId(args) {
-    let userid = +args;
+    let err = false;
+    let message = '';
+
+    let userid = +args.userid;
 
     return new Promise((resolve, reject) => {
         if (!lodash.isFinite(userid)) {

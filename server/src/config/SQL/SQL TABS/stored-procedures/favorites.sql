@@ -29,7 +29,7 @@ CREATE PROCEDURE spCreateFavorite(
 in p_recipeid varchar(256), p_userid int)
 BEGIN
 
-	INSERT INTO UserFavorites (p_recipeid, p_userid)
+	INSERT INTO UserFavorites (recipeid, userid)
 	VALUES (p_recipeid, p_userid);
 	select last_insert_id() as id;
     
