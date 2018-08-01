@@ -6,19 +6,19 @@ const MODEL_NAME = `UserReview`;
 export let { all, create, read, update, destroy } = crud(MODEL_NAME);
 
 
-export function getBasedonRecipeId(args) {
+export function readByRecipeId(args) {
     return rows(`${SQL_GET}${MODEL_NAME}BasedOnRecipeID`, args);
 };
 
-export function getBasedOnUserId(args) {
+export function readByUserId(args) {
     return rows(`${SQL_GET}${MODEL_NAME}BasedOnUserId`, args);
 };
 
-export function deleteBasedOnRecipeID(args) {
+export function deleteByRecipeId(args) {
     return empty(`${SQL_DELETE}${MODEL_NAME}BasedOnRecipeID`, args);
 };
 
-export function deleteBasedOnUserId(args) {
+export function deleteByUserId(args) {
     return empty(`${SQL_DELETE}${MODEL_NAME}BasedOnUserID`, args);
 };
 

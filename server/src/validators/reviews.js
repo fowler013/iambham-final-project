@@ -92,3 +92,51 @@ export function destroy(args) {
         resolve([id]);
     });
 }
+
+////////////////////////////////////////////////////////////
+export function readByRecipeId(args) {
+    let err = false;
+    let message = '';
+
+    let recipeid = args.recipeid;
+
+    return new Promise((resolve, reject) => {
+        if (
+            !(
+                lodash.isString(recipeid)
+            )
+        ) {
+            err = true;
+            message =
+                'Make sure recipeid is alphanumeric values';
+        }
+        
+        if (err) {
+            reject(new Error(message));
+            return;
+        }
+
+        resolve([recipeid]);
+    });
+}
+
+export function readByUserId(args) {
+    let err = false;
+    let message = '';
+
+    let userid = +args.userid;
+
+    return new Promise((resolve, reject) => {
+        if (!lodash.isFinite(userid)) {
+            reject(new Error('userid is not a number'));
+            return;
+        }
+
+        if (err) {
+            reject(new Error(message));
+            return;
+        }
+
+        resolve([userid]);
+    });
+}

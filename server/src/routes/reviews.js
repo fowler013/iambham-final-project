@@ -8,9 +8,13 @@ let router = Router();
 router
     .get("/", Review.all)
     .get("/:id", Review.read)
+    .get("/recipe/:id", Review.readByRecipeId)
+    .get("/user/:id", Review.readByUserId)
     .post("/", Review.create)
     .put("/:id", Review.update)
     .delete("/:id", Review.destroy)
+    .delete("/recipe/:id", Review.deleteByRecipeId)
+    .delete("/user/:id", Review.deleteByUserId)
 
 //   .get("recipe/:id", (req, res, next) => {
 //       let id = req.params.id;

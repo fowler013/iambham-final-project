@@ -12,9 +12,9 @@ export function all(req, res, next) {
 }
 export function read(req, res, next) {
     let id = req.params.id;
-   
+
     ReviewValidators.read({
-        id
+        id,
     })
         .then((sqlArgs) => {
             return ReviewProcedures.read(sqlArgs);
@@ -26,7 +26,6 @@ export function read(req, res, next) {
             console.error(err);
         });
 }
-
 export function create(req, res, next) {
     let { userid, recipeid, review, ratings } = req.body;
 
@@ -34,7 +33,7 @@ export function create(req, res, next) {
         userid,
         recipeid,
         review,
-        ratings
+        ratings,
     })
         .then((sqlArgs) => {
             return ReviewProcedures.create(sqlArgs);
@@ -46,9 +45,6 @@ export function create(req, res, next) {
             console.error(err);
         });
 }
-
-
-
 export function update(req, res, next) {
     let id = req.params.id;
     let { review, ratings } = req.body;
@@ -56,24 +52,23 @@ export function update(req, res, next) {
     ReviewValidators.update({
         id,
         ratings,
-        review
+        review,
     })
         .then((sqlArgs) => {
             return ReviewProcedures.update(sqlArgs);
         })
         .then((review) => {
             res.json(review);
-        }).catch((err) => {
-            console.error(err);
         })
+        .catch((err) => {
+            console.error(err);
+        });
 }
-
-
 export function destroy(req, res, next) {
     let id = req.params.id;
 
     ReviewValidators.destroy({
-        id
+        id,
     })
         .then((sqlArgs) => {
             return ReviewProcedures.destroy(sqlArgs);
@@ -83,10 +78,73 @@ export function destroy(req, res, next) {
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }
+// read by recipeid
+export function readByRecipeId(req, res, next) {
+    let recipeid = req.params.id;
 
+    ReviewValidators.readByRecipeId({
+        recipeid,
+    })
+        .then((sqlArgs) => {
+            return ReviewProcedures.readByRecipeId(sqlArgs);
+        })
+        .then((favorite) => {
+            res.json(favorite);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
+// read by userid
+export function readByUserId(req, res, next) {
+    let userid = req.params.id;
 
+    ReviewValidators.readByUserId({
+        userid,
+    })
+        .then((sqlArgs) => {
+            return ReviewProcedures.readByUserId(sqlArgs);
+        })
+        .then((favorite) => {
+            res.json(favorite);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
+// delete by recipeid
+export function deleteByRecipeId(req, res, next) {
+    let recipeid = req.params.id;
 
+    ReviewValidators.readByRecipeId({
+        recipeid,
+    })
+        .then((sqlArgs) => {
+            return ReviewProcedures.deleteByRecipeId(sqlArgs);
+        })
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
+// delete by userid
+export function deleteByUserId(req, res, next) {
+    let userid = req.params.id;
 
-
+    ReviewValidators.readByUserId({
+        userid,
+    })
+        .then((sqlArgs) => {
+            return ReviewProcedures.deleteByUserId(sqlArgs);
+        })
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
