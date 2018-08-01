@@ -9,6 +9,7 @@ userid int not null
 drop table if exists UserReviews;
 create table UserReviews (
 id int not null auto_increment primary key,
+recipeid varchar(256) not null,
 userid int not null,
 review text not null,
 ratings int not  null
@@ -17,8 +18,9 @@ ratings int not  null
 drop table if exists UserFavorites;
 create table UserFavorites (
 id int not null auto_increment primary key,
-userid int not null,
-recipeid varchar(256) not null
+recipeid varchar(256) not null,
+userid int not null
+
 );
 -- USER HISTORY TABLE
 drop table if exists UserHistory;

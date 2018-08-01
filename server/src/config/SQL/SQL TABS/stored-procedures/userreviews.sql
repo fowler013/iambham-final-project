@@ -25,11 +25,11 @@ delimiter ;
 -- CREATE User Review
 drop procedure if exists spCreateUserReview;
 delimiter $$
-create procedure spCreateUserReview(p_userid int, p_rating int, p_review text)
+create procedure spCreateUserReview(p_userid int, p_recipeid varchar(256), p_rating int, p_review text)
 begin
 
-insert into userreviews(userid, review, ratings)
-values(p_userid, p_review, p_rating);
+insert into userreviews(userid, recipeid, review, ratings)
+values(p_userid, p_recipeid, p_review, p_rating);
 select last_insert_id() as id;
 
 end $$
@@ -60,83 +60,83 @@ where id = p_id;
 
 end $$
 delimiter ;
-
--- grab all reviews by a certain user
--- probably won't use this if we are plannig on limiting one review per user
-drop procedure if exists spGetReviewsByUser;
-delimiter $$
-create procedure spGetReviewsByUser(p_userid int)
-begin
-
-select *
-from userreviews
-where userid = p_userid;
-
-end $$
-delimiter ;
-
+-- -- -- -- GET REVIEW BY RECIPE ID
 drop procedure if exists spGetUserReviewBasedonRecipeID;
 delimiter $$
 CREATE PROCEDURE spGetUserReviewBasedonRecipeID(p_recipeid varchar(256))
 BEGIN
+
 SELECT 
-	`userreviews`.`id`,
-    `userreviews`.`userid`,
-    `userreviews`.`review`,
-    `userreviews`.`ratings`
-FROM `heroku_095c413572425f3`.`userreviews`
-WHERE `userreviews`.`recipeid` = p_recipeid;
+	id,
+    userid,
+    review,
+    ratings
+FROM UserReviews
+WHERE recipeid = p_recipeid;
 
-END
+END $$
 delimiter ;
-
-drop procedure if exists spGetUserReviewBasedonUserID
+-- -- -- -- GET REVIEW BY USER ID
+drop procedure if exists spGetUserReviewBasedonUserID;
 delimiter $$
 CREATE PROCEDURE spGetUserReviewBasedonUserID(p_userid int)
 BEGIN
+
 SELECT 
-	`userreviews`.`id`,
-    `userreviews`.`recipeid`,
-    `userreviews`.`review`,
-    `userreviews`.`ratings`
-FROM `heroku_095c413572425f3`.`userreviews`
-WHERE `userreviews`.`userid` = p_userid;
+	id,
+    recipeid,
+    review,
+    ratings
+FROM UserReviews
+WHERE userid = p_userid;
 
-END
+END $$
 delimiter ;
-
-DROP procedure IF EXISTS `spDeleteUserReviewBasedonRecipeID`;
-
+-- -- -- -- GET REVIEW BY USER ID & RECIPE ID
+DROP procedure IF EXISTS spGetUserReviewBasedonRecipeIDandUserID;
 DELIMITER $$
-USE `heroku_095c413572425f3`$$
-CREATE PROCEDURE `spDeleteUserReviewBasedonRecipeID` (p_recipeid varchar(256))
+CREATE PROCEDURE spGetUserReviewBasedonRecipeIDandUserID(p_recipeid varchar(256), p_userid int)
 BEGIN
-DELETE FROM `heroku_095c413572425f3`.`userreviews`
-WHERE `userreviews`.`recipeid` = p_recipeid;
-END$$
 
+SELECT 
+	id,
+    review,
+    ratings
+FROM UserReviews
+WHERE userid = p_userid AND recipeid = p_recipeid;
+
+END $$
 DELIMITER ;
-
-DROP procedure IF EXISTS `spDeleteUserReviewBasedonUserID`;
-
+-- -- -- -- DELETE REVIEW BY RECIPE ID
+DROP procedure IF EXISTS spDeleteUserReviewBasedonRecipeID;
 DELIMITER $$
-USE `heroku_095c413572425f3`$$
-CREATE DEFINER=`b1b1c890b1170e`@`%` PROCEDURE `spDeleteUserReviewBasedonUserID`(p_userid int)
+CREATE PROCEDURE spDeleteUserReviewBasedonRecipeID (p_recipeid varchar(256))
 BEGIN
-DELETE FROM `heroku_095c413572425f3`.`userreviews`
-WHERE `userreviews`.`userid` = p_userid;
-END$$
 
+DELETE FROM UserReviews
+WHERE recipeid = p_recipeid;
+
+END $$
 DELIMITER ;
-
-DROP procedure IF EXISTS `spDeleteUserReviewBasedonRecipeIDandUserID`;
-
+-- -- -- -- DELETE REVIEW BY USER ID
+DROP procedure IF EXISTS spDeleteUserReviewBasedonUserID;
 DELIMITER $$
-USE `heroku_095c413572425f3`$$
-CREATE DEFINER=`b1b1c890b1170e`@`%` PROCEDURE `spDeleteUserReviewBasedonRecipeIDandUserID`(p_recipeis varchar(256), p_userid int)
-BEGIN
-DELETE FROM `heroku_095c413572425f3`.`userreviews`
-WHERE `userreviews`.`userid` = p_userid AND `userreviews`.`recipeid` = p_recipeid;
-END$$
 
+CREATE PROCEDURE spDeleteUserReviewBasedonUserID(p_userid int)
+BEGIN
+DELETE FROM UserReviews
+WHERE userid = p_userid;
+
+END $$
+DELIMITER ;
+-- -- -- -- DELETE REVIEW BY USER ID & RECIPE ID
+DROP procedure IF EXISTS spDeleteUserReviewBasedonRecipeIDandUserID;
+DELIMITER $$
+CREATE PROCEDURE spDeleteUserReviewBasedonRecipeIDandUserID(p_recipeid varchar(256), p_userid int)
+BEGIN
+
+DELETE FROM UserReviews
+WHERE userid = p_userid AND recipeid = p_recipeid;
+
+END $$
 DELIMITER ;
