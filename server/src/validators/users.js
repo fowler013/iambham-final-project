@@ -58,7 +58,7 @@ export function update(args) {
         let message = '';
 
         if (!lodash.isFinite(id)) {
-            reject(new Error('Id is not a number'));
+            reject(new Error('ID is not a number'));
             return;
         }
 

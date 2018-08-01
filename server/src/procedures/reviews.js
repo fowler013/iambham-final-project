@@ -9,7 +9,7 @@ export function getBasedOnRecipeIDandUserId(args) {
 };
 
 export function getBasedOnUserId(args) {
-    return row(`${SQL_PREFIX}${SQL_GET}BasedOnUserID`, args);
+    return row(`${SQL_PREFIX}${SQL_GET}BasedOnUserId`, args);
 };
 
 export function deleteBasedOnRecipeIDandUserId(args) {
@@ -18,4 +18,12 @@ export function deleteBasedOnRecipeIDandUserId(args) {
 
 export function deleteBasedOnUserId(args) {
     return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnUserID`, args);
+};
+
+export function deleteByRecipeID(args) {
+    return row(`${SQL_PREFIX}${SQL_DELETE}BasedOnRecipeID`, args);
+};
+
+export function getByRecipeId(args) {
+    return row(`${SQL_PREFIX}${SQL_GET}BasedOnRecipeID`, args);
 };
