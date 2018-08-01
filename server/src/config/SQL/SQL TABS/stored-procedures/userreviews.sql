@@ -92,6 +92,21 @@ WHERE userid = p_userid;
 
 END $$
 delimiter ;
+-- -- -- -- GET REVIEW BY USER ID & RECIPE ID
+DROP procedure IF EXISTS spGetUserReviewBasedonRecipeIDandUserID;
+DELIMITER $$
+CREATE PROCEDURE spGetUserReviewBasedonRecipeIDandUserID(p_recipeid varchar(256), p_userid int)
+BEGIN
+
+SELECT 
+	id,
+    review,
+    ratings
+FROM UserReviews
+WHERE userid = p_userid AND recipeid = p_recipeid;
+
+END $$
+DELIMITER ;
 -- -- -- -- DELETE REVIEW BY RECIPE ID
 DROP procedure IF EXISTS spDeleteUserReviewBasedonRecipeID;
 DELIMITER $$
