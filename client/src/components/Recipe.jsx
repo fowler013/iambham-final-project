@@ -35,21 +35,20 @@ class Recipe extends React.Component {
         console.log(data);
         this.setState({
           pageid: this.props.location.pathname.slice(8),
-          recipe: data
+          recipe: data[0]
         });
       });
   }
 
   render() {
     this.setdata()
+    console.log(this.state.recipe.image)
     return (
       <React.Fragment>
-        <h1>on Recipe page</h1>
+        <div><div className="card-img-top" style={{ height: "30rem", width: "40rem", backgroundImage: `url(${this.state.recipe.image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}></div></div>
       </React.Fragment>
     );
   }
 }
 
 export default Recipe;
-
-//http://www.edamam.com/ontologies/edamam.owl#recipe_

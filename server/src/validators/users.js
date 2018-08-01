@@ -1,5 +1,17 @@
 import lodash from 'lodash';
 import emailValidator from 'email-validator';
+import passwordValidator from 'password-validator';
+
+let isPasswordValid = new passwordValidator();
+isPasswordValid
+    .is().min(8)                                    // Minimum length 8
+    .is().max(20)                                  // Maximum length 100
+    .has().uppercase()                              // Must have uppercase letters
+    .has().lowercase()                              // Must have lowercase letters
+    .has().digits()                                 // Must have digits
+    .has().symbols()                                 // Must have symbols
+    .has().not().spaces()                           // Should not have spaces
+    .is().not().oneOf(['Passw0rd', 'Password123', 'password', '12345678',]); // Blacklist these values
 
 export function all() {
     return Promise.resolve([]);
@@ -27,13 +39,17 @@ export function create(args) {
             err = true;
             message = 'Email is not an email';
         }
+        
+        if (!isPasswordValid.validate(password)) {
+          err = true;
+          message = "Password is not valid";
+        }
 
         if (
             !(
                 lodash.isString(firstname) &&
                 lodash.isString(lastname) &&
-                lodash.isString(username) &&
-                lodash.isString(password)
+                lodash.isString(username)
             )
         ) {
             err = true;

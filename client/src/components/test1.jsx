@@ -14,6 +14,15 @@ handleSubmitClick() {
     window.location.href = `${window.location.origin}/search/keyword=${keywords}`
 }
 
+    keycheck(event) {
+        console.log('got here')
+        if (event.charCode ===13) {
+            console.log('key pressed')
+            this.handleSubmitClick()
+            
+        }
+
+    }
     render() {
         return (
             <React.Fragment>
@@ -44,12 +53,14 @@ handleSubmitClick() {
                                     
                     <div>
                        
-                        <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" id="SearchBar" type="search" placeholder="Search" aria-label="Search" />
+                        <div className="form-inline my-2 my-lg-0" onSubmit={event => {
+                            this.handleSubmitClick();
+                        }}>
+                            <input className="form-control mr-sm-2" id="SearchBar" type="search" placeholder="Search" aria-label="Search" onKeyPress={event => {this.keycheck(event)} }/>
                             <button className="btn btn-outline-info my-2 my-sm-0" type="button" onClick={event => {
                                 this.handleSubmitClick();
                             }}>Search</button>
-                        </form>
+                        </div>
                     </div>
 
                     {/* this is the search the dropdown button */}

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import goEdamam from '../config/edamam'
+import 'isomorphic-fetch'
 
 let router = Router();
 
