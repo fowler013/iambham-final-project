@@ -19,7 +19,7 @@ class Recipe extends React.Component {
 
   setdata() {
     let recipeid = this.props.location.pathname.slice(8);
-    console.log(recipeid)
+    console.log(recipeid);
     if (recipeid !== this.state.pageid) {
       this.gogetdata(recipeid);
     }
@@ -28,7 +28,7 @@ class Recipe extends React.Component {
   gogetdata(sending) {
     fetch(`/api/search/${sending}`, {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
       .then(data => {
@@ -43,32 +43,67 @@ class Recipe extends React.Component {
   render() {
     return (
       <React.Fragment>
-<div className="container mt-3">
-  <div className="card card-cascade wider reverse">
+        <div className="container mt-3">
+          <div className="card card-cascade wider reverse">
+            <div className="view overlay">
+              <img
+                className="card-img-top"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
+                alt="Card image cap"
+              />
+              <a href="#!">
+                <div className="mask rgba-white-slight" />
+              </a>
+            </div>
 
+            <div className="card-body card-body-cascade text-center">
+              <h4 className="card-title">
+                <strong>My adventure</strong>
+              </h4>
 
-  <div className="view overlay">
-              <img className="card-img-top" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Card image cap"/>
-                <a href="#!">
-                  <div className="mask rgba-white-slight"></div>
-                </a>
-  </div>
+              <h6 className="font-weight-bold indigo-text py-2">Photography</h6>
+            </div>
+          </div>
 
-  <div className="card-body card-body-cascade text-center">
+          <div class="card">
+            <div class="card-body">This is some text within a panel body.</div>
+          </div>
 
+          <div className="row">
 
-    <h4 className="card-title"><strong>My adventure</strong></h4>
+            <div className="col">
+<div class="card">
+    <h3 class="card-header primary-color white-text">Featured</h3>
+    <div class="card-body">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+            </div>
+            <div className="col">
+            <div class="card">
+    <h3 class="card-header primary-color white-text">Featured</h3>
+    <div class="card-body">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+            </div>
+            <div className="col">
+            <div class="card">
+    <h3 class="card-header primary-color white-text">Featured</h3>
+    <div class="card-body">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+            </div>
+          </div>
+        </div>
 
-    <h6 className="font-weight-bold indigo-text py-2">Photography</h6>
-
-    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem perspiciatis voluptatum a, quo nobis, non commodi quia repellendus sequi nulla voluptatem dicta reprehenderit, placeat laborum ut beatae ullam suscipit veniam.
-    </p>
-
-
-              </div>
-
-            </div></div>
-            
       </React.Fragment>
     );
   }
