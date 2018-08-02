@@ -103,7 +103,100 @@ class User extends React.Component {
 
     return (
       <React.Fragment>
-        <form className="card p-3 formContainer bg-dark" style={{ marginTop: '5rem', width: '20rem' }}>
+        <div className = "d-flex flex-row">
+         <form className= "card p-3 formContainer bg-light" style={{ marginTop: '3rem', width: '40rem', height: '36rem' }}>
+         <label
+            htmlFor="title-input"
+            className="d-block m-1 text-dark cardFont">{this.props.action}
+                </label>
+            <p className="h4 text-center py-4"></p>
+
+            
+            <div className="md-form">
+                <i className="" style ={{margin:"inherit", position: "inherit" }}></i>
+                <input  value={this.state.userName}
+            onChange={this.handleUserNameChange}
+            className="form-control w-5 m-1 d-inline text formAuthor cardFont"
+            placeholder="username"/>
+                <label htmlFor="materialFormCardNameEx" className="font-weight-dark"></label>
+            </div>
+
+            
+            <div className="md-form">
+                <i className=" prefix dark-text"style ={{margin:"inherit", position: "inherit" }}></i>
+                <input value={this.state.firstName}
+            onChange={this.handleFirstNameChange}
+            className="form-control w-5 m-1 d-inline text formAuthor cardFont"
+            placeholder="first name" />
+                <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
+            </div>
+
+            
+            <div className="md-form">
+                <i className=" prefix grey-text"style ={{margin:"inherit", position: "inherit" }}></i>
+                <input value={this.state.lastName}
+            onChange={this.handleLastNameChange}
+            className="form-control w-70 m-1 d-inline formTitle cardFont bg-light"
+            placeholder="last name"/>
+                <label htmlFor="materialFormCardConfirmEx" className="font-weight-light info-color"></label>
+            </div>
+
+           
+            <div className="md-form">
+                <i className="prefix grey-text"style ={{margin:"inherit", position: "inherit" }}></i>
+                <input value={this.state.email}
+              onChange={this.handleEmailChange}
+              className="form-control w-70 m-1 d-inline bg-light formContent cardFont"
+              placeholder="email"/>
+                <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
+            </div>
+
+            <div className="text-center py-4 mt-3">
+                <button onClick={() => { this.updateUser(post) }}
+            type="button"
+            className="btn btn-dark btn-sm text-secondary m-2 cardFont">update!</button>
+            </div>
+        </form>
+
+        {/*  NEED TO DOUBLE CHECK THE CLASSNAME CARD!!! */}
+        <div className="card p-3 m-4" style={{ marginTop: '3rem', width: '24rem', height: "30rem" }}>
+          <img className="card-img-top" src="https://www.drupal.org/files/issues/default-avatar.png" alt="Card image cap" />
+          <div className="card-body">
+            <p className="card-text">{post.firstname}</p>
+          </div>
+          <div className="card-body">
+            <p className="card-text">{post.lastname}</p>
+          </div>
+          <div className="card-body">
+            <p className="card-text">{post.email}</p>
+          </div>
+          <div className="card-body">
+            <p className="card-text">{post.username}</p>
+          </div>
+        </div>
+        </div>
+        
+
+      </React.Fragment>
+    );
+  }
+}
+
+<div className="card">
+
+   
+    <div className="card-body">
+
+        
+       
+       
+
+    </div>
+   
+
+</div>
+
+{/* <form className="card p-3 formContainer bg-dark" style={{ marginTop: '5rem', width: '20rem', height: '20rem' }}>
           <label
             htmlFor="title-input"
             className="d-block m-1 text-light cardFont">{this.props.action} post:
@@ -138,29 +231,6 @@ class User extends React.Component {
             type="button"
             className="btn btn-light btn-sm text-secondary m-2 cardFont">update!
                 </button>
-        </form>
-
-        {/*  NEED TO DOUBLE CHECK THE CLASSNAME CARD!!! */}
-        <div className="card p-2 m-5" style={{ width: '18rem' }}>
-          <img className="card-img-top" src="https://www.drupal.org/files/issues/default-avatar.png" alt="Card image cap" />
-          <div className="card-body">
-            <p className="card-text">{post.firstname}</p>
-          </div>
-          <div className="card-body">
-            <p className="card-text">{post.lastname}</p>
-          </div>
-          <div className="card-body">
-            <p className="card-text">{post.email}</p>
-          </div>
-          <div className="card-body">
-            <p className="card-text">{post.username}</p>
-          </div>
-        </div>
-
-      </React.Fragment>
-    );
-  }
-}
-
+        </form> */}
 
 export default User;
