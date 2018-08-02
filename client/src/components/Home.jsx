@@ -34,7 +34,7 @@ class Home extends React.Component {
             <img className="card-img-top" src="https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?cs=srgb&dl=food-salad-healthy-46239.jpg&fm=jpg" alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">Card title</h5>
-              <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p className="card-text">This is a wider card rating This card has even longer content than the first to show that equal height action.</p>
               <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -47,7 +47,7 @@ class Home extends React.Component {
             <img className="card-img-top" src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg" alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">Card title</h5>
-              <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p className="card-text">This is a longer card rating This content is a little bit longer.</p>
               <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -63,26 +63,105 @@ class Home extends React.Component {
             <img className="card-img-top" src="http://www.fnstatic.co.uk/images/content/package/100-middle-eastern-inspired-recipes-you-can-cook-at-home.jpeg" alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">Card title</h5>
-              <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p className="card-text">This is a wider card rating This card has even longer content than the first to show that equal height action.</p>
               <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
         </div>
 
-
-        <div>
-          <h3>Reviews</h3>
-          <div className="card" style={{width: "18rem"}}>
-  <div className="card-header">
-    Username
-  </div>
-  <ul className="list-group list-group-flush">
-    <li className="list-group-item">rating</li>
-    <li className="list-group-item">review</li>
-  </ul>
-</div>
+        <h3>Reviews</h3>
+        <div className = "reviewcontainer"> 
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username</h5>
+                  <p className="card-text">rating</p>
+                  <p className="card-text">reviews</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
+
 
 
 
