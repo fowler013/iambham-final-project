@@ -51,12 +51,9 @@ class Recipe extends React.Component {
                 src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
                 alt="Card image cap"
               />
-              <a href="#!">
-                <div className="mask rgba-white-slight" />
-              </a>
             </div>
 
-            <div className="card-body card-body-cascade text-center">
+            <div className="card-body text-center">
               <h4 className="card-title">
                 <strong>My adventure</strong>
               </h4>
@@ -65,11 +62,11 @@ class Recipe extends React.Component {
             </div>
           </div>
 
-          <div class="card">
+          <div class="card my-3">
             <div class="card-body">This is some text within a panel body.</div>
           </div>
 
-          <div className="row">
+          <div className="row my-3">
 
             <div className="col">
 <div class="card">
