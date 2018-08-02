@@ -10,9 +10,9 @@ let SearchTabs = (data) => {
 
         return <React.Fragment>
             <div className="col-3 my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
-              <div className="card card-cascade" style={{ height: "24rem", width: "18rem" }}>
+              <div className="card card-cascade" style={{ height: "24rem", width: "22rem" }}>
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
-                  <div className="card-img-top" style={{ height: "10rem", width: "18rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+                  <div className="card-img-top" style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                     <div className="d-flex justify-content-end">
                       <div className="text-center bg-warning p-2" style={{ borderBottomLeftRadius: "15%" }}>
                         <i className="far fa-clock" style={{ fontSize: "2rem", color: "white" }} />
