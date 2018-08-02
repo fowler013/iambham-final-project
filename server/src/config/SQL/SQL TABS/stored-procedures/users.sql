@@ -66,4 +66,23 @@ where id = p_id;
 
 end $$
 delimiter ;
+---- FIND USER EMAIL
+drop procedure if exists spFindUserEmail;
+delimiter $$
+create procedure spFindUserEmail(p_email varchar(56))
+begin
 
+select 
+	u.id,
+    u.firstname,
+    u.lastname,
+    u.email,
+    u.username,
+    p.password
+from Users u
+join Passwords p
+on u.passwordid = p.id
+where email = p_email;
+
+end $$
+delimiter ;

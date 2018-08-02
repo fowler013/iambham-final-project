@@ -30,3 +30,9 @@ create table Passwords (
 id int not null auto_increment primary key,
 password text not null
 );
+-- TOKENS TABLE
+drop table if exists Tokens;
+create table Tokens (
+    id int not null auto_increment primary key,
+    userid int not null
+);

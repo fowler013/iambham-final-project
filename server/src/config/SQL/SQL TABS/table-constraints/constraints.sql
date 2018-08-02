@@ -24,5 +24,8 @@ add constraint fk_UseridFavorites
 foreign key (userid)
 references Users(id);
 
-
---- 
+-- fk for userid in Tokens table
+alter table Tokens
+add constraint fk_UseridTokens
+foreign key (userid)
+references Users(id);
