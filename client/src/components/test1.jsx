@@ -56,7 +56,7 @@ class Navigation extends React.Component {
                                 this.handleSubmitClick();
                             }}></i>
                             {/* <input className="form-control"  type="text" id="SearchBar" placeholder="Search" aria-label="Search"onKeyPress={event => {this.keycheck(event)} }  /> */}
-                            <input className="form-control mr-sm-2" style = {{ width: "300px"}} type="text" id="SearchBar" placeholder="Search" aria-label="Search" onKeyPress={event => {this.keycheck(event)}}/>
+                            <input className="form-control mr-sm-2 rounded-left" style = {{ width: "300px"}} type="text" id="SearchBar" placeholder="Search" aria-label="Search" onKeyPress={event => {this.keycheck(event)}}/>
                         </div>
                     </div>
                     {/* <div>
@@ -77,6 +77,8 @@ class Navigation extends React.Component {
                             Menu</button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <NavLink to="/user"> <button className="dropdown-item text-dark" type="button" href="#">Accounts</button></NavLink>
+                            <a className="dropdown-item" href="#">Favorites</a>
+                            <a className="dropdown-item" href="#">History</a>
                             <a className="dropdown-item" href="#">Logout</a>
 
                         </div>
