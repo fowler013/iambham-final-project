@@ -8,18 +8,18 @@ class Navigation extends React.Component {
         super(props);
     }
 
-handleSubmitClick() {
-    let keywords = $('#SearchBar').val()
-    console.log(keywords)
-    window.location.href = `${window.location.origin}/search/keyword=${keywords}`
-}
+    handleSubmitClick() {
+        let keywords = $('#SearchBar').val()
+        console.log(keywords)
+        window.location.href = `${window.location.origin}/search/keyword=${keywords}`
+    }
 
     keycheck(event) {
         console.log('got here')
-        if (event.charCode ===13) {
+        if (event.charCode === 13) {
             console.log('key pressed')
             this.handleSubmitClick()
-            
+
         }
 
     }
@@ -50,8 +50,18 @@ handleSubmitClick() {
 
                         </div>
                     </div>
-                                    
-                    <div>
+                    <form className="form-inline mr-auto" onSubmit={event => {
+                        this.handleSubmitClick();
+                    }}>
+                        <div className="md-form my-0">
+                        <i className="fa fa-search text-dark ml-3" aria-hidden="true" onClick={event => {
+                                this.handleSubmitClick();
+                            }}></i>
+                            {/* <input className="form-control" style = {{ width: "300px"}} type="text" placeholder="Search" aria-label="Search"  /> */}
+                            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"onKeyPress={event => {this.keycheck(event)} }/>
+                        </div>
+                    </form>
+                    {/* <div>
                        
                         <div className="form-inline my-2 my-lg-0" onSubmit={event => {
                             this.handleSubmitClick();
@@ -61,18 +71,19 @@ handleSubmitClick() {
                                 this.handleSubmitClick();
                             }}>Search</button>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* this is the search the dropdown button */}
                     <div className="dropdown p-1 d-flex">
                         <button className="btn btn-outline-dark dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dropdown button</button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                           <NavLink to = "/user"> <button className="btn dropdown-item"   type = "button" href="#">Accounts</button></NavLink>
+                            <NavLink to="/user"> <button className="btn dropdown-item text-dark" type="button" href="#">Accounts</button></NavLink>
                             <a className="dropdown-item" href="#">Logout</a>
 
                         </div>
                     </div>
+
                 </nav>
             </React.Fragment>
         )
@@ -80,3 +91,4 @@ handleSubmitClick() {
 }
 
 export default Navigation;
+
