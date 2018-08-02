@@ -42,10 +42,24 @@ class Recipe extends React.Component {
 
   render() {
     this.setdata()
-    console.log(this.state.recipe.image)
     return (
       <React.Fragment>
-        <div><div className="card-img-top" style={{ height: "30rem", width: "40rem", backgroundImage: `url(${this.state.recipe.image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}></div></div>
+<div className="container">
+          <div className="d-flex justify-content-between">
+            <div className="card-img-top" style={{ height: "20rem", width: "20rem", backgroundImage: `url(${this.state.recipe.image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}><div>
+            <div>
+              <h1>{this.state.recipe.label}</h1>
+              <h2>From: {this.state.recipe.source}</h2>
+              <div className="row">
+              </div>
+            </div>
+          </div>
+
+  </div>
+
+</div>
+</div>
+
       </React.Fragment>
     );
   }
