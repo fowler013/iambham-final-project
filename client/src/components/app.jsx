@@ -6,6 +6,7 @@ import Recipe from './Recipe';
 import User from './User';
 import Navigation from './test1';
 import NotFound from './NotFound';
+import Reviews from './Reviews';
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
                         <Route path="/recipe" component={Recipe} />
                         <Route path="/user/:id" component={User} />
                         <Route exact path="/" component={Home} />
+                        <Route exact path= "/" component ={Reviews} />
                         <Route path='*' component={NotFound} />
                     </Switch>
                 </Fragment>
