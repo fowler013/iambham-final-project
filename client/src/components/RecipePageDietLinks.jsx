@@ -3,23 +3,23 @@ import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-rou
 import { isString } from "util";
 
 let codeWord = (string) => {
-    if (string === Balanced) {
+    if (string === "Balanced") {
         return "balanced";
     }
-    if (string === Balanced) {
-        return "balanced";
+    if (string === "High-Fiber") {
+        return "high-fiber";
     }
-    if (string === Balanced) {
-        return "balanced";
+    if (string === "High-Protein") {
+        return "high-protein";
     }
-    if (string === Balanced) {
-        return "balanced";
+    if (string === "Low-Carb") {
+        return "low-carb";
     }
-    if (string === Balanced) {
-        return "balanced";
+    if (string === "Low-Fat") {
+        return "low-fat";
     }
-    if (string === Balanced) {
-        return "balanced";
+    if (string === "Low-Sodium") {
+        return "low-sodium";
     }
 }
 
