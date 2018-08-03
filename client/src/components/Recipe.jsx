@@ -15,7 +15,7 @@ class Recipe extends React.Component {
     super(props);
     this.state = {
       pageid: "0",
-      recipe: {healthLabels: [], diet: []}
+      recipe: {healthLabels: [""], dietLabels: [""], ingredientLines: [""], totalTime: "0", }
     };
   }
 
@@ -41,6 +41,15 @@ class Recipe extends React.Component {
         });
       });
   }
+  setIngredients(data) {
+    if(data) {
+      return (
+        <p className="card-text">
+          {data}
+        </p>
+      )
+    }
+  }
 
   render() {
     this.setdata()
@@ -49,7 +58,7 @@ class Recipe extends React.Component {
 
     return <React.Fragment>
         <div className="container mt-3">
-          <div className="card" style={{ borderBottomLeftRadius: "10px", borderTopLeftRadius: "10px", backgroundImage: "url('https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg')" }}>
+          <div className="card" style={{ borderBottomLeftRadius: "10px", borderTopLeftRadius: "10px", backgroundImage: `url('${this.state.recipe.image}') , url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC')`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             <div className="card-body p-0">
               <div className="view overlay">
                 <div className="d-flex">
@@ -58,27 +67,38 @@ class Recipe extends React.Component {
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
                         <i className="far fa-clock" style={{ fontSize: "2rem" }} />
-                      <p className="card-text text-white">25 mins</p>
+                        <p className="card-text text-white">
+                          {this.state.recipe.totalTime} mins
+                        </p>
                       </div>
                     </div>
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
                         <i className="fas fa-list-ol" style={{ fontSize: "2rem" }} />
                         <p className="card-text text-white">
-                          20 Ingredients
+                          {this.state.recipe.ingredientLines.length}{" "}
+                          Ingredients
                         </p>
                       </div>
                     </div>
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
                         <i className="fas fa-cookie-bite" style={{ fontSize: "2rem" }} />
-                        <p className="card-text text-white">500 calories</p>
+                        <p className="card-text text-white">
+                          {Math.floor(
+                            this.state.recipe.calories /
+                              this.state.recipe.yield
+                          ) || 0}{" "}
+                          calories
+                        </p>
                       </div>
                     </div>
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
                         <i className="fas fa-users" style={{ fontSize: "2rem" }} />
-                      <p className="card-text text-white">4 Servings</p>
+                        <p className="card-text text-white">
+                          {this.state.recipe.yield} Servings
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -90,18 +110,23 @@ class Recipe extends React.Component {
           <div className="card my-3">
             <div className="card-body text-center">
               <h4 className="card-title">
-                <strong>Billy Coleman</strong>
+                <strong>{this.state.recipe.label}</strong>
               </h4>
 
               <h6 className="font-weight-bold indigo-text py-2">
-                Web developer
+                From: {this.state.recipe.source}
               </h6>
             </div>
           </div>
 
           <div className="card my-3">
             <div className="card-body text-center">
-
+              {this.state.recipe.healthLabels.map(element =>
+                CreatePageHealthLinks({ health: element })
+              )}
+              {this.state.recipe.dietLabels.map(element =>
+                CreatePageDietLinks({ diet: element })
+              )}
             </div>
           </div>
 
@@ -110,15 +135,12 @@ class Recipe extends React.Component {
               Ingredients
             </h3>
             <div className="card-body">
-              <p className="card-text">
-                With supporting text below as a natural lead-in to
-                additional content.
-              </p>
-            <p className="card-text">
-              With supporting text below as a natural lead-in to
-              additional content.
-              </p>
-            <a className="btn btn-outline-primary btn-block">Go somewhere</a>
+              {this.state.recipe.ingredientLines.map(element =>
+                this.setIngredients(element)
+              )}
+              <a className="btn btn-outline-primary btn-block" href={this.state.recipe.url}>
+                Go to {this.state.recipe.source}
+              </a>
             </div>
           </div>
 

@@ -4,39 +4,43 @@ import { isString } from "util";
 
 let codeWord = (string) => {
     if (string === "Balanced") {
-        return "balanced";
+        return (["balanced","Balanced"]);
     }
     if (string === "High-Fiber") {
-        return "high-fiber";
+        return (["high-fiber","High Fiber"]);
     }
     if (string === "High-Protein") {
-        return "high-protein";
+        return (["high-protein","High Protein"]);
     }
     if (string === "Low-Carb") {
-        return "low-carb";
+        return (["low-carb","Low Carbs"]);
     }
     if (string === "Low-Fat") {
-        return "low-fat";
+        return (["low-fat","Low Fat"]);
     }
     if (string === "Low-Sodium") {
-        return "low-sodium";
+        return (["low-sodium"," Low Sodium"]);
     }
+    return (["", ""])
 }
 
 let CreatePageDietLinks = (data) => {
- console.log(data)
- console.log(Object.keys(data)[0])
+    console.log(data)
+    console.log(Object.keys(data)[0])
+    console.log(Object.values(data)[0])
+    let codearry = codeWord(Object.values(data)[0])
+    console.log(codearry)
 
 
 
 
-    if (isString(Object.values(data)[0])) {
-        return <button type="button" key={`${Object.keys(data)[0]}-${Object.values(data)[0]}`} className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-          <NavLink
-                to={`/search/keyword=&${Object.keys(data)[0]}=${Object.values(data)[0]}`}
-          >
-            Large button
-          </NavLink>
+    if (Object.values(data)[0] !== "") {
+        return <button type="button" key={`${Object.keys(data)[0]}-${codearry[0]}`} className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
+            <NavLink
+                to={`/search/keyword=&${Object.keys(data)[0]}=${codearry[0]}`}
+            >
+                {codearry[1]}
+            </NavLink>
         </button>;
     }
 };

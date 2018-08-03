@@ -3,101 +3,108 @@ import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-rou
 import { isString } from "util";
 
 let codeWord = (string) =>{
-    if(string === Dairy) {
-        return ("dairy-free")   
+    if (string === "Alcohol-Free") {
+        return (["alcohol-free", "Alcohol Free"])
     }
-    if(string === "Celery-free") {
-        return ("celery-free")   
+
+    if(string === "Dairy-Free") {
+        return (["dairy-free", "Dairy Free"])   
     }
-    if(string === "Crustacean-free") {
-        return ("crustacean-free")   
+    if(string === "Celery-Free") {
+        return (["celery-free", "Celery Free"])   
     }
-    if(string === Eggs) {
-        return ("egg-free")   
+    if(string === "Crustacean-Free") {
+        return (["crustacean-free", "Crustacean Free"])   
     }
-    if(string === Fish) {
-        return ("fish-free")   
+    if(string === "Eggs-Free") {
+        return (["egg-free", "Egg Free"])   
     }
-    if(string === Gluten) {
-        return ("gluten-free")   
+    if(string === "Fish-Free") {
+        return (["fish-free", "Fish Free"])   
     }
-    if(string === "Kidney friendly") {
-        return ("kidney-freindly")   
+    if(string === "Gluten-Free") {
+        return (["gluten-free", "Gluten Free"])   
     }
-    if(string === Kosher) {
-        return ("kosher")   
+    if(string === "Kidney-Friendly") {
+        return (["kidney-freindly", "Kidney Friendly"])   
     }
-    if(string === "Low potassium") {
-        return ("low-potassium")   
+    if(string === "Kosher") {
+        return (["kosher", "Kosher"])   
     }
-    if(string === "Lupine-free") {
-        return ("lupine-free")   
+    if(string === "Low-Potassium") {
+        return (["low-potassium", "Low Postassium"])   
     }
-    if(string === "Mustard-free") {
-        return ("mustard-free")   
+    if(string === "Lupine-Free") {
+        return (["lupine-free", "Lupine Free"])   
+    }
+    if(string === "Mustard-Free") {
+        return (["mustard-free", "Mustard Free"])   
     }
     if(string === "No oil added") {
-        return ("no-oil-added")   
+        return (["no-oil-added", "Oil Free"])   
     }
-    if(string === Paleo) {
-        return ("paleo")   
+    if(string === "Paleo") {
+        return (["paleo", "Paleo"])   
     }
     if(string === "No sugar") {
-        return ("no-sugar")   
+        return (["no-sugar", "Sugar Free"])   
     }
-    if(string === Peanuts) {
-        return ("peanut-free")   
+    if(string === "Peanut-Free") {
+        return (["peanut-free", "Peanut Free"])   
     }
-    if(string === Pescatarian) {
-        return ("pescatarian")   
+    if(string === "Pescatarian") {
+        return (["pescatarian", "Pescatarian"])   
     }
     if(string === "Pork-free") {
-        return ("pork-free")   
+        return (["pork-free", "Pork Free"])   
     }
     if(string === "Red meat-free") {
-        return ("red-meat-free")   
+        return (["red-meat-free", "No Red Meats"])   
     }
     if(string === "Sesame-free") {
-        return ("sesame-free")   
+        return (["sesame-free", "Sesame Free"])   
     }
-    if(string === Shellfish) {
-        return ("shellfish-free")   
+    if(string === "Shellfish") {
+        return (["shellfish-free", "Shellfish Free"])   
     }
-    if(string === Soy) {
-        return ("soy-free")   
+    if(string === "Soy") {
+        return (["soy-free", "Soy Free"])   
     }
-    if(string === "Sugar-conscious") {
-        return ("sugar-conscious")   
+    if(string === "Sugar-Conscious") {
+        return (["sugar-conscious", "Low Sugar"])   
     }
-    if(string === "Tree nuts") {
-        return ("tree-nut-free")   
+    if(string === "Tree-Nut-Free") {
+        return (["tree-nut-free", "No Tree Nuts"])   
     }
-    if(string === Vegan) {
-        return ("vegan")   
+    if(string === "Vegan") {
+        return (["vegan", "Vegan"])   
     }
-    if(string === Vegetarian) {
-        return ("vegetarian")   
+    if(string === "Vegetarian") {
+        return (["vegetarian", "Vegetarian"])   
     }
     if(string === "Wheat-free") {
-        return ("wheat-free")   
+        return (["wheat-free", "Wheat Free"])   
     }
+    return (["",""])
 }
 
 let CreatePageHealthLinks = (data) => {
  console.log(data)
  console.log(Object.keys(data)[0])
+console.log(Object.values(data)[0])
+    let codearry = codeWord(Object.values(data)[0])
+    console.log(codearry);
 
 
 
-
-    if (isString(Object.values(data)[0])) {
-        return <button type="button" key={`${Object.keys(data)[0]}-${Object.values(data)[0]}`} className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-          <NavLink
-                to={`/search/keyword=&${Object.keys(data)[0]}=${Object.values(data)[0]}`}
-          >
-            Large button
-          </NavLink>
-        </button>;
+    if (Object.values(data)[0] !== "") {
+        return <button type="button" key={`${Object.keys(data)[0]}-${codearry[0]}`} className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
+            <NavLink
+              to={`/search/keyword=&${Object.keys(data)[0]}=${codearry[0]}`}
+            >
+              {codearry[1]}
+            </NavLink>
+          </button>;
     }
 };
 export default CreatePageHealthLinks;
