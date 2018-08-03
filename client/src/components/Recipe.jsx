@@ -7,13 +7,15 @@ import {
   Switch,
   NavLink
 } from "react-router-dom";
+import CreatePageHealthLinks from "./RecipePageHealthLinks";
+import CreatePageDietLinks from "./RecipePageDietLinks";
 
 class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pageid: "0",
-      recipe: []
+      recipe: {healthLabels: [], diet: []}
     };
   }
 
@@ -41,6 +43,10 @@ class Recipe extends React.Component {
   }
 
   render() {
+    this.setdata()
+    console.log(this.state.recipe)
+
+
     return <React.Fragment>
         <div className="container mt-3">
           <div className="card" style={{ borderBottomLeftRadius: "10px", borderTopLeftRadius: "10px", backgroundImage: "url('https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg')" }}>
@@ -51,13 +57,13 @@ class Recipe extends React.Component {
                   <div className="d-flex flex-column justify-content-start">
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
-                        <i class="far fa-clock" style={{ fontSize: "2rem" }} />
+                        <i className="far fa-clock" style={{ fontSize: "2rem" }} />
                       <p className="card-text text-white">25 mins</p>
                       </div>
                     </div>
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
-                        <i class="fas fa-list-ol" style={{ fontSize: "2rem" }} />
+                        <i className="fas fa-list-ol" style={{ fontSize: "2rem" }} />
                         <p className="card-text text-white">
                           20 Ingredients
                         </p>
@@ -65,13 +71,13 @@ class Recipe extends React.Component {
                     </div>
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
-                        <i class="fas fa-cookie-bite" style={{ fontSize: "2rem" }} />
+                        <i className="fas fa-cookie-bite" style={{ fontSize: "2rem" }} />
                         <p className="card-text text-white">500 calories</p>
                       </div>
                     </div>
                     <div className="card text-center mb-2 bg-warning text-white">
                       <div className="card-body">
-                        <i class="fas fa-users" style={{ fontSize: "2rem" }} />
+                        <i className="fas fa-users" style={{ fontSize: "2rem" }} />
                       <p className="card-text text-white">4 Servings</p>
                       </div>
                     </div>
@@ -95,45 +101,7 @@ class Recipe extends React.Component {
 
           <div className="card my-3">
             <div className="card-body text-center">
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg" style={{ borderRadius: "50px" }}>
-                Large button
-              </button>
+
             </div>
           </div>
 

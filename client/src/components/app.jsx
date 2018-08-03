@@ -8,9 +8,9 @@ import Navigation from './test1';
 import NotFound from './NotFound';
 import Reviews from './Reviews';
 import SignUp from './signup';
-import Login from './auth/login';
-import Logout from './auth/logout';
-import PrivateRoute from './auth/privateRoute';
+// import Login from './auth/login';
+// import Logout from './auth/logout';
+// import PrivateRoute from './auth/privateRoute';
 
 class App extends Component {
 

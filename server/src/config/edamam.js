@@ -8,7 +8,7 @@ function MakeURL(props) {
 
     let { uri, keyword, health, diet, excluded, from, to, ingredients, calories, time, nutrients } = props;
     if (uri !== undefined) {
-        let theuri = encodeURIComponent(uri[0]);
+        let theuri = encodeURIComponent(uri);
         return urlstring += `?r=${theuri}&app_id=${ID}&app_key=${KEY}`
     }
     if (keyword !== undefined) {
