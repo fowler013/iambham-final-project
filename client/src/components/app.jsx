@@ -7,6 +7,7 @@ import User from './User';
 import Navigation from './test1';
 import NotFound from './NotFound';
 import Reviews from './Reviews';
+import SignUp from './signup';
 
 class App extends Component {
 
@@ -17,12 +18,14 @@ class App extends Component {
                     <Navigation />
                     <div style={{height: "4.666em"}}></div>
                     <Switch>
+                        <Route exact path="/signup" component={SignUp}/>
                         <Route path="/search/" component={Search} />
                         <Route path="/recipe/:id" component={Recipe} />
                         <Route path="/user/:id" component={User} />
                         <Route exact path="/" component={Home} />
                         <Route exact path= "/" component ={Reviews} />
                         <Route path='*' component={NotFound} />
+                        
                     </Switch>
                 </Fragment>
             </Router>

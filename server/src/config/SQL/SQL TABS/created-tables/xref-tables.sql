@@ -44,10 +44,9 @@ id int not null auto_increment primary key,
 userid int not null,
 storageid int not null
 );
-
--- USER PASSWORDS
-drop table if exists Passwords;
-create table Passwords (
+-- TOKENS TABLE
+drop table if exists Tokens;
+create table Tokens (
     id int not null auto_increment primary key,
-    password text not null
+    userid int not null
 );
