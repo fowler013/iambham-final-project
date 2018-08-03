@@ -15,7 +15,7 @@ class User extends React.Component {
 
 
     this.state = {
-
+      userContainer: [],
       firstName: '',
       lastName: '',
       email: '',
@@ -48,7 +48,7 @@ class User extends React.Component {
     this.setState({ userName: e.target.value })
   }
 
-  testClear()  {
+  testClear() {
     this.setState({
       firstName: '',
       lastName: '',
@@ -58,13 +58,15 @@ class User extends React.Component {
     })
   }
 
-  
+
 
 
   componentDidMount() {
-    UserService.read(this.props.match.params.id).then((x) => {
-      console.log(x)
-  })
+    UserService.read(this.props.match.params.id).then((user) => {
+      this.setState({
+        userContainer: [user]
+      })
+    })
   }
 
 
@@ -113,13 +115,13 @@ class User extends React.Component {
       body: JSON.stringify(sending)
     })
       .then((res) => res.json())
-this.setState({
-  firstName: '',
-  lastName: '',
-  email: '',
-  userName: '',
-  user: ''
-})
+    // this.setState({
+    //   firstName: '',
+    //   lastName: '',
+    //   email: '',
+    //   userName: '',
+    //   user: ''
+    // })
       .catch((err) => {
         console.log(err);
       });
@@ -185,30 +187,34 @@ this.setState({
             </div>
 
             <div className="text-center py-4 mt-3">
-              <button 
-              onClick={() => { this.updateUser(post) }}
-              onClick={()=> {this.testClear()}}
+              <button
+                onClick={() => { this.updateUser(post) }}
+                onClick={()=> {this.testClear()}}
                 type="button"
                 className="btn btn-dark btn-sm text-secondary m-2 cardFont">update!</button>
             </div>
           </form>
 
           {/*  NEED TO DOUBLE CHECK THE CLASSNAME CARD!!! */}
-          <div className="card p-3 m-4" style={{ marginTop: '3rem', width: '28rem', height: "42rem" }}>
-            <img className="card-img-top" src="https://www.mautic.org/media/images/default_avatar.png" alt="Card image cap" />
-            <div className="card-body">
-              <p className="card-text">{post.firstname}</p>
-            </div>
-            <div className="card-body">
-              <p className="card-text">{post.lastname}</p>
-            </div>
-            <div className="card-body">
-              <p className="card-text">{post.email}</p>
-            </div>
-            <div className="card-body">
-              <p className="card-text">{post.username}</p>
-            </div>
-          </div>
+          {this.state.userContainer.map((user) => {
+            return (
+              <div className="card p-3 m-4" key = {user.id} style={{ marginTop: '3rem', width: '28rem', height: "42rem" }}>
+                <img className="card-img-top" src="https://www.mautic.org/media/images/default_avatar.png" alt="Card image cap" />
+                <div className="card-body">
+                  <p className="card-text">{user.firstname}</p>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{user.lastname}</p>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{user.email}</p>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{user.username}</p>
+                </div>
+              </div>
+            )
+          })}
           {/* this is the reviews section */}
           <div className="card card-cascade wider" style={{ marginTop: '3rem', width: '24rem', height: "30rem" }}>
 
