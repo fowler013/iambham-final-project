@@ -48,6 +48,7 @@ export function create(req, res, next) {
 }
 export function update(req, res, next) {
     let id = req.params.id;
+    console.log('---req.body---', req.body);
     let { email, firstname, lastname, password, username } = req.body;
 
     UserValidators.update({

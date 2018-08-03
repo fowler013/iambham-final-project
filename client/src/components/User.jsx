@@ -39,6 +39,7 @@ class User extends React.Component {
   }
 
   handleEmailChange(e) {
+
     this.setState({ email: e.target.value });
   }
 
@@ -50,18 +51,16 @@ class User extends React.Component {
 
   componentDidMount() {
     this.getUser();
-
   }
 
-  componentDidUpdate() {
-    this.updateUser();
-  }
+
 
   getUser() {
     fetch(`/api/user/${this.props.match.params.id}`)
       .then((res) => {
         return res.json()
       }).then((user) => {
+        console.log(user)
         this.setState({
           user: user
         });
@@ -71,24 +70,38 @@ class User extends React.Component {
   }
 
   updateUser() {
+    let sending = {}
+
+    let updatefirstname = this.state.firstName
+    let updatelastname = this.state.lastName
+    let updateemail = this.state.email
+    let updateusername = this.state.userName
+
+    if (updatefirstname !== "") {
+      sending.firstname = updatefirstname
+    }
+    if (updatelastname !== "") {
+      sending.lastname = updatelastname
+    }
+    if (updateemail !== "") {
+      sending.email = updateemail
+    }
+    if (updateusername !== "") {
+      sending.username = updateusername
+    }
+
+    console.log(sending)
     fetch(`/api/user/${this.props.match.params.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        firstname: this.state.firstName,
-        lastname: this.state.lastName,
-        email: this.state.email,
-        username: this.state.userName
-      })
+      body: JSON.stringify(sending)
     })
       .then((res) => res.json())
-      // .then(() => {
-      //   this.setState({
-      //     user: post
-      //   });
-      // })
+this.setState({
+  
+})
       .catch((err) => {
         console.log(err);
       });
@@ -109,10 +122,10 @@ class User extends React.Component {
               htmlFor="title-input"
               className="d-block m-1 text-dark cardFont">{this.props.action}
             </label>
-            <div className = "" style = {{background: "#fc724c"}}>
+            <div className="" style={{ background: "#fc724c" }}>
               <p className="h4 text-center py-4">Info</p>
             </div>
-            
+
 
             <div className="md-form">
               <i className=" prefix dark-text" style={{ margin: "inherit", position: "inherit" }}></i>
@@ -120,7 +133,7 @@ class User extends React.Component {
                 onChange={this.handleUserNameChange}
                 className="form-control w-5 m-1 d-inline text formAuthor cardFont"
                 placeholder="username" style={{ backgroundColor: "white" }} />
-              <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
+              <label htmlFor="title-input" className="font-weight-light"></label>
             </div>
 
 
@@ -130,7 +143,7 @@ class User extends React.Component {
                 onChange={this.handleFirstNameChange}
                 className="form-control w-5 m-1 d-inline text formAuthor cardFont"
                 placeholder="first name" style={{ backgroundColor: "white" }} />
-              <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
+              <label htmlFor="title-input" className="font-weight-light"></label>
             </div>
 
 
@@ -140,17 +153,17 @@ class User extends React.Component {
                 onChange={this.handleLastNameChange}
                 className="form-control w-5 m-1 d-inline text formAuthor cardFont"
                 placeholder="last name" style={{ backgroundColor: "white" }} />
-              <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
+              <label htmlFor="title-input" className="font-weight-light"></label>
             </div>
 
 
             <div className="md-form">
               <i className=" prefix dark-text" style={{ margin: "inherit", position: "inherit" }}></i>
-              <input value={this.state.emailName}
-                onChange={this.handleEmailNameChange}
+              <input value={this.state.email}
+                onChange={this.handleEmailChange}
                 className="form-control w-5 m-1 d-inline text formAuthor cardFont"
                 placeholder="email" style={{ backgroundColor: "white" }} />
-              <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
+              <label htmlFor="title-input" className="font-weight-light"></label>
             </div>
 
             <div className="text-center py-4 mt-3">

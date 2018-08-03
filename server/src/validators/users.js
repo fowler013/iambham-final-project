@@ -66,6 +66,7 @@ export function create(args) {
     });
 }
 export function update(args) {
+    console.log(args);
     let id = +args.id;
     let { email, firstname, lastname, username, password } = args;
 
