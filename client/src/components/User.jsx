@@ -119,7 +119,7 @@ class User extends React.Component {
               <input value={this.state.userName}
                 onChange={this.handleUserNameChange}
                 className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-                placeholder="user name" style={{ backgroundColor: "white" }} />
+                placeholder="username" style={{ backgroundColor: "white" }} />
               <label htmlFor="materialFormCardEmailEx" className="font-weight-light"></label>
             </div>
 
@@ -161,8 +161,8 @@ class User extends React.Component {
           </form>
 
           {/*  NEED TO DOUBLE CHECK THE CLASSNAME CARD!!! */}
-          <div className="card p-3 m-4" style={{ marginTop: '3rem', width: '24rem', height: "30rem" }}>
-            <img className="card-img-top" src="https://www.drupal.org/files/issues/default-avatar.png" alt="Card image cap" />
+          <div className="card p-3 m-4" style={{ marginTop: '3rem', width: '28rem', height: "42rem" }}>
+            <img className="card-img-top" src="https://www.mautic.org/media/images/default_avatar.png" alt="Card image cap" />
             <div className="card-body">
               <p className="card-text">{post.firstname}</p>
             </div>
