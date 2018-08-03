@@ -8,28 +8,33 @@ function MakeURL(props) {
 
     let { uri, keyword, health, diet, excluded, from, to, ingredients, calories, time, nutrients } = props;
     if (uri !== undefined) {
-        let theuri = encodeURIComponent(uri);
+        let theuri = encodeURIComponent(uri[0]);
         return urlstring += `?r=${theuri}&app_id=${ID}&app_key=${KEY}`
     }
     if (keyword !== undefined) {
         let removeunwanted = new RegExp(/['a-zA-Z0-9]+/gim);
-      let words = keyword[0].match(removeunwanted);
-      let newword = words.map(word => {
-        if (word.includes(`'`)) {
-          let test = word.split("");
-          let test2 = test.map(letter => {
-            if (letter === `'`) {
-              return `%27`;
-            } else {
-              return letter;
-            }
-          });
-          return test2.join("");
+        console.log(keyword[0])
+        if(keyword[0] === "") {
+            urlstring += `?q=&app_id=${ID}&app_key=${KEY}`
         } else {
-          return word;
+            let words = keyword[0].match(removeunwanted);
+            let newword = words.map(word => {
+                if (word.includes(`'`)) {
+                    let test = word.split("");
+                    let test2 = test.map(letter => {
+                        if (letter === `'`) {
+                            return `%27`;
+                        } else {
+                            return letter;
+                        }
+                    });
+                    return test2.join("");
+                } else {
+                    return word;
+                }
+            });
+            urlstring += `?q=${newword.join("%20")}&app_id=${ID}&app_key=${KEY}`;
         }
-      });
-      urlstring +=`?q=${newword.join("%20")}&app_id=${ID}&app_key=${KEY}`;
     }
 
     if(from !== undefined && to !== undefined) {
@@ -118,6 +123,9 @@ function MakeURL(props) {
         })
     }
 
+    if (!calories && !time && !nutrients && !excluded && !health && !diet) {
+        urlstring += `&calories=${100000}`;
+    }
 
     console.log(urlstring)
     return urlstring
