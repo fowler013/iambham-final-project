@@ -39,20 +39,22 @@ class Search extends React.Component {
         console.log(data)
         console.log(data.count)
         console.log(data.count.toString())
-        let newstring = [];
-        if (data.count >= 1000) {
-          data.count.toString().split('').slice(0, -3).forEach(element => newstring.push(element))
-          newstring.push(',')
-          data.count.toString().split('').slice(-3).forEach(element => newstring.push(element))
-          data.count = newstring.join('')
-        } else {
-          data.count = data.count.toString()
+        let newstring = []
+        data.count.toString().split('').forEach(element => newstring.push(element))
+        if (newstring.length >= 7) {
+          newstring.splice(-3, 0, ",")
+          newstring.splice(-7, 0, ",")
         }
+        if (4 <= newstring.length && newstring.length <= 6) {
+          newstring.splice(-3, 0, ",")
+        }
+        newstring = newstring.join('')
+        console.log(newstring)
 
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           keyword: data.q,
-          hits: data.count,
+          hits: newstring,
           searchlist: data.hits,
         })
       })
@@ -69,9 +71,6 @@ class Search extends React.Component {
     let obj = pairsArray.reduce((acc, curr) => {
       let [key, value] = curr.split("=");
 
-      if (!value || !key) {
-        return acc;
-      }
 
       if (value.indexOf(",") > -1) {
         acc[key] = value.split(",");
