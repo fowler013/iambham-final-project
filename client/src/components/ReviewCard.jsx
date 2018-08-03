@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
-//import * as ReviewService from '../services/reviews';
+import * as ReviewService from '../services/reviews';
 
 export default class ReviewCard extends Component {
-    //componentDidMount() {
-    //    ReviewService.all().then((x) => {
-    //        console.log(x)
-    //    })
-    //}
+    constructor() {
+      super();
+
+      this.state = {
+        data: {
+          reviewContainer: []
+        }
+      }
+    }
+    componentDidMount() {
+        ReviewService.all().then((x) => {
+            //this.state.reviewContainer
+        })
+    }
 
     render() {
         return (
