@@ -7,6 +7,7 @@ import {
   Switch,
   NavLink
 } from "react-router-dom";
+import * as UserService from '../services/users';
 
 class User extends React.Component {
   constructor(props) {
@@ -47,10 +48,23 @@ class User extends React.Component {
     this.setState({ userName: e.target.value })
   }
 
+  testClear()  {
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      userName: '',
+      user: ''
+    })
+  }
+
+  
 
 
   componentDidMount() {
-    this.getUser();
+    UserService.read(this.props.match.params.id).then((x) => {
+      console.log(x)
+  })
   }
 
 
@@ -100,7 +114,11 @@ class User extends React.Component {
     })
       .then((res) => res.json())
 this.setState({
-  
+  firstName: '',
+  lastName: '',
+  email: '',
+  userName: '',
+  user: ''
 })
       .catch((err) => {
         console.log(err);
@@ -167,7 +185,9 @@ this.setState({
             </div>
 
             <div className="text-center py-4 mt-3">
-              <button onClick={() => { this.updateUser(post) }}
+              <button 
+              onClick={() => { this.updateUser(post) }}
+              onClick={()=> {this.testClear()}}
                 type="button"
                 className="btn btn-dark btn-sm text-secondary m-2 cardFont">update!</button>
             </div>
