@@ -1,13 +1,5 @@
-/* .nav-logo svg{
-    width: 6.5rem;
-} */
-
-/* .btn-group{
-    position: fixed;
-} */
-
-.pcard{
-    display: inline-table;
+.btn-rounded{
+    border-radius: "50px";
 }
 /* 
 .cardFont{
