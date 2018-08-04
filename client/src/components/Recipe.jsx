@@ -13,6 +13,9 @@ import NutritionTabs from "./RecipePageNutritionMore";
 import NutritionStartTabs from "./RecipePageNutrition";
 import * as ReviewsServices from '../services/reviews';
 import ReviewCard from "./ReviewCard";
+import ReviewForm from './ReviewForm';
+import moment from 'moment';
+
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -79,7 +82,7 @@ class Recipe extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        //console.log(data);
+        console.log(data);
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           recipe: data[0]
@@ -94,7 +97,7 @@ class Recipe extends React.Component {
   }
 
   render() {
-    //this.setdata();
+    this.setdata();
 
     return <React.Fragment>
         <div className="container mt-3">
@@ -232,16 +235,19 @@ class Recipe extends React.Component {
           </div>
           <div className="card">
             <h3 className="card-header primary-color white-text">
-              Reviews<span><button className="btn btn-outline-light" type="button" style={{ float: 'right' }}>Add Review for this Recipe</button></span>
+              Reviews<span>
+              <ReviewForm 
+                recipe={this.state.recipe.label}
+              /></span>
             </h3>
             <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll' }}>
               <h4 className="card-title">Recipe Reviews!</h4>
               {this.state.reviewContainer.map((review) => {
-                console.log(review)
+                //console.log(review)
                 return (
                   <ReviewCard 
                   key={review.id}
-                  date={/*{review._created}*/'Date'}
+                  date={moment(review._created).fromNow()}
                   username={review.username}
                   review={review.review}
                   ratings={review.ratings}

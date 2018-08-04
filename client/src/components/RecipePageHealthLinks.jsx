@@ -90,7 +90,7 @@ let codeWord = (string) =>{
 
 let CreatePageHealthLinks = (data) => {
     let codearry = codeWord(Object.values(data)[0])
-    console.log(codearry);
+    //console.log(codearry);
 
 
 

@@ -5,7 +5,7 @@ import CreateNutritionTabs from './RecipePageNutritionCards'
 
 
 let NutritionStartTabs = ({ totalDaily, totalNutrition, serving }) => {
-console.log('got here')
+//console.log('got here')
     // name, amount, type, precentage, servings
     if(totalNutrition) {
                  let thename = totalNutrition["SUGAR"]["label"];

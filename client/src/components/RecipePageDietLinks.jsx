@@ -27,7 +27,7 @@ let codeWord = (string) => {
 let CreatePageDietLinks = (data) => {
 
     let codearry = codeWord(Object.values(data)[0])
-    console.log(codearry)
+    //console.log(codearry)
 
 
 

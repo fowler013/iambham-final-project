@@ -10,7 +10,7 @@ let RecipeReviews = (id) => {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data);
+            //console.log(data);
             this.setState({
               pageid: this.props.location.pathname.slice(8),
               recipe: data[0]
