@@ -90,18 +90,18 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log(this.state.hits)
-    console.log(this.state.keyword)
-    console.log(this.state.searchlist)
     this.setdata()
 
     return <React.Fragment>
-        <div className=" d-flex justify-content-between bg-dark" style={{ marginLeft: "3rem", marginRight: "3rem" }}>
-          <h1>Keywords: {this.state.keyword}</h1>
-          <h1>{this.state.hits} Total Recipes</h1>
-        </div>
 
         <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
+
+        <div className="card my-3">
+          <div className="card-body">
+            This is some text within a panel body.
+    </div>
+        </div>
+
           <div className="row">
             {this.state.searchlist.map(element => {
               return SearchTabs(element);
