@@ -8,7 +8,6 @@ import Navigation from './test1';
 import NotFound from './NotFound';
 import Reviews from './Reviews';
 import SignUp from './signup';
-import ReviewCard from './ReviewCard';
 // import Login from './auth/login';
 // import Logout from './auth/logout';
 // import PrivateRoute from './auth/privateRoute';
@@ -22,7 +21,6 @@ class App extends Component {
                     <Navigation />
                     <div style={{height: "4.666em"}}></div>
                     <Switch>
-                        <Route exact path="/review" component={ReviewCard}/>
                         <Route exact path="/signup" component={SignUp}/>
                         <Route path="/search/" component={Search} />
                         <Route path="/recipe/:id" component={Recipe} />

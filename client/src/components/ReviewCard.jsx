@@ -41,14 +41,14 @@ export default class ReviewCard extends Component {
               </h2>
               {/* <!-- Text --> */}
               <p className="mb-0">
-                  <i className="fa fa-calendar mr-2" />26.07.2017
+                  <i className="fa fa-calendar mr-2" />{this.state.props.date}
               </p>
           </div>
           {/* <!-- Card content --> */}
           <div className="card-body card-body-cascade text-center">
               {/* <!-- Text --> */}
-              <h6>RATING/5</h6>
-              <p className="card-text">Recipe review goes here</p>
+              <h6>{this.state.props.ratings}/5</h6>
+              <p className="card-text">{this.state.props.review}</p>
               {/* <!-- Link --> */}
               <a
                   href="#!"
