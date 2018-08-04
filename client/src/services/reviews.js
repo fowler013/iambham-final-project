@@ -19,5 +19,8 @@ function update(id, data) {
 function destroy(id) {
     return baseService.destroy(`/api/review/${id}`);
 }
+function readByRecipe(id) {
+    return baseService.get(`/api/review/recipe/${id}`);
+}
 
-export { all, read, create, update, destroy };
+export { all, read, create, update, destroy, readByRecipe };

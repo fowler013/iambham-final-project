@@ -11,6 +11,8 @@ import CreatePageHealthLinks from "./RecipePageHealthLinks";
 import CreatePageDietLinks from "./RecipePageDietLinks";
 import NutritionTabs from "./RecipePageNutritionMore";
 import NutritionStartTabs from "./RecipePageNutrition";
+import * as ReviewsServices from '../services/reviews';
+import ReviewCard from "./ReviewCard";
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class Recipe extends React.Component {
     this.state = {
       button1: "Click Here to Show More",
       pageid: "0",
-      reviews: [],
+      reviewContainer: [],
       recipe: {
         healthLabels: [""],
         dietLabels: [""],
@@ -44,22 +46,30 @@ class Recipe extends React.Component {
     let recipeid = this.props.location.pathname.slice(8);
     if (recipeid !== this.state.pageid) {
       this.gogetdata(recipeid);
-      this.goGetReviews(recipeid)
     }
   }
 
-  goGetReviews(id) {
-    fetch(`/api/review/recipe/${id}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
+  componentDidMount() {
+    ReviewsServices.readByRecipe(this.props.match.params.id).then((reviews) => {
+      //console.log(reviews);
+      Object.values(reviews).forEach((review => {
+        //console.log(review)
         this.setState({
-          reviews: data
-        });
-      });
+          reviewContainer: [...this.state.reviewContainer, review]
+        })
+      }))
+    })
+    //fetch(`/api/review/recipe/${id}`, {
+    //  method: "GET",
+    //  headers: { "Content-Type": "application/json" }
+    //})
+    //  .then(res => res.json())
+    //  .then(data => {
+    //    console.log(data);
+    //    this.setState({
+    //      reviews: data
+    //    });
+    //  });
   }
 
   gogetdata(sending) {
@@ -69,7 +79,7 @@ class Recipe extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           recipe: data[0]
@@ -84,7 +94,7 @@ class Recipe extends React.Component {
   }
 
   render() {
-    this.setdata();
+    //this.setdata();
 
     return <React.Fragment>
         <div className="container mt-3">
@@ -222,15 +232,23 @@ class Recipe extends React.Component {
           </div>
           <div className="card">
             <h3 className="card-header primary-color white-text">
-              Reviews
+              Reviews<span><button className="btn btn-outline-light" type="button" style={{ float: 'right' }}>Add Review for this Recipe</button></span>
             </h3>
-            <div className="card-body">
-              <h4 className="card-title">Special title treatment</h4>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to
-                additional content.
-              </p>
-              <a className="btn btn-outline-primary">Go somewhere</a>
+            <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll' }}>
+              <h4 className="card-title">Recipe Reviews!</h4>
+              {this.state.reviewContainer.map((review) => {
+                console.log(review)
+                return (
+                  <ReviewCard 
+                  key={review.id}
+                  date={/*{review._created}*/'Date'}
+                  username={review.username}
+                  review={review.review}
+                  ratings={review.ratings}
+                  />
+                )
+              })}
+              {/*<a className="btn btn-outline-primary">Go somewhere</a>*/}
             </div>
           </div>
         </div>

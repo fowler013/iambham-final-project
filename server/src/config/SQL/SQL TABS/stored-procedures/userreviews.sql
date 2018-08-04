@@ -67,11 +67,14 @@ CREATE PROCEDURE spGetUserReviewBasedonRecipeID(p_recipeid varchar(256))
 BEGIN
 
 SELECT 
-	id,
-    userid,
-    review,
-    ratings
-FROM UserReviews
+	ur.id,
+    ur.userid,
+    ur.review,
+    ur.ratings,
+    u.username
+    ur._created
+FROM UserReviews ur
+join Users u on ur.userid = u.id
 WHERE recipeid = p_recipeid;
 
 END $$
