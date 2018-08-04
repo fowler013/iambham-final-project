@@ -3,7 +3,8 @@ drop table if exists UserDiets;
 create table UserDiets (
 id int not null auto_increment primary key,
 dietid int not null,
-userid int not null
+userid int not null,
+_created datetime default current_timestamp
 );
 -- USER REVIEWS TABLE
 drop table if exists UserReviews;
