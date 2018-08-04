@@ -9,14 +9,26 @@ import {
 } from "react-router-dom";
 import CreatePageHealthLinks from "./RecipePageHealthLinks";
 import CreatePageDietLinks from "./RecipePageDietLinks";
+import CreateNutritionTabs from "./RecipePageNutritionCards";
 
 class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pageid: "0",
-      recipe: {healthLabels: [""], dietLabels: [""], ingredientLines: [""], totalTime: "0", }
+      recipe: {
+        healthLabels: [""],
+        dietLabels: [""],
+        ingredientLines: [""],
+        totalTime: "0",
+        totalDaily: [],
+        totalNutrients: []
+      }
     };
+  }
+
+  componentDidMount() {
+    this.goGetReviews(this.props.location.pathname.slice(8))
   }
 
   setdata() {
@@ -25,6 +37,17 @@ class Recipe extends React.Component {
     if (recipeid !== this.state.pageid) {
       this.gogetdata(recipeid);
     }
+  }
+
+  goGetReviews(id) {
+    fetch(`/api/review/recipe/${id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
   }
 
   gogetdata(sending) {
@@ -41,20 +64,89 @@ class Recipe extends React.Component {
         });
       });
   }
+  
   setIngredients(data) {
-    if(data) {
-      return (
-        <p className="card-text">
-          {data}
-        </p>
-      )
+    if (data) {
+      return <p className="card-text">{data}</p>;
+    }
+  }
+  goSetNutrientsFAT() {
+
+    if (this.state.recipe.totalDaily.FAT !== undefined) {
+      let thename = this.state.recipe.totalDaily.FAT.label;
+      let theprecentage = this.state.recipe.totalDaily.FAT.quantity;
+      let thetype = this.state.recipe.totalNutrients.FAT.unit;
+      let theamount = this.state.recipe.totalNutrients.FAT.quantity;
+      let theservings = this.state.recipe.yield;
+
+      return CreateNutritionTabs({
+        name: thename,
+        amount: `${Math.floor(theamount)}`,
+        type: `${thetype}`,
+        precentage: theprecentage,
+        servings: theservings
+      });
+    }
+  }
+  goSetNutrientsSodium() {
+
+    if (this.state.recipe.totalDaily.NA !== undefined) {
+      let thename = this.state.recipe.totalDaily.NA.label;
+      let theprecentage = this.state.recipe.totalDaily.NA.quantity;
+      let thetype = this.state.recipe.totalNutrients.NA.unit;
+      let theamount = this.state.recipe.totalNutrients.NA.quantity;
+      let theservings = this.state.recipe.yield
+
+      return CreateNutritionTabs({
+        name: thename,
+        amount: `${Math.floor(theamount)}`,
+        type: `${thetype}`,
+        precentage: theprecentage,
+        servings: theservings
+      });
     }
   }
 
-  render() {
-    this.setdata()
-    console.log(this.state.recipe)
+  goSetNutrientsCarbs() {
 
+    if (this.state.recipe.totalDaily.CHOCDF !== undefined) {
+      let thename = this.state.recipe.totalDaily.CHOCDF.label;
+      let theprecentage = this.state.recipe.totalDaily.CHOCDF.quantity;
+      let thetype = this.state.recipe.totalNutrients.CHOCDF.unit;
+      let theamount = this.state.recipe.totalNutrients.CHOCDF.quantity;
+      let theservings = this.state.recipe.yield
+
+      return CreateNutritionTabs({
+        name: thename,
+        amount: `${Math.floor(theamount)}`,
+        type: `${thetype}`,
+        precentage: theprecentage,
+        servings: theservings
+      });
+    }
+  }
+
+  goSetNutrientsProtiens() {
+
+    if (this.state.recipe.totalDaily.PROCNT !== undefined) {
+      let thename = this.state.recipe.totalDaily.PROCNT.label;
+      let theprecentage = this.state.recipe.totalDaily.PROCNT.quantity;
+      let thetype = this.state.recipe.totalNutrients.PROCNT.unit;
+      let theamount = this.state.recipe.totalNutrients.PROCNT.quantity;
+      let theservings = this.state.recipe.yield
+
+      return CreateNutritionTabs({
+        name: thename,
+        amount: `${Math.floor(theamount)}`,
+        type: `${thetype}`,
+        precentage: theprecentage,
+        servings: theservings
+      });
+    }
+  }
+  render() {
+    // this.setdata();
+    console.log(this.state.recipe);
 
     return <React.Fragment>
         <div className="container mt-3">
@@ -89,7 +181,7 @@ class Recipe extends React.Component {
                             this.state.recipe.calories /
                               this.state.recipe.yield
                           ) || 0}{" "}
-                          calories
+                          Calories
                         </p>
                       </div>
                     </div>
@@ -97,7 +189,7 @@ class Recipe extends React.Component {
                       <div className="card-body">
                         <i className="fas fa-users" style={{ fontSize: "2rem" }} />
                         <p className="card-text text-white">
-                          {this.state.recipe.yield} Servings
+                          {this.state.recipe.yield || 0} Servings
                         </p>
                       </div>
                     </div>
@@ -152,12 +244,30 @@ class Recipe extends React.Component {
               </button>
             </h3>
             <div className="card-body">
-              <h4 className="card-title">Special title treatment</h4>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to
-                additional content.
-              </p>
-              <a className="btn btn-outline-primary ">Go somewhere</a>
+              <div className="d-flex justify-content-around">
+                <div className="text-center">
+                  <div className="card bg-primary rounded-circle border border-primary" style={{ overflow: "hidden", width: "8rem", height: "8rem" }}>
+                    <div className="position-absolute" style={{ zIndex: "0" }}>
+                      <div className="bg-dark" style={{ overflow: "hidden", width: "8rem", minHeight: `${8 * (1 - (Math.ceil(this.state.recipe.calories / this.state.recipe.yield) || 500) / 2000)}rem` }} />
+                    </div>
+                    <div className="position-absolute text-white" style={{ top: "50%", zIndex: "1", left: "50%", transform: "translate(-50%, -50%)" }}>
+                      <div>
+                        <p className="p-0 m-0" style={{ fontSize: "2rem" }}>
+                          {Math.ceil(this.state.recipe.calories / this.state.recipe.yield) || 500}
+                        </p>
+                        <p className="text-uppercase" style={{ marginTop: "-0.5rem" }}>
+                          Calories
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="font-italic text-primary">per serving</p>
+                </div>
+                {this.goSetNutrientsFAT()}
+                {this.goSetNutrientsSodium()}
+                {this.goSetNutrientsCarbs()}
+                {this.goSetNutrientsProtiens()}
+              </div>
             </div>
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
