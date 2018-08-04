@@ -9,3 +9,20 @@
 #dropdownMenuButton{
     background-color: #fc714c
 }
+
+.d-block.w-100 {
+    border-radius: 25px;
+    width:100%;
+    height:800px;
+  }
+
+
+
+.page-container {
+
+    background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    
+}
+
