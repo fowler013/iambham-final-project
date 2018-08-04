@@ -16,6 +16,7 @@ class Recipe extends React.Component {
     super(props);
     this.state = {
       pageid: "0",
+      reviews: [],
       recipe: {
         healthLabels: [""],
         dietLabels: [""],
@@ -27,15 +28,13 @@ class Recipe extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.goGetReviews(this.props.location.pathname.slice(8))
-  }
 
   setdata() {
     let recipeid = this.props.location.pathname.slice(8);
     console.log(recipeid);
     if (recipeid !== this.state.pageid) {
       this.gogetdata(recipeid);
+      this.goGetReviews(recipeid)
     }
   }
 
@@ -47,6 +46,9 @@ class Recipe extends React.Component {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        this.setState({
+          reviews: data
+        });
       });
   }
 
@@ -287,7 +289,7 @@ class Recipe extends React.Component {
           </div>
           <div className="card">
             <h3 className="card-header primary-color white-text">
-              Featured
+              Reviews
             </h3>
             <div className="card-body">
               <h4 className="card-title">Special title treatment</h4>
