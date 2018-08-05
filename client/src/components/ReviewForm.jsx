@@ -24,6 +24,7 @@ export default class ReviewForm extends Component {
         this.state = {
             modalIsOpen: false,
             data: {
+                userid: 2,
                 recipeid: this.props.recipeid,
                 ratings: '',
                 review: '',
@@ -47,11 +48,11 @@ export default class ReviewForm extends Component {
     //    this.setState({ data });
     //};
     handleReviewSubmit() {
-        console.log('clicked');
-        let { recipeid, review, ratings } = this.state.data
-        ReviewsServices.create(recipeid, review, ratings).then((x) => {
-            console.log(x)
-        })
+        let { userid, recipeid, review, ratings } = this.state.data
+        console.log(recipeid);
+        console.log(review);
+        console.log(userid);
+        //ReviewsServices.create(userid, recipeid, ratings, review);
     }
     // MODAL METHODS ****
     openModal() {

@@ -27,11 +27,11 @@ export function read(req, res, next) {
         });
 }
 export function create(req, res, next) {
-    let { userid, recipeid, review, ratings } = req.body;
+    let { recipeid, userid, review, ratings } = req.body;
 
     ReviewValidators.create({
-        userid,
         recipeid,
+        userid,
         review,
         ratings,
     })
