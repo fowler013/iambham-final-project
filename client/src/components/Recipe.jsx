@@ -97,7 +97,7 @@ class Recipe extends React.Component {
   }
 
   render() {
-    this.setdata();
+    //this.setdata();
 
     return <React.Fragment>
         <div className="container mt-3">
