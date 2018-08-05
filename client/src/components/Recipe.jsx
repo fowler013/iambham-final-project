@@ -82,7 +82,7 @@ class Recipe extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           recipe: data[0]
@@ -238,6 +238,7 @@ class Recipe extends React.Component {
               Reviews<span>
               <ReviewForm 
                 recipe={this.state.recipe.label}
+                recipeid={this.props.match.params.id}
               /></span>
             </h3>
             <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll' }}>
