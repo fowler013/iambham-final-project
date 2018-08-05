@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import './styles/modal.css';
 import * as ReviewsServices from '../services/reviews';
+import './styles/ReviewCard.css';
 
 const customStyles = {
     content: {
@@ -87,7 +87,8 @@ export default class ReviewForm extends Component {
                     contentLabel="Example Modal"
                 >
                     <h2
-                        className="modal-header bg-primary"
+                        className="modal-header"
+                        style={{ background: '#f80' }}
                         ref={(subtitle) => (this.subtitle = subtitle)}
                     >
                         {this.props.recipe}
@@ -110,6 +111,7 @@ export default class ReviewForm extends Component {
                                 name="content"
                             />
                         </div>
+                        <p><span className="star-symbol">&#9733;</span> Recipe Rating <span className="star-symbol">&#9733;</span></p>
                         <div className="ratings">
                             <div className="form-check form-check-inline">
                                 <input
@@ -220,6 +222,7 @@ export default class ReviewForm extends Component {
                                 </label>
                             </div>
                         </div>
+                        <br/>
                         <a
                             className="modal-submit-btn"
                             onClick={() => {
