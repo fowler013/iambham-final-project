@@ -70,8 +70,12 @@ export default class ReviewForm extends Component {
                 <div
                     className="modal fade"
                     id="exampleModal"
+<<<<<<< HEAD
                     tabindex="-1"
                     ref="mod"
+=======
+                    tabIndex="-1"
+>>>>>>> df781d8a1f56a1084787953cbdd15a86584928f2
                     role="dialog"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
