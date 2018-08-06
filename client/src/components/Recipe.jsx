@@ -46,7 +46,7 @@ class Recipe extends React.Component {
   }
 
   setdata() {
-    let recipeid = this.props.location.pathname.slice(8);
+    let recipeid = this.props.match.params.id;
     if (recipeid !== this.state.pageid) {
       this.gogetdata(recipeid);
     }
@@ -76,7 +76,7 @@ class Recipe extends React.Component {
   }
 
   gogetdata(sending) {
-    fetch(`/api/search/${sending}`, {
+    fetch(`/api/search/recipe/${sending}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" }
     })
@@ -97,7 +97,7 @@ class Recipe extends React.Component {
   }
 
   render() {
-    // this.setdata();
+    this.setdata();
 
     return <React.Fragment>
         <div className="container my-3">

@@ -76,7 +76,7 @@ class Navigation extends React.Component {
                         <button className="btn  dropdown-toggle " type="button" id="dropdownMenuButton" style={{backgroundColor: "#fc714c"}} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Menu</button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <NavLink to="/user"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink>
+                            {/* <NavLink to="/user"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink> */}
                             <a className="dropdown-item text-dark" href="#">Favorites</a>
                             <a className="dropdown-item text-dark" href="#">History</a>
                             <a className="dropdown-item text-dark" href="http://localhost:3000/signup">Logout</a>
