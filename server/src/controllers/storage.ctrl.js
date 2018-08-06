@@ -16,8 +16,8 @@ export function create(req, res, next) {
 
     userStorageProcedures
         .create([userid, item])
-        .then(() => {
-            res.status(201).end();
+        .then((id) => {
+            res.status(201).json(id);
         })
         .catch((err) => {
             res.status(500).json(err);

@@ -1,4 +1,5 @@
 import 'isomorphic-fetch';
+import { isNil } from 'lodash';
 
 const AUTH_TOKEN_KEY = 'authtoken';
 let authToken = '';
@@ -36,28 +37,29 @@ function json(url, method = 'GET', payload = {}) {
         body: JSON.stringify(payload),
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': authToken
-        })
+            Authorization: authToken,
+        }),
     };
 
     if (method === 'GET') {
         delete data.body;
     }
 
-    return makeFetch(url, data)
-        .then((response) => {
-            if (response.ok) {
-                let contentType = response.headers.get('Content-Type');
-
-                if (contentType.indexOf('application/json') > -1) {
-                    return response.json();
-                }
-
-                return response.statusText;
+    return makeFetch(url, data).then((response) => {
+        if (response.ok) {
+            let contentType = response.headers.get('Content-Type');
+            if (
+                !isNil(contentType) &&
+                contentType.indexOf('application/json') > -1
+            ) {
+                return response.json();
             }
 
-            throw response;
-        });
+            return response.statusText;
+        }
+
+        throw response;
+    });
 }
 
 function get(url) {
@@ -84,5 +86,5 @@ export {
     post,
     put,
     destroy,
-    makeFetch
+    makeFetch,
 };

@@ -1,40 +1,64 @@
-.btn-rounded{
-    border-radius: "50px";
+.btn-rounded {
+    border-radius: '50px';
 }
 /* 
 .cardFont{
     color: aliceblue
 } */
 
-#dropdownMenuButton{
-    background-color: #fc714c
+#dropdownMenuButton {
+    background-color: #fc714c;
 }
 
 .d-block.w-100 {
     border-radius: 25px;
-    width:100%;
-    height:800px;
-  }
-
-
+    width: 100%;
+    height: 800px;
+}
 
 .home-page-container {
-
     background-color: #73675b;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-    
 }
 
 .home-page-container h2 {
     margin-top: 5px;
     text-align: center;
-    color: beige
+    color: beige;
 }
 
 .signup-page-container {
     /* background-image: url("http://www.mountainsky.com/wp-content/uploads/2017/04/Fine-Dining.jpg"); */
-   background-color: aqua
+    background-color: aqua;
 }
 
-
+[data-class='UserStorage'] {
+    padding-top: 4em;
+}
+[data-class='UserStorage'] table {
+    border-collapse: collapse;
+    width: 100%;
+}
+[data-class='UserStorage'] table thead th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4caf50;
+    color: white;
+}
+[data-class='UserStorage'] table thead th td {
+    border: 1px solid black;
+}
+[data-class='UserStorage'] table tbody tr:nth-of-type(even) {
+    background-color: grey;
+}
+[data-class='UserStorage'] table tbody tr:hover {
+    background-color: #ddd;
+}
+[data-class='UserStorage'] table tbody tr td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}

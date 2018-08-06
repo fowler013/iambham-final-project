@@ -35,6 +35,9 @@ begin
         p_item
     );
 
+    select 
+        last_insert_id() as `id`;
+
 end $$
 delimiter ;
 
