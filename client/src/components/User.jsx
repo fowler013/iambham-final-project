@@ -136,6 +136,7 @@ class User extends React.Component {
 
     return (
       <React.Fragment>
+        <div className = "user-page-container">
         <div className="d-flex flex-row">
           <form className="card p-3 formContainer bg-light" style={{ marginTop: '3rem', width: '40rem', height: '37rem' }}>
             <label
@@ -245,13 +246,42 @@ class User extends React.Component {
 
         </div>
 
-
+        <div className="card-deck">
+  <div className="card">
+    <img className="card-img-top" src="https://pioneerwoman.files.wordpress.com/2012/08/7771464864_07e1e3d994_z.jpg?w=630&h=419" alt="Card image cap"/>
+    <div className="card-body">
+      <h5 className="card-title">Card title</h5>
+      <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+      <button type="button" className="btn btn-primary btn-lg">Large button</button>
+    </div>
+  </div>
+  <div className="card">
+    <img className="card-img-top" src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg" alt="Card image cap"/>
+    <div className="card-body">
+      <h5 className="card-title">Card title</h5>
+      <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+      <button type="button" className="btn btn-primary btn-lg">Large button</button>
+    </div>
+  </div>
+  <div className="card">
+    <img className="card-img-top" src="https://d3lawkbdj6aabd.cloudfront.net/singleplatform/image/upload/c_fit/4170f62f828bb389b46f8365a93cf54ec9133be3.jpg" alt="Card image cap"/>
+    <div className="card-body">
+      <h5 className="card-title">Card title</h5>
+      <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+      <button type="button" className="btn btn-primary btn-lg">Large button</button>
+    </div>
+  </div>
+</div>
+        </div>
       </React.Fragment>
     );
   }
 }
 
-<div className="card">
+{/* <div className="card">
 
 
   <div className="card-body">
@@ -263,7 +293,7 @@ class User extends React.Component {
   </div>
 
 
-</div>
+</div> */}
 
 {/* <form className="card p-3 formContainer bg-dark" style={{ marginTop: '5rem', width: '20rem', height: '20rem' }}>
           <label

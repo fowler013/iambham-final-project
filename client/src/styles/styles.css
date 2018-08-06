@@ -17,20 +17,19 @@
 }
 
 .home-page-container {
-    background-color: #73675b;
-    background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+    /* background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .home-page-container h2 {
     margin-top: 5px;
     text-align: center;
-    color: beige;
+    /* color: beige */
 }
 
 .signup-page-container {
     /* background-image: url("http://www.mountainsky.com/wp-content/uploads/2017/04/Fine-Dining.jpg"); */
-    background-color: aqua;
 }
 
 [data-class='UserStorage'] {
@@ -61,4 +60,27 @@
 [data-class='UserStorage'] table tbody tr td {
     border: 1px solid #ddd;
     padding: 8px;
+}
+#featured-dishes {
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 600%;
+}
+
+.user-page-container {
+    /* background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+#home-header {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    /* background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
 }
