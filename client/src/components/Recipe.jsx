@@ -66,24 +66,14 @@ class Recipe extends React.Component {
                 //console.log(reviews)
             },
         );
-        //fetch(`/api/review/recipe/${id}`, {
-        //  method: "GET",
-        //  headers: { "Content-Type": "application/json" }
-        //})
-        //  .then(res => res.json())
-        //  .then(data => {
-        //    console.log(data);
-        //    this.setState({
-        //      reviews: data
-        //    });
-        //  });
-  setdata() {
-    let recipeid = this.props.location.pathname.slice(8);
-
-    if (recipeid !== this.state.pageid) {
-      this.gogetdata(recipeid);
     }
+    setdata() {
+        let recipeid = this.props.location.pathname.slice(8);
 
+        if (recipeid !== this.state.pageid) {
+            this.gogetdata(recipeid);
+        }
+    }
     gogetdata(sending) {
         fetch(`/api/search/recipe/${sending}`, {
             method: 'GET',
@@ -103,26 +93,27 @@ class Recipe extends React.Component {
         if (data) {
             return <p className="card-text">{data}</p>;
         }
-  gogetdata(sending) {
-    fetch(`/api/search/recipe/${sending}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(res => res.json())
-      .then(data => {
-        //console.log(data);
-        this.setState({
-          pageid: sending,
-          recipe: data[0]
-        });
-      });
-  }
-  
-  setIngredients(data) {
-    if (data) {
-      return <p className="card-text">{data}</p>;
+    }
+    gogetdata(sending) {
+        fetch(`/api/search/recipe/${sending}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                //console.log(data);
+                this.setState({
+                    pageid: sending,
+                    recipe: data[0],
+                });
+            });
     }
 
+    setIngredients(data) {
+        if (data) {
+            return <p className="card-text">{data}</p>;
+        }
+    }
     render() {
         this.setdata();
 
