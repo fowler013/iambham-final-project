@@ -1,5 +1,6 @@
 import React from 'react';
 import * as userStorageService from '../services/userStorage';
+import * as storageCategoriesService from '../services/category';
 import { findDOMNode } from 'react-dom';
 
 export default class UserStorage extends React.Component {
@@ -8,14 +9,24 @@ export default class UserStorage extends React.Component {
 
         this.state = {
             items: [],
+            categories: [],
+            selectValue: undefined,
             itemName: '',
         };
     }
 
     componentDidMount() {
-        userStorageService.all(12).then((items) => {
+        console.log(Promise);
+        Promise.all([
+            userStorageService.all(12),
+            storageCategoriesService.all(),
+        ]).then(([items, categories]) => {
+            console.log(items);
+            console.log(categories);
+
             this.setState({
                 items,
+                categories,
             });
         });
     }
@@ -41,8 +52,13 @@ export default class UserStorage extends React.Component {
     submit() {
         let addItem = {
             userid: 12,
+            categoryid: this.state.selectValue,
             item: this.state.itemName,
         };
+
+        let { categoryname } = this.state.categories.find((category) => {
+            return category.id === +this.state.selectValue;
+        });
 
         userStorageService.create(addItem).then((idObj) => {
             const el = findDOMNode(this.refs.modal);
@@ -52,9 +68,29 @@ export default class UserStorage extends React.Component {
                 itemName: '',
                 items: [
                     ...this.state.items,
-                    Object.assign({}, addItem, { id: idObj.id }),
+                    Object.assign({}, addItem, {
+                        id: idObj.id,
+                        categoryname,
+                    }),
                 ],
             });
+        });
+    }
+
+    handleSelect(category) {
+        this.setState({
+            selectValue: category,
+        });
+    }
+
+    handleSort(sortBy) {
+        let sorted = this.state.items.sort((a, b) => {
+            if (a[sortBy] < b[sortBy]) return -1;
+            if (a[sortBy] > b[sortBy]) return 1;
+            return 0;
+        });
+        this.setState({
+            items: sorted,
         });
     }
 
@@ -99,6 +135,26 @@ export default class UserStorage extends React.Component {
                                         this.handleChange(ev.target.value);
                                     }}
                                 />
+                                <select
+                                    value={this.state.selectValue}
+                                    onChange={(ev) => {
+                                        this.handleSelect(ev.target.value);
+                                    }}
+                                >
+                                    <option value={null}>
+                                        Select Category
+                                    </option>
+                                    {this.state.categories.map((category) => {
+                                        return (
+                                            <option
+                                                key={category.id}
+                                                value={category.id}
+                                            >
+                                                {category.categoryname}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
                             </div>
                             <div className="modal-footer">
                                 <button
@@ -133,8 +189,20 @@ export default class UserStorage extends React.Component {
                     <table>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Category</th>
+                                <th
+                                    onClick={() => {
+                                        this.handleSort('item');
+                                    }}
+                                >
+                                    Name
+                                </th>
+                                <th
+                                    onClick={() => {
+                                        this.handleSort('categoryid');
+                                    }}
+                                >
+                                    Category
+                                </th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -143,7 +211,7 @@ export default class UserStorage extends React.Component {
                                 return (
                                     <tr key={item.id}>
                                         <td>{item.item}</td>
-                                        <td>Category</td>
+                                        <td>{item.categoryname}</td>
                                         <td>
                                             <i
                                                 className="fa fa-trash"

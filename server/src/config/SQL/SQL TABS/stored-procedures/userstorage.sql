@@ -1,4 +1,5 @@
-drop procedure if exists spGetAllUserStorage;
+-- -- USER STORAGES
+-- ALL USER STORAGES
 drop procedure if exists spGetAllUserStorages;
 delimiter $$
 create procedure spGetAllUserStorages (
@@ -8,18 +9,24 @@ create procedure spGetAllUserStorages (
 begin
 
     select 
-        *
+        u.*,
+        s.categoryname
     from 
-        UserStorage
+        UserStorage u
+    join
+        StorageCategories s
+    on 
+        u.categoryid = s.id
     where 
         userid = p_userid;
 
 end $$
 delimiter ;
-
+-- CREATE
 drop procedure if exists spCreateUserStorage;
 delimiter $$
 create procedure spCreateUserStorage (
+    in p_categoryid int,
     in p_userid int,
     in p_item varchar(256)
 )
@@ -27,10 +34,12 @@ create procedure spCreateUserStorage (
 begin
 
     insert into UserStorage(
+        categoryid,
         userid,
         item
     )  
     values (
+        p_categoryid,
         p_userid,
         p_item
     );
@@ -40,7 +49,7 @@ begin
 
 end $$
 delimiter ;
-
+-- DELETE
 drop procedure if exists spDeleteUserStorage;
 delimiter $$
 create procedure spDeleteUserStorage (

@@ -23,9 +23,19 @@ alter table UserFavorites
 add constraint fk_UseridFavorites
 foreign key (userid)
 references Users(id);
-
 -- fk for userid in Tokens table
 alter table Tokens
 add constraint fk_UseridTokens
+foreign key (userid)
+references Users(id);
+
+-- fk for categoryid in UserStorage table
+alter table UserStorage
+add constraint fk_CategoryidUserStorage
+foreign key (categoryid)
+references StorageCategories(id);
+-- fk for userid in UserStorage table
+alter table UserStorage
+add constraint fk_UseridUserStorage
 foreign key (userid)
 references Users(id);

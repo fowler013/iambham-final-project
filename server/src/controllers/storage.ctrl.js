@@ -12,10 +12,10 @@ export function all(req, res, next) {
 }
 
 export function create(req, res, next) {
-    let { userid, item } = req.body;
+    let { categoryid, userid, item } = req.body;
 
     userStorageProcedures
-        .create([userid, item])
+        .create([categoryid, userid, item])
         .then((id) => {
             res.status(201).json(id);
         })
