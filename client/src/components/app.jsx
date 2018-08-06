@@ -8,33 +8,32 @@ import Navigation from './test1';
 import NotFound from './NotFound';
 import Reviews from './Reviews';
 import SignUp from './signup';
+import UserStorage from './UserStorage';
 // import Login from './auth/login';
 // import Logout from './auth/logout';
 // import PrivateRoute from './auth/privateRoute';
 
 class App extends Component {
-
     render() {
         return (
             <Router>
                 <Fragment>
                     <Navigation />
-                    <div style={{height: "4.666em"}}></div>
+                    <div style={{ height: '4.666em' }} />
                     <Switch>
-                        <Route exact path="/signup" component={SignUp}/>
+                        <Route exact path="/signup" component={SignUp} />
                         <Route path="/search/" component={Search} />
                         <Route path="/recipe/:id" component={Recipe} />
                         <Route path="/user/:id" component={User} />
+                        <Route path="/storage" component={UserStorage} />
                         <Route exact path="/" component={Home} />
-                        <Route exact path= "/" component ={Reviews} />
-                        <Route path='*' component={NotFound} />
+                        <Route exact path="/" component={Reviews} />
+                        <Route path="*" component={NotFound} />
                         {/*<Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />*/}
-                        
                     </Switch>
                 </Fragment>
             </Router>
-
         );
     }
 }

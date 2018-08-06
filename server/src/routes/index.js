@@ -4,6 +4,7 @@ import userRouter from './users';
 import reviewRouter from './reviews';
 import favoriteRouter from './favorites';
 import userStorageRouter from './storage';
+import storageCategoriesRouter from './categories';
 
 import authRouter from './auth';
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
@@ -24,6 +25,7 @@ router
     .use('/user', userRouter)
     .use('/review', reviewRouter)
     .use('/favorite', favoriteRouter)
-    .use('/storage', userStorageRouter);
+    .use('/storage', userStorageRouter)
+    .use('/categories', storageCategoriesRouter);
 
 export default router;
