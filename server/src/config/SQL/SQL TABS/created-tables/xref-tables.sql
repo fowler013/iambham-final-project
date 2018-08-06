@@ -41,19 +41,21 @@ userid int not null,
 allergy varchar(256) not null,
 _created timestamp default current_timestamp
 );
-
--- USER/STORAGE CROSS REFERNECE
-drop table if exists UserStorage;
-create table UserStorage (
-id int not null auto_increment primary key,
-userid int not null,
-item varchar(256) not null,
-_created timestamp default current_timestamp
-);
 -- TOKENS TABLE
 drop table if exists Tokens;
 create table Tokens (
     id int not null auto_increment primary key,
     userid int not null,
     _created timestamp default current_timestamp
+);
+
+
+-- USER/STORAGE CROSS REFERNECE
+drop table if exists UserStorage;
+create table UserStorage (
+id int not null auto_increment primary key,
+userid int not null,
+categoryid int not null,
+item varchar(256) not null,
+_created timestamp default current_timestamp
 );
