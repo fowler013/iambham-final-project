@@ -17,9 +17,12 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <div id="home-header">
-          <h1 id="featured-dishes">Recipes!</h1>
-          <h4>Quickly browse thousands of curated recipes for any occasion.</h4>
+          <h1 class="featured-dishes">Recipes!</h1> 
         </div>
+        <div id="home-sub-header">
+             <h4 class="h4-sub-header">Quickly browse thousands of curated recipes for any occasion.</h4>
+             <h5 class="h5-sub-header">Create an account to leave reviews and save your favorites!</h5>
+          </div>
         <div class="home-page-container">
           <div
             id="carouselExampleIndicators"
