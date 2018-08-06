@@ -40,7 +40,8 @@
 #featured-dishes {
     margin-top: 5px;
     text-align: center;
-    font-weight: 900
+    font-weight: 900;
+    font-size: 600%
     
 }
 
@@ -52,3 +53,13 @@
     
 }
 
+#home-header {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
