@@ -97,11 +97,11 @@ class Recipe extends React.Component {
   }
 
   render() {
-    this.setdata();
+    // this.setdata();
 
     return <React.Fragment>
-        <div className="container mt-3">
-          <div className="card" style={{minHeight: "40rem" ,borderBottomLeftRadius: "10px", borderTopLeftRadius: "10px", backgroundImage: `url('${this.state.recipe.image}') , url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC')`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+        <div className="container my-3">
+        <div className="card" style={{ minHeight: "40rem", borderBottomLeftRadius: "10px", borderTopLeftRadius: "10px", backgroundImage: `url('${this.state.recipe.image}') , url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC')`, backgroundRepeat: "no-repeat", backgroundSize: "cover" , backgroundPosition: "center"}}>
             <div className="card-body p-0">
               <div className="view overlay">
               <div className="d-flex justify-content-end">
@@ -234,7 +234,7 @@ class Recipe extends React.Component {
             </div>
           </div>
           <div className="card" style={{ width: '100%' }}>
-            <h3 className="card-header primary-color white-text">
+          <h3 className="card-header primary-color white-text d-flex align-items-center justify-content-between">
               Reviews<span>
               <ReviewForm 
                 recipe={this.state.recipe.label}
@@ -243,7 +243,7 @@ class Recipe extends React.Component {
             </h3>
             <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll', width: '100%' }}>
               {this.state.reviewContainer.map((review) => {
-                //console.log(review)
+                console.log(review)
                 return (
                   <div className="review-card-container" style={{ width: '90%', margin: 'auto' }}>
                     <ReviewCard

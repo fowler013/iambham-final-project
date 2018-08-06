@@ -8,7 +8,7 @@ import {
   NavLink
 } from "react-router-dom";
 import SearchTabs from "./Searchtabs";
-import Form from './form'
+import Pagination from "./SearchPagination"
 
 class Search extends React.Component {
   constructor(props) {
@@ -18,6 +18,8 @@ class Search extends React.Component {
       keyword: '',
       hits: '',
       searchlist: [],
+      from: '0',
+      to: '20'
     }
   }
 
@@ -36,26 +38,13 @@ class Search extends React.Component {
       body: sending
     }).then
       (res => res.json()).then((data) => {
-        console.log(data)
-        console.log(data.count)
-        console.log(data.count.toString())
-        let newstring = []
-        data.count.toString().split('').forEach(element => newstring.push(element))
-        if (newstring.length >= 7) {
-          newstring.splice(-3, 0, ",")
-          newstring.splice(-7, 0, ",")
-        }
-        if (4 <= newstring.length && newstring.length <= 6) {
-          newstring.splice(-3, 0, ",")
-        }
-        newstring = newstring.join('')
-        console.log(newstring)
-
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           keyword: data.q,
-          hits: newstring,
+          hits: data.count,
           searchlist: data.hits,
+          from: data.from,
+          to: data.to
         })
       })
   }
@@ -82,29 +71,51 @@ class Search extends React.Component {
       return acc;
     }, {});
 
-    if(!obj.from && !obj.to) {
+    console.log(obj)
+    if(!obj.from) {
       obj.from=['0']
       obj.to=['20']
     }
     return JSON.stringify(obj);
+  }
+  toNumberString(element) {
+    let newstring = []
+   newstring = element.toString().split('')
+    if (newstring.length >= 7) {
+      newstring.splice(-3, 0, ",")
+      newstring.splice(-7, 0, ",")
+    }
+    if (4 <= newstring.length && newstring.length <= 6) {
+      newstring.splice(-3, 0, ",")
+    }
+    newstring = newstring.join('')
+return newstring
   }
 
   render() {
     this.setdata()
 
     return <React.Fragment>
-
         <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
-
-        <div className="card my-3">
-          <div className="card-body">
-            This is some text within a panel body.
-    </div>
-        </div>
+          <div className="card my-3">
+            <div className="card-body d-flex align-items-center justify-content-between">
+              <div>Keywords: {this.state.keyword}</div>
+              <div>
+                {this.toNumberString(this.state.hits) || 0} Total Recipes
+              </div>
+            </div>
+          </div>
 
           <div className="row">
             {this.state.searchlist.map(element => {
               return SearchTabs(element);
+            })}
+          </div>
+          <div className="d-flex align-items-center justify-content-center">
+            {Pagination({
+              total: +this.state.hits,
+              start: +this.state.from,
+              end: +this.state.to
             })}
           </div>
         </div>

@@ -12,7 +12,7 @@ let SearchTabs = (data) => {
             <div className="col-3 my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
               <div className="card card-cascade" style={{ height: "24rem", width: "22rem" }}>
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
-                <div className="card-img-top" style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
+                  <div className="card-img-top" style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
                     <div className="d-flex justify-content-end">
                       <div className="text-center bg-warning p-2" style={{ borderBottomLeftRadius: "15%" }}>
                         <i className="far fa-clock" style={{ fontSize: "2rem", color: "white" }} />
@@ -29,8 +29,14 @@ let SearchTabs = (data) => {
                     From: {source}
                   </h6>
                   <h5 className="card-title">{title}</h5>
+                <div style={{ height: "75px", overflowY: 'scroll', position: 'relative' }}>
+                  {ingr.map((element, index) => {
+                      return (<p><small>{element}</small></p>)
+                  })}               
+                </div>
 
-                  <a href={instructionurl} className="btn btn-primary btn-block">
+
+                  <a href={insturctionurl} target="_blank" className="btn btn-primary btn-block">
                     Go to {source}
                   </a>
                 </div>
