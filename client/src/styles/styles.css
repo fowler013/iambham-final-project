@@ -20,8 +20,8 @@
 
 .home-page-container {
 
-    background-color: #73675b;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    /* background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
     
 }
@@ -29,7 +29,7 @@
 .home-page-container h2 {
     margin-top: 5px;
     text-align: center;
-    color: beige
+    /* color: beige */
 }
 
 .signup-page-container {
@@ -47,9 +47,9 @@
 
 .user-page-container {
 
-    background-color: #73675b;
+    /* background-color: #73675b;
     background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
     
 }
 
@@ -60,6 +60,6 @@
     padding-left: 80px;
     font-family: "Times New Roman", Times, serif;
     text-align: center;
-    background-color: #73675b;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    /* background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
 }
