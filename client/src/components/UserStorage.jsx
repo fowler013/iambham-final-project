@@ -236,6 +236,7 @@ export default class UserStorage extends React.Component {
     render() {
         return (
             <div data-class="UserStorage">
+                <h1 className="user-storage-h1" style={{ textAlign: 'center' }}>My Storage</h1>
                 {this.renderModal('body')}
                 <div className="container">
                     {this.renderModal('button')}
