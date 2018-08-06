@@ -18,8 +18,8 @@ class Home extends React.Component {
       <React.Fragment>
 
 
-        <div className="home-page-container">
-        <h2 id="featured-dishes">Featured Dishes!</h2>
+        <div class="home-page-container">
+        <h1 id="featured-dishes">Featured Dishes!</h1>
         <div
           id="carouselExampleIndicators"
           className="carousel slide container"
