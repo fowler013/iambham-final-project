@@ -15,6 +15,7 @@ import * as ReviewsServices from '../services/reviews';
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
 import moment from 'moment';
+import * as SearchServices from '../services/search';
 
 class Recipe extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class Recipe extends React.Component {
     }
 
     handleNewReview(review) {
-        review.username = 'Jimbob';
+        review.username = 'jimbob1';
         this.setState({
             reviewContainer: [...this.state.reviewContainer, review],
         });
@@ -74,19 +75,25 @@ class Recipe extends React.Component {
             this.gogetdata(recipeid);
         }
     }
-    gogetdata(sending) {
-        fetch(`/api/search/recipe/${sending}`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                //console.log(data);
-                this.setState({
-                    pageid: this.props.match.params.id,
-                    recipe: data[0],
-                });
+    gogetdata(recipeid) {
+        SearchServices.read(recipeid).then((data) => {
+            this.setState({
+                pageid: this.props.match.params.id,
+                recipe: data[0],
             });
+        });
+        //fetch(`/api/search/recipe/${sending}`, {
+        //    method: 'GET',
+        //    headers: { 'Content-Type': 'application/json' },
+        //})
+        //    .then((res) => res.json())
+        //    .then((data) => {
+        //        //console.log(data);
+        //        this.setState({
+        //            pageid: this.props.match.params.id,
+        //            recipe: data[0],
+        //        });
+        //    });
     }
 
     setIngredients(data) {
@@ -387,7 +394,7 @@ class Recipe extends React.Component {
                             }}
                         >
                             {this.state.reviewContainer.map((review) => {
-                                console.log(review);
+                                //console.log(review);
                                 return (
                                     <div
                                         className="review-card-container"
@@ -396,9 +403,7 @@ class Recipe extends React.Component {
                                         <ReviewCard
                                             key={review.id}
                                             image={this.state.recipe.image}
-                                            date={moment(
-                                                review._created,
-                                            ).fromNow()}
+                                            date={review._created}
                                             username={review.username}
                                             review={review.review}
                                             ratings={review.ratings}
