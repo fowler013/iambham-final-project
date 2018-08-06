@@ -12,12 +12,12 @@ import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 let router = Router();
 
 // AUTH ROUTES
-//router.use('/auth', authRouter);
+router.use('/auth', authRouter);
 //router.use(isLoggedIn);
-//router.route('*')
-//    .post(tokenMiddleware, isLoggedIn)
-//    .put(tokenMiddleware, isLoggedIn)
-//    .delete(tokenMiddleware, isLoggedIn);
+router.route('*')
+    .post(tokenMiddleware, isLoggedIn)
+    .put(tokenMiddleware, isLoggedIn)
+    .delete(tokenMiddleware, isLoggedIn);
 /////////
 
 router

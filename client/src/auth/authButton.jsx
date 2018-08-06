@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isLoggedIn } from '../../services/user';
+import { isLoggedIn } from '../services/user';
 
 const AuthButton = (props) => {
     if (isLoggedIn()) {

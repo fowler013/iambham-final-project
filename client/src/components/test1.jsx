@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-router-dom';
+import AuthButton from '../auth/authButton';
 
 class Navigation extends React.Component {
 
@@ -79,7 +80,7 @@ class Navigation extends React.Component {
                             {/* <NavLink to="/user"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink> */}
                             <a className="dropdown-item text-dark" href="#">Favorites</a>
                             <a className="dropdown-item text-dark" href="#">History</a>
-                            <a className="dropdown-item text-dark" href="http://localhost:3000/signup">Logout</a>
+                            <AuthButton />
 
                         </div>
                     </div>

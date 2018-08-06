@@ -9,9 +9,9 @@ import NotFound from './NotFound';
 import Reviews from './Reviews';
 import SignUp from './signup';
 import UserStorage from './UserStorage';
-// import Login from './auth/login';
-// import Logout from './auth/logout';
-// import PrivateRoute from './auth/privateRoute';
+import Login from '../auth/login';
+import Logout from '../auth/logout';
+import PrivateRoute from '../auth/privateRoute';
 
 class App extends Component {
     render() {
@@ -27,10 +27,10 @@ class App extends Component {
                         <Route path="/user/:id" component={User} />
                         <Route path="/storage" component={UserStorage} />
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/" component={Reviews} />
-                        <Route path="*" component={NotFound} />
-                        {/*<Route path="/login" component={Login} />
-                        <Route path="/logout" component={Logout} />*/}
+                        {/*<Route exact path="/" component={Reviews} />*/}
+                        {/*<Route path="*" component={NotFound} />*/}
+                        <Route path="/login" component={Login} />
+                        <Route path="/logout" component={Logout} />
                     </Switch>
                 </Fragment>
             </Router>
