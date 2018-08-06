@@ -37,11 +37,18 @@
    background-color: aqua
 }
 
-#featured-dishes {
+/* #featured-dishes {
     margin-top: 5px;
     text-align: center;
     font-weight: 900
     
-}
+} */
 
+.user-page-container {
+
+    background-color: #73675b;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    
+}
 

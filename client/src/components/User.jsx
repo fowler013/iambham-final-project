@@ -136,6 +136,7 @@ class User extends React.Component {
 
     return (
       <React.Fragment>
+        <div className = "user-page-container">
         <div className="d-flex flex-row">
           <form className="card p-3 formContainer bg-light" style={{ marginTop: '3rem', width: '40rem', height: '37rem' }}>
             <label
@@ -244,6 +245,8 @@ class User extends React.Component {
           </div>
 
         </div>
+        </div>
+        
 
 
       </React.Fragment>
