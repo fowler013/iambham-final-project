@@ -22,8 +22,11 @@ function destroy(id) {
 function readByRecipe(id) {
     return baseService.get(`/api/review/recipe/${id}`);
 }
+function readByUserid(id) {
+    return baseService.get(`/api/review/user/${id}`)
+}
 function recipeIdentify(id) {
     return baseService.get(`/api/search/${id}`)
 }
 
-export { all, read, create, update, destroy, readByRecipe, recipeIdentify };
+export { all, read, create, update, destroy, readByRecipe, recipeIdentify, readByUserid };

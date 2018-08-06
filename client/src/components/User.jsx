@@ -8,6 +8,9 @@ import {
   NavLink
 } from "react-router-dom";
 import * as UserService from '../services/users';
+import ReviewCard from "./ReviewCard";
+import * as ReviewService from '../services/reviews';
+import moment from 'moment'
 
 class User extends React.Component {
   constructor(props) {
@@ -16,6 +19,8 @@ class User extends React.Component {
 
     this.state = {
       userContainer: [],
+      reviewContainer:[],
+      
       firstName: '',
       lastName: '',
       email: '',
@@ -67,6 +72,29 @@ class User extends React.Component {
         userContainer: [user]
       })
     })
+    ReviewService.readByUserid(this.props.match.params.id).then((review) => {
+      console.log(review)
+      Object.values(review).forEach((review => {
+        //console.log(review)
+        this.setState({
+          reviewContainer: [...this.state.reviewContainer, review]
+        })
+      }))
+    })
+  }
+
+  getUserReview() {
+   fetch(`/api/reviews/${this.props.match.params.id}`)
+     .then((res) => {
+       return res.json()
+     }).then((review) => {
+       console.log(review)
+       this.setState({
+         review: review
+       });
+     }).catch((err) => {
+       console.log(err);
+     });
   }
 
 
@@ -218,28 +246,28 @@ class User extends React.Component {
           })}
           {/* this is the reviews section */}
           <div className="card card-cascade wider" style={{ marginTop: '3rem', width: '24rem', height: "30rem" }}>
-
-            {/* <!-- Card image --> */}
-            <div className="view view-cascade gradient-card-header peach-gradient" style={{ backgroundColor: "#fc724c" }}>
-
-              {/* <!-- Title --> */}
-              <h2 className="card-header-title mb-3">Reviews</h2>
-              {/* <!-- Text --> */}
-              <p className="mb-0"><i className="fa fa-calendar mr-2"></i>26.07.2017</p>
-
+          <div className="card" style={{ width: '100%' }}>
+          
+            <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll', width: '100%' }}>
+              {this.state.reviewContainer.map((review) => {
+                console.log(review)
+                return (
+                  <div className="review-card-container" style={{ width: '90%', margin: 'auto' }}>
+                    <ReviewCard
+                    key={review.id}
+                    // image={this.state.recipe.image}
+                    date={moment(review._created).fromNow()}
+                    username={review.username}
+                    review={review.review}
+                    ratings={review.ratings}
+                    />
+                  </div>
+                )
+              })}
+              {/*<a className="btn btn-outline-primary">Go somewhere</a>*/}
             </div>
-
-            {/* <!-- Card content --> */}
-            <div className="card-body card-body-cascade text-center">
-
-              {/* <!-- Text --> */}
-              <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex minis recusandae. Facere modi sunt, quod quibusdam dignissimos neque rem nihil ratione est placeat vel, natus non quos laudantium veritatis sequi.Ut enim ad minima veniam, quis nostrum.</p>
-              {/* <!-- Link --> */}
-              <a href="#!" className="orange-text d-flex flex-row-reverse p-2">
-                <h5 className="waves-effect waves-light">Read more<i className="fa fa-angle-double-right ml-2"></i></h5>
-              </a>
-
-            </div>
+          </div>
+            
 
 
           </div>
