@@ -102,59 +102,66 @@ class Home extends React.Component {
               <span className="sr-only">Next</span>
             </a>
           </div>
+          <div id="todays-recipes-container">
+            <h2 id="todays-recipes" style= {{padding: "35px"}}>Today's Recipes</h2>
 
-          <h2>Todays Recipes</h2>
-
-          <div className="card-deck">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                  This is a longer card rating This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </p>
+            <div className="card-deck">
+              <div className="card">
+                <img
+                  className="card-img-top"
+                  src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg"
+                  alt="Card image cap"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">
+                    This is a longer card rating This content is a little bit
+                    longer.
+                  </p>
+                  <p className="card-text">
+                    <small className="text-muted">
+                      Last updated 3 mins ago
+                    </small>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="http://a57.foxnews.com/media2.foxnews.com/2016/06/09/640/360/060916_chew_crispychicken_1280.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                  This card has supporting text below as a natural lead-in to
-                  additional content.
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </p>
+              <div className="card">
+                <img
+                  className="card-img-top"
+                  src="http://a57.foxnews.com/media2.foxnews.com/2016/06/09/640/360/060916_chew_crispychicken_1280.jpg"
+                  alt="Card image cap"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">
+                    This card has supporting text below as a natural lead-in to
+                    additional content.
+                  </p>
+                  <p className="card-text">
+                    <small className="text-muted">
+                      Last updated 3 mins ago
+                    </small>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="http://www.fnstatic.co.uk/images/content/package/100-middle-eastern-inspired-recipes-you-can-cook-at-home.jpeg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                  This is a wider card rating This card has even longer content
-                  than the first to show that equal height action.
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </p>
+              <div className="card">
+                <img
+                  className="card-img-top"
+                  src="http://www.fnstatic.co.uk/images/content/package/100-middle-eastern-inspired-recipes-you-can-cook-at-home.jpeg"
+                  alt="Card image cap"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">
+                    This is a wider card rating This card has even longer
+                    content than the first to show that equal height action.
+                  </p>
+                  <p className="card-text">
+                    <small className="text-muted">
+                      Last updated 3 mins ago
+                    </small>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -58,8 +58,15 @@
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 80px;
-    font-family: "Times New Roman", Times, serif;
+    /* font-family: "Times New Roman", Times, serif; */
     text-align: center;
     /* background-color: #73675b;
     background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png"); */
+}
+
+#todays-recipes {
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 900;
+    /* font-size: 600% */
 }
