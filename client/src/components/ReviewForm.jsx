@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import * as ReviewsServices from '../services/reviews';
-import './styles/ReviewCard.css';
 
 const customStyles = {
     content: {
