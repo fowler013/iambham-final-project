@@ -8,7 +8,8 @@ import {
   NavLink
 } from "react-router-dom";
 import SearchTabs from "./Searchtabs";
-import Pagination from "./SearchPagination"
+import Pagination from "./SearchPagination";
+import * as SearchServices from '../services/search';
 
 class Search extends React.Component {
   constructor(props) {
@@ -31,12 +32,8 @@ class Search extends React.Component {
   }
 
   gogetdata(sending) {
-    fetch(`/api/search/?${sending}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(res => res.json())
-      .then(data => {
+    SearchServices.readSearch(sending)
+      .then((data) => {
         this.setState({
           pageid: this.props.match.params.id,
           keyword: data.q,
