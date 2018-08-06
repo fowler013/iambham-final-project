@@ -82,7 +82,7 @@ class Recipe extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           recipe: data[0]
@@ -233,25 +233,28 @@ class Recipe extends React.Component {
               </div>
             </div>
           </div>
-          <div className="card">
+          <div className="card" style={{ width: '100%' }}>
             <h3 className="card-header primary-color white-text">
               Reviews<span>
               <ReviewForm 
                 recipe={this.state.recipe.label}
+                recipeid={this.props.match.params.id}
               /></span>
             </h3>
-            <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll' }}>
-              <h4 className="card-title">Recipe Reviews!</h4>
+            <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll', width: '100%' }}>
               {this.state.reviewContainer.map((review) => {
                 //console.log(review)
                 return (
-                  <ReviewCard 
-                  key={review.id}
-                  date={moment(review._created).fromNow()}
-                  username={review.username}
-                  review={review.review}
-                  ratings={review.ratings}
-                  />
+                  <div className="review-card-container" style={{ width: '90%', margin: 'auto' }}>
+                    <ReviewCard
+                    key={review.id}
+                    image={this.state.recipe.image}
+                    date={moment(review._created).fromNow()}
+                    username={review.username}
+                    review={review.review}
+                    ratings={review.ratings}
+                    />
+                  </div>
                 )
               })}
               {/*<a className="btn btn-outline-primary">Go somewhere</a>*/}

@@ -22,15 +22,15 @@ class Home extends React.Component {
         <h2 id="featured-dishes">Featured Dishes!</h2>
         <div
           id="carouselExampleIndicators"
-          class="carousel slide container"
+          className="carousel slide container"
           style={{height: "800px", margin: "0 auto"}}
           data-ride="carousel"
         >
-          <ol class="carousel-indicators">
+          <ol className="carousel-indicators">
             <li
               data-target="#carouselExampleIndicators"
               data-slide-to="0"
-              class="active"
+              className="active"
             />
             <li data-target="#carouselExampleIndicators" data-slide-to="1" />
             <li data-target="#carouselExampleIndicators" data-slide-to="2" />
@@ -38,43 +38,43 @@ class Home extends React.Component {
             <li data-target="#carouselExampleIndicators" data-slide-to="4" />
             <li data-target="#carouselExampleIndicators" data-slide-to="5" />
           </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?cs=srgb&dl=food-dinner-lunch-70497.jpg&fm=jpg" alt="First slide" />
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img className="d-block w-100" src="https://pioneerwoman.files.wordpress.com/2012/08/7771464864_07e1e3d994_z.jpg?w=630&h=419" alt="First slide" />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?cs=srgb&dl=food-salad-healthy-46239.jpg&fm=jpg" alt="Second slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg" alt="Second slide" />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="http://handsongourmet.com/wp-content/uploads/2012/08/HandsOnGourmet_maincourse.jpg" alt="Third slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src="http://handsongourmet.com/wp-content/uploads/2012/08/HandsOnGourmet_maincourse.jpg" alt="Third slide" />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="http://www.acropolispoint.com/wp-content/uploads/2016/07/point-a-restaurant-JSfood-6-1024x680.jpg" alt="Fourth slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src="http://www.acropolispoint.com/wp-content/uploads/2016/07/point-a-restaurant-JSfood-6-1024x680.jpg" alt="Fourth slide" />
             </div>
             <div class="carousel-item">
               <img class="d-block w-100" src="https://i.amz.mshcdn.com/usVe3ZNxKuIJFALuZ136W9tbLCU=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F471028%2F94cfb19f-f5d8-4263-beee-aa21826a7b3f.jpeg" alt="Fifth slide" />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="https://d3lawkbdj6aabd.cloudfront.net/singleplatform/image/upload/c_fit/4170f62f828bb389b46f8365a93cf54ec9133be3.jpg" alt="Sixth slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src="https://d3lawkbdj6aabd.cloudfront.net/singleplatform/image/upload/c_fit/4170f62f828bb389b46f8365a93cf54ec9133be3.jpg" alt="Sixth slide" />
             </div>
           </div>
           <a
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             href="#carouselExampleIndicators"
             role="button"
             data-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true" />
-            <span class="sr-only">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
           </a>
           <a
-            class="carousel-control-next"
+            className="carousel-control-next"
             href="#carouselExampleIndicators"
             role="button"
             data-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true" />
-            <span class="sr-only">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+            <span className="sr-only">Next</span>
           </a>
         </div>
 

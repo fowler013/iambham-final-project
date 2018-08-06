@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import './styles/modal.css';
+import * as ReviewsServices from '../services/reviews';
 
 const customStyles = {
     content: {
@@ -16,13 +16,14 @@ const customStyles = {
 };
 
 export default class ReviewForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             modalIsOpen: false,
             data: {
-                recipeid: '',
+                userid: 2,
+                recipeid: this.props.recipeid,
                 ratings: '',
                 review: '',
             },
@@ -31,20 +32,28 @@ export default class ReviewForm extends Component {
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
-    componentDidMount() {}
     // CONTENT CHANGING FUNCTIONS
-    handleDirectorChange(director) {
-        let data = Object.assign({}, this.state.data, { director });
+    handleContentChange(review) {
+        let data = Object.assign({}, this.state.data, { review });
         this.setState({ data });
-    };
-    //handlePosterChange(poster) {
-    //    let data = Object.assign({}, this.state.data, { poster });
-    //    this.setState({ data });
-    //};
+    }
+    handleRatingChange(ratings) {
+        let data = Object.assign({}, this.state.data, { ratings });
+        this.setState({ data });
+    }
     //handleTitleChange(title) {
     //    let data = Object.assign({}, this.state.data, { title });
     //    this.setState({ data });
     //};
+    handleReviewSubmit() {
+        let { recipeid, userid, review, ratings } = this.state.data;
+        console.log(recipeid);
+        console.log(review);
+        console.log(userid);
+        console.log(ratings);
+        ReviewsServices.create(this.state.data);
+        location.reload();
+    }
     // MODAL METHODS ****
     openModal() {
         this.setState({ modalIsOpen: true });
@@ -77,37 +86,60 @@ export default class ReviewForm extends Component {
                     contentLabel="Example Modal"
                 >
                     <h2
-                        className="modal-header bg-primary"
+                        className="modal-header"
+                        style={{ background: '#f80' }}
                         ref={(subtitle) => (this.subtitle = subtitle)}
                     >
                         {this.props.recipe}
                     </h2>
-                    <form>
+                    <form action="/" method="POST">
                         <div className="form-group">
                             <label
-                                className="form-label-director"
+                                className="form-label-content"
                                 htmlFor="exampleFormControlInput1"
                             >
-                                Movie Director
+                                Review Content
                             </label>
                             <input
                                 className="form-control"
                                 id="exampleFormControlInput1"
-                                placeholder="Edit movie director"
+                                placeholder="Enter your review here!"
                                 onChange={(e) => {
-                                    this.handleDirectorChange(e.target.value);
+                                    this.handleContentChange(e.target.value);
                                 }}
-                                name="director"
+                                name="content"
                             />
                         </div>
+                        <p><span className="star-symbol">&#9733;</span> Recipe Rating <span className="star-symbol">&#9733;</span></p>
                         <div className="ratings">
                             <div className="form-check form-check-inline">
                                 <input
                                     className="form-check-input"
                                     type="radio"
                                     name="inlineRadioOptions"
+                                    id="inlineRadio0"
+                                    value="0"
+                                    onChange={(e) => {
+                                        this.handleRatingChange(e.target.value);
+                                    }}
+                                />
+                                <label
+                                    className="form-check-label"
+                                    for="inlineRadio4"
+                                >
+                                    0
+                                </label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
                                     id="inlineRadio1"
-                                    value="option1"
+                                    value="1"
+                                    onChange={(e) => {
+                                        this.handleRatingChange(e.target.value);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label"
@@ -122,7 +154,10 @@ export default class ReviewForm extends Component {
                                     type="radio"
                                     name="inlineRadioOptions"
                                     id="inlineRadio2"
-                                    value="option2"
+                                    value="2"
+                                    onChange={(e) => {
+                                        this.handleRatingChange(e.target.value);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label"
@@ -137,7 +172,10 @@ export default class ReviewForm extends Component {
                                     type="radio"
                                     name="inlineRadioOptions"
                                     id="inlineRadio3"
-                                    value="option3"
+                                    value="3"
+                                    onChange={(e) => {
+                                        this.handleRatingChange(e.target.value);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label"
@@ -152,7 +190,10 @@ export default class ReviewForm extends Component {
                                     type="radio"
                                     name="inlineRadioOptions"
                                     id="inlineRadio4"
-                                    value="option4"
+                                    value="4"
+                                    onChange={(e) => {
+                                        this.handleRatingChange(e.target.value);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label"
@@ -167,7 +208,10 @@ export default class ReviewForm extends Component {
                                     type="radio"
                                     name="inlineRadioOptions"
                                     id="inlineRadio5"
-                                    value="option5"
+                                    value="5"
+                                    onChange={(e) => {
+                                        this.handleRatingChange(e.target.value);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label"
@@ -177,10 +221,11 @@ export default class ReviewForm extends Component {
                                 </label>
                             </div>
                         </div>
+                        <br/>
                         <a
                             className="modal-submit-btn"
                             onClick={() => {
-                                this.handleMovieUpdate();
+                                this.handleReviewSubmit();
                             }}
                         >
                             Submit
