@@ -16,7 +16,6 @@ export default class UserStorage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(Promise);
         Promise.all([
             userStorageService.all(12),
             storageCategoriesService.all(),
