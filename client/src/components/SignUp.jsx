@@ -61,7 +61,7 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div class="signup-page-container"
+        <div className="signup-page-container"
         style={{backgroundColor: "aqua"}}>
           <div
             className="position-absolute"

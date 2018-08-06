@@ -30,7 +30,7 @@ let SearchTabs = (data) => {
                   </h6>
                   <h5 className="card-title">{title}</h5>
 
-                  <a href={insturctionurl} className="btn btn-primary btn-block">
+                  <a href={instructionurl} className="btn btn-primary btn-block">
                     Go to {source}
                   </a>
                 </div>

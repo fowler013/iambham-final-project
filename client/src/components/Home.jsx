@@ -19,7 +19,7 @@ class Home extends React.Component {
 
 
         <div class="home-page-container">
-        <h2 id="featured-dishes">Featured Dishes!</h2>
+        <h1 id="featured-dishes">Featured Dishes!</h1>
         <div
           id="carouselExampleIndicators"
           className="carousel slide container"
