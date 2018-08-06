@@ -2,26 +2,11 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import * as ReviewsServices from '../services/reviews';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        border: '2px solid black',
-        borderRadius: '50px',
-        width: '50em',
-    },
-};
-
 export default class ReviewForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            modalIsOpen: false,
             data: {
                 userid: 2,
                 recipeid: this.props.recipeid,
@@ -29,9 +14,6 @@ export default class ReviewForm extends Component {
                 review: '',
             },
         };
-        this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
     // CONTENT CHANGING FUNCTIONS
     handleContentChange(review) {
@@ -42,10 +24,6 @@ export default class ReviewForm extends Component {
         let data = Object.assign({}, this.state.data, { ratings });
         this.setState({ data });
     }
-    //handleTitleChange(title) {
-    //    let data = Object.assign({}, this.state.data, { title });
-    //    this.setState({ data });
-    //};
     handleReviewSubmit() {
         let { recipeid, userid, review, ratings } = this.state.data;
         console.log(recipeid);
@@ -55,184 +33,58 @@ export default class ReviewForm extends Component {
         ReviewsServices.create(this.state.data);
         location.reload();
     }
-    // MODAL METHODS ****
-    openModal() {
-        this.setState({ modalIsOpen: true });
-    }
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        this.subtitle.style.color = '#f00';
-    }
-    closeModal() {
-        this.setState({ modalIsOpen: false });
-    }
     render() {
         return (
             <div className="modal-container">
                 <button
-                    className="btn btn-outline-light"
                     type="button"
-                    style={{ float: 'right' }}
-                    onClick={() => {
-                        this.openModal();
-                    }}
+                    className="btn btn-outline-light"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
                 >
                     Add Review for this Recipe
                 </button>
-                <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
-                    onRequestClose={this.closeModal}
-                    style={customStyles}
-                    contentLabel="Example Modal"
+
+                <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
                 >
-                    <h2
-                        className="modal-header"
-                        style={{ background: '#f80' }}
-                        ref={(subtitle) => (this.subtitle = subtitle)}
-                    >
-                        {this.props.recipe}
-                    </h2>
-                    <form action="/" method="POST">
-                        <div className="form-group">
-                            <label
-                                className="form-label-content"
-                                htmlFor="exampleFormControlInput1"
-                            >
-                                Review Content
-                            </label>
-                            <input
-                                className="form-control"
-                                id="exampleFormControlInput1"
-                                placeholder="Enter your review here!"
-                                onChange={(e) => {
-                                    this.handleContentChange(e.target.value);
-                                }}
-                                name="content"
-                            />
-                        </div>
-                        <p><span className="star-symbol">&#9733;</span> Recipe Rating <span className="star-symbol">&#9733;</span></p>
-                        <div className="ratings">
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio0"
-                                    value="0"
-                                    onChange={(e) => {
-                                        this.handleRatingChange(e.target.value);
-                                    }}
-                                />
-                                <label
-                                    className="form-check-label"
-                                    for="inlineRadio4"
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel" style={{ color: 'black' }}>
+                                  {this.props.recipe}
+                                </h5>
+                                
+                                <button
+                                    type="button"
+                                    className="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
                                 >
-                                    0
-                                </label>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio1"
-                                    value="1"
-                                    onChange={(e) => {
-                                        this.handleRatingChange(e.target.value);
-                                    }}
-                                />
-                                <label
-                                    className="form-check-label"
-                                    for="inlineRadio1"
+                            <div className="modal-body">...</div>
+                            <div className="modal-footer">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    data-dismiss="modal"
                                 >
-                                    1
-                                </label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio2"
-                                    value="2"
-                                    onChange={(e) => {
-                                        this.handleRatingChange(e.target.value);
-                                    }}
-                                />
-                                <label
-                                    className="form-check-label"
-                                    for="inlineRadio2"
-                                >
-                                    2
-                                </label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio3"
-                                    value="3"
-                                    onChange={(e) => {
-                                        this.handleRatingChange(e.target.value);
-                                    }}
-                                />
-                                <label
-                                    className="form-check-label"
-                                    for="inlineRadio3"
-                                >
-                                    3
-                                </label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio4"
-                                    value="4"
-                                    onChange={(e) => {
-                                        this.handleRatingChange(e.target.value);
-                                    }}
-                                />
-                                <label
-                                    className="form-check-label"
-                                    for="inlineRadio4"
-                                >
-                                    4
-                                </label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio5"
-                                    value="5"
-                                    onChange={(e) => {
-                                        this.handleRatingChange(e.target.value);
-                                    }}
-                                />
-                                <label
-                                    className="form-check-label"
-                                    for="inlineRadio5"
-                                >
-                                    5
-                                </label>
+                                    Close
+                                </button>
+                                <button type="button" className="btn btn-primary">
+                                    Submit
+                                </button>
                             </div>
                         </div>
-                        <br/>
-                        <a
-                            className="modal-submit-btn"
-                            onClick={() => {
-                                this.handleReviewSubmit();
-                            }}
-                        >
-                            Submit
-                        </a>
-                    </form>
-                </Modal>
+                    </div>
+                </div>
             </div>
         );
     }
