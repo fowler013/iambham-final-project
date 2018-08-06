@@ -246,6 +246,9 @@ class User extends React.Component {
           })}
           {/* this is the reviews section */}
           <div className="card card-cascade wider" style={{ marginTop: '3rem', width: '42rem', height: "31rem" }}>
+          <div className = "card-review" style = {{ backgroundColor: '#fc724c'}}>
+             <h3 >Reviews</h3>
+          </div>
           <div className="card" style={{ width: '100%' }}>
           
             <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll', width: '100%' }}>
