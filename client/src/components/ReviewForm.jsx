@@ -11,6 +11,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         border: '2px solid black',
+        borderRadius: '50px',
         width: '50em',
     },
 };
