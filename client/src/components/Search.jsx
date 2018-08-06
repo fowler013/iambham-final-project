@@ -24,21 +24,21 @@ class Search extends React.Component {
   }
 
   setdata() {
-    let search = this.props.location.pathname.slice(8);
+    let search = this.props.match.params.id;
     if (search !== this.state.pageid) {
       this.gogetdata(search);
     }
   }
 
   gogetdata(sending) {
-    fetch(`/api/search/${sending}`, {
+    fetch(`/api/search/?${sending}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          pageid: this.props.location.pathname.slice(8),
+          pageid: this.props.match.params.id,
           keyword: data.q,
           hits: data.count,
           searchlist: data.hits,

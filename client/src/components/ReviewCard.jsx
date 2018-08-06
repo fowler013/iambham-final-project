@@ -46,6 +46,6 @@ export default class ReviewCard extends Component {
                     </a>
                 </div>
             </div>
-        );
+        )
     }
 }

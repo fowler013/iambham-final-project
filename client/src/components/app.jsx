@@ -22,7 +22,7 @@ class App extends Component {
                     <div style={{ height: '4.666em' }} />
                     <Switch>
                         <Route exact path="/signup" component={SignUp} />
-                        <Route path="/search/" component={Search} />
+                        <Route path="/search/:id" component={Search} />
                         <Route path="/recipe/:id" component={Recipe} />
                         <Route path="/user/:id" component={User} />
                         <Route path="/storage" component={UserStorage} />
