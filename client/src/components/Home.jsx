@@ -18,7 +18,7 @@ class Home extends React.Component {
       <React.Fragment>
 
 
-        <div class="home-page-container">
+        <div className="home-page-container">
         <h2 id="featured-dishes">Featured Dishes!</h2>
         <div
           id="carouselExampleIndicators"
@@ -51,8 +51,8 @@ class Home extends React.Component {
             <div className="carousel-item">
               <img className="d-block w-100" src="http://www.acropolispoint.com/wp-content/uploads/2016/07/point-a-restaurant-JSfood-6-1024x680.jpg" alt="Fourth slide" />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="https://i.amz.mshcdn.com/usVe3ZNxKuIJFALuZ136W9tbLCU=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F471028%2F94cfb19f-f5d8-4263-beee-aa21826a7b3f.jpeg" alt="Fifth slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src="https://i.amz.mshcdn.com/usVe3ZNxKuIJFALuZ136W9tbLCU=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F471028%2F94cfb19f-f5d8-4263-beee-aa21826a7b3f.jpeg" alt="Fifth slide" />
             </div>
             <div className="carousel-item">
               <img className="d-block w-100" src="https://d3lawkbdj6aabd.cloudfront.net/singleplatform/image/upload/c_fit/4170f62f828bb389b46f8365a93cf54ec9133be3.jpg" alt="Sixth slide" />
