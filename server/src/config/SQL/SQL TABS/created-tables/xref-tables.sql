@@ -47,7 +47,7 @@ drop table if exists UserStorage;
 create table UserStorage (
 id int not null auto_increment primary key,
 userid int not null,
-storageid int not null,
+item varchar(256) not null,
 _created timestamp default current_timestamp
 );
 -- TOKENS TABLE

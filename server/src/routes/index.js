@@ -3,6 +3,7 @@ import searchRouter from './api-search';
 import userRouter from './users';
 import reviewRouter from './reviews';
 import favoriteRouter from './favorites';
+import userStorageRouter from './storage';
 
 import authRouter from './auth';
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
@@ -18,9 +19,11 @@ let router = Router();
 //    .delete(tokenMiddleware, isLoggedIn);
 /////////
 
-router.use('/search', searchRouter);
-router.use('/user', userRouter);
-router.use('/review', reviewRouter);
-router.use('/favorite', favoriteRouter);
+router
+    .use('/search', searchRouter)
+    .use('/user', userRouter)
+    .use('/review', reviewRouter)
+    .use('/favorite', favoriteRouter)
+    .use('/storage', userStorageRouter);
 
 export default router;
