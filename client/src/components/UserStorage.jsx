@@ -21,9 +21,6 @@ export default class UserStorage extends React.Component {
             userStorageService.all(12),
             storageCategoriesService.all(),
         ]).then(([items, categories]) => {
-            console.log(items);
-            console.log(categories);
-
             this.setState({
                 items,
                 categories,
@@ -49,54 +46,65 @@ export default class UserStorage extends React.Component {
         });
     }
 
-    submit() {
-        let addItem = {
-            userid: 12,
-            categoryid: this.state.selectValue,
-            item: this.state.itemName,
-        };
-
-        let { categoryname } = this.state.categories.find((category) => {
-            return category.id === +this.state.selectValue;
-        });
-
-        userStorageService.create(addItem).then((idObj) => {
-            const el = findDOMNode(this.refs.modal);
-            $(el).modal('hide');
-
-            return this.setState({
-                itemName: '',
-                items: [
-                    ...this.state.items,
-                    Object.assign({}, addItem, {
-                        id: idObj.id,
-                        categoryname,
-                    }),
-                ],
-            });
-        });
-    }
-
-    handleSelect(category) {
-        this.setState({
-            selectValue: category,
-        });
-    }
-
-    handleSort(sortBy) {
-        let sorted = this.state.items.sort((a, b) => {
-            if (a[sortBy] < b[sortBy]) return -1;
-            if (a[sortBy] > b[sortBy]) return 1;
-            return 0;
-        });
-        this.setState({
-            items: sorted,
-        });
-    }
-
-    render() {
+    renderTable() {
         return (
-            <div data-class="UserStorage">
+            <table>
+                <thead>
+                    <tr>
+                        <th
+                            onClick={() => {
+                                this.handleSort('item');
+                            }}
+                        >
+                            Name
+                        </th>
+                        <th
+                            onClick={() => {
+                                this.handleSort('categoryid');
+                            }}
+                        >
+                            Category
+                        </th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.items.map((item) => {
+                        return (
+                            <tr key={item.id}>
+                                <td>{item.item}</td>
+                                <td>{item.categoryname}</td>
+                                <td>
+                                    <i
+                                        className="fa fa-trash"
+                                        aria-hidden="true"
+                                        onClick={() => {
+                                            this.handleDelete(item.id);
+                                        }}
+                                    />
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        );
+    }
+
+    renderModal(piece) {
+        if (piece === 'button') {
+            return (
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+                >
+                    ADD ITEM
+                </button>
+            );
+        } else if (piece === 'body') {
+            return (
                 <div
                     className="modal fade"
                     id="exampleModalCenter"
@@ -177,55 +185,62 @@ export default class UserStorage extends React.Component {
                         </div>
                     </div>
                 </div>
+            );
+        }
+    }
+
+    submit() {
+        let addItem = {
+            userid: 12,
+            categoryid: this.state.selectValue,
+            item: this.state.itemName,
+        };
+
+        let { categoryname } = this.state.categories.find((category) => {
+            return category.id === +this.state.selectValue;
+        });
+
+        userStorageService.create(addItem).then((idObj) => {
+            const el = findDOMNode(this.refs.modal);
+            $(el).modal('hide');
+
+            return this.setState({
+                itemName: '',
+                items: [
+                    ...this.state.items,
+                    Object.assign({}, addItem, {
+                        id: idObj.id,
+                        categoryname,
+                    }),
+                ],
+            });
+        });
+    }
+
+    handleSelect(category) {
+        this.setState({
+            selectValue: category,
+        });
+    }
+
+    handleSort(sortBy) {
+        let sorted = this.state.items.sort((a, b) => {
+            if (a[sortBy] < b[sortBy]) return -1;
+            if (a[sortBy] > b[sortBy]) return 1;
+            return 0;
+        });
+        this.setState({
+            items: sorted,
+        });
+    }
+
+    render() {
+        return (
+            <div data-class="UserStorage">
+                {this.renderModal('body')}
                 <div className="container">
-                    <button
-                        type="button"
-                        className="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#exampleModalCenter"
-                    >
-                        ADD ITEM
-                    </button>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th
-                                    onClick={() => {
-                                        this.handleSort('item');
-                                    }}
-                                >
-                                    Name
-                                </th>
-                                <th
-                                    onClick={() => {
-                                        this.handleSort('categoryid');
-                                    }}
-                                >
-                                    Category
-                                </th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.state.items.map((item) => {
-                                return (
-                                    <tr key={item.id}>
-                                        <td>{item.item}</td>
-                                        <td>{item.categoryname}</td>
-                                        <td>
-                                            <i
-                                                className="fa fa-trash"
-                                                aria-hidden="true"
-                                                onClick={() => {
-                                                    this.handleDelete(item.id);
-                                                }}
-                                            />
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
+                    {this.renderModal('button')}
+                    {this.renderTable()}
                 </div>
             </div>
         );
