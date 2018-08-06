@@ -175,7 +175,7 @@ export default class UserStorage extends React.Component {
                                     type="button"
                                     className="btn btn-primary"
                                     onClick={() => {
-                                        this.submit();
+                                        this.handleSubmit();
                                     }}
                                 >
                                     SUBMIT
@@ -188,7 +188,7 @@ export default class UserStorage extends React.Component {
         }
     }
 
-    submit() {
+    handleSubmit() {
         let addItem = {
             userid: 12,
             categoryid: this.state.selectValue,
