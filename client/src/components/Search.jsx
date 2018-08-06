@@ -14,30 +14,29 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageid: '0',
-      keyword: '',
-      hits: '',
+      pageid: "0",
+      keyword: "",
+      hits: "",
       searchlist: [],
-      from: '0',
-      to: '20'
-    }
+      from: "0",
+      to: "20"
+    };
   }
 
   setdata() {
-    let search = this.props.location.pathname.slice(8)
+    let search = this.props.location.pathname.slice(8);
     if (search !== this.state.pageid) {
-      this.gogetdata(this.queryStringToJSON(search))
+      this.gogetdata(search);
     }
   }
 
-
   gogetdata(sending) {
-    fetch('/api/search/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: sending
-    }).then
-      (res => res.json()).then((data) => {
+    fetch(`/api/search/${sending}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(res => res.json())
+      .then(data => {
         this.setState({
           pageid: this.props.location.pathname.slice(8),
           keyword: data.q,
@@ -45,57 +44,29 @@ class Search extends React.Component {
           searchlist: data.hits,
           from: data.from,
           to: data.to
-        })
-      })
+        });
+      });
   }
 
-  queryStringToJSON(str) {
-    if (str.charAt(0) === "?") {
-      str = str.slice(1);
-    }
-
-    let pairsArray = str.split("&");
-    console.log(pairsArray);
-
-    let obj = pairsArray.reduce((acc, curr) => {
-      let [key, value] = curr.split("=");
-
-
-      if (value.indexOf(",") > -1) {
-        acc[key] = value.split(",");
-        return acc;
-      }
-
-      acc[key] = [value];
-
-      return acc;
-    }, {});
-
-    console.log(obj)
-    if(!obj.from) {
-      obj.from=['0']
-      obj.to=['20']
-    }
-    return JSON.stringify(obj);
-  }
   toNumberString(element) {
-    let newstring = []
-   newstring = element.toString().split('')
+    let newstring = [];
+    newstring = element.toString().split("");
     if (newstring.length >= 7) {
-      newstring.splice(-3, 0, ",")
-      newstring.splice(-7, 0, ",")
+      newstring.splice(-3, 0, ",");
+      newstring.splice(-7, 0, ",");
     }
     if (4 <= newstring.length && newstring.length <= 6) {
-      newstring.splice(-3, 0, ",")
+      newstring.splice(-3, 0, ",");
     }
-    newstring = newstring.join('')
-return newstring
+    newstring = newstring.join("");
+    return newstring;
   }
 
   render() {
-    this.setdata()
+    this.setdata();
 
-    return <React.Fragment>
+    return (
+      <React.Fragment>
         <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
           <div className="card my-3">
             <div className="card-body d-flex align-items-center justify-content-between">
@@ -119,7 +90,8 @@ return newstring
             })}
           </div>
         </div>
-      </React.Fragment>;
+      </React.Fragment>
+    );
   }
 }
 
