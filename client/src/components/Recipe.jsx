@@ -84,7 +84,7 @@ class Recipe extends React.Component {
       .then(data => {
         //console.log(data);
         this.setState({
-          pageid: this.props.location.pathname.slice(8),
+          pageid: this.props.match.params.id,
           recipe: data[0]
         });
       });
