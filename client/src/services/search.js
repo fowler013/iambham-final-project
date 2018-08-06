@@ -1,5 +1,7 @@
-// import * as baseService from './base';
+import * as baseService from './base';
 
-// function read() {
-//     return baseService.get(`/api/search/`)
-// }
+function read(recipeid) {
+    return baseService.get(`/api/search/${recipeid}`)
+}
+
+export { read };
