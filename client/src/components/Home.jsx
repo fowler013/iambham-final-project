@@ -18,7 +18,7 @@ class Home extends React.Component {
       <React.Fragment>
 
 
-        <div class="page-container">
+        <div class="home-page-container">
         <h2 id="featured-dishes">Featured Dishes!</h2>
         <div
           id="carouselExampleIndicators"
@@ -52,7 +52,7 @@ class Home extends React.Component {
               <img class="d-block w-100" src="http://www.acropolispoint.com/wp-content/uploads/2016/07/point-a-restaurant-JSfood-6-1024x680.jpg" alt="Fourth slide" />
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="http://honolulumagazine-images.dashdigital.com/images/2016/06-16/moena-cafe.jpg?ver=1466468813" alt="Fifth slide" />
+              <img class="d-block w-100" src="https://i.amz.mshcdn.com/usVe3ZNxKuIJFALuZ136W9tbLCU=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F471028%2F94cfb19f-f5d8-4263-beee-aa21826a7b3f.jpeg" alt="Fifth slide" />
             </div>
             <div class="carousel-item">
               <img class="d-block w-100" src="https://d3lawkbdj6aabd.cloudfront.net/singleplatform/image/upload/c_fit/4170f62f828bb389b46f8365a93cf54ec9133be3.jpg" alt="Sixth slide" />
@@ -134,7 +134,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <h3>Reviews</h3>
+        <h2>Reviews</h2>
         <div className="reviewcontainer">
           <div className="row">
             <div className="col-sm-6">
