@@ -43,7 +43,7 @@ class Home extends React.Component {
               <div className="carousel-item active">
                 <img
                   className="d-block w-100"
-                  src="https://pioneerwoman.files.wordpress.com/2012/08/7771464864_07e1e3d994_z.jpg?w=630&h=419"
+                  src="http://www.thegourmetreview.com/dine/wp-content/uploads/2013/05/mom-salad-shot.jpg"
                   alt="First slide"
                 />
               </div>
@@ -64,7 +64,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <img
                   className="d-block w-100"
-                  src="http://www.acropolispoint.com/wp-content/uploads/2016/07/point-a-restaurant-JSfood-6-1024x680.jpg"
+                  src="http://www.gourmetfoodshop.co.za/wp-includes/backgrounds/bg2.jpg"
                   alt="Fourth slide"
                 />
               </div>
