@@ -77,7 +77,7 @@ class User extends React.Component {
       Object.values(review).forEach((review => {
         //console.log(review)
         this.setState({
-          reviewContainer: [...this.state.reviewContainer, review]
+          reviewContainer:[...this.state.reviewContainer, review]
         })
       }))
     })
