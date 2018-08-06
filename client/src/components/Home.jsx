@@ -40,10 +40,10 @@ class Home extends React.Component {
           </ol>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="d-block w-100" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?cs=srgb&dl=food-dinner-lunch-70497.jpg&fm=jpg" alt="First slide" />
+              <img className="d-block w-100" src="https://pioneerwoman.files.wordpress.com/2012/08/7771464864_07e1e3d994_z.jpg?w=630&h=419" alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src="https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?cs=srgb&dl=food-salad-healthy-46239.jpg&fm=jpg" alt="Second slide" />
+              <img className="d-block w-100" src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg" alt="Second slide" />
             </div>
             <div className="carousel-item">
               <img className="d-block w-100" src="http://handsongourmet.com/wp-content/uploads/2012/08/HandsOnGourmet_maincourse.jpg" alt="Third slide" />
@@ -134,113 +134,8 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <h3>Reviews</h3>
-        <div className="reviewcontainer">
-          <div className="row">
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Username</h5>
-                  <p className="card-text">rating</p>
-                  <p className="card-text">reviews</p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
+        
         </div>
       
         

@@ -7,7 +7,7 @@ export default class ReviewCard extends Component {
         return (
             <div
                 className="flip-container"
-                ontouchstart="this.classList.toggle('hover');"
+                onTouchStart="this.classList.toggle('hover');"
                 style={{ height: '200px' }}
             >
                 <div className="flipper">
