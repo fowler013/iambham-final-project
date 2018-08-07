@@ -168,8 +168,9 @@
     color: white;
 }
 
-.carousel-inner:hover .overlay p {
+.carousel-inner:hover .overlay h2 {
     animation: SlideUp 1000ms forwards;
+    color: whitesmoke
 }
 
 
@@ -209,9 +210,17 @@
 
 #home-image-links {
     height: auto;
-    min-height: 550px;
-    max-height: 550px;
+    min-height: 450px;
+    max-height: 450px;
 }
 
 #popular-links1 {
+}
+
+.home-page-container {
+    background-color: floralwhite
+}
+
+#headers {
+    background-color: floralwhite
 }

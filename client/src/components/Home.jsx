@@ -16,17 +16,20 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div id="home-header">
-          <h1 className="featured-dishes">Recipes!</h1>
+        <div id="headers">
+          <div id="home-header">
+            <h1 className="featured-dishes">Recipes!</h1>
+          </div>
+          <div id="home-sub-header">
+            <h4 className="h4-sub-header">
+              Quickly browse thousands of curated recipes for any occasion.
+            </h4>
+            <h5 className="h5-sub-header">
+              Create an account to leave reviews and save your favorites!
+            </h5>
+          </div>
         </div>
-        <div id="home-sub-header">
-          <h4 className="h4-sub-header">
-            Quickly browse thousands of curated recipes for any occasion.
-          </h4>
-          <h5 className="h5-sub-header">
-            Create an account to leave reviews and save your favorites!
-          </h5>
-        </div>
+
         <div className="home-page-container">
           <div
             id="carouselExampleIndicator1"
@@ -49,7 +52,9 @@ class Home extends React.Component {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <div className="overlay">
-                  <p>Shrimp Scampi</p>
+                  <a href="http://localhost:3000/recipe/55e11aa290643824991f857b4e5ba0fe">
+                    <h2>Shrimp Scampi</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -58,19 +63,24 @@ class Home extends React.Component {
                 />
                 <div className="carousel-caption d-none d-md-block" />
               </div>
+
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Quinoa and Grilled Chicken Salad</p>
+                  <a href="http://localhost:3000/recipe/518d4ca5057fcc2a33410a6361e881de">
+                    <h2>Parsley Quinoa Salad</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
-                  src="https://media.self.com/photos/5a09d363007f5b5ea694477d/4:3/w_728,c_limit/0717-peachy-quinoa-salad-grilled-chicken-lg.jpg"
+                  src="http://www.staceydeering.com/wp-content/uploads/2014/03/Quinoa-Salad.jpg"
                   alt="Second slide"
                 />
               </div>
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Steak Carpaccio Salad</p>
+                  <a href="http://localhost:3000/recipe/5a84c050004ab90f4fb95242af2a3709">
+                    <h2>Steak Carpaccio Salad</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -80,7 +90,9 @@ class Home extends React.Component {
               </div>
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Salmon Teriyaki</p>
+                  <a href="http://localhost:3000/recipe/370599c0617d40cb88df553fdd48b04e">
+                    <h2>Salmon Teriyaki</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -88,9 +100,12 @@ class Home extends React.Component {
                   alt="Fourth slide"
                 />
               </div>
+
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Chicken Piccata</p>
+                  <a href="http://localhost:3000/recipe/145d799511a88c11b7d05119e522b36e">
+                    <h2>Chicken Piccata</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -98,9 +113,12 @@ class Home extends React.Component {
                   alt="Fifth slide"
                 />
               </div>
+
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Pizza Margherita</p>
+                  <a href="http://localhost:3000/recipe/a48ba99bcb994261789daedde6d1c6c1">
+                    <h2>Pizza Margherita</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -146,7 +164,7 @@ class Home extends React.Component {
 
           {/* Photo Links */}
 
-          <div id="popular-links1" style={{ margin: "20px" }}>
+          <div id="popular-links1" style={{ paddingBottom: "220px", paddingTop: "80px", paddingLeft: "220px", paddingRight: "220px"}}>
             <div
               id="link-container-1"
               style={{ marginBottom: "80px", marginTop: "80px" }}
@@ -313,8 +331,7 @@ class Home extends React.Component {
         </div>
         <div
           id="homepage-footer"
-          style={{ padding: "300px", backgroundColor: "gray", margin: "0" }}
-          
+          style={{ padding: "200px", backgroundColor: "gray", margin: "0" }}
         />
       </React.Fragment>
     );
