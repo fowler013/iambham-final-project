@@ -4,7 +4,7 @@ import Home from './Home';
 import Search from './Search';
 import Recipe from './Recipe';
 import User from './User';
-import Navigation from './test1';
+import Navigation from './Navigation';
 import NotFound from './NotFound';
 import Reviews from './Reviews';
 import SignUp from './signup';
