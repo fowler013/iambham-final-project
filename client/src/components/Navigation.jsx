@@ -8,6 +8,7 @@ import {
     NavLink,
 } from 'react-router-dom';
 import * as userService from '../services/user';
+import Login from '../auth/login';
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -16,8 +17,6 @@ class Navigation extends React.Component {
             loggedIn: false,
         };
     }
-
-
     checkedLogin() {
         if (!this.state.loggedIn) {
             userService.checkLogin().then((isAuthenticated) => {

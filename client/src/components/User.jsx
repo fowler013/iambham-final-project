@@ -101,12 +101,12 @@ class User extends React.Component {
 
 
 
-  getUser() {
-    LoginService.me().then((x) => {
-      console.log(x)
-    }).catch((err) => {
-      console.error(err);
-    })
+  //getUser() {
+  //  LoginService.me().then((x) => {
+  //    console.log(x)
+  //  }).catch((err) => {
+  //    console.error(err);
+  //  })
     // fetch(`/api/user/${this.props.match.params.id}`)
     //   .then((res) => {
     //     return res.json()
@@ -118,7 +118,7 @@ class User extends React.Component {
     //   }).catch((err) => {
     //     console.log(err);
     //   });
-  }
+  //}
 
   updateUser() {
     let sending = {}
