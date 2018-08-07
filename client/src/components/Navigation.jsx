@@ -70,7 +70,7 @@ class Navigation extends React.Component {
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenuButton"
                     >
-                        {/* <NavLink to="/user"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink> */}
+                        <NavLink to="/user/me"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink>
                         <NavLink
                             to="/storage"
                             className="dropdown-item text-dark"
