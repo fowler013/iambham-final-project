@@ -12,6 +12,8 @@ export default class UserStorage extends React.Component {
             categories: [],
             selectValue: undefined,
             itemName: '',
+            userid: "",
+            loggedIn: false,
         };
     }
 
@@ -25,6 +27,29 @@ export default class UserStorage extends React.Component {
                 categories,
             });
         });
+    }
+    goGetUser() {
+        if (this.state.loggedIn && !this.state.userid) {
+            UserServices.me().then(results => {
+                this.setState({
+                    userid: results.id,
+                });
+            })
+        }
+    }
+
+    checkedLogin() {
+        if (!this.state.loggedIn) {
+            UserServices.checkLogin().then((isAuthenticated) => {
+                console.log("from Services login status is:" + isAuthenticated)
+                if (isAuthenticated) {
+                    this.setState({
+                        loggedIn: isAuthenticated,
+                    });
+                    this.goGetUser()
+                }
+            });
+        }
     }
 
     handleChange(itemName) {

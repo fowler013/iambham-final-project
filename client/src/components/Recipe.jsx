@@ -144,16 +144,17 @@ gogetdata(sending) {
             });
     }
 
-    setIngredients(data) {
+    setIngredients({data, storage}) {
         if (data) {
             return <p className="card-text">{data}</p>;
         }
     }
     render() {
-        // this.setdata();
+        this.setdata();
         this.checkedLogin()
         console.log(this.state.loggedIn)
         console.log(this.state.userid)
+        console.log(this.state.userStorage)
 
         return (
             <React.Fragment>
