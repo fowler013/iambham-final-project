@@ -95,6 +95,10 @@ class Recipe extends React.Component {
         //        });
         //    });
     }
+checkFavorites() {
+  
+}
+
 
     setIngredients(data) {
         if (data) {
@@ -128,9 +132,10 @@ class Recipe extends React.Component {
             <React.Fragment>
                 <div className="container my-3">
                     <div
-                        className="card"
+                        className="card mx-auto"
                         style={{
-                            minHeight: '40rem',
+                            minHeight: '30rem',
+                            maxWidth: '50rem',
                             borderBottomLeftRadius: '10px',
                             borderTopLeftRadius: '10px',
                             backgroundImage: `url('${
@@ -143,7 +148,10 @@ class Recipe extends React.Component {
                     >
                         <div className="card-body p-0">
                             <div className="view overlay">
-                                <div className="d-flex justify-content-end">
+                                <div className="d-flex justify-content-between">
+                                <button className="btn btn-warning d-flex m-3" style={{borderRadius: "50%", height: "6rem", width: "6rem", opacity: "0.2"}} onClick={(event) => {
+                                    this.checkFavorites();
+                                }} ><i className="far fa-heart" style={{fontSize: "4rem", marginLeft: "-1.125rem", marginTop: ".25rem"}}></i></button>
                                     <div className="d-flex flex-column justify-content-start">
                                         <div className="card text-center mb-2 bg-warning text-white">
                                             <div className="card-body">
