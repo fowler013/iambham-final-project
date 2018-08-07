@@ -7,13 +7,13 @@ function isLoggedIn() {
 }
 
 function checkLogin() {
-    console.log('checking login');
-    console.log('logged in', isLoggedIn());
+    //console.log('checking login');
+    //console.log('logged in', isLoggedIn());
     if (isLoggedIn()) {
-        console.log('i am logged in');
+        //console.log('i am logged in');
         return Promise.resolve(true);
     } else {
-        console.log('im not logged in');
+        //console.log('im not logged in');
         baseService.populateAuthToken();
         return me()
             .then((user) => {
