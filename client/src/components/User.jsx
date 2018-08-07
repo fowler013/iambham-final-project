@@ -10,7 +10,9 @@ import {
 import * as UserService from '../services/users';
 import ReviewCard from "./ReviewCard";
 import * as ReviewService from '../services/reviews';
-import moment from 'moment'
+import moment from 'moment';
+import * as LoginService from '../services/user'
+import Login from "../auth/login";
 
 class User extends React.Component {
   constructor(props) {
@@ -83,34 +85,39 @@ class User extends React.Component {
     })
   }
 
-  getUserReview() {
-    fetch(`/api/reviews/${this.props.match.params.id}`)
-      .then((res) => {
-        return res.json()
-      }).then((review) => {
-        console.log(review)
-        this.setState({
-          review: review
-        });
-      }).catch((err) => {
-        console.log(err);
-      });
-  }
+  // getUserReview() {
+  //   fetch(`/api/reviews/${this.props.match.params.id}`)
+  //     .then((res) => {
+  //       return res.json()
+  //     }).then((review) => {
+  //       console.log(review)
+  //       this.setState({
+  //         review: review
+  //       });
+  //     }).catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
 
 
   getUser() {
-    fetch(`/api/user/${this.props.match.params.id}`)
-      .then((res) => {
-        return res.json()
-      }).then((user) => {
-        console.log(user)
-        this.setState({
-          user: user
-        });
-      }).catch((err) => {
-        console.log(err);
-      });
+    LoginService.me().then((x) => {
+      console.log(x)
+    }).catch((err) => {
+      console.error(err);
+    })
+    // fetch(`/api/user/${this.props.match.params.id}`)
+    //   .then((res) => {
+    //     return res.json()
+    //   }).then((user) => {
+    //     console.log(user)
+    //     this.setState({
+    //       user: user
+    //     });
+    //   }).catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   updateUser() {
@@ -134,25 +141,29 @@ class User extends React.Component {
       sending.username = updateusername
     }
 
-    console.log(sending)
-    fetch(`/api/user/${this.props.match.params.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sending)
+    console.log(sending);
+    console.log(this.props.match.params.id)
+    UserService.update(this.props.match.params.id, sending).catch((err) => {
+      console.error(err);
     })
-      .then((res) => res.json())
-      // this.setState({
-      //   firstName: '',
-      //   lastName: '',
-      //   email: '',
-      //   userName: '',
-      //   user: ''
-      // })
-      .catch((err) => {
-        console.log(err);
-      });
+    //fetch(`/api/user/${this.props.match.params.id}`, {
+    //  method: 'PUT',
+    //  headers: {
+    //    'Content-Type': 'application/json'
+    //  },
+    //  body: JSON.stringify(sending)
+    //})
+    //  .then((res) => res.json())
+    //  // this.setState({
+    //  //   firstName: '',
+    //  //   lastName: '',
+    //  //   email: '',
+    //  //   userName: '',
+    //  //   user: ''
+    //  // })
+    //  .catch((err) => {
+    //    console.log(err);
+    //  });
   }
 
 
@@ -164,7 +175,7 @@ class User extends React.Component {
 
     let form = this.state.userContainer.map((user) => {
       return (
-          <form>
+          <form className="my-3">
             
             <label
               htmlFor="title-input"

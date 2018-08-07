@@ -13,6 +13,8 @@ function create(data) {
 }
 
 function update(id, data) {
+    console.log("got here")
+    console.log(id, data)
     return baseService.put(`/api/user/${id}`, data);
 }
 
