@@ -109,9 +109,9 @@ export default class ReviewForm extends Component {
                                         >
                                             Review Content
                                         </label>
-                                        <input
+                                        <textarea
                                             className="form-control"
-                                            id="exampleFormControlInput1"
+                                            id="exampleFormControlTextArea1"
                                             placeholder="Enter your review here!"
                                             onChange={(e) => {
                                                 this.handleContentChange(
@@ -122,11 +122,11 @@ export default class ReviewForm extends Component {
                                         />
                                     </div>
                                     <p>
-                                        <span className="star-symbol">
+                                        <span className="star-symbol" style={{ color: 'gold' }}>
                                             &#9733;
                                         </span>{' '}
                                         Recipe Rating{' '}
-                                        <span className="star-symbol">
+                                        <span className="star-symbol" style={{ color: 'gold' }}>
                                             &#9733;
                                         </span>
                                     </p>

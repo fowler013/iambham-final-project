@@ -144,7 +144,7 @@ gogetdata(sending) {
             });
     }
 
-    setIngredients({data, storage}) {
+    setIngredients(data) {
         if (data) {
             return <p className="card-text">{data}</p>;
         }
