@@ -9,7 +9,7 @@ export default class ReviewForm extends Component {
 
         this.state = {
             data: {
-                userid: 2,
+                userid: this.props.userid,
                 recipeid: this.props.recipeid,
                 ratings: '',
                 review: '',
