@@ -12,7 +12,6 @@
 }
 
 .d-block.w-100 {
-  
     width: 100%;
     height: 800px;
 }
@@ -74,7 +73,7 @@
     text-align: center;
     font-weight: 900;
     font-size: 800%;
-    color: black;
+    color:white;
     font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
@@ -85,12 +84,12 @@
 }
 
 #home-header {
-    padding-top: 170px;
+    padding-top: 150px;
     padding-right: 30px;
-    padding-bottom: 170px;
+    padding-bottom: 150px;
     padding-left: 80px;
     text-align: center;
-    background-image: url("https://article.images.consumerreports.org/prod/content/dam/CRO%20Images%202017/Home%20and%20Garden/February/CR-Home-Hero-Kitchen-Suite-02-17");
+    background-image: url("http://ce.unm.edu/assets/imgs/enrich/cooking-header");
 }
 
 #home-sub-header {
@@ -143,13 +142,23 @@
     top: 0;
     left: 0;
     bottom: 0;
-    right: 0;   
-    background-color: rgba(0,0,0,0.5);  
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
 }
 
 .carousel-inner {
     border-radius: 25px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    -webkit-transition: 0s !important;
+    -o-transition: 0s !important;
+    transition: 0s !important;
 }
 
 .carousel-inner:hover .overlay {
@@ -159,11 +168,59 @@
     color: white;
 }
 
-.carousel-inner:hover .overlay p {
+.carousel-inner:hover .overlay h2 {
+    animation: SlideUp 1000ms forwards;
+    color: whitesmoke
+}
+
+
+.card:hover .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.card:hover .overlay p {
     animation: SlideUp 1000ms forwards;
 }
 
 @keyframes SlideUp {
-    0%   { transform: translateY(0); }
-  100% { transform: translateY(-15px); }
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+#home-link-image {
+    width: 100%;
+    height: 500px;
+}
+
+#carousel-image {
+    width: 100%;
+    height: 800px;
+}
+
+#popular-links1 .card{
+    float: left
+}
+
+#home-image-links {
+    height: auto;
+    min-height: 450px;
+    max-height: 450px;
+}
+
+#popular-links1 {
+}
+
+.home-page-container {
+    background-color: floralwhite
+}
+
+#headers {
+    background-color: floralwhite
 }

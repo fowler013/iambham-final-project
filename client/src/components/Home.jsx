@@ -16,40 +16,45 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div id="home-header">
-          <h1 className="featured-dishes">Recipes!</h1>
+        <div id="headers">
+          <div id="home-header">
+            <h1 className="featured-dishes">Recipes!</h1>
+          </div>
+          <div id="home-sub-header">
+            <h4 className="h4-sub-header">
+              Quickly browse thousands of curated recipes for any occasion.
+            </h4>
+            <h5 className="h5-sub-header">
+              Create an account to leave reviews and save your favorites!
+            </h5>
+          </div>
         </div>
-        <div id="home-sub-header">
-          <h4 className="h4-sub-header">
-            Quickly browse thousands of curated recipes for any occasion.
-          </h4>
-          <h5 className="h5-sub-header">
-            Create an account to leave reviews and save your favorites!
-          </h5>
-        </div>
+
         <div className="home-page-container">
           <div
-            id="carouselExampleIndicators"
+            id="carouselExampleIndicator1"
             className="carousel slide container"
             style={{ height: "800px", margin: "0 auto" }}
             data-ride="carousel"
           >
             <ol className="carousel-indicators">
               <li
-                data-target="#carouselExampleIndicators"
+                data-target="#carouselExampleIndicator1"
                 data-slide-to="0"
                 className="active"
               />
-              <li data-target="#carouselExampleIndicators" data-slide-to="1" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="2" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="3" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="4" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="5" />
+              <li data-target="#carouselExampleIndicator1" data-slide-to="1" />
+              <li data-target="#carouselExampleIndicator1" data-slide-to="2" />
+              <li data-target="#carouselExampleIndicator1" data-slide-to="3" />
+              <li data-target="#carouselExampleIndicator1" data-slide-to="4" />
+              <li data-target="#carouselExampleIndicator1" data-slide-to="5" />
             </ol>
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <div className="overlay">
-                  <p>Shrimp Scampi</p>
+                  <a href="http://localhost:3000/recipe/55e11aa290643824991f857b4e5ba0fe">
+                    <h2>Shrimp Scampi</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -58,19 +63,24 @@ class Home extends React.Component {
                 />
                 <div className="carousel-caption d-none d-md-block" />
               </div>
+
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Quinoa and Grilled Chicken Salad</p>
+                  <a href="http://localhost:3000/recipe/518d4ca5057fcc2a33410a6361e881de">
+                    <h2>Parsley Quinoa Salad</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
-                  src="https://media.self.com/photos/5a09d363007f5b5ea694477d/4:3/w_728,c_limit/0717-peachy-quinoa-salad-grilled-chicken-lg.jpg"
+                  src="http://www.staceydeering.com/wp-content/uploads/2014/03/Quinoa-Salad.jpg"
                   alt="Second slide"
                 />
               </div>
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Steak Carpaccio Salad</p>
+                  <a href="http://localhost:3000/recipe/5a84c050004ab90f4fb95242af2a3709">
+                    <h2>Steak Carpaccio Salad</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -80,7 +90,9 @@ class Home extends React.Component {
               </div>
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Salmon Teriyaki</p>
+                  <a href="http://localhost:3000/recipe/370599c0617d40cb88df553fdd48b04e">
+                    <h2>Salmon Teriyaki</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -88,9 +100,12 @@ class Home extends React.Component {
                   alt="Fourth slide"
                 />
               </div>
+
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Chicken Piccata</p>
+                  <a href="http://localhost:3000/recipe/145d799511a88c11b7d05119e522b36e">
+                    <h2>Chicken Piccata</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -98,9 +113,12 @@ class Home extends React.Component {
                   alt="Fifth slide"
                 />
               </div>
+
               <div className="carousel-item">
                 <div className="overlay">
-                  <p>Pizza Margherita</p>
+                  <a href="http://localhost:3000/recipe/a48ba99bcb994261789daedde6d1c6c1">
+                    <h2>Pizza Margherita</h2>
+                  </a>
                 </div>
                 <img
                   className="d-block w-100"
@@ -111,7 +129,7 @@ class Home extends React.Component {
             </div>
             <a
               className="carousel-control-prev"
-              href="#carouselExampleIndicators"
+              href="#carouselExampleIndicator1"
               role="button"
               data-slide="prev"
             >
@@ -120,7 +138,7 @@ class Home extends React.Component {
             </a>
             <a
               className="carousel-control-next"
-              href="#carouselExampleIndicators"
+              href="#carouselExampleIndicator1"
               role="button"
               data-slide="next"
             >
@@ -128,97 +146,196 @@ class Home extends React.Component {
               <span className="sr-only">Next</span>
             </a>
           </div>
-          <div id="todays-recipes-container">
-            <h2 id="todays-recipes" style={{ padding: "35px" }}>
-              Today's Recipes
+          <div
+            id="todays-recipes-container"
+            style={{
+              backgroundColor: "green",
+              marginTop: "40px",
+              marginBottom: "40px"
+            }}
+          >
+            <h2
+              id="todays-recipes"
+              style={{ padding: "100px", color: "white", marginTop: "70px" }}
+            >
+              Browse our most popular searches.
             </h2>
+          </div>
 
-            <div className="card-deck">
-              <div className="card">
-                <img
-                  className="card-img-top"
-                  src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg"
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">
-                    This is a longer card rating This content is a little bit
-                    longer.
-                  </p>
-                  <p className="card-text">
-                    <small className="text-muted">
-                      Last updated 3 mins ago
-                    </small>
-                  </p>
+          {/* Photo Links */}
+
+          <div id="popular-links1" style={{ paddingBottom: "220px", paddingTop: "80px", paddingLeft: "220px", paddingRight: "220px"}}>
+            <div
+              id="link-container-1"
+              style={{ marginBottom: "80px", marginTop: "80px" }}
+            >
+              <div className="row">
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=cheese">
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Cheese Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="https://www.thecheesesociety.co.uk/wp-content/uploads/2016/10/GOURMET-PACK-SQUARE-AMENDED-CRACKERS.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=chicken">
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Chicken Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i66.tinypic.com/2hmeq81.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=beef">
+                    {" "}
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Beef Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="https://cdn.shopify.com/s/files/1/1844/0771/products/7c7f523e01837fedbaf535206cd360ac_1280x1280.jpg?v=1511148851"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
                 </div>
               </div>
-              <div className="card">
-                <img
-                  className="card-img-top"
-                  src="http://a57.foxnews.com/media2.foxnews.com/2016/06/09/640/360/060916_chew_crispychicken_1280.jpg"
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">
-                    This card has supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <p className="card-text">
-                    <small className="text-muted">
-                      Last updated 3 mins ago
-                    </small>
-                  </p>
+            </div>
+            <div
+              id="link-container-1"
+              style={{ marginBottom: "80px", marginTop: "80px" }}
+            >
+              <div className="row">
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=salad">
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Salad Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i65.tinypic.com/j67w2b.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=vegetarian">
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Vegetarian Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i66.tinypic.com/2r2unmd.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=rice">
+                    {" "}
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Rice & Grain Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i65.tinypic.com/5ue1xi.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
                 </div>
               </div>
-              <div className="card">
-                <img
-                  className="card-img-top"
-                  src="http://www.fnstatic.co.uk/images/content/package/100-middle-eastern-inspired-recipes-you-can-cook-at-home.jpeg"
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">
-                    This is a wider card rating This card has even longer
-                    content than the first to show that equal height action.
-                  </p>
-                  <p className="card-text">
-                    <small className="text-muted">
-                      Last updated 3 mins ago
-                    </small>
-                  </p>
+            </div>
+            <div
+              id="link-container-1"
+              style={{ marginBottom: "80px", marginTop: "80px" }}
+            >
+              <div className="row">
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=chocolate">
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Chocolate Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i68.tinypic.com/mjpueu.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=fish">
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Fish Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i64.tinypic.com/34hh2mx.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div className="col">
+                  <a href="http://localhost:3000/search/keyword=egg">
+                    {" "}
+                    <div class="card">
+                      <div className="overlay">
+                        <p>Egg Recipes</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="http://i63.tinypic.com/2469xro.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div
+          id="homepage-footer"
+          style={{ padding: "200px", backgroundColor: "gray", margin: "0" }}
+        />
       </React.Fragment>
     );
   }
 }
 
 export default Home;
-
-{
-  /* <div className="card-deck">
-
-          <div className="card">
-            <img className="card-img-top" src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?cs=srgb&dl=food-dinner-lunch-70497.jpg&fm=jpg" alt="Card image cap" />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div className="card">
-            <img className="card-img-top" src="https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?cs=srgb&dl=food-salad-healthy-46239.jpg&fm=jpg" alt="Card image cap" />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">This is a wider card rating This card has even longer content than the first to show that equal height action.</p>
-              <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        </div> */
-}
