@@ -17,20 +17,16 @@ class Navigation extends React.Component {
         };
     }
 
-    componentWillUpdate() {
-        this.checkedLogin();
-    }
 
     checkedLogin() {
-        console.log('checking login');
         if (!this.state.loggedIn) {
             userService.checkLogin().then((isAuthenticated) => {
-                console.log('from Services login status is:' + isAuthenticated);
-                if (isAuthenticated) {
+                console.log("from Services login status is:" + isAuthenticated)
+                if(isAuthenticated) {
                     this.setState({
-                        loggedIn: isAuthenticated,
-                    });
-                }
+                    loggedIn: isAuthenticated,
+                });
+            }
             });
         }
     }
@@ -55,6 +51,7 @@ class Navigation extends React.Component {
         }
     }
     isLoggedIn() {
+        this.checkedLogin()
         if (this.state.loggedIn) {
             return (
                 <div className="dropdown p-1 d-flex">
@@ -107,7 +104,6 @@ class Navigation extends React.Component {
     }
 
     render() {
-        console.log('rerendering');
         return (
             <React.Fragment>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-item-baseline fixed-top my-0 pb-auto">
