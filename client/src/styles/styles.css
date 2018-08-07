@@ -12,7 +12,7 @@
 }
 
 .d-block.w-100 {
-    border-radius: 25px;
+  
     width: 100%;
     height: 800px;
 }
@@ -132,4 +132,38 @@
     font-weight: 400;
     line-height: 33px;
     padding: 20px
+}
+
+.home-page-container .carousel-item {
+    position: relative;
+}
+
+.home-page-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;   
+    background-color: rgba(0,0,0,0.5);  
+    display: none;
+}
+
+.carousel-inner {
+    border-radius: 25px;
+}
+
+.carousel-inner:hover .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.carousel-inner:hover .overlay p {
+    animation: SlideUp 1000ms forwards;
+}
+
+@keyframes SlideUp {
+    0%   { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
 }

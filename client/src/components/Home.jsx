@@ -17,13 +17,17 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <div id="home-header">
-          <h1 class="featured-dishes">Recipes!</h1> 
+          <h1 className="featured-dishes">Recipes!</h1>
         </div>
         <div id="home-sub-header">
-             <h4 class="h4-sub-header">Quickly browse thousands of curated recipes for any occasion.</h4>
-             <h5 class="h5-sub-header">Create an account to leave reviews and save your favorites!</h5>
-          </div>
-        <div class="home-page-container">
+          <h4 className="h4-sub-header">
+            Quickly browse thousands of curated recipes for any occasion.
+          </h4>
+          <h5 className="h5-sub-header">
+            Create an account to leave reviews and save your favorites!
+          </h5>
+        </div>
+        <div className="home-page-container">
           <div
             id="carouselExampleIndicators"
             className="carousel slide container"
@@ -44,44 +48,63 @@ class Home extends React.Component {
             </ol>
             <div className="carousel-inner">
               <div className="carousel-item active">
+                <div className="overlay">
+                  <p>Shrimp Scampi</p>
+                </div>
                 <img
                   className="d-block w-100"
-                  src="http://www.thegourmetreview.com/dine/wp-content/uploads/2013/05/mom-salad-shot.jpg"
+                  src="https://www.thehungryhutch.com/wp-content/uploads/2017/06/Shrimp-Scampi-Pasta-2.jpg"
                   alt="First slide"
                 />
+                <div className="carousel-caption d-none d-md-block" />
               </div>
               <div className="carousel-item">
+                <div className="overlay">
+                  <p>Quinoa and Grilled Chicken Salad</p>
+                </div>
                 <img
                   className="d-block w-100"
-                  src="http://www.johnmariani.com/archive/2006/060326/Telepan--Lobster%20Bolognese.jpg"
+                  src="https://media.self.com/photos/5a09d363007f5b5ea694477d/4:3/w_728,c_limit/0717-peachy-quinoa-salad-grilled-chicken-lg.jpg"
                   alt="Second slide"
                 />
               </div>
               <div className="carousel-item">
+                <div className="overlay">
+                  <p>Steak Carpaccio Salad</p>
+                </div>
                 <img
                   className="d-block w-100"
-                  src="http://handsongourmet.com/wp-content/uploads/2012/08/HandsOnGourmet_maincourse.jpg"
+                  src="https://www.seriouseats.com/recipes/images/2016/06/20160628-steak-carpaccio-salad-recipe-2-1500x1125.jpg"
                   alt="Third slide"
                 />
               </div>
               <div className="carousel-item">
+                <div className="overlay">
+                  <p>Salmon Teriyaki</p>
+                </div>
                 <img
                   className="d-block w-100"
-                  src="http://www.gourmetfoodshop.co.za/wp-includes/backgrounds/bg2.jpg"
+                  src="https://search.chow.com/thumbnail/1280/800/www.chowstatic.com/assets/2015/05/31405_teriyaki_salmon.jpg"
                   alt="Fourth slide"
                 />
               </div>
-              <div class="carousel-item">
+              <div className="carousel-item">
+                <div className="overlay">
+                  <p>Chicken Piccata</p>
+                </div>
                 <img
-                  class="d-block w-100"
-                  src="https://i.amz.mshcdn.com/usVe3ZNxKuIJFALuZ136W9tbLCU=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F471028%2F94cfb19f-f5d8-4263-beee-aa21826a7b3f.jpeg"
+                  className="d-block w-100"
+                  src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/medium_2x/public/image/2017/09/main/chicken-piccata-1711p28.jpg?itok=Uqti5qkn"
                   alt="Fifth slide"
                 />
               </div>
               <div className="carousel-item">
+                <div className="overlay">
+                  <p>Pizza Margherita</p>
+                </div>
                 <img
                   className="d-block w-100"
-                  src="https://d3lawkbdj6aabd.cloudfront.net/singleplatform/image/upload/c_fit/4170f62f828bb389b46f8365a93cf54ec9133be3.jpg"
+                  src="https://www.saveur.com/sites/saveur.com/files/styles/1000_1x_/public/images/2015/11/pizza-margherita_2000x1500_toddcoleman.jpg?itok=pnZak_tw"
                   alt="Sixth slide"
                 />
               </div>
@@ -106,7 +129,9 @@ class Home extends React.Component {
             </a>
           </div>
           <div id="todays-recipes-container">
-            <h2 id="todays-recipes" style= {{padding: "35px"}}>Today's Recipes</h2>
+            <h2 id="todays-recipes" style={{ padding: "35px" }}>
+              Today's Recipes
+            </h2>
 
             <div className="card-deck">
               <div className="card">
