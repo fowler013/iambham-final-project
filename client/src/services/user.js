@@ -58,4 +58,4 @@ function me() {
     return baseService.get('/api/user/me');
 }
 
-export { isLoggedIn, checkLogin, login, logout };
+export { isLoggedIn, checkLogin, login, logout, me};

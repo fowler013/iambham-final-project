@@ -5,7 +5,6 @@ import reviewRouter from './reviews';
 import favoriteRouter from './favorites';
 import userStorageRouter from './storage';
 import storageCategoriesRouter from './categories';
-
 import authRouter from './auth';
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 

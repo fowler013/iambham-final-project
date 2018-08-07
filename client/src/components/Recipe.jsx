@@ -17,6 +17,7 @@ import ReviewForm from './ReviewForm';
 import moment from 'moment';
 import * as SearchServices from '../services/search';
 import * as UserServices from '../services/user';
+import * as StorageServices from '../services/userStorage'
 
 
 class Recipe extends React.Component {
@@ -24,6 +25,9 @@ class Recipe extends React.Component {
         super(props);
         this.state = {
             button1: 'Click Here to Show More',
+            loggedIn: false,
+            userid: '',
+            userStorage: [],
             pageid: '0',
             reviewContainer: [],
             recipe: {
@@ -35,6 +39,40 @@ class Recipe extends React.Component {
         };
     }
 
+    goGetStorage() {
+        if(this.state.userid) {
+            StorageServices.all(this.state.userid).then(result => {
+                this.setState({
+                    userStorage: result
+                }); 
+            })
+        }
+    }
+
+    goGetUser() {
+        if(this.state.loggedIn && !this.state.userid) {
+            UserServices.me().then(results => {
+                this.setState({
+                    userid: results.id,
+                });
+                this.goGetStorage()
+            })
+        }
+    }
+
+    checkedLogin() {
+        if (!this.state.loggedIn) {
+            UserServices.checkLogin().then((isAuthenticated) => {
+                console.log("from Services login status is:" + isAuthenticated)
+                if(isAuthenticated) {
+                    this.setState({
+                    loggedIn: isAuthenticated,
+                });
+                this.goGetUser()
+            }
+            });
+        }
+    }
 
     handleNewReview(review) {
         review.username = 'jimbob1';
@@ -54,14 +92,14 @@ class Recipe extends React.Component {
         }
     }
 
-    setdata() {
+setdata() {
         let recipeid = this.props.match.params.id;
         if (recipeid !== this.state.pageid) {
             this.gogetdata(recipeid);
         }
     }
 
-    componentDidMount() {
+componentDidMount() {
         ReviewsServices.readByRecipe(this.props.match.params.id).then(
             (reviews) => {
                 this.setState({
@@ -71,14 +109,8 @@ class Recipe extends React.Component {
             },
         );
     }
-    setdata() {
-        let recipeid = this.props.location.pathname.slice(8);
 
-        if (recipeid !== this.state.pageid) {
-            this.gogetdata(recipeid);
-        }
-    }
-    gogetdata(recipeid) {
+gogetdata(recipeid) {
         SearchServices.read(recipeid).then((data) => {
             this.setState({
                 pageid: this.props.match.params.id,
@@ -91,12 +123,13 @@ checkFavorites() {
 }
 
 
-    setIngredients(data) {
+setIngredients(data) {
         if (data) {
             return <p className="card-text">{data}</p>;
         }
     }
-    gogetdata(sending) {
+
+gogetdata(sending) {
         fetch(`/api/search/recipe/${sending}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -117,7 +150,10 @@ checkFavorites() {
         }
     }
     render() {
-        this.setdata();
+        // this.setdata();
+        this.checkedLogin()
+        console.log(this.state.loggedIn)
+        console.log(this.state.userid)
 
         return (
             <React.Fragment>
