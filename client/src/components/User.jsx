@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ Fragment } from "react";
 import { render } from "react-dom";
 import {
   BrowserRouter as Router,
@@ -19,8 +19,8 @@ class User extends React.Component {
 
     this.state = {
       userContainer: [],
-      reviewContainer:[],
-      
+      reviewContainer: [],
+
       firstName: '',
       lastName: '',
       email: '',
@@ -77,24 +77,24 @@ class User extends React.Component {
       Object.values(review).forEach((review => {
         //console.log(review)
         this.setState({
-          reviewContainer:[...this.state.reviewContainer, review]
+          reviewContainer: [...this.state.reviewContainer, review]
         })
       }))
     })
   }
 
   getUserReview() {
-   fetch(`/api/reviews/${this.props.match.params.id}`)
-     .then((res) => {
-       return res.json()
-     }).then((review) => {
-       console.log(review)
-       this.setState({
-         review: review
-       });
-     }).catch((err) => {
-       console.log(err);
-     });
+    fetch(`/api/reviews/${this.props.match.params.id}`)
+      .then((res) => {
+        return res.json()
+      }).then((review) => {
+        console.log(review)
+        this.setState({
+          review: review
+        });
+      }).catch((err) => {
+        console.log(err);
+      });
   }
 
 
@@ -143,13 +143,13 @@ class User extends React.Component {
       body: JSON.stringify(sending)
     })
       .then((res) => res.json())
-    // this.setState({
-    //   firstName: '',
-    //   lastName: '',
-    //   email: '',
-    //   userName: '',
-    //   user: ''
-    // })
+      // this.setState({
+      //   firstName: '',
+      //   lastName: '',
+      //   email: '',
+      //   userName: '',
+      //   user: ''
+      // })
       .catch((err) => {
         console.log(err);
       });
@@ -162,170 +162,57 @@ class User extends React.Component {
     console.log(this.props)
     let post = this.state.user;
 
-    return (
-      <React.Fragment>
-        <div className = "user-page-container">
-        <div className="d-flex flex-row">
-          <form className="card p-3 formContainer bg-light" style={{ marginTop: '3rem', width: '30rem', height: '38rem' }}>
+    let form = this.state.userContainer.map((user) => {
+      return (
+          <form>
+            
             <label
               htmlFor="title-input"
               className="d-block m-1 text-dark cardFont">{this.props.action}
             </label>
-            <div className="" style={{ background: "#fc724c" }}>
-              <p className="h4 text-center py-4">Info</p>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <label htmlFor="inputEmail4">First Name</label>
+                <input value={this.state.firstName}
+                  onChange={this.handleFirstNameChange} type="email" className="form-control" id="inputFirstName4" placeholder={user.firstname} />
+              </div>
+              <div className="form-group col-md-6">
+                <label htmlFor="inputPassword4">Last Name</label>
+                <input value={this.state.lastName}
+                  onChange={this.handleLastNameChange} type="text" className="form-control" id="inputLastName4" placeholder={user.lastname} />
+              </div>
             </div>
-
-
-            <div className="md-form">
-              <i className=" prefix dark-text" style={{ margin: "inherit", position: "inherit" }}></i>
+            <div className="form-group">
+              <label htmlFor="inputAddress">User Name</label>
               <input value={this.state.userName}
-                onChange={this.handleUserNameChange}
-                className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-                placeholder="username" style={{ backgroundColor: "white" }} />
-              <label htmlFor="title-input" className="font-weight-light"></label>
+                onChange={this.handleUserNameChange} type="text" className="form-control" id="inputUserName4" placeholder={user.username} />
             </div>
-
-
-            <div className="md-form">
-              <i className=" prefix dark-text" style={{ margin: "inherit", position: "inherit" }}></i>
-              <input value={this.state.firstName}
-                onChange={this.handleFirstNameChange}
-                className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-                placeholder="first name" style={{ backgroundColor: "white" }} />
-              <label htmlFor="title-input" className="font-weight-light"></label>
-            </div>
-
-
-            <div className="md-form">
-              <i className=" prefix dark-text" style={{ margin: "inherit", position: "inherit" }}></i>
-              <input value={this.state.lastName}
-                onChange={this.handleLastNameChange}
-                className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-                placeholder="last name" style={{ backgroundColor: "white" }} />
-              <label htmlFor="title-input" className="font-weight-light"></label>
-            </div>
-
-
-            <div className="md-form">
-              <i className=" prefix dark-text" style={{ margin: "inherit", position: "inherit" }}></i>
+            <div className="form-group">
+              <label htmlFor="inputAddress2">Email</label>
               <input value={this.state.email}
-                onChange={this.handleEmailChange}
-                className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-                placeholder="email" style={{ backgroundColor: "white" }} />
-              <label htmlFor="title-input" className="font-weight-light"></label>
+                onChange={this.handleEmailChange} type="email" className="form-control" id="inputEmail4" placeholder={user.email} />
             </div>
 
             <div className="text-center py-4 mt-3">
               <button
                 onClick={() => { this.updateUser(post) }}
-                onClick={()=> {this.testClear()}}
                 type="button"
                 className="btn btn-dark btn-sm text-secondary m-2 cardFont">update!</button>
             </div>
           </form>
+        // <div className="card p-3 m-4 text-center" key={user.id} style={{ marginTop: '3rem', width: '28rem', height: "28rem" }}>
 
-          {/*  NEED TO DOUBLE CHECK THE CLASSNAME CARD!!! */}
-          {this.state.userContainer.map((user) => {
-            return (
-              <div className="card p-3 m-4 text-center" key = {user.id} style={{ marginTop: '3rem', width: '28rem', height: "28rem" }}>
-                <img className="card-img-top" src="http://www.etonline.com/sites/default/files/images/2015-06/640_myspace_tom_anderson_pic.jpg" alt="Card image cap" />
-                <div className="card-body">
-                  <p className="card-text" style = {{fontSize: "1.5rem"}}>{user.firstname} {user.lastname}</p>
-                  <p className="card-text" style = {{fontSize: "1.5rem"}}>{user.email}</p>
-                  <p className="card-text" style = {{fontSize: "1.5rem"}}>{user.username}</p>
-                </div>
-              </div>
-            )
-          })}
-          {/* this is the reviews section */}
-          <div className="card card-cascade wider" style={{ marginTop: '3rem', width: '42rem', height: "31rem" }}>
-          <div className = "card-review" style = {{ backgroundColor: '#fc724c'}}>
-             <h3 >Reviews</h3>
-          </div>
-          <div className="card" style={{ width: '100%' }}>
-          
-            <div className="card-body" style={{ maxHeight: '500px', overflow: 'scroll', width: '100%' }}>
-              {this.state.reviewContainer.map((review) => {
-                console.log(review)
-                return (
-                  <div className="review-card-container" style={{ width: '90%', margin: 'auto' }}>
-                    <ReviewCard
-                    key={review.id}
-                    // image={this.state.recipe.image}
-                    date={moment(review._created).fromNow()}
-                    username={review.username}
-                    review={review.review}
-                    ratings={review.ratings}
-                    />
-                  </div>
-                )
-              })}
-              {/*<a className="btn btn-outline-primary">Go somewhere</a>*/}
-            </div>
-          </div>
-            
+        // </div>
+      )
 
-
-          </div>
-
-        </div>
-
-        {/* THIS AREA WILL BE FOR THE USER STORAGE */}
-        </div>
-      </React.Fragment>
-    );
+    })
+    return(
+      <Fragment>
+        {form}
+      </Fragment>
+    )
   }
-}
+  }
 
-{/* <div className="card">
-
-
-  <div className="card-body">
-
-
-
-
-
-  </div>
-
-
-</div> */}
-
-{/* <form className="card p-3 formContainer bg-dark" style={{ marginTop: '5rem', width: '20rem', height: '20rem' }}>
-          <label
-            htmlFor="title-input"
-            className="d-block m-1 text-light cardFont">{this.props.action} post:
-                </label>
-          <input
-            value={this.state.userName}
-            onChange={this.handleUserNameChange}
-            className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-            placeholder="username"
-          />
-          <input
-            value={this.state.firstName}
-            onChange={this.handleFirstNameChange}
-            className="form-control w-5 m-1 d-inline text formAuthor cardFont"
-            placeholder="first name"
-          />
-          <input
-            value={this.state.lastName}
-            onChange={this.handleLastNameChange}
-            className="form-control w-70 m-1 d-inline formTitle cardFont"
-            placeholder="last name"
-          />
-          <div className="form-group">
-            <input value={this.state.email}
-              onChange={this.handleEmailChange}
-              className="form-control w-70 m-1 d-inline bg-light formContent cardFont"
-              placeholder="email" />
-          </div>
-
-          <button
-            onClick={() => { this.updateUser(post) }}
-            type="button"
-            className="btn btn-light btn-sm text-secondary m-2 cardFont">update!
-                </button>
-        </form> */}
 
 export default User;
