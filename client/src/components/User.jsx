@@ -227,19 +227,12 @@ class User extends React.Component {
           {/*  NEED TO DOUBLE CHECK THE CLASSNAME CARD!!! */}
           {this.state.userContainer.map((user) => {
             return (
-              <div className="card p-3 m-4" key = {user.id} style={{ marginTop: '3rem', width: '28rem', height: "42rem" }}>
-                <img className="card-img-top" src="https://www.mautic.org/media/images/default_avatar.png" alt="Card image cap" />
+              <div className="card p-3 m-4 text-center" key = {user.id} style={{ marginTop: '3rem', width: '28rem', height: "28rem" }}>
+                <img className="card-img-top" src="http://www.etonline.com/sites/default/files/images/2015-06/640_myspace_tom_anderson_pic.jpg" alt="Card image cap" />
                 <div className="card-body">
-                  <p className="card-text">{user.firstname}</p>
-                </div>
-                <div className="card-body">
-                  <p className="card-text">{user.lastname}</p>
-                </div>
-                <div className="card-body">
-                  <p className="card-text">{user.email}</p>
-                </div>
-                <div className="card-body">
-                  <p className="card-text">{user.username}</p>
+                  <p className="card-text" style = {{fontSize: "1.5rem"}}>{user.firstname} {user.lastname}</p>
+                  <p className="card-text" style = {{fontSize: "1.5rem"}}>{user.email}</p>
+                  <p className="card-text" style = {{fontSize: "1.5rem"}}>{user.username}</p>
                 </div>
               </div>
             )

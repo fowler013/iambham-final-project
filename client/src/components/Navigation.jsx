@@ -54,7 +54,7 @@ checkedLogin() {
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {/* <NavLink to="/user"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink> */}
                         <NavLink to = "/storage"><button className="dropdown-item text-dark" href="#">Pantry</button></NavLink>
-                        <a className="dropdown-item text-dark" href="#">History</a>
+                        <NavLink to = "/logout"><button className="dropdown-item text-dark" href="#">Logout</button></NavLink>
                         </div>
                     </div>
                 )
