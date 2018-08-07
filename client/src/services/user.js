@@ -7,42 +7,46 @@ function isLoggedIn() {
 }
 
 function checkLogin() {
-    if (loggedIn) {
+    console.log('checking login');
+    console.log('logged in', isLoggedIn());
+    if (isLoggedIn()) {
+        console.log('i am logged in');
         return Promise.resolve(true);
     } else {
+        console.log('im not logged in');
         baseService.populateAuthToken();
         return me()
-        .then((user) => {
-            loggedIn = true;
-            return Promise.resolve(true);
-        }).catch(() => {
-            return Promise.resolve(false);
-        });
+            .then((user) => {
+                loggedIn = true;
+                return Promise.resolve(true);
+            })
+            .catch(() => {
+                return Promise.resolve(false);
+            });
     }
 }
 
 function login(email, password) {
-    return baseService.makeFetch('/api/auth/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: new Headers({
-            'Content-Type': 'application/json'
+    return baseService
+        .makeFetch('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
         })
-    })
-    .then((response) => {
-        if (response.ok) {
-            return response.json()
-            .then((jsonResponse) => {
-                baseService.setAuthToken(jsonResponse.token);
-                loggedIn = true;
-            });
-        } else if (response.status === 401) {
-            return response.json()
-            .then((jsonResponse) => {
-                throw jsonResponse;
-            });
-        }
-    });
+        .then((response) => {
+            if (response.ok) {
+                return response.json().then((jsonResponse) => {
+                    baseService.setAuthToken(jsonResponse.token);
+                    loggedIn = true;
+                });
+            } else if (response.status === 401) {
+                return response.json().then((jsonResponse) => {
+                    throw jsonResponse;
+                });
+            }
+        });
 }
 
 function logout() {
