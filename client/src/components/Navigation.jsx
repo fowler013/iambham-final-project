@@ -18,17 +18,20 @@ componentDidMount() {
 }
 
 checkedLogin() {
-    console.log("got here 2")    
     if(!this.state.loggedIn) {
-        console.log("got here 3")
-        if(userService.checkLogin()){
-            console.log("got here 4")
+        if(userService.isLoggedIn()){
             this.setState({
                 loggedIn: true
             })
         }        
     }
 }
+
+    setLogout() {
+        this.setState({
+                loggedIn: false
+            })
+    }
 
     handleSubmitClick() {
         let keywords = $('#SearchBar').val()
@@ -53,8 +56,8 @@ checkedLogin() {
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {/* <NavLink to="/user"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink> */}
-                        <NavLink to = "/storage"><button className="dropdown-item text-dark" href="#">Pantry</button></NavLink>
-                        <NavLink to = "/logout"><button className="dropdown-item text-dark" href="#">Logout</button></NavLink>
+                        <NavLink to = "/storage" className="dropdown-item text-dark">Pantry</NavLink>
+                        <NavLink to = "/logout" className="dropdown-item text-dark" onClick={event => {this.setLogout()}}>Logout</NavLink>
                         </div>
                     </div>
                 )

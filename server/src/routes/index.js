@@ -11,6 +11,9 @@ import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 
 let router = Router();
 
+router
+    .use('/search', searchRouter)
+
 // AUTH ROUTES
 router.use('/auth', authRouter);
 //router.use(isLoggedIn);
@@ -21,7 +24,6 @@ router.route('*')
 /////////
 
 router
-    .use('/search', searchRouter)
     .use('/user', userRouter)
     .use('/review', reviewRouter)
     .use('/favorite', favoriteRouter)

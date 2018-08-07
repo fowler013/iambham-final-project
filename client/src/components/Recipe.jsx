@@ -16,6 +16,8 @@ import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
 import moment from 'moment';
 import * as SearchServices from '../services/search';
+import * as UserServices from '../services/user';
+
 
 class Recipe extends React.Component {
     constructor(props) {
@@ -32,6 +34,7 @@ class Recipe extends React.Component {
             },
         };
     }
+
 
     handleNewReview(review) {
         review.username = 'jimbob1';
@@ -82,21 +85,9 @@ class Recipe extends React.Component {
                 recipe: data[0],
             });
         });
-        //fetch(`/api/search/recipe/${sending}`, {
-        //    method: 'GET',
-        //    headers: { 'Content-Type': 'application/json' },
-        //})
-        //    .then((res) => res.json())
-        //    .then((data) => {
-        //        //console.log(data);
-        //        this.setState({
-        //            pageid: this.props.match.params.id,
-        //            recipe: data[0],
-        //        });
-        //    });
     }
 checkFavorites() {
-  
+
 }
 
 
@@ -419,7 +410,6 @@ checkFavorites() {
                                     </div>
                                 );
                             })}
-                            {/*<a className="btn btn-outline-primary">Go somewhere</a>*/}
                         </div>
                     </div>
                 </div>

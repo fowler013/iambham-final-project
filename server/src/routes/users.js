@@ -5,13 +5,13 @@ import { tokenMiddleware, isLoggedIn } from '../middleware/auth.mw';
 let router = Router();
 
 router
-  .get('/', Users.all)
+  .get('/', tokenMiddleware, isLoggedIn, Users.all)
   .get('/me', tokenMiddleware, isLoggedIn, (req, res) => {
     res.json(req.user);
   })
-  .get('/:id', Users.read)
+  .get('/:id', tokenMiddleware, isLoggedIn, Users.read)
   .post('/', Users.create)
-  .put('/:id', Users.update)
-  .delete('/:id', Users.destroy);
+  .put('/:id', tokenMiddleware, isLoggedIn, Users.update)
+  .delete('/:id', tokenMiddleware, isLoggedIn, Users.destroy);
 
 export default router;
