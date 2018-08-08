@@ -239,7 +239,7 @@ class Home extends React.Component {
           >
             <div
               id="link-container-1"
-              style={{ marginBottom: "80px", marginTop: "80px" }}
+              style={{ marginBottom: "80px", marginTop: "30px" }}
             >
               <div className="row">
                 <div className="col-lg-4 col-md-6">
@@ -358,7 +358,7 @@ class Home extends React.Component {
             </div>
             <div
               id="link-container-1"
-              style={{ marginBottom: "80px", marginTop: "80px" }}
+              style={{ marginBottom: "40px", marginTop: "80px" }}
             >
               <div className="row">
                 <div className="col-lg-4 col-md-6">
