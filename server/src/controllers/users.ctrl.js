@@ -63,10 +63,11 @@ export function update(req, res, next) {
             return UserProcedures.update(sqlArgs);
         })
         .then((user) => {
-            res.json(user);
-        }).catch((err) => {
-            console.error(err);
+            res.end();
         })
+        .catch((err) => {
+            console.error(err);
+        });
 }
 export function destroy(req, res, next) {
     let id = req.params.id;
@@ -82,5 +83,5 @@ export function destroy(req, res, next) {
         })
         .catch((err) => {
             console.error(err);
-        })
+        });
 }

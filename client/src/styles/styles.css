@@ -263,6 +263,14 @@
     border-radius: 50%;
 }
 
+.home-page-container form input:disabled {
+    background-color: transparent !important;
+    border-bottom: 2px solid black;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
 .fa-instagram {
     background: #125688;
     color: white;
