@@ -73,7 +73,7 @@
     text-align: center;
     font-weight: 900;
     font-size: 800%;
-    color:white;
+    color: white;
     font-family: Georgia, Times, "Times New Roman", serif
 }
 
@@ -130,7 +130,16 @@
     font-variant: normal;
     font-weight: 400;
     line-height: 33px;
-    padding: 20px
+    padding: 20px;
+}
+
+.featured-recipes {
+    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 33px;
+    padding: 20px;
 }
 
 .home-page-container .carousel-item {
@@ -173,15 +182,18 @@
     color: whitesmoke
 }
 
+#homecard {
+    border-radius: 10%
+}
 
-.homecard:hover .overlay {
+#homecard:hover .overlay {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
 }
 
-.homecard:hover .overlay p {
+#homecard:hover .overlay p {
     animation: SlideUp 1000ms forwards;
 }
 
@@ -204,7 +216,7 @@
     height: 800px;
 }
 
-#popular-links1 .card{
+#popular-links1 .card {
     float: left
 }
 
@@ -214,8 +226,7 @@
     max-height: 450px;
 }
 
-#popular-links1 {
-}
+#popular-links1 {}
 
 .home-page-container {
     background-color: floralwhite
@@ -232,41 +243,49 @@
     text-align: center;
     text-decoration: none;
     margin: 5px 2px;
-  }
+    border-radius: 50%
+}
 
-  .fa-instagram {
+.fa-instagram {
     background: #125688;
     color: white;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
-  }
+}
 
-  .fa-google {
+.fa-google {
     background: #dd4b39;
     color: white;
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
-  .fa-twitter {
+.fa-twitter {
     background: #55ACEE;
     color: white;
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
-  .fa-facebook {
+.fa-facebook {
     background: #3B5998;
     color: white;
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
-  .media-links {
-      text-align: center
-  }
+.media-links {
+    text-align: center
+}
+
+#contact-text {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em;
+    font-weight: bold;
+}
+
