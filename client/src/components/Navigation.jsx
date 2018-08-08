@@ -8,6 +8,7 @@ import {
     NavLink,
 } from 'react-router-dom';
 import * as userService from '../services/user';
+import MultiSearchBox from './utilities/multiSearchBox';
 import Login from '../auth/login';
 
 class Navigation extends React.Component {
@@ -20,12 +21,12 @@ class Navigation extends React.Component {
     checkedLogin() {
         if (!this.state.loggedIn) {
             userService.checkLogin().then((isAuthenticated) => {
-                console.log("from Services login status is:" + isAuthenticated)
-                if(isAuthenticated) {
+                console.log('from Services login status is:' + isAuthenticated);
+                if (isAuthenticated) {
                     this.setState({
-                    loggedIn: isAuthenticated,
-                });
-            }
+                        loggedIn: isAuthenticated,
+                    });
+                }
             });
         }
     }
@@ -36,23 +37,21 @@ class Navigation extends React.Component {
         });
     }
 
-    handleSubmitClick() {
-        let keywords = $('#SearchBar').val();
-        console.log(keywords);
+    handleSubmitClick(terms) {
         window.location.href = `${
             window.location.origin
-        }/search/keyword=${keywords}`;
+        }/search/keyword=${terms}`;
     }
 
     keycheck(event) {
         if (event.charCode === 13) {
             if ($('#SearchBar').val()) {
-            this.handleSubmitClick();                
+                this.handleSubmitClick();
             }
         }
     }
     isLoggedIn() {
-        this.checkedLogin()
+        this.checkedLogin();
         if (this.state.loggedIn) {
             return (
                 <div className="dropdown p-1 d-flex">
@@ -71,7 +70,16 @@ class Navigation extends React.Component {
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenuButton"
                     >
-                        <NavLink to="/user/me"> <button className="dropdown-item text-dark"  type="button" href="#">Accounts</button></NavLink>
+                        <NavLink to="/user/me">
+                            {' '}
+                            <button
+                                className="dropdown-item text-dark"
+                                type="button"
+                                href="#"
+                            >
+                                Accounts
+                            </button>
+                        </NavLink>
                         <NavLink
                             to="/storage"
                             className="dropdown-item text-dark"
@@ -141,7 +149,7 @@ class Navigation extends React.Component {
                                 this.handleSubmitClick();
                             }}></i> */}
                             {/* <input className="form-control"  type="text" id="SearchBar" placeholder="Search" aria-label="Search"onKeyPress={event => {this.keycheck(event)} }  /> */}
-                            <input
+                            {/* <input
                                 className="form-control ml-sm-3 rounded-left"
                                 style={{ width: '350px' }}
                                 type="text"
@@ -150,6 +158,11 @@ class Navigation extends React.Component {
                                 aria-label="Search"
                                 onKeyPress={(event) => {
                                     this.keycheck(event);
+                                }}
+                            /> */}
+                            <MultiSearchBox
+                                onSearch={(terms) => {
+                                    this.handleSubmitClick(terms);
                                 }}
                             />
                         </div>

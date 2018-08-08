@@ -164,7 +164,7 @@ export default class ReviewForm extends Component {
                                             />
                                             <label
                                                 className="form-check-label"
-                                                for="inlineRadio4"
+                                                htmlFor="inlineRadio4"
                                             >
                                                 0
                                             </label>
@@ -184,7 +184,7 @@ export default class ReviewForm extends Component {
                                             />
                                             <label
                                                 className="form-check-label"
-                                                for="inlineRadio1"
+                                                htmlFor="inlineRadio1"
                                             >
                                                 1
                                             </label>
@@ -204,7 +204,7 @@ export default class ReviewForm extends Component {
                                             />
                                             <label
                                                 className="form-check-label"
-                                                for="inlineRadio2"
+                                                htmlFor="inlineRadio2"
                                             >
                                                 2
                                             </label>
@@ -224,7 +224,7 @@ export default class ReviewForm extends Component {
                                             />
                                             <label
                                                 className="form-check-label"
-                                                for="inlineRadio3"
+                                                htmlFor="inlineRadio3"
                                             >
                                                 3
                                             </label>
@@ -244,7 +244,7 @@ export default class ReviewForm extends Component {
                                             />
                                             <label
                                                 className="form-check-label"
-                                                for="inlineRadio4"
+                                                htmlFor="inlineRadio4"
                                             >
                                                 4
                                             </label>
@@ -264,7 +264,7 @@ export default class ReviewForm extends Component {
                                             />
                                             <label
                                                 className="form-check-label"
-                                                for="inlineRadio5"
+                                                htmlFor="inlineRadio5"
                                             >
                                                 5
                                             </label>
