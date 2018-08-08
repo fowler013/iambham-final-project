@@ -47,7 +47,6 @@ class Login extends Component {
     }
 
   loginFromSignUp() {
-    e.preventDefault();
     userService.login(this.state.form.email, this.state.form.password)
       .then(() => {
         this.setState({ redirectToReferrer: true });
@@ -60,6 +59,7 @@ class Login extends Component {
     handleFormSignUpSubmit(e) {
         // POST Users
       e.preventDefault();
+      console.log("got here")
       UsersServices.create(this.state.form).then(() => {
         this.loginFromSignUp()
       })

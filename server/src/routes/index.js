@@ -16,11 +16,11 @@ router
 // AUTH ROUTES
 router.use('/auth', authRouter);
 //router.use(isLoggedIn);
-router.route('*')
-    .post(tokenMiddleware, isLoggedIn)
-    .put(tokenMiddleware, isLoggedIn)
-    .delete(tokenMiddleware, isLoggedIn);
-/////////
+// router.route('*')
+//     .post(tokenMiddleware, isLoggedIn)
+//     .put(tokenMiddleware, isLoggedIn)
+//     .delete(tokenMiddleware, isLoggedIn);
+// /////////
 
 router
     .use('/user', userRouter)
