@@ -164,7 +164,15 @@ class Home extends React.Component {
 
           {/* Photo Links */}
 
-          <div id="popular-links1" style={{ paddingBottom: "220px", paddingTop: "80px", paddingLeft: "220px", paddingRight: "220px"}}>
+          <div
+            id="popular-links1"
+            style={{
+              paddingBottom: "220px",
+              paddingTop: "80px",
+              paddingLeft: "220px",
+              paddingRight: "220px"
+            }}
+          >
             <div
               id="link-container-1"
               style={{ marginBottom: "80px", marginTop: "80px" }}
@@ -331,11 +339,31 @@ class Home extends React.Component {
         </div>
         <div
           id="homepage-footer"
-          style={{ padding: "200px", backgroundColor: "gray", margin: "0" }}
+          style={{ padding: "200px", backgroundColor: "white", margin: "0" }}
+          className="row"
         >
-        <div></div>
-        <div></div>
-        <div></div>
+          <div className="col" style={{ textAlign: "center" }}>
+            <h3 style={{ fontWeight: "500", textDecoration: "underline", paddingBottom: "40px", color: "black"}}>
+              Follow Us !
+            </h3>
+            <div className="media-links">
+              <a  target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/?hl=en" class="fa fa-instagram"  />
+              <a  target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/" class="fa fa-facebook" />
+              <a  target="_blank" rel="noopener noreferrer" href="https://twitter.com/" class="fa fa-twitter" />
+              <a  target="_blank" rel="noopener noreferrer" href="https://plus.google.com/discover" class="fa fa-google" />
+            </div>
+          </div>
+          <div className="col" style={{ textAlign: "center" }}> 
+          <h3 style={{ fontWeight: "500", textDecoration: "underline", paddingBottom: "40px", color: "black"}}>
+              Recipes!
+            </h3>
+          </div>
+          <div className="col" style={{ textAlign: "center" }}> 
+          <h3 style={{ fontWeight: "500", textDecoration: "underline", paddingBottom: "40px", color: "black"}}>
+              Contact Us !
+              <p></p>
+            </h3>
+          </div>
         </div>
       </React.Fragment>
     );
