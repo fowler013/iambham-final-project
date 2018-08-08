@@ -21,7 +21,7 @@ class Navigation extends React.Component {
   checkedLogin() {
     if (!this.state.loggedIn) {
       userService.checkLogin().then(isAuthenticated => {
-        console.log("from Services login status is:" + isAuthenticated);
+        //console.log("from Services login status is:" + isAuthenticated);
         if (isAuthenticated) {
           this.setState({
             loggedIn: isAuthenticated

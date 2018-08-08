@@ -22,7 +22,7 @@ function populateAuthToken() {
     if (localStorage) {
         let token = localStorage.getItem(AUTH_TOKEN_KEY);
         if (token && token !== null) {
-            console.log('somehow i got the token');
+            //console.log('somehow i got the token');
             authToken = token;
         }
     }

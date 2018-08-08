@@ -19,28 +19,28 @@ let SearchTabs = (data) => {
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
                 <div className="card-img-top" key={`image${recipeIDurl.split("recipe_")[1]}`} style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
                     <div className="d-flex justify-content-end">
-                      <div className="text-center bg-warning p-2" style={{ borderBottomLeftRadius: "15%" }}>
-                        <i className="far fa-clock" style={{ fontSize: "2rem", color: "white" }} />
+                      <div className="text-center bg-light p-2" style={{ borderBottomLeftRadius: "15%" }}>
+                        <i className="far fa-clock" style={{ fontSize: "2rem", color: "black" }} />
 
-                        <p className="mb-0" style={{ color: "white", textDecoration: "none" }}>
+                        <p className="mb-0" style={{ color: "black", textDecoration: "none" }}>
                           <small>{cookTime(time)}</small>
                         </p>
                       </div>
                     </div>
                   </div>
                 </NavLink>
-                <div className="card-body">
+                <div className="card-body" style={{backgroundColor: "white" }}>
                   <h6 className="card-subtitle mb-2 text-muted">
                     From: {source}
                   </h6>
                 <h5 className="card-title lign-middle text-center mb-0" style={{height: "48px"}}>{title}</h5>
 
                 <div className="card text-white bg-warning mb-3">
-                  <div className="card-header">Ingredients</div>
-                  <div className="card-body">
-                    <div className="mb-2" style={{ height: "75px", overflowY: 'scroll', position: 'relative' }}>
+                  <div className="card-header bg-primary" ><span style={{color: "white"}}>Ingredients</span></div>
+                  <div className="card-body bg-light" >
+                    <div className="mb-2" style={{ height: "75px", overflowY: 'scroll', position: 'relative'}}>
                       {ingr.map((element, index) => {
-                        return (<p className="px-1"><small>{element}</small></p>)
+                        return (<p className="px-1" style={{color: "black"}}><small>{element}</small></p>)
                       })}
                     </div>
                   </div>
