@@ -22,6 +22,14 @@
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
+.search-input {
+    border: none !important;
+}
+
+.search-input:focus {
+    outline: none !important;
+}
+
 .home-page-container h2 {
     margin-top: 5px;
     text-align: center;
@@ -74,7 +82,7 @@
     font-weight: 900;
     font-size: 800%;
     color: white;
-    font-family: Georgia, Times, "Times New Roman", serif
+    font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 .user-page-container {
@@ -89,19 +97,20 @@
     padding-bottom: 150px;
     padding-left: 80px;
     text-align: center;
-    background-image: url("http://ce.unm.edu/assets/imgs/enrich/cooking-header");
+    background-image: url('http://ce.unm.edu/assets/imgs/enrich/cooking-header');
 }
 
 #home-sub-header {
     text-align: center;
-    padding: 80px
+    padding: 80px;
 }
 
 #todays-recipes {
     margin-top: 5px;
     text-align: center;
     font-weight: 900;
-    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman',
+        serif;
     font-size: 30px;
     font-style: normal;
     font-variant: normal;
@@ -115,17 +124,19 @@
 } */
 
 .h4-sub-header {
-    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman',
+        serif;
     font-size: 30px;
     font-style: normal;
     font-variant: normal;
     font-weight: 700;
     line-height: 33px;
-    padding: 30px
+    padding: 30px;
 }
 
 .h5-sub-header {
-    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman',
+        serif;
     font-style: normal;
     font-variant: normal;
     font-weight: 400;
@@ -134,7 +145,8 @@
 }
 
 .featured-recipes {
-    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman',
+        serif;
     font-style: normal;
     font-variant: normal;
     font-weight: 400;
@@ -179,11 +191,11 @@
 
 .carousel-inner:hover .overlay button {
     animation: SlideUp 1000ms forwards;
-    color: whitesmoke
+    color: whitesmoke;
 }
 
 #homecard {
-    border-radius: 10%
+    border-radius: 10%;
 }
 
 #homecard:hover .overlay {
@@ -217,7 +229,7 @@
 }
 
 #popular-links1 .card {
-    float: left
+    float: left;
 }
 
 #home-image-links {
@@ -226,14 +238,15 @@
     max-height: 450px;
 }
 
-#popular-links1 {}
+#popular-links1 {
+}
 
 .home-page-container {
-    background-color: floralwhite
+    background-color: floralwhite;
 }
 
 #headers {
-    background-color: floralwhite
+    background-color: floralwhite;
 }
 
 .fa {
@@ -243,7 +256,7 @@
     text-align: center;
     text-decoration: none;
     margin: 5px 2px;
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 .fa-instagram {
@@ -263,7 +276,7 @@
 }
 
 .fa-twitter {
-    background: #55ACEE;
+    background: #55acee;
     color: white;
     display: block;
     margin-left: auto;
@@ -271,7 +284,7 @@
 }
 
 .fa-facebook {
-    background: #3B5998;
+    background: #3b5998;
     color: white;
     display: block;
     margin-left: auto;
@@ -279,7 +292,7 @@
 }
 
 .media-links {
-    text-align: center
+    text-align: center;
 }
 
 #contact-text {
@@ -288,4 +301,3 @@
     width: 8em;
     font-weight: bold;
 }
-
