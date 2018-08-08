@@ -46,7 +46,9 @@ class Navigation extends React.Component {
 
     keycheck(event) {
         if (event.charCode === 13) {
-            this.handleSubmitClick();
+            if ($('#SearchBar').val()) {
+            this.handleSubmitClick();                
+            }
         }
     }
     isLoggedIn() {

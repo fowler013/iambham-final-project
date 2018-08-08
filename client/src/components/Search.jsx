@@ -65,7 +65,7 @@ class Search extends React.Component {
     return (
       <React.Fragment>
         <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
-          <div className="card my-3">
+          <div className="card my-5">
             <div className="card-body d-flex align-items-center justify-content-between">
               <div>Keywords: {this.state.keyword}</div>
               <div>
