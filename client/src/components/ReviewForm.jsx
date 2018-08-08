@@ -82,7 +82,7 @@ export default class ReviewForm extends Component {
                 <div
                     className="modal fade"
                     id="exampleModal"
-                    tabindex="-1"
+                    tabIndex="-1"
                     ref="mod"
                     tabIndex="-1"
                     role="dialog"
