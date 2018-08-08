@@ -275,9 +275,9 @@ export default class ReviewForm extends Component {
                             <div className="modal-footer">
                                 <button
                                     type="button"
-                                    className="btn btn-secondary"
+                                    className="btn"
                                     data-dismiss="modal"
-                                >
+                                    style={{backgroundColor: "#fc714c"}}>
                                     Close
                                 </button>
                                 <button

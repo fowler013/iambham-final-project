@@ -111,12 +111,12 @@ class Login extends Component {
              <div className="d-flex justify-content-center my-3">
                <ul className="nav nav-pills" id="pills-tab" role="tablist">
                  <li className="nav-item">
-                   <button className="btn nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                   <button className="btn nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"style={{backgroundColor: "#fc714c"}}>
                      Sign In
                    </button>
                  </li>
                  <li className="nav-item">
-                   <button className="btn nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                   <button className="btn nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style={{backgroundColor: "#fc714c"}}>
                      Sign Up
                    </button>
                  </li>

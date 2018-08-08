@@ -172,9 +172,9 @@ export default class UserStorage extends React.Component {
                             <div className="modal-footer">
                                 <button
                                     type="button"
-                                    className="btn btn-secondary"
+                                    className="btn"
                                     data-dismiss="modal"
-                                >
+                                  style={{backgroundColor: "#fc714c"}}>
                                     CLOSE
                                 </button>
                                 <button
