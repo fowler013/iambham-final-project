@@ -100,6 +100,7 @@ setTitle() {
 
   render() {
     this.setdata();
+    console.log(this.state.searchlist)
 
     return (
       <React.Fragment>
