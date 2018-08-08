@@ -1,10 +1,10 @@
 import React from 'react';
-import { isNil, isArray, isArrayLike, isEmpty } from 'lodash';
+import { isNil, isEmpty } from 'lodash';
 
 export default class MultiSearchBox extends React.Component {
     constructor(props) {
         super(props);
-        this.searchRef = React.createRef();
+
         this.state = {
             current: '',
             searchTerms: [],
