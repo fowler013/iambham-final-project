@@ -249,33 +249,29 @@
 .fa-instagram {
     background: #125688;
     color: white;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
+
 }
 
 .fa-google {
     background: #dd4b39;
     color: white;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
+
 }
 
 .fa-twitter {
     background: #55ACEE;
     color: white;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
+
 }
 
 .fa-facebook {
     background: #3B5998;
     color: white;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
+
 }
 
 .media-links {
@@ -287,5 +283,12 @@
     margin-right: auto;
     width: 8em;
     font-weight: bold;
+}
+
+.homepage-h3 {
+    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
 }
 

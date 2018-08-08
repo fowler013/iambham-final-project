@@ -31,7 +31,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="home-page-container">
-          <div className="featured-recipe-container" style={{textAlign: "center", paddingBottom: "40px", paddingTop: "40px", backgroundImage: `url(${"https://jooinn.com/images/italian-food-background-1.jpg"})`, opacity: "1"}}>
+          <div className="featured-recipe-container" style={{textAlign: "center", paddingBottom: "40px", paddingTop: "40px", backgroundColor: "Green", opacity: "1"}}>
             <h1 className="featured-recipes" style={{color: "white", fontWeight:"800", fontSize: "600%", padding: "40px"}}>Featured Recipes of the Day</h1>
           </div>
           <div style={{padding: "80px"}}></div>
@@ -156,7 +156,7 @@ class Home extends React.Component {
               backgroundColor: "green",
               marginTop: "40px",
               marginBottom: "40px",
-              backgroundImage: `url(${"https://i.pinimg.com/originals/55/8f/0c/558f0c481e133e72c9b139e5a5f50bba.jpg"})`,
+              backgroundColor: "Green",
                opacity: "0.8"
             }}
           >
@@ -184,7 +184,7 @@ class Home extends React.Component {
               style={{ marginBottom: "80px", marginTop: "80px" }}
             >
               <div className="row">
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=cheese">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -200,7 +200,7 @@ class Home extends React.Component {
                   </a>
                 </div>
 
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=chicken">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -215,7 +215,7 @@ class Home extends React.Component {
                     </div>
                   </a>
                 </div>
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=beef">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -237,7 +237,7 @@ class Home extends React.Component {
               style={{ marginBottom: "80px", marginTop: "80px" }}
             >
               <div className="row">
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=salad">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -253,7 +253,7 @@ class Home extends React.Component {
                   </a>
                 </div>
 
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=vegetarian">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -268,7 +268,7 @@ class Home extends React.Component {
                     </div>
                   </a>
                 </div>
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=rice">
                     {" "}
                     <div id="homecard" className="card">
@@ -291,7 +291,7 @@ class Home extends React.Component {
               style={{ marginBottom: "80px", marginTop: "80px" }}
             >
               <div className="row">
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=chocolate">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -307,7 +307,7 @@ class Home extends React.Component {
                   </a>
                 </div>
 
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=fish">
                     <div id="homecard" className="card">
                       <div className="overlay">
@@ -322,7 +322,7 @@ class Home extends React.Component {
                     </div>
                   </a>
                 </div>
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=egg">
                     {" "}
                     <div id="homecard" className="card">
@@ -349,6 +349,7 @@ class Home extends React.Component {
         >
           <div className="col" style={{ textAlign: "center" }}>
             <h3
+              className="homepage-h3"
               style={{
                 fontWeight: "500",
                 paddingBottom: "10px",
@@ -386,6 +387,7 @@ class Home extends React.Component {
           </div>
           <div className="col" style={{ textAlign: "center" }}>
             <h3
+              className="homepage-h3"
               style={{
                 fontWeight: "500",
                 paddingBottom: "40px",
