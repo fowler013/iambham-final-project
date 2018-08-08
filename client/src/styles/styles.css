@@ -226,14 +226,13 @@
     max-height: 450px;
 }
 
-#popular-links1 {}
 
 .home-page-container {
-    background-color: floralwhite
+    background-color: white
 }
 
 #headers {
-    background-color: floralwhite
+    background-color: white
 }
 
 .fa {
@@ -292,3 +291,6 @@
     font-weight: 400;
 }
 
+#homepage-footer {
+    background-color: darkgrey
+}
