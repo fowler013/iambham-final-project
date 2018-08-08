@@ -113,3 +113,15 @@ WHERE userid = p_userid;
 
 end $$
 delimiter ;
+
+-- -- DELETE FAVORITE BY USERID AND RECIPEID
+drop procedure if exists spDeleteFavoriteByRecipeIdAndUserId;
+delimiter $$
+create procedure spDeleteFavoriteByRecipeIdAndUserId(in p_recipeid int, in p_userid int)
+BEGIN
+
+DELETE FROM UserFavorites
+WHERE recipeid = p_recipeid AND userid = p_userid;
+
+END $$
+delimiter ;

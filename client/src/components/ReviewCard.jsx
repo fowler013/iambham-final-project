@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import * as ReviewService from '../services/reviews';
 import moment from "moment";
+import 'moment-duration-format'
 
 
 export default class ReviewCard extends Component {
 
 postedSince(date) {
     let createdTime = Date.parse(date);
-    console.log(createdTime)
     var nowTime = Date.parse(new Date);
     let howLong = moment.duration((nowTime - createdTime), "milliseconds").format("y [years], M [Months], w [weeks], d [days], h [hours], m [minutes], s [seconds]");
     return (howLong.split(',')[0])

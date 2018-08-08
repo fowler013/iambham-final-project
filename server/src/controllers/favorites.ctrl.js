@@ -145,3 +145,19 @@ export function deleteByUserId(req, res, next) {
             console.error(err);
         });
 }
+
+// delete by recipeid and userid
+export function deleteByRecipeIdAndUserId(req, res, next) {
+    let { recipeid, userid } = req.body;
+
+    FavoriteValidators.deleteByRecipeIdAndUserid({
+        recipeid,
+        userid,
+    }).then((sqlArgs) => {
+        return FavoriteProcedures.deleteByRecipeIdAndUserId(sqlArgs);
+    }).then(() => {
+        res.sendStatus(200);
+    }).catch((err) => {
+        console.log(err);
+    })
+}

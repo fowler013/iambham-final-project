@@ -20,3 +20,6 @@ export function deleteByRecipeId(args) {
 export function deleteByUserId(args) {
     return empty(`${SQL_DELETE}${MODEL_NAME}ByUserID`, args);
 }
+export function deleteByRecipeIdAndUserId(args) {
+    return empty(`${SQL_DELETE}${MODEL_NAME}ByRecipeIdAndUserId`, args)
+}
