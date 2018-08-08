@@ -25,5 +25,8 @@ function readByRecipe(id) {
 function readByUserid(id) {
     return baseService.get(`/api/favorite/user/${id}`)
 }
+function destroyByRecipeIdAndUserId(data) {
+    return baseService.destroy(`/api/favorite`, data);
+}
 
-export { all, read, create, update, destroy, readByRecipe, readByUserid };
+export { all, read, create, update, destroy, readByRecipe, readByUserid, destroyByRecipeIdAndUserId };

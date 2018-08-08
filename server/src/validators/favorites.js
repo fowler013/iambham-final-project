@@ -137,3 +137,34 @@ export function readByUserId(args) {
     });
 }
 ////////////////////////////////////////////////////////////
+export function deleteByRecipeIdAndUserid(args) {
+    let err = false;
+    let message = '';
+
+    let recipeid = args.recipeid;
+    let userid = +args.userid;
+
+    return new Promise((resolve, reject) => {
+        if (!lodash.isFinite(userid)) {
+            reject(new Error('userid is not a number'));
+            return;
+        }
+
+        if (
+            !(
+                lodash.isString(recipeid)
+            )
+        ) {
+            err = true;
+            message =
+                'Make sure recipeid is alphanumeric values';
+        }
+
+        if (err) {
+            reject(new Error(message));
+            return;
+        }
+
+        resolve([recipeid, userid]);
+    })
+}

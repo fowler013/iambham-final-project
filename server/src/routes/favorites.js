@@ -13,7 +13,8 @@ router
     .post('/', tokenMiddleware, isLoggedIn, Favorites.create)
     .put('/:id', Favorites.update)
     .delete('/:id', tokenMiddleware, isLoggedIn, Favorites.destroy)
-    .delete('/user/:id', Favorites.deleteByUserId);
+    .delete('/user/:id', Favorites.deleteByUserId)
+    .delete('/', Favorites.deleteByRecipeIdAndUserId);
 
 
 export default router;
