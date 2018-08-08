@@ -9,6 +9,14 @@ let cookTime = (time) => {
   return (howLong.split(',')[0])
 }
 
+let placeImage = (image, source) => {
+  if (source === "David Lebovitz") {
+    return ('https://www.davidlebovitz.com/wp-content/themes/davidlebovitz/images/logo.png')
+  } else {
+    return image
+  }
+}
+
 let SearchTabs = (data) => {
     let {recipe} = data
     let { calories, dietLabels, healthLabels, image, label: title, source, totalTime: time, yield: servings, ingredientLines: ingr, url: insturctionurl, uri: recipeIDurl } = recipe
@@ -17,7 +25,7 @@ let SearchTabs = (data) => {
             <div className=" col my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
               <div className="card card-cascade" style={{ height: "32rem", width: "22rem" }}>
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
-                <div className="card-img-top" key={`image${recipeIDurl.split("recipe_")[1]}`} style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
+                <div className="card-img-top" key={`image${recipeIDurl.split("recipe_")[1]}`} style={{ height: "10rem", width: "22rem", backgroundImage: `url(${placeImage(image, source)})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
                     <div className="d-flex justify-content-end">
                       <div className="text-center bg-warning p-2" style={{ borderBottomLeftRadius: "15%" }}>
                         <i className="far fa-clock" style={{ fontSize: "2rem", color: "white" }} />
