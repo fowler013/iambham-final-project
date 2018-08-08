@@ -177,7 +177,7 @@
     color: white;
 }
 
-.carousel-inner:hover .overlay h2 {
+.carousel-inner:hover .overlay button {
     animation: SlideUp 1000ms forwards;
     color: whitesmoke
 }
@@ -193,7 +193,7 @@
     color: white;
 }
 
-#homecard:hover .overlay p {
+#homecard:hover .overlay button {
     animation: SlideUp 1000ms forwards;
 }
 
