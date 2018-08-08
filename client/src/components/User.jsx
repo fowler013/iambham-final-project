@@ -87,6 +87,20 @@ class User extends React.Component {
     }
 
     toggleUpdate() {
+        if (this.state.isUpdating) {
+            this.setState({
+                isUpdating: !this.state.isUpdating,
+                user: {
+                    id: this.user.id,
+                    firstName: this.user.firstname,
+                    lastName: this.user.lastname,
+                    email: this.user.email,
+                    userName: this.user.username,
+                },
+            });
+            return;
+        }
+
         this.setState({
             isUpdating: !this.state.isUpdating,
         });
