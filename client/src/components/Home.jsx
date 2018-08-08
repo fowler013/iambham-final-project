@@ -25,16 +25,20 @@ class Home extends React.Component {
               Quickly browse thousands of curated recipes for any occasion.
             </h4>
             <h5 className="h5-sub-header">
-              Create an account to leave reviews and save your favorites!
+              Compile your own personal pantry of ingredients for peronalized
+              recipe results.
             </h5>
           </div>
         </div>
-
         <div className="home-page-container">
+          <div className="featured-recipe-container" style={{textAlign: "center", paddingBottom: "40px", paddingTop: "40px", backgroundImage: `url(${"https://jooinn.com/images/italian-food-background-1.jpg"})`, opacity: "1"}}>
+            <h1 className="featured-recipes" style={{color: "white", fontWeight:"800", fontSize: "600%", padding: "40px"}}>Featured Recipes of the Day</h1>
+          </div>
+          <div style={{padding: "80px"}}></div>
           <div
             id="carouselExampleIndicator1"
             className="carousel slide container"
-            style={{ height: "800px", margin: "0 auto" }}
+            style={{ height: "800px", margin: "0 auto", paddingTop: "80px"}}
             data-ride="carousel"
           >
             <ol className="carousel-indicators">
@@ -151,20 +155,30 @@ class Home extends React.Component {
             style={{
               backgroundColor: "green",
               marginTop: "40px",
-              marginBottom: "40px"
+              marginBottom: "40px",
+              backgroundImage: `url(${"https://i.pinimg.com/originals/55/8f/0c/558f0c481e133e72c9b139e5a5f50bba.jpg"})`,
+               opacity: "0.8"
             }}
           >
-            <h2
+            <h1
               id="todays-recipes"
-              style={{ padding: "100px", color: "white", marginTop: "70px" }}
+              style={{ padding: "100px", color: "black", marginTop: "70px", fontWeight:"800", fontSize: "600%" }}
             >
               Browse our most popular searches.
-            </h2>
+            </h1>
           </div>
 
           {/* Photo Links */}
 
-          <div id="popular-links1" style={{ paddingBottom: "220px", paddingTop: "80px", paddingLeft: "220px", paddingRight: "220px"}}>
+          <div
+            id="popular-links1"
+            style={{
+              paddingBottom: "220px",
+              paddingTop: "80px",
+              paddingLeft: "220px",
+              paddingRight: "220px"
+            }}
+          >
             <div
               id="link-container-1"
               style={{ marginBottom: "80px", marginTop: "80px" }}
@@ -172,7 +186,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=cheese">
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Cheese Recipes</p>
                       </div>
@@ -188,7 +202,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=chicken">
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Chicken Recipes</p>
                       </div>
@@ -203,8 +217,7 @@ class Home extends React.Component {
                 </div>
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=beef">
-                    {" "}
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Beef Recipes</p>
                       </div>
@@ -226,7 +239,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=salad">
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Salad Recipes</p>
                       </div>
@@ -242,7 +255,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=vegetarian">
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Vegetarian Recipes</p>
                       </div>
@@ -258,7 +271,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=rice">
                     {" "}
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Rice & Grain Recipes</p>
                       </div>
@@ -280,7 +293,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=chocolate">
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Chocolate Recipes</p>
                       </div>
@@ -296,7 +309,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=fish">
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Fish Recipes</p>
                       </div>
@@ -312,7 +325,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=egg">
                     {" "}
-                    <div class="homecard">
+                    <div id="homecard" class="card">
                       <div className="overlay">
                         <p>Egg Recipes</p>
                       </div>
@@ -331,11 +344,78 @@ class Home extends React.Component {
         </div>
         <div
           id="homepage-footer"
-          style={{ padding: "200px", backgroundColor: "gray", margin: "0" }}
+          style={{ padding: "40px", backgroundColor: "white", margin: "0" }}
+          className="row"
         >
-        <div></div>
-        <div></div>
-        <div></div>
+          <div className="col" style={{ textAlign: "center" }}>
+            <h3
+              style={{
+                fontWeight: "500",
+                paddingBottom: "10px",
+                color: "black"
+              }}
+            >
+              Follow Us !
+            </h3>
+            <div className="media-links">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/?hl=en"
+                class="fa fa-instagram"
+              />
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com/"
+                class="fa fa-facebook"
+              />
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://twitter.com/"
+                class="fa fa-twitter"
+              />
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://plus.google.com/discover"
+                class="fa fa-google"
+              />
+            </div>
+          </div>
+          <div className="col" style={{ textAlign: "center" }}>
+            <h3
+              style={{
+                fontWeight: "500",
+                paddingBottom: "40px",
+                color: "black"
+              }}
+            >
+              Contact Us !
+            </h3>
+            <p class="contact-text">
+              {" "}
+              <span style={{ textDecoration: "underline", fontWeight: "400" }}>
+                Address
+              </span>{" "}
+              <br /> 1500 1st Ave N, Birmingham, AL 35203
+            </p>
+            <p class="contact-text">
+              {" "}
+              <span style={{ textDecoration: "underline", fontWeight: "400" }}>
+                Phone Number
+              </span>{" "}
+              <br /> (205)-555-5555{" "}
+            </p>
+            <p class="contact-text">
+              {" "}
+              <span style={{ textDecoration: "underline", fontWeight: "400" }}>
+                E-Mail
+              </span>{" "}
+              <br /> email@email.com{" "}
+            </p>
+          </div>
         </div>
       </React.Fragment>
     );
