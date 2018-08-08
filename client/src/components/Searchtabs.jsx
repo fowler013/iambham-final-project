@@ -19,10 +19,10 @@ let SearchTabs = (data) => {
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
                 <div className="card-img-top" key={`image${recipeIDurl.split("recipe_")[1]}`} style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
                     <div className="d-flex justify-content-end">
-                      <div className="text-center bg-dark p-2" style={{ borderBottomLeftRadius: "15%" }}>
-                        <i className="far fa-clock" style={{ fontSize: "2rem", color: "white" }} />
+                      <div className="text-center bg-light p-2" style={{ borderBottomLeftRadius: "15%" }}>
+                        <i className="far fa-clock" style={{ fontSize: "2rem", color: "black" }} />
 
-                        <p className="mb-0" style={{ color: "white", textDecoration: "none" }}>
+                        <p className="mb-0" style={{ color: "black", textDecoration: "none" }}>
                           <small>{cookTime(time)}</small>
                         </p>
                       </div>
