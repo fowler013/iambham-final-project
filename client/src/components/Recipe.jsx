@@ -187,11 +187,6 @@ class Recipe extends React.Component {
         });
     }
 
-    setIngredients(data) {
-        if (data) {
-            return <p className="card-text">{data}</p>;
-        }
-    }
 
     gogetdata(sending) {
         fetch(`/api/search/recipe/${sending}`, {
@@ -208,9 +203,14 @@ class Recipe extends React.Component {
             });
     }
 
-    setIngredients(data) {
+    setIngredients(data, storage) {
         if (data) {
-            return <p className="card-text">{data}</p>;
+            if(this.inStorage(data, storage)) {
+                return <div className="card-text my-2 d-flex justify-content-start align-items-center">
+                    <i class="far fa-check-circle" style={{ fontSize: "24px", paddingRight: "0.5rem", color: "green"}} /> {data}
+                  </div>;
+            }
+            return (<div className="card-text my-2 d-flex justify-content-start "> {data} </div>)
         }
     }
 
@@ -265,12 +265,23 @@ class Recipe extends React.Component {
         }
     }
 
+    inStorage(ingr, storage) {
+        let isIn = false;
+        storage.forEach(element => {
+            if (ingr.indexOf(element.item) >=0) {
+                isIn = true
+            }
+        })
+        return isIn
+    }
+
+
     render() {
         this.setdata();
         this.checkedLogin();
         //console.log(this.state.loggedIn)
         // console.log(this.state.userid)
-        //console.log(this.state.userStorage)
+        console.log(this.state.userStorage)
         // console.log(this.state.isFavorite);
 
         return (
@@ -388,11 +399,11 @@ class Recipe extends React.Component {
 
                     <div className="card">
                         <h3 className="card-header primary-color white-text">
-                            Ingredients
+                            Ingredients 
                         </h3>
                         <div className="card-body">
                             {this.state.recipe.ingredientLines.map((element) =>
-                                this.setIngredients(element),
+                                this.setIngredients(element, this.state.userStorage),
                             )}
                             <a
                                 className="btn btn-outline-primary btn-block"

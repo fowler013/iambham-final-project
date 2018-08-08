@@ -1,5 +1,6 @@
 import React from 'react';
 import * as userStorageService from '../services/userStorage';
+import * as userService from '../services/user';
 import * as storageCategoriesService from '../services/category';
 import { findDOMNode } from 'react-dom';
 
@@ -18,38 +19,18 @@ export default class UserStorage extends React.Component {
     }
 
     componentDidMount() {
-        Promise.all([
-            userStorageService.all(12),
-            storageCategoriesService.all(),
-        ]).then(([items, categories]) => {
+        userService.me().then((me) => {
+            this.setState({ userid: me.id})         
+            return Promise.all([
+                userStorageService.all(me.id),
+                storageCategoriesService.all(),
+            ]);
+        }).then(([items, categories]) => {
             this.setState({
                 items,
                 categories,
             });
         });
-    }
-    goGetUser() {
-        if (this.state.loggedIn && !this.state.userid) {
-            UserServices.me().then(results => {
-                this.setState({
-                    userid: results.id,
-                });
-            })
-        }
-    }
-
-    checkedLogin() {
-        if (!this.state.loggedIn) {
-            UserServices.checkLogin().then((isAuthenticated) => {
-                console.log("from Services login status is:" + isAuthenticated)
-                if (isAuthenticated) {
-                    this.setState({
-                        loggedIn: isAuthenticated,
-                    });
-                    this.goGetUser()
-                }
-            });
-        }
     }
 
     handleChange(itemName) {
@@ -215,7 +196,7 @@ export default class UserStorage extends React.Component {
 
     handleSubmit() {
         let addItem = {
-            userid: 12,
+            userid: this.state.userid,
             categoryid: this.state.selectValue,
             item: this.state.itemName,
         };

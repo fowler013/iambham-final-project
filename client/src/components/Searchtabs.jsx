@@ -48,7 +48,7 @@ let SearchTabs = (data) => {
                   <div className="card-body">
                     <div className="mb-2" style={{ height: "75px", overflowY: 'scroll', position: 'relative' }}>
                       {ingr.map((element, index) => {
-                        return (<p className="px-1"><small>{element}</small></p>)
+                        return (<p className="px-1" key={``}><small>{element}</small></p>)
                       })}
                     </div>
                   </div>

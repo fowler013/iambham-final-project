@@ -10,6 +10,7 @@ import {
 import SearchTabs from "./Searchtabs";
 import Pagination from "./SearchPagination";
 import * as SearchServices from '../services/search';
+import IndeterminateProgress from '../components/utilities/indeterminateProgress';
 
 class Search extends React.Component {
   constructor(props) {
@@ -98,6 +99,18 @@ setTitle() {
   return(<div>All Recipes</div>)
 }
 
+seaches() {
+  if (!this.state.searchlist[0]) {
+    return (<div className="col"><IndeterminateProgress message="Loading Recipes..." /></div> )
+  }else {
+    return (
+      this.state.searchlist.map(element => {
+        return SearchTabs(element);
+      })
+    )
+  }
+}
+
   render() {
     this.setdata();
     console.log(this.state.searchlist)
@@ -115,9 +128,7 @@ setTitle() {
           </div>
 
           <div className="row">
-            {this.state.searchlist.map(element => {
-              return SearchTabs(element);
-            })}
+          {this.seaches()}
           </div>
           <div className="d-flex align-items-center justify-content-center">
             {Pagination({
