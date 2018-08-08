@@ -5,8 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-rou
 
 
 let Pagination = ({total, start, end}) => {
-    console.log(total, start, end)
-    console.log(window.location.pathname.split('&from')[0])
+
 
 let previous = (starting) => {
 if (starting >= 20) {

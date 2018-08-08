@@ -9,7 +9,7 @@ let SearchTabs = (data) => {
     let { calories, dietLabels, healthLabels, image, label: title, source, totalTime: time, yield: servings, ingredientLines: ingr, url: insturctionurl, uri: recipeIDurl } = recipe
 
         return <React.Fragment>
-            <div className="col-3 my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
+            <div className=" col my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
               <div className="card card-cascade" style={{ height: "32rem", width: "22rem" }}>
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
                   <div className="card-img-top" style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>

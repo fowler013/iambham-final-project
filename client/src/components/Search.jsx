@@ -37,7 +37,6 @@ class Search extends React.Component {
   gogetdata(sending) {
     SearchServices.readSearch(sending)
       .then((data) => {
-        console.log(data)
         this.setState({
           pageid: this.props.match.params.id,
           keyword: data.q,
@@ -79,10 +78,24 @@ setTitle() {
           word = `${firstletter.toUpperCase()}${word.slice(1)}`
           return word
         }).join(" "))
-      })}
+      })} Recipes
   </div>
   )
   }
+  if (this.state.diet) {
+    return (
+      <div>
+        {this.state.diet.map(element => {
+          return (element.split('-').map(word => {
+            let firstletter = word.slice(0, 1)
+            word = `${firstletter.toUpperCase()}${word.slice(1)}`
+            return word
+          }).join(" "))
+        })} Recipes
+      </div>
+    )
+  }
+  return(<div>All Recipes</div>)
 }
 
   render() {
