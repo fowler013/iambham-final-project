@@ -59,7 +59,7 @@ class Login extends Component {
     handleFormSignUpSubmit(e) {
         // POST Users
       e.preventDefault();
-      console.log("got here")
+      //console.log("got here")
       UsersServices.create(this.state.form).then(() => {
         this.loginFromSignUp()
       })
