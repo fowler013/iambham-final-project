@@ -153,7 +153,7 @@ class Login extends Component {
                        <p className="h4 text-center py-4">Sign up</p>
 
                        <div className="md-form">
-                         <i className="fa fa-user prefix grey-text" />
+                       <i className="fa fa-user prefix grey-text" style={{ marginTop: "-1rem", marginLeft: "-0.25rem" }}/>
                          <input type="text" id="materialFormCardFirstName" className="form-control" onChange={e => {
                              this.handleFormFirstNameChange(e.target.value);
                            }} name="firstname" />
@@ -162,7 +162,7 @@ class Login extends Component {
                          </label>
                        </div>
                        <div className="md-form">
-                         <i className="fa fa-user prefix grey-text" />
+                       <i className="fa fa-user prefix grey-text" style={{ marginTop: "-1rem", marginLeft: "-0.25rem" }}/>
                          <input type="text" id="materialFormCardLastName" className="form-control" onChange={e => {
                              this.handleFormLastNameChange(e.target.value);
                            }} name="lastname" />
@@ -173,7 +173,7 @@ class Login extends Component {
                        </div>
 
                        <div className="md-form">
-                         <i className="fa fa-envelope prefix grey-text" />
+                       <i className="fa fa-envelope prefix grey-text" style={{ marginTop: "-1rem", marginLeft: "-0.25rem" }}/>
                          <input type="email" id="materialFormCardEmailEx" className="form-control" onChange={e => {
                              this.handleFormEmailChange(e.target.value);
                            }} name="email" />
@@ -184,7 +184,7 @@ class Login extends Component {
                        </div>
 
                        <div className="md-form">
-                         <i className="fa fa-user prefix grey-text" />
+                       <i className="fa fa-user prefix grey-text" style={{ marginTop: "-1rem", marginLeft: "-0.25rem" }}/>
                          <input type="text" id="materialFormCardConfirmEx" className="form-control" onChange={e => {
                              this.handleFormUsernameChange(e.target.value);
                            }} name="email" />
@@ -195,7 +195,7 @@ class Login extends Component {
                        </div>
 
                        <div className="md-form">
-                         <i className="fa fa-lock prefix grey-text" />
+                       <i className="fa fa-lock prefix grey-text" style={{ marginTop: "-1rem", marginLeft: "-0.25rem" }} />
                          <input type="password" id="materialFormCardPasswordEx" className="form-control" onChange={e => {
                              this.handleFormPasswordChange(e.target.value);
                            }} name="password" />
