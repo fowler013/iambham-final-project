@@ -22,10 +22,10 @@ class Home extends React.Component {
           </div>
           <div id="home-sub-header">
             <h4 className="h4-sub-header">
-              Quickly browse thousands of curated recipes for any occasion.
+              
             </h4>
             <h5 className="h5-sub-header">
-              Compile your own personal pantry of ingredients for peronalized
+              Compile your own personal pantry of ingredients for personalized
               recipe results.
             </h5>
           </div>
@@ -57,7 +57,7 @@ class Home extends React.Component {
               <div className="carousel-item active">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/55e11aa290643824991f857b4e5ba0fe">
-                    <h2>Shrimp Scampi</h2>
+                    <button type="button" class="btn btn-light">Shrimp Scampi</button>
                   </a>
                 </div>
                 <img
@@ -71,7 +71,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/518d4ca5057fcc2a33410a6361e881de">
-                    <h2>Parsley Quinoa Salad</h2>
+                  <button type="button" class="btn btn-light">Parsley Quinoa Salad</button>
                   </a>
                 </div>
                 <img
@@ -83,7 +83,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/5a84c050004ab90f4fb95242af2a3709">
-                    <h2>Steak Carpaccio Salad</h2>
+                  <button type="button" class="btn btn-light">Steak Carpaccio</button>
                   </a>
                 </div>
                 <img
@@ -95,7 +95,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/370599c0617d40cb88df553fdd48b04e">
-                    <h2>Salmon Teriyaki</h2>
+                  <button type="button" class="btn btn-light">Salmon Teriyaki</button>
                   </a>
                 </div>
                 <img
@@ -108,7 +108,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/145d799511a88c11b7d05119e522b36e">
-                    <h2>Chicken Piccata</h2>
+                  <button type="button" class="btn btn-light">Chicken Piccata</button>
                   </a>
                 </div>
                 <img
@@ -121,7 +121,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/a48ba99bcb994261789daedde6d1c6c1">
-                    <h2>Pizza Margherita</h2>
+                  <button type="button" class="btn btn-light">Pizza Margherita</button>
                   </a>
                 </div>
                 <img
@@ -188,7 +188,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=cheese">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Cheese Recipes</p>
+                      <button type="button" class="btn btn-light">Cheese Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -204,7 +204,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=chicken">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Chicken Recipes</p>
+                      <button type="button" class="btn btn-light">Chicken Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -219,7 +219,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=beef">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Beef Recipes</p>
+                      <button type="button" class="btn btn-light">Beef Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -241,7 +241,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=salad">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Salad Recipes</p>
+                      <button type="button" class="btn btn-light">Salad Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -257,7 +257,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=vegetarian">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Vegetarian Recipes</p>
+                      <button type="button" class="btn btn-light">Vegetarian Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -273,7 +273,7 @@ class Home extends React.Component {
                     {" "}
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Rice & Grain Recipes</p>
+                      <button type="button" class="btn btn-light">Rice & Grain Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -295,7 +295,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=chocolate">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Chocolate Recipes</p>
+                      <button type="button" class="btn btn-light">Chocolate Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -311,7 +311,7 @@ class Home extends React.Component {
                   <a href="http://localhost:3000/search/keyword=fish">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Fish Recipes</p>
+                      <button type="button" class="btn btn-light">Fish Recipe</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -327,7 +327,7 @@ class Home extends React.Component {
                     {" "}
                     <div id="homecard" className="card">
                       <div className="overlay">
-                        <p>Egg Recipes</p>
+                      <button type="button" class="btn btn-light">Egg Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
