@@ -220,6 +220,70 @@ class User extends React.Component {
     return(
       <Fragment>
         {form}
+
+        <div
+            id="popular-links1"
+            style={{
+              paddingBottom: "220px",
+              paddingTop: "80px",
+              paddingLeft: "220px",
+              paddingRight: "220px"
+            }}
+          >
+            <div
+              id="link-container-1"
+              style={{ marginBottom: "80px", marginTop: "80px" }}
+            >
+              <div className="row">
+                <div className="col">
+                  <a href="http://localhost:3000/recipe/ffb72e7b53285253a66b46255ce261c8">
+                    <div id="homecard" className = "card">
+                      <div className="overlay">
+                        <p className= "text center">Favorites</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+
+                <div className="col">
+                  <a href="http://localhost:3000/recipe/b79327d05b8e5b838ad6cfd9576b30b6">
+                    <div id="homecard" className="card">
+                      <div className="overlay">
+                        <p>Favorites</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="https://www.seriouseats.com/recipes/images/2011/12/20111215-dt-chicken-vesuvio-primary.jpg"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div className="col">
+                  <a href="http://localhost:3000/recipe/2af7b54fe475a09fd9baea4cf97ad86e">
+                    <div id="homecard" className="card">
+                      <div className="overlay">
+                        <p>Favorites</p>
+                      </div>
+                      <img
+                        id="home-image-links"
+                        className="card-img-top"
+                        src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--3621_12.jpg?itok=DMaE2Rdv"
+                        alt="Card image cap"
+                      />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
       </Fragment>
     )
   }
