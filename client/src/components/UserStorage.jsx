@@ -113,7 +113,7 @@ export default class UserStorage extends React.Component {
                 <div
                     className="modal fade"
                     id="exampleModalCenter"
-                    tabindex="-1"
+                    tabIndex="-1"
                     ref="modal"
                     role="dialog"
                     aria-labelledby="exampleModalCenterTitle"
