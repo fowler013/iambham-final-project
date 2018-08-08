@@ -15,6 +15,7 @@ import * as ReviewsServices from '../services/reviews';
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
 import moment from 'moment';
+import 'moment-duration-format';
 import * as SearchServices from '../services/search';
 import * as UserServices from '../services/user';
 import * as StorageServices from '../services/userStorage';
@@ -92,10 +93,14 @@ class Recipe extends React.Component {
     }
 
     handleNewReview(review) {
-        review.username = 'jimbob1';
-        this.setState({
-            reviewContainer: [...this.state.reviewContainer, review],
-        });
+        UserServices.me().then((user) => {
+            let { id, username } = user;
+            console.log(review)
+            review.username = username;
+            this.setState({
+                reviewContainer: [...this.state.reviewContainer, review],
+            });
+        })
     }
 
     changetext() {
@@ -124,14 +129,6 @@ class Recipe extends React.Component {
                 });
             },
         );
-        UserServices.me().then((user) => {
-            //console.log(`***** HERE *****`, user);
-            let { id } = user;
-            //console.log(`***** HERE LOVE *****`, id);
-            return ReviewsServices.readByUserid(id).then((review) => {
-                //console.log(`***** HERE *****`, review[0])
-            });
-        });
     }
 
     gogetdata(recipeid) {
@@ -190,10 +187,6 @@ class Recipe extends React.Component {
         });
     }
 
-    //this.setState({
-    //    isFavorite: false
-    //})
-
     setIngredients(data) {
         if (data) {
             return <p className="card-text">{data}</p>;
@@ -220,14 +213,6 @@ class Recipe extends React.Component {
             return <p className="card-text">{data}</p>;
         }
     }
-    //gotEm() {
-    //    UserServices.me().then((user) => {
-    //        console.log(`***** HERE *****`, user);
-    //        let { id } = user
-    //        console.log(`***** HERE LOVE *****`, id);
-    //        return id;
-    //    })
-    //}
 
     isFavorite() {
         if (this.state.isFavorite) {
@@ -284,9 +269,9 @@ class Recipe extends React.Component {
         this.setdata();
         this.checkedLogin();
         //console.log(this.state.loggedIn)
-        //console.log(this.state.userid)
+        // console.log(this.state.userid)
         //console.log(this.state.userStorage)
-        console.log(this.state.isFavorite);
+        // console.log(this.state.isFavorite);
 
         return (
             <React.Fragment>
@@ -548,6 +533,7 @@ class Recipe extends React.Component {
                                     }}
                                     recipe={this.state.recipe.label}
                                     recipeid={this.props.match.params.id}
+                                    userid={this.state.userid}
                                 />
                             </span>
                         </h3>

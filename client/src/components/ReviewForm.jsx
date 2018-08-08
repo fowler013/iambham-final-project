@@ -16,6 +16,17 @@ export default class ReviewForm extends Component {
             },
         };
     }
+
+    componentWillReceiveProps() {
+        this.setState({
+            data: {
+                userid: this.props.userid,
+                recipeid: this.props.recipeid,
+                ratings: '',
+                review: '',
+            }
+        });
+    }
     // CONTENT CHANGING FUNCTIONS
     handleContentChange(review) {
         let data = Object.assign({}, this.state.data, { review });
@@ -56,6 +67,7 @@ export default class ReviewForm extends Component {
         });
     }
     render() {
+
         return (
             <div className="modal-container">
                 <button
@@ -122,11 +134,17 @@ export default class ReviewForm extends Component {
                                         />
                                     </div>
                                     <p>
-                                        <span className="star-symbol" style={{ color: 'gold' }}>
+                                        <span
+                                            className="star-symbol"
+                                            style={{ color: 'gold' }}
+                                        >
                                             &#9733;
                                         </span>{' '}
                                         Recipe Rating{' '}
-                                        <span className="star-symbol" style={{ color: 'gold' }}>
+                                        <span
+                                            className="star-symbol"
+                                            style={{ color: 'gold' }}
+                                        >
                                             &#9733;
                                         </span>
                                     </p>
