@@ -18,21 +18,20 @@ class Home extends React.Component {
       <React.Fragment>
         <div id="headers">
           <div id="home-header">
-            <h1 className="featured-dishes">Recipes!</h1>
+            <h1 className="featured-dishes">Title</h1>
           </div>
           <div id="home-sub-header">
             <h4 className="h4-sub-header">
-              
+              Sub-Header Title
             </h4>
             <h5 className="h5-sub-header">
-              Compile your own personal pantry of ingredients for personalized
-              recipe results.
+            Sub-header Text
             </h5>
           </div>
         </div>
         <div className="home-page-container">
-          <div className="featured-recipe-container" style={{textAlign: "center", paddingBottom: "40px", paddingTop: "40px", backgroundImage: `url(${"https://jooinn.com/images/italian-food-background-1.jpg"})`, opacity: "1"}}>
-            <h1 className="featured-recipes" style={{color: "white", fontWeight:"800", fontSize: "600%", padding: "40px"}}>Featured Recipes of the Day</h1>
+          <div className="featured-recipe-container" style={{textAlign: "center", paddingTop: "40px", opacity: "1"}}>
+            <h2 className="featured-recipes" style={{color: "black", fontWeight:"800", fontSize: "600%"}}>Featured Dishes of the Day</h2>
           </div>
           <div style={{padding: "80px"}}></div>
           <div
@@ -57,7 +56,7 @@ class Home extends React.Component {
               <div className="carousel-item active">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/55e11aa290643824991f857b4e5ba0fe">
-                    <button type="button" class="btn btn-light">Shrimp Scampi</button>
+                    <button type="button" className="btn btn-light">Shrimp Scampi</button>
                   </a>
                 </div>
                 <img
@@ -71,7 +70,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/518d4ca5057fcc2a33410a6361e881de">
-                  <button type="button" class="btn btn-light">Parsley Quinoa Salad</button>
+                  <button type="button" className="btn btn-light">Parsley Quinoa Salad</button>
                   </a>
                 </div>
                 <img
@@ -83,7 +82,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/5a84c050004ab90f4fb95242af2a3709">
-                  <button type="button" class="btn btn-light">Steak Carpaccio</button>
+                  <button type="button" className="btn btn-light">Steak Carpaccio</button>
                   </a>
                 </div>
                 <img
@@ -95,7 +94,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/370599c0617d40cb88df553fdd48b04e">
-                  <button type="button" class="btn btn-light">Salmon Teriyaki</button>
+                  <button type="button" className="btn btn-light">Salmon Teriyaki</button>
                   </a>
                 </div>
                 <img
@@ -108,7 +107,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/145d799511a88c11b7d05119e522b36e">
-                  <button type="button" class="btn btn-light">Chicken Piccata</button>
+                  <button type="button" className="btn btn-light">Chicken Piccata</button>
                   </a>
                 </div>
                 <img
@@ -121,7 +120,7 @@ class Home extends React.Component {
               <div className="carousel-item">
                 <div className="overlay">
                   <a href="http://localhost:3000/recipe/a48ba99bcb994261789daedde6d1c6c1">
-                  <button type="button" class="btn btn-light">Pizza Margherita</button>
+                  <button type="button" className="btn btn-light">Pizza Margherita</button>
                   </a>
                 </div>
                 <img
@@ -150,19 +149,20 @@ class Home extends React.Component {
               <span className="sr-only">Next</span>
             </a>
           </div>
+          <div style={{padding: "80px"}}></div>
           <div
             id="todays-recipes-container"
             style={{
-              backgroundColor: "green",
+              
               marginTop: "40px",
               marginBottom: "40px",
-              backgroundImage: `url(${"https://i.pinimg.com/originals/55/8f/0c/558f0c481e133e72c9b139e5a5f50bba.jpg"})`,
+              
                opacity: "0.8"
             }}
           >
             <h1
               id="todays-recipes"
-              style={{ padding: "100px", color: "black", marginTop: "70px", fontWeight:"800", fontSize: "600%" }}
+              style={{ color: "black", marginTop: "70px", fontWeight:"800", fontSize: "600%"}}
             >
               Browse our most popular searches.
             </h1>
@@ -184,11 +184,11 @@ class Home extends React.Component {
               style={{ marginBottom: "80px", marginTop: "80px" }}
             >
               <div className="row">
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=cheese">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Cheese Recipes</button>
+                      <button type="button" className="btn btn-light">Cheese Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -200,11 +200,11 @@ class Home extends React.Component {
                   </a>
                 </div>
 
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=chicken">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Chicken Recipes</button>
+                      <button type="button" className="btn btn-light">Chicken Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -215,11 +215,11 @@ class Home extends React.Component {
                     </div>
                   </a>
                 </div>
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=beef">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Beef Recipes</button>
+                      <button type="button" className="btn btn-light">Beef Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -237,11 +237,11 @@ class Home extends React.Component {
               style={{ marginBottom: "80px", marginTop: "80px" }}
             >
               <div className="row">
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=salad">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Salad Recipes</button>
+                      <button type="button" className="btn btn-light">Salad Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -253,11 +253,11 @@ class Home extends React.Component {
                   </a>
                 </div>
 
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=vegetarian">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Vegetarian Recipes</button>
+                      <button type="button" className="btn btn-light">Vegetarian Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -268,12 +268,12 @@ class Home extends React.Component {
                     </div>
                   </a>
                 </div>
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=rice">
                     {" "}
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Rice & Grain Recipes</button>
+                      <button type="button" className="btn btn-light">Rice & Grain Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -291,11 +291,11 @@ class Home extends React.Component {
               style={{ marginBottom: "80px", marginTop: "80px" }}
             >
               <div className="row">
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=chocolate">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Chocolate Recipes</button>
+                      <button type="button" className="btn btn-light">Chocolate Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -307,11 +307,11 @@ class Home extends React.Component {
                   </a>
                 </div>
 
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=fish">
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Fish Recipe</button>
+                      <button type="button" className="btn btn-light">Fish Recipe</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -322,12 +322,12 @@ class Home extends React.Component {
                     </div>
                   </a>
                 </div>
-                <div className="col">
+                <div className="col-lg-4 col-md-6">
                   <a href="http://localhost:3000/search/keyword=egg">
                     {" "}
                     <div id="homecard" className="card">
                       <div className="overlay">
-                      <button type="button" class="btn btn-light">Egg Recipes</button>
+                      <button type="button" className="btn btn-light">Egg Recipes</button>
                       </div>
                       <img
                         id="home-image-links"
@@ -344,14 +344,15 @@ class Home extends React.Component {
         </div>
         <div
           id="homepage-footer"
-          style={{ padding: "40px", backgroundColor: "white", margin: "0" }}
+          style={{ padding: "40px", margin: "0" }}
           className="row"
         >
           <div className="col" style={{ textAlign: "center" }}>
             <h3
+              className="homepage-h3"
               style={{
                 fontWeight: "500",
-                paddingBottom: "10px",
+                paddingBottom: "70px",
                 color: "black"
               }}
             >
@@ -386,6 +387,7 @@ class Home extends React.Component {
           </div>
           <div className="col" style={{ textAlign: "center" }}>
             <h3
+              className="homepage-h3"
               style={{
                 fontWeight: "500",
                 paddingBottom: "40px",
