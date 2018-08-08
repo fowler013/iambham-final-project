@@ -1,10 +1,14 @@
 import * as baseService from './base';
 
 function read(recipeid) {
-    return baseService.get(`/api/search/${recipeid}`)
+    return baseService.get(`/api/search/${recipeid}`);
 }
 function readSearch(recipeid) {
-    return baseService.get(`/api/search/?${recipeid}`)
+    return baseService.get(`/api/search/?${recipeid}`);
 }
 
-export { read, readSearch };
+function readRecipeById(recipeid) {
+    return baseService.get(`/api/search/recipe/${recipeid}`);
+}
+
+export { read, readSearch, readRecipeById };

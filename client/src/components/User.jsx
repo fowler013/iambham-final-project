@@ -13,8 +13,9 @@ import * as ReviewService from '../services/reviews';
 import moment from 'moment';
 import * as LoginService from '../services/user';
 import * as FavoriteService from '../services/favorites';
+import * as searchService from '../services/search';
 import Login from '../auth/login';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, flattenDeep } from 'lodash';
 
 class User extends React.Component {
     user;
@@ -31,27 +32,52 @@ class User extends React.Component {
                 email: '',
             },
             recipeid: this.props.recipeid,
+            favoriteRecipes: [],
             favoriteRecipe: '',
             isUpdating: false,
         };
     }
 
     componentDidMount() {
-        LoginService.me().then((user) => {
-            const { id } = user;
+        LoginService.me()
+            .then((user) => {
+                const { id } = user;
 
-            this.user = cloneDeep(user);
+                this.user = cloneDeep(user);
 
-            this.setState({
-                user: {
-                    id: user.id,
-                    firstName: user.firstname,
-                    lastName: user.lastname,
-                    email: user.email,
-                    userName: user.username,
-                },
+                this.setState({
+                    user: {
+                        id: user.id,
+                        firstName: user.firstname,
+                        lastName: user.lastname,
+                        email: user.email,
+                        userName: user.username,
+                    },
+                });
+
+                return FavoriteService.readByUserid(this.user.id);
+            })
+            .then((favorites) => {
+                this.favorites = favorites;
+                let promises = favorites.map((favorite) => {
+                    return searchService.readRecipeById(favorite.recipeid);
+                });
+
+                return Promise.all(promises);
+            })
+            .then((recipes) => {
+                let recipesFlattened = flattenDeep(recipes);
+
+                recipesFlattened.forEach((recipe) => {
+                    let recipeIdIndex = recipe.uri.lastIndexOf('_');
+
+                    recipe.id = recipe.uri.slice(recipeIdIndex + 1);
+                });
+
+                this.setState({
+                    favoriteRecipes: recipesFlattened,
+                });
             });
-        });
     }
 
     handleFirstNameChange(e) {
@@ -186,68 +212,102 @@ class User extends React.Component {
             >
                 <div className="container">
                     <form className="my-2" key={this.state.user.id}>
-                        <div className="form-row">
-                            <div className="form-group col-md-6">
-                                <label htmlFor="inputEmail4">First Name</label>
-                                <input
-                                    value={this.state.user.firstName}
-                                    onChange={(ev) => {
-                                        this.handleFirstNameChange(ev);
-                                    }}
-                                    className="form-control"
-                                    id="inputFirstName4"
-                                    placeholder="Firstname"
-                                    disabled={!this.state.isUpdating}
-                                />
+                        <div className="row">
+                            <div class="col-lg-6 col-md-6">
+                                <h3 className="text-center mb-4">
+                                    Account Info
+                                </h3>
+                                <div className="form-group">
+                                    <label htmlFor="inputEmail4">
+                                        First Name
+                                    </label>
+                                    <input
+                                        value={this.state.user.firstName}
+                                        onChange={(ev) => {
+                                            this.handleFirstNameChange(ev);
+                                        }}
+                                        className="form-control"
+                                        id="inputFirstName4"
+                                        placeholder="Firstname"
+                                        disabled={!this.state.isUpdating}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="inputPassword4">
+                                        Last Name
+                                    </label>
+                                    <input
+                                        onChange={(ev) => {
+                                            this.handleLastNameChange(ev);
+                                        }}
+                                        type="text"
+                                        className="form-control"
+                                        id="inputLastName4"
+                                        placeholder="Lastname"
+                                        value={this.state.user.lastName}
+                                        disabled={!this.state.isUpdating}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="inputAddress">
+                                        User Name
+                                    </label>
+                                    <input
+                                        onChange={(ev) => {
+                                            this.handleUserNameChange(ev);
+                                        }}
+                                        type="text"
+                                        className="form-control"
+                                        id="inputUserName4"
+                                        placeholder="Username"
+                                        value={this.state.user.userName}
+                                        disabled={!this.state.isUpdating}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="inputAddress2">Email</label>
+                                    <input
+                                        onChange={(ev) => {
+                                            this.handleEmailChange(ev);
+                                        }}
+                                        type="email"
+                                        className="form-control"
+                                        id="inputEmail4"
+                                        placeholder="Email"
+                                        value={this.state.user.email}
+                                        disabled={!this.state.isUpdating}
+                                    />
+                                </div>
+                                <div className="text-center py-4 mt-3">
+                                    {this.renderButton()}
+                                </div>
                             </div>
-                            <div className="form-group col-md-6">
-                                <label htmlFor="inputPassword4">
-                                    Last Name
-                                </label>
-                                <input
-                                    onChange={(ev) => {
-                                        this.handleLastNameChange(ev);
+                            <div className="col-md-6 col-lg-6">
+                                <h3 className="text-center mb-4">
+                                    Favorite Recipes
+                                </h3>
+                                <div
+                                    style={{
+                                        border: '1px solid black',
+                                        backgroundColor: 'lightgrey',
+                                        padding: '1em',
+                                        borderRadius: '4px',
                                     }}
-                                    type="text"
-                                    className="form-control"
-                                    id="inputLastName4"
-                                    placeholder="Lastname"
-                                    value={this.state.user.lastName}
-                                    disabled={!this.state.isUpdating}
-                                />
+                                >
+                                    {this.state.favoriteRecipes.map(
+                                        (recipe) => {
+                                            return (
+                                                <NavLink
+                                                    key={recipe.id}
+                                                    to={`/recipe/${recipe.id}`}
+                                                >
+                                                    <p>{recipe.label}</p>
+                                                </NavLink>
+                                            );
+                                        },
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="inputAddress">User Name</label>
-                            <input
-                                onChange={(ev) => {
-                                    this.handleUserNameChange(ev);
-                                }}
-                                type="text"
-                                className="form-control"
-                                id="inputUserName4"
-                                placeholder="Username"
-                                value={this.state.user.userName}
-                                disabled={!this.state.isUpdating}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="inputAddress2">Email</label>
-                            <input
-                                onChange={(ev) => {
-                                    this.handleEmailChange(ev);
-                                }}
-                                type="email"
-                                className="form-control"
-                                id="inputEmail4"
-                                placeholder="Email"
-                                value={this.state.user.email}
-                                disabled={!this.state.isUpdating}
-                            />
-                        </div>
-
-                        <div className="text-center py-4 mt-3">
-                            {this.renderButton()}
                         </div>
                     </form>
                 </div>
