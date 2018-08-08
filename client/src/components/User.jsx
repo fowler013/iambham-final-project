@@ -22,6 +22,7 @@ class User extends React.Component {
     this.state = {
       userContainer: [],
       reviewContainer: [],
+      favoritsContainer: [],
 
       firstName: '',
       lastName: '',
@@ -55,24 +56,20 @@ class User extends React.Component {
     this.setState({ userName: e.target.value })
   }
 
-  testClear() {
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      userName: '',
-      user: ''
-    })
-  }
+  
 
 
 
 
   componentDidMount() {
-    UserService.read(this.props.match.params.id).then((user) => {
-      this.setState({
-        userContainer: [user]
-      })
+    LoginService.me().then((user) => {
+      console.log(user);
+      let { id } = user;
+      return UserService.read(id).then((myUser) => {
+        this.setState({
+          userContainer: [myUser]
+        })
+      });
     })
     ReviewService.readByUserid(this.props.match.params.id).then((review) => {
       console.log(review)
@@ -101,24 +98,6 @@ class User extends React.Component {
 
 
 
-  //getUser() {
-  //  LoginService.me().then((x) => {
-  //    console.log(x)
-  //  }).catch((err) => {
-  //    console.error(err);
-  //  })
-    // fetch(`/api/user/${this.props.match.params.id}`)
-    //   .then((res) => {
-    //     return res.json()
-    //   }).then((user) => {
-    //     console.log(user)
-    //     this.setState({
-    //       user: user
-    //     });
-    //   }).catch((err) => {
-    //     console.log(err);
-    //   });
-  //}
 
   updateUser() {
     let sending = {}
@@ -143,8 +122,11 @@ class User extends React.Component {
 
     console.log(sending);
     console.log(this.props.match.params.id)
-    UserService.update(this.props.match.params.id, sending).catch((err) => {
-      console.error(err);
+    LoginService.me().then((user) => {
+      let { id } = user;
+      return UserService.update(id, sending).catch((err) => {
+        console.error(err);
+    })
     })
     //fetch(`/api/user/${this.props.match.params.id}`, {
     //  method: 'PUT',
@@ -165,63 +147,9 @@ class User extends React.Component {
     //    console.log(err);
     //  });
   }
-
-
-
-  render() {
-    console.log('user state', this.state.user)
-    console.log(this.props)
-    let post = this.state.user;
-
-    let form = this.state.userContainer.map((user) => {
-      return (
-          <form className="my-3">
-            
-            <label
-              htmlFor="title-input"
-              className="d-block m-1 text-dark cardFont">{this.props.action}
-            </label>
-            <div className="form-row">
-              <div className="form-group col-md-6">
-                <label htmlFor="inputEmail4">First Name</label>
-                <input value={this.state.firstName}
-                  onChange={this.handleFirstNameChange} type="email" className="form-control" id="inputFirstName4" placeholder={user.firstname} />
-              </div>
-              <div className="form-group col-md-6">
-                <label htmlFor="inputPassword4">Last Name</label>
-                <input value={this.state.lastName}
-                  onChange={this.handleLastNameChange} type="text" className="form-control" id="inputLastName4" placeholder={user.lastname} />
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputAddress">User Name</label>
-              <input value={this.state.userName}
-                onChange={this.handleUserNameChange} type="text" className="form-control" id="inputUserName4" placeholder={user.username} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputAddress2">Email</label>
-              <input value={this.state.email}
-                onChange={this.handleEmailChange} type="email" className="form-control" id="inputEmail4" placeholder={user.email} />
-            </div>
-
-            <div className="text-center py-4 mt-3">
-              <button
-                onClick={() => { this.updateUser(post) }}
-                type="button"
-                className="btn btn-dark btn-sm text-secondary m-2 cardFont">update!</button>
-            </div>
-          </form>
-        // <div className="card p-3 m-4 text-center" key={user.id} style={{ marginTop: '3rem', width: '28rem', height: "28rem" }}>
-
-        // </div>
-      )
-
-    })
-    return(
-      <Fragment>
-        {form}
-
-        <div
+  renderFavorites() {
+    return (
+      <div
             id="popular-links1"
             style={{
               paddingBottom: "220px",
@@ -284,6 +212,66 @@ class User extends React.Component {
               </div>
             </div>
           </div>
+    )
+  }
+ 
+
+  render() {
+    console.log('user state', this.state.user)
+    console.log(this.props)
+    let post = this.state.user;
+
+    let form = this.state.userContainer.map((user) => {
+      return (
+          <form className="my-2" key = {user.id}>
+            
+            <label
+              htmlFor="title-input"
+              className="d-block m-1 text-dark cardFont">{this.props.action}
+            </label>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <label htmlFor="inputEmail4">First Name</label>
+                <input value={this.state.firstName}
+                  onChange={this.handleFirstNameChange} type="email" className="form-control" id="inputFirstName4" placeholder={user.firstname} />
+              </div>
+              <div className="form-group col-md-6">
+                <label htmlFor="inputPassword4">Last Name</label>
+                <input value={this.state.lastName}
+                  onChange={this.handleLastNameChange} type="text" className="form-control" id="inputLastName4" placeholder={user.lastname} />
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputAddress">User Name</label>
+              <input value={this.state.userName}
+                onChange={this.handleUserNameChange} type="text" className="form-control" id="inputUserName4" placeholder={user.username} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputAddress2">Email</label>
+              <input value={this.state.email}
+                onChange={this.handleEmailChange} type="email" className="form-control" id="inputEmail4" placeholder={user.email} />
+            </div>
+
+            <div className="text-center py-4 mt-3">
+              <button
+                onClick={() => { this.updateUser(post) }}
+                type="button"
+                className="btn btn-sm  m-2 cardFont" style = {{backgroundColor: " rgb(252, 114, 76)"}}>update!</button>
+            </div>
+          </form>
+        // <div className="card p-3 m-4 text-center" key={user.id} style={{ marginTop: '3rem', width: '28rem', height: "28rem" }}>
+
+        // </div>
+      )
+
+    })
+    return(
+      <Fragment>
+        <div className = "home-page-container">
+{form}
+
+        </div>
+        
       </Fragment>
     )
   }
