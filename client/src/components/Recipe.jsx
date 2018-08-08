@@ -95,7 +95,7 @@ class Recipe extends React.Component {
     handleNewReview(review) {
         UserServices.me().then((user) => {
             let { id, username } = user;
-            console.log(review)
+            //console.log(review)
             review.username = username;
             this.setState({
                 reviewContainer: [...this.state.reviewContainer, review],
@@ -144,7 +144,7 @@ class Recipe extends React.Component {
         UserServices.me().then((user) => {
             let { id, firstname } = user;
 
-            alert(`Added ${this.state.recipe.label} to favorites ${firstname}!`)
+            alert(`Added ${this.state.recipe.label} to your favorites ${firstname}!`)
             let payload = {
                 recipeid: this.props.match.params.id,
                 userid: id,
@@ -152,7 +152,7 @@ class Recipe extends React.Component {
             return FavoriteServices.create(payload)
                 .then((idObj) => {
                     //console.log(`***** HERE *****`, favorite[0])
-                    console.log(idObj);
+                    //console.log(idObj);
                 })
                 .then(() => {
                     this.setState({
