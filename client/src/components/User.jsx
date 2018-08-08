@@ -11,7 +11,8 @@ import * as UserService from '../services/users';
 import ReviewCard from "./ReviewCard";
 import * as ReviewService from '../services/reviews';
 import moment from 'moment';
-import * as LoginService from '../services/user'
+import * as LoginService from '../services/user';
+import * as FavoriteService from '../services/favorites';
 import Login from "../auth/login";
 
 class User extends React.Component {
@@ -22,8 +23,9 @@ class User extends React.Component {
     this.state = {
       userContainer: [],
       reviewContainer: [],
-      favoritsContainer: [],
-
+      favoritesContainer: [],
+      recipeid: this.props.recipeid,
+      favoriteRecipe: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -34,6 +36,7 @@ class User extends React.Component {
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleUserNameChange = this.handleUserNameChange.bind(this);
+    this.handleFavoriteChange = this.handleFavoriteChange.bind(this);
     // this.updateUser = this.updateUser.bind(this);
   };
 
@@ -56,6 +59,10 @@ class User extends React.Component {
     this.setState({ userName: e.target.value })
   }
 
+  handleFavoriteChange(e) {
+    this.setState({favoriteRecipe: e.target.value})
+  }
+
 
 
 
@@ -63,33 +70,51 @@ class User extends React.Component {
 
   componentDidMount() {
     LoginService.me().then((user) => {
-      console.log(user);
-      let { id } = user;
+      console.log('here are users',user);
+      const { id } = user;
+      FavoriteService.readByUserid(id)
+      .then((favorite) => {
+        console.log('this is fav',favorite)
+        Object.values(favorite).forEach((fav => {
+          //console.log(review)
+          this.setState({
+            favoritesContainer: [...this.state.favoritesContainer, fav]
+          })
+        }))
+      })
+      ReviewService.readByUserid(this.props.match.params.id).then((review) => {
+        console.log('this is reviews',review)
+        Object.values(review).forEach((review => {
+          //console.log(review)
+          this.setState({
+            reviewContainer: [...this.state.reviewContainer, review]
+          })
+        }))
+      })
+
       return UserService.read(id).then((myUser) => {
         this.setState({
           userContainer: [myUser]
         })
       });
     })
-    ReviewService.readByUserid(this.props.match.params.id).then((review) => {
-      console.log(review)
-      Object.values(review).forEach((review => {
-        //console.log(review)
-        this.setState({
-          reviewContainer: [...this.state.reviewContainer, review]
-        })
-      }))
-    })
+  
+
+    
+
+
+    // getUserFavorite()
+    
   }
 
-  // getUserReview() {
-  //   fetch(`/api/reviews/${this.props.match.params.id}`)
+  // getUserFavorite() {
+  //   fetch(`/api/favorite/user/${this.props.match.params.id}`)
   //     .then((res) => {
   //       return res.json()
-  //     }).then((review) => {
-  //       console.log(review)
+  //     }).then((favorite) => {
+  //       console.log(favorite)
   //       this.setState({
-  //         review: review
+  //         favorite: favorite
   //       });
   //     }).catch((err) => {
   //       console.log(err);
@@ -147,77 +172,77 @@ class User extends React.Component {
     //    console.log(err);
     //  });
   }
-  renderFavorites() {
+  // renderFavorites() {
 
-    let container = this.state.userContainer.map((user) => {
-      return (
-        <div
-          id="popular-links1"
-          style={{
-            paddingBottom: "220px",
-            paddingTop: "80px",
-            paddingLeft: "220px",
-            paddingRight: "220px"
-          }}
-        >
-          <div
-            id="link-container-1"
-            style={{ marginBottom: "80px", marginTop: "80px" }}
-          >
-            <div className="row">
-              <div className="col">
-                <a href="http://localhost:3000/recipe/ffb72e7b53285253a66b46255ce261c8">
-                  <div id="homecard" className="card">
-                    <div className="overlay">
-                      <p className="text center">Favorites</p>
-                    </div>
-                    <img
-                      id="home-image-links"
-                      className="card-img-top"
-                      src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg"
-                      alt="Card image cap"
-                    />
-                  </div>
-                </a>
-              </div>
+  //   let container = this.state.reviewContainer.map((user) => {
+  //     return (
+  //       <div
+  //         id="popular-links1"
+  //         style={{
+  //           paddingBottom: "220px",
+  //           paddingTop: "80px",
+  //           paddingLeft: "220px",
+  //           paddingRight: "220px"
+  //         }}
+  //       >
+  //         <div
+  //           id="link-container-1"
+  //           style={{ marginBottom: "80px", marginTop: "80px" }}
+  //         >
+  //           <div className="row">
+  //             <div className="col">
+  //               <a href="http://localhost:3000/recipe/ffb72e7b53285253a66b46255ce261c8">
+  //                 <div id="homecard" className="card">
+  //                   <div className="overlay">
+  //                     <p className="text center">Favorites</p>
+  //                   </div>
+  //                   <img
+  //                     id="home-image-links"
+  //                     className="card-img-top"
+  //                     src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg"
+  //                     alt="Card image cap"
+  //                   />
+  //                 </div>
+  //               </a>
+  //             </div>
 
-              <div className="col">
-                <a href="http://localhost:3000/recipe/b79327d05b8e5b838ad6cfd9576b30b6">
-                  <div id="homecard" className="card">
-                    <div className="overlay">
-                      <p>Favorites</p>
-                    </div>
-                    <img
-                      id="home-image-links"
-                      className="card-img-top"
-                      src="https://www.seriouseats.com/recipes/images/2011/12/20111215-dt-chicken-vesuvio-primary.jpg"
-                      alt="Card image cap"
-                    />
-                  </div>
-                </a>
-              </div>
-              <div className="col">
-                <a href="http://localhost:3000/recipe/2af7b54fe475a09fd9baea4cf97ad86e">
-                  <div id="homecard" className="card">
-                    <div className="overlay">
-                      <p>Favorites</p>
-                    </div>
-                    <img
-                      id="home-image-links"
-                      className="card-img-top"
-                      src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--3621_12.jpg?itok=DMaE2Rdv"
-                      alt="Card image cap"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    })
+  //             <div className="col">
+  //               <a href="http://localhost:3000/recipe/b79327d05b8e5b838ad6cfd9576b30b6">
+  //                 <div id="homecard" className="card">
+  //                   <div className="overlay">
+  //                     <p>Favorites</p>
+  //                   </div>
+  //                   <img
+  //                     id="home-image-links"
+  //                     className="card-img-top"
+  //                     src="https://www.seriouseats.com/recipes/images/2011/12/20111215-dt-chicken-vesuvio-primary.jpg"
+  //                     alt="Card image cap"
+  //                   />
+  //                 </div>
+  //               </a>
+  //             </div>
+  //             <div className="col">
+  //               <a href="http://localhost:3000/recipe/2af7b54fe475a09fd9baea4cf97ad86e">
+  //                 <div id="homecard" className="card">
+  //                   <div className="overlay">
+  //                     <p>Favorites</p>
+  //                   </div>
+  //                   <img
+  //                     id="home-image-links"
+  //                     className="card-img-top"
+  //                     src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--3621_12.jpg?itok=DMaE2Rdv"
+  //                     alt="Card image cap"
+  //                   />
+  //                 </div>
+  //               </a>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )
+  //   })
 
-  };
+  // };
 
 
   render() {
@@ -269,6 +294,45 @@ class User extends React.Component {
       )
 
     })
+
+    let container = this.state.favoritesContainer.map((user) => {
+      return (
+        <div
+          id="popular-links1"
+          style={{
+            paddingBottom: "220px",
+            paddingTop: "80px",
+            paddingLeft: "220px",
+            paddingRight: "220px"
+          }}
+          key = {user.id}
+        >
+          <div
+            id="link-container-1"
+            style={{ marginBottom: "80px", marginTop: "80px" }}
+          >
+            <div className="row">
+              <div className="col">
+                <a href="http://localhost:3000/api/favorite/user/me">
+                  <div id="homecard" className="card">
+                    <div className="overlay">
+                      <p className="text center">Favorites</p>
+                    </div>
+                    <img
+                      id="home-image-links"
+                      className="card-img-top"
+                      src="https://api.norecipes.com/wp-content/uploads/2009/09/fish-veracruz-recipe-pescado-veracruzana.1024x1024.jpg"
+                      alt="Card image cap"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    })
+
     return (
       <Fragment>
         <div className="home-page-container">
