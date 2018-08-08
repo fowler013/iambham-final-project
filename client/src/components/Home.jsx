@@ -186,7 +186,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=cheese">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Cheese Recipes</p>
                       </div>
@@ -202,7 +202,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=chicken">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Chicken Recipes</p>
                       </div>
@@ -217,7 +217,7 @@ class Home extends React.Component {
                 </div>
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=beef">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Beef Recipes</p>
                       </div>
@@ -239,7 +239,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=salad">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Salad Recipes</p>
                       </div>
@@ -255,7 +255,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=vegetarian">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Vegetarian Recipes</p>
                       </div>
@@ -271,7 +271,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=rice">
                     {" "}
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Rice & Grain Recipes</p>
                       </div>
@@ -293,7 +293,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=chocolate">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Chocolate Recipes</p>
                       </div>
@@ -309,7 +309,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=fish">
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Fish Recipes</p>
                       </div>
@@ -325,7 +325,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=egg">
                     {" "}
-                    <div id="homecard" class="card">
+                    <div id="homecard" className="card">
                       <div className="overlay">
                         <p>Egg Recipes</p>
                       </div>
@@ -362,25 +362,25 @@ class Home extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://www.instagram.com/?hl=en"
-                class="fa fa-instagram"
+                className="fa fa-instagram"
               />
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://www.facebook.com/"
-                class="fa fa-facebook"
+                className="fa fa-facebook"
               />
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://twitter.com/"
-                class="fa fa-twitter"
+                className="fa fa-twitter"
               />
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://plus.google.com/discover"
-                class="fa fa-google"
+                className="fa fa-google"
               />
             </div>
           </div>
@@ -394,21 +394,21 @@ class Home extends React.Component {
             >
               Contact Us !
             </h3>
-            <p class="contact-text">
+            <p className="contact-text">
               {" "}
               <span style={{ textDecoration: "underline", fontWeight: "400" }}>
                 Address
               </span>{" "}
               <br /> 1500 1st Ave N, Birmingham, AL 35203
             </p>
-            <p class="contact-text">
+            <p className="contact-text">
               {" "}
               <span style={{ textDecoration: "underline", fontWeight: "400" }}>
                 Phone Number
               </span>{" "}
               <br /> (205)-555-5555{" "}
             </p>
-            <p class="contact-text">
+            <p className="contact-text">
               {" "}
               <span style={{ textDecoration: "underline", fontWeight: "400" }}>
                 E-Mail
