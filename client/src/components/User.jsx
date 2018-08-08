@@ -309,7 +309,7 @@ class User extends React.Component {
         >
           <div
             id="link-container-1"
-            style={{ marginBottom: "80px", marginTop: "81px" }}
+            style={{ marginBottom: "80px", marginTop: "80px" }}
           >
             <div className="row">
               <div className="col">
