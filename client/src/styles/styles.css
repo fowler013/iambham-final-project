@@ -74,7 +74,7 @@
     font-weight: 900;
     font-size: 800%;
     color:white;
-    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-family: Georgia, Times, "Times New Roman", serif
 }
 
 .user-page-container {
@@ -174,14 +174,14 @@
 }
 
 
-.card:hover .overlay {
+.homecard:hover .overlay {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
 }
 
-.card:hover .overlay p {
+.homecard:hover .overlay p {
     animation: SlideUp 1000ms forwards;
 }
 

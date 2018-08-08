@@ -168,7 +168,7 @@ removeFavorites() {
             let { id, userid } = favorite[0];
             //console.log("*** ID HERE ***", id);
             //console.log("*** USERID HERE ***", userid)
-            return FavoriteServices.destroy(id).then(() => {
+            return FavoriteServices.destroyByRecipeIdAndUserId().then(() => {
                 console.log('SUCCESSFUL DELETE');
                 this.setState({
                     isFavorite: false
