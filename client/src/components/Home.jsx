@@ -18,11 +18,11 @@ class Home extends React.Component {
       <React.Fragment>
         <div id="headers">
           <div id="home-header">
-            <h1 className="featured-dishes">Title</h1>
+            <h1 className="featured-dishes">MyPantry</h1>
           </div>
           <div id="home-sub-header" style={{}}>
-            <h4 className="h4-sub-header">Sub-Header Title</h4>
-            <h5 className="h5-sub-header">Sub-header Text</h5>
+            {/* <h4 className="h4-sub-header"> </h4> */}
+            <h5 className="h5-sub-header">MyPantry is your personal kitchen aide. Search our vast directory of recipe ideas, or save specific ingredients to your pantry for personalized results. </h5>
           </div>
         </div>
         <div className="home-page-container">
@@ -31,7 +31,7 @@ class Home extends React.Component {
             style={{
               textAlign: "center",
               paddingTop: "120px",
-              backgroundColor: "beige"
+              
             }}
           >
             <h2

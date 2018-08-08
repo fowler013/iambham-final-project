@@ -15,7 +15,6 @@ import * as ReviewsServices from '../services/reviews';
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
 import moment from 'moment';
-import 'moment-duration-format'
 import * as SearchServices from '../services/search';
 import * as UserServices from '../services/user';
 import * as StorageServices from '../services/userStorage';

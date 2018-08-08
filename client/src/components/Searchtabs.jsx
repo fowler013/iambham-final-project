@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-router-dom';
 import moment from "moment";
-import 'moment-duration-format'
+
 
 let cookTime = (time) => {
 
