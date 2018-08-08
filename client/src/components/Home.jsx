@@ -18,21 +18,20 @@ class Home extends React.Component {
       <React.Fragment>
         <div id="headers">
           <div id="home-header">
-            <h1 className="featured-dishes">Recipes!</h1>
+            <h1 className="featured-dishes">Title</h1>
           </div>
           <div id="home-sub-header">
             <h4 className="h4-sub-header">
-              
+              Sub-Header Title
             </h4>
             <h5 className="h5-sub-header">
-              Compile your own personal pantry of ingredients for personalized
-              recipe results.
+            Sub-header Text
             </h5>
           </div>
         </div>
         <div className="home-page-container">
-          <div className="featured-recipe-container" style={{textAlign: "center", paddingBottom: "40px", paddingTop: "40px", backgroundColor: "Green", opacity: "1"}}>
-            <h1 className="featured-recipes" style={{color: "white", fontWeight:"800", fontSize: "600%", padding: "40px"}}>Featured Recipes of the Day</h1>
+          <div className="featured-recipe-container" style={{textAlign: "center", paddingTop: "40px", opacity: "1"}}>
+            <h1 className="featured-recipes" style={{color: "black", fontWeight:"800", fontSize: "600%"}}>Featured Dishes of the Day</h1>
           </div>
           <div style={{padding: "80px"}}></div>
           <div
@@ -150,19 +149,20 @@ class Home extends React.Component {
               <span className="sr-only">Next</span>
             </a>
           </div>
+          <div style={{padding: "80px"}}></div>
           <div
             id="todays-recipes-container"
             style={{
-              backgroundColor: "green",
+              
               marginTop: "40px",
               marginBottom: "40px",
-              backgroundColor: "Green",
+              
                opacity: "0.8"
             }}
           >
             <h1
               id="todays-recipes"
-              style={{ padding: "100px", color: "black", marginTop: "70px", fontWeight:"800", fontSize: "600%" }}
+              style={{ color: "black", marginTop: "70px", fontWeight:"800", fontSize: "600%" }}
             >
               Browse our most popular searches.
             </h1>
@@ -344,7 +344,7 @@ class Home extends React.Component {
         </div>
         <div
           id="homepage-footer"
-          style={{ padding: "40px", backgroundColor: "white", margin: "0" }}
+          style={{ padding: "40px", margin: "0" }}
           className="row"
         >
           <div className="col" style={{ textAlign: "center" }}>
@@ -352,7 +352,7 @@ class Home extends React.Component {
               className="homepage-h3"
               style={{
                 fontWeight: "500",
-                paddingBottom: "10px",
+                paddingBottom: "70px",
                 color: "black"
               }}
             >
