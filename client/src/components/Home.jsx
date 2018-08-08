@@ -172,7 +172,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=cheese">
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Cheese Recipes</p>
                       </div>
@@ -188,7 +188,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=chicken">
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Chicken Recipes</p>
                       </div>
@@ -204,7 +204,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=beef">
                     {" "}
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Beef Recipes</p>
                       </div>
@@ -226,7 +226,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=salad">
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Salad Recipes</p>
                       </div>
@@ -242,7 +242,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=vegetarian">
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Vegetarian Recipes</p>
                       </div>
@@ -258,7 +258,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=rice">
                     {" "}
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Rice & Grain Recipes</p>
                       </div>
@@ -280,7 +280,7 @@ class Home extends React.Component {
               <div className="row">
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=chocolate">
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Chocolate Recipes</p>
                       </div>
@@ -296,7 +296,7 @@ class Home extends React.Component {
 
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=fish">
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Fish Recipes</p>
                       </div>
@@ -312,7 +312,7 @@ class Home extends React.Component {
                 <div className="col">
                   <a href="http://localhost:3000/search/keyword=egg">
                     {" "}
-                    <div class="card">
+                    <div class="homecard">
                       <div className="overlay">
                         <p>Egg Recipes</p>
                       </div>
@@ -332,7 +332,11 @@ class Home extends React.Component {
         <div
           id="homepage-footer"
           style={{ padding: "200px", backgroundColor: "gray", margin: "0" }}
-        />
+        >
+        <div></div>
+        <div></div>
+        <div></div>
+        </div>
       </React.Fragment>
     );
   }
