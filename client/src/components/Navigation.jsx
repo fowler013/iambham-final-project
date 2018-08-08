@@ -64,16 +64,12 @@ class Navigation extends React.Component {
           >
             Menu
           </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <NavLink to="/user/me">
-              {" "}
-              <button
+          <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <NavLink to="/user/me"
                 className="dropdown-item text-dark"
-                type="button"
-                href="#"
               >
                 Accounts
-              </button>
+
             </NavLink>
             <NavLink to="/storage" className="dropdown-item text-dark">
               Pantry

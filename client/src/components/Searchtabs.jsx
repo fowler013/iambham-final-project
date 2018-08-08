@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-router-dom';
 import moment from "moment";
+import "moment-duration-format"
 
 
 let cookTime = (time) => {
@@ -48,11 +49,7 @@ let SearchTabs = (data) => {
                   <div className="card-body bg-light" >
                     <div className="mb-2" style={{ height: "75px", overflowY: 'scroll', position: 'relative'}}>
                       {ingr.map((element, index) => {
-<<<<<<< HEAD
-                        return (<p className="px-1" key={``}><small>{element}</small></p>)
-=======
                         return (<p className="px-1" style={{color: "black"}}><small>{element}</small></p>)
->>>>>>> 8a4d6b4ea12fbe6499165c698076aa070491d819
                       })}
                     </div>
                   </div>
