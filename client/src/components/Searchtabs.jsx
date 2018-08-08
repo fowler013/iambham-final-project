@@ -1,24 +1,29 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-router-dom';
+import moment from "moment";
+import 'moment-duration-format'
 
+let cookTime = (time) => {
 
-
+  let howLong = moment.duration((time), "minutes").format("y [yrs], M [Mnths], w [wks], d [ds], h [hrs], m [mins]");
+  return (howLong.split(',')[0])
+}
 
 let SearchTabs = (data) => {
     let {recipe} = data
     let { calories, dietLabels, healthLabels, image, label: title, source, totalTime: time, yield: servings, ingredientLines: ingr, url: insturctionurl, uri: recipeIDurl } = recipe
 
         return <React.Fragment>
-            <div className="col-3 my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
+            <div className=" col my-3 d-flex justify-content-center box-shadow" key={`card${recipeIDurl.split("recipe_")[1]}`}>
               <div className="card card-cascade" style={{ height: "32rem", width: "22rem" }}>
                 <NavLink to={`/recipe/${recipeIDurl.split("recipe_")[1]}`}>
-                  <div className="card-img-top" style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
+                <div className="card-img-top" key={`image${recipeIDurl.split("recipe_")[1]}`} style={{ height: "10rem", width: "rem", backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
                     <div className="d-flex justify-content-end">
                       <div className="text-center bg-warning p-2" style={{ borderBottomLeftRadius: "15%" }}>
                         <i className="far fa-clock" style={{ fontSize: "2rem", color: "white" }} />
 
                         <p className="mb-0" style={{ color: "white", textDecoration: "none" }}>
-                          <small>{time} mins</small>
+                          <small>{cookTime(time)}</small>
                         </p>
                       </div>
                     </div>

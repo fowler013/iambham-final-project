@@ -15,7 +15,9 @@ let id = req.params.id;
         .then(results => results.json())
         .then(results => {
             res.send(results);
-        });
+        }).catch((err) => {
+            console.error(err)
+        })
 
 });
 
@@ -29,7 +31,9 @@ router.get('/', (req, res) => {
       .then(results => results.json())
       .then(results => {
         res.send(results);
-      });
+      }).catch((err) => {
+        console.error(err)
+    })
 })
 
 export default router;

@@ -15,12 +15,12 @@ import * as ReviewsServices from '../services/reviews';
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
 import moment from 'moment';
+import 'moment-duration-format'
 import * as SearchServices from '../services/search';
 import * as UserServices from '../services/user';
 import * as StorageServices from '../services/userStorage';
 import * as FavoriteServices from '../services/favorites';
 import User from './User';
-
 
 class Recipe extends React.Component {
     constructor(props) {
@@ -43,36 +43,38 @@ class Recipe extends React.Component {
     }
 
     goGetStorage() {
-        if(this.state.userid) {
-            StorageServices.all(this.state.userid).then(result => {
+        if (this.state.userid) {
+            StorageServices.all(this.state.userid).then((result) => {
                 this.setState({
-                    userStorage: result
-                }); 
-            })
+                    userStorage: result,
+                });
+            });
         }
     }
 
     goGetFavorite() {
-        if(this.state.userid) {
-            FavoriteServices.readByRecipe(this.props.match.params.id).then(result => {
-                if(result[0].userid === this.state.userid) {
-                this.setState({
-                    isFavorite: true
-                }); 
-                }
-            })
+        if (this.state.userid) {
+            FavoriteServices.readByRecipe(this.props.match.params.id).then(
+                (result) => {
+                    if (result[0].userid === this.state.userid) {
+                        this.setState({
+                            isFavorite: true,
+                        });
+                    }
+                },
+            );
         }
     }
 
     goGetUser() {
-        if(this.state.loggedIn && !this.state.userid) {
-            UserServices.me().then(results => {
+        if (this.state.loggedIn && !this.state.userid) {
+            UserServices.me().then((results) => {
                 this.setState({
                     userid: results.id,
                 });
-                this.goGetStorage()
-                this.goGetFavorite()
-            })
+                this.goGetStorage();
+                this.goGetFavorite();
+            });
         }
     }
 
@@ -80,21 +82,25 @@ class Recipe extends React.Component {
         if (!this.state.loggedIn) {
             UserServices.checkLogin().then((isAuthenticated) => {
                 //console.log("from Services login status is:" + isAuthenticated)
-                if(isAuthenticated) {
+                if (isAuthenticated) {
                     this.setState({
-                    loggedIn: isAuthenticated,
-                });
-                this.goGetUser()
-            }
+                        loggedIn: isAuthenticated,
+                    });
+                    this.goGetUser();
+                }
             });
         }
     }
 
     handleNewReview(review) {
-        review.username = 'jimbob1';
-        this.setState({
-            reviewContainer: [...this.state.reviewContainer, review],
-        });
+        UserServices.me().then((user) => {
+            let { id, username } = user;
+            console.log(review)
+            review.username = username;
+            this.setState({
+                reviewContainer: [...this.state.reviewContainer, review],
+            });
+        })
     }
 
     changetext() {
@@ -108,33 +114,24 @@ class Recipe extends React.Component {
         }
     }
 
-setdata() {
+    setdata() {
         let recipeid = this.props.match.params.id;
         if (recipeid !== this.state.pageid) {
             this.gogetdata(recipeid);
         }
     }
 
-componentDidMount() {
+    componentDidMount() {
         ReviewsServices.readByRecipe(this.props.match.params.id).then(
             (reviews) => {
                 this.setState({
                     reviewContainer: reviews,
                 });
-
             },
         );
-        UserServices.me().then((user) => {
-            //console.log(`***** HERE *****`, user);
-            let { id } = user
-            //console.log(`***** HERE LOVE *****`, id);
-            return ReviewsServices.readByUserid(id).then((review) => {
-                //console.log(`***** HERE *****`, review[0])
-            })
-        })
     }
 
-gogetdata(recipeid) {
+    gogetdata(recipeid) {
         SearchServices.read(recipeid).then((data) => {
             this.setState({
                 pageid: this.props.match.params.id,
@@ -142,50 +139,61 @@ gogetdata(recipeid) {
             });
         });
     }
-checkFavorites() {
-    alert(`Added ${this.state.recipe.label} to favorites!`);
-    UserServices.me().then((user) => {
-        let { id } = user;
-        let payload = {
-            recipeid: this.props.match.params.id,
-            userid: id
-        }
-        return FavoriteServices.create(payload).then((idObj) => {
-            //console.log(`***** HERE *****`, favorite[0])
-            console.log(idObj);
-        }).then(() => {
-            this.setState({
-                isFavorite: true
-            }); 
-        })
-    })
-}
-removeFavorites() {
-    UserServices.me().then((user) => {
-        //let { id } = user;
-        return FavoriteServices.readByRecipe(this.props.match.params.id).then((favorite) => {
-            //console.log(favorite[0])
-            let { id, userid } = favorite[0];
-            //console.log("*** ID HERE ***", id);
-            //console.log("*** USERID HERE ***", userid)
-            return FavoriteServices.destroyByRecipeIdAndUserId().then(() => {
-                console.log('SUCCESSFUL DELETE');
-                this.setState({
-                    isFavorite: false
+    checkFavorites() {
+        //alert(`Added ${this.state.recipe.label} to favorites!`);
+        UserServices.me().then((user) => {
+            let { id, firstname } = user;
+
+            alert(`Added ${this.state.recipe.label} to favorites ${firstname}!`)
+            let payload = {
+                recipeid: this.props.match.params.id,
+                userid: id,
+            };
+            return FavoriteServices.create(payload)
+                .then((idObj) => {
+                    //console.log(`***** HERE *****`, favorite[0])
+                    console.log(idObj);
                 })
-            })
+                .then(() => {
+                    this.setState({
+                        isFavorite: true,
+                    });
+                }).catch((err) => {
+                    console.error(err);
+                });
+        }).catch((err) => {
+            console.error(err);
         })
-    })
-}
+    }
+    removeFavorites() {
+        UserServices.me().then((user) => {
+            let { id } = user;
+            let payload = {
+                recipeid: this.props.match.params.id,
+                userid: id,
+            };
+            return FavoriteServices.destroyByRecipeIdAndUserId(payload).then(
+                () => {
+                    //console.log('REMOVED');
+                    this.setState({
+                        isFavorite: false,
+                    });
+                },
+            ).catch((err) => {
+                console.error(err);
+            });
+        }).catch((err) => {
+            console.error(err);
+        });
+    }
 
-
-setIngredients(data) {
+    setIngredients(data) {
         if (data) {
             return <p className="card-text">{data}</p>;
         }
     }
 
-gogetdata(sending) {
+    gogetdata(sending) {
         fetch(`/api/search/recipe/${sending}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -205,38 +213,65 @@ gogetdata(sending) {
             return <p className="card-text">{data}</p>;
         }
     }
-    //gotEm() {
-    //    UserServices.me().then((user) => {
-    //        console.log(`***** HERE *****`, user);
-    //        let { id } = user
-    //        console.log(`***** HERE LOVE *****`, id);
-    //        return id;
-    //    })
-    //}
 
-isFavorite() {
-    if(this.state.isFavorite) {
+    isFavorite() {
+        if (this.state.isFavorite) {
             return (
-                <button className="btn btn-warning d-flex m-3" style={{borderRadius: "50%", height: "6rem", width: "6rem"}} onClick={(event) => {
-                    this.removeFavorites();
-                }} ><i className="far fa-heart" style={{fontSize: "4rem", marginLeft: "-1.125rem", marginTop: ".25rem"}}></i></button>
-            )
-    } else {
-        return (
-            <button className="btn btn-warning d-flex m-3" style={{borderRadius: "50%", height: "6rem", width: "6rem", opacity: "0.2"}} onClick={(event) => {
-                this.checkFavorites();
-            }} ><i className="far fa-heart" style={{fontSize: "4rem", marginLeft: "-1.125rem", marginTop: ".25rem"}}></i></button>
-        )
+                <button
+                    className="btn btn-warning d-flex m-3"
+                    style={{
+                        borderRadius: '50%',
+                        height: '6rem',
+                        width: '6rem',
+                    }}
+                    onClick={(event) => {
+                        this.removeFavorites();
+                    }}
+                >
+                    <i
+                        className="far fa-heart"
+                        style={{
+                            fontSize: '4rem',
+                            marginLeft: '-1.125rem',
+                            marginTop: '.25rem',
+                        }}
+                    />
+                </button>
+            );
+        } else {
+            return (
+                <button
+                    className="btn btn-warning d-flex m-3"
+                    style={{
+                        borderRadius: '50%',
+                        height: '6rem',
+                        width: '6rem',
+                        opacity: '0.2',
+                    }}
+                    onClick={(event) => {
+                        this.checkFavorites();
+                    }}
+                >
+                    <i
+                        className="far fa-heart"
+                        style={{
+                            fontSize: '4rem',
+                            marginLeft: '-1.125rem',
+                            marginTop: '.25rem',
+                        }}
+                    />
+                </button>
+            );
+        }
     }
-}
 
     render() {
         this.setdata();
-        this.checkedLogin()
+        this.checkedLogin();
         //console.log(this.state.loggedIn)
-        //console.log(this.state.userid)
+        // console.log(this.state.userid)
         //console.log(this.state.userStorage)
-        console.log(this.state.isFavorite)
+        // console.log(this.state.isFavorite);
 
         return (
             <React.Fragment>
@@ -259,7 +294,7 @@ isFavorite() {
                         <div className="card-body p-0">
                             <div className="view overlay">
                                 <div className="d-flex justify-content-between">
-                                {this.isFavorite()}
+                                    {this.isFavorite()}
                                     <div className="d-flex flex-column justify-content-start">
                                         <div className="card text-center mb-2 bg-warning text-white">
                                             <div className="card-body">
@@ -498,6 +533,7 @@ isFavorite() {
                                     }}
                                     recipe={this.state.recipe.label}
                                     recipeid={this.props.match.params.id}
+                                    userid={this.state.userid}
                                 />
                             </span>
                         </h3>

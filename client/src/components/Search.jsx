@@ -20,7 +20,10 @@ class Search extends React.Component {
       hits: "",
       searchlist: [],
       from: "0",
-      to: "20"
+      to: "20",
+      health: [],
+      diet: [],
+      calories: ""
     };
   }
 
@@ -40,7 +43,10 @@ class Search extends React.Component {
           hits: data.count,
           searchlist: data.hits,
           from: data.from,
-          to: data.to
+          to: data.to,
+          health: data.params.health,
+          diet: data.params.diet,
+          calories: data.params.calories
         });
       });
   }
@@ -59,15 +65,49 @@ class Search extends React.Component {
     return newstring;
   }
 
+setTitle() {
+  if (this.state.keyword  !== "") {
+    return (<div>Keywords: {this.state.keyword}</div>)
+  }
+  if (this.state.health) {
+  return (
+  <div> 
+      {this.state.health.map(element => {
+        return (element.split('-').map(word => {
+          let firstletter = word.slice(0, 1)
+          word = `${firstletter.toUpperCase()}${word.slice(1)}`
+          return word
+        }).join(" "))
+      })} Recipes
+  </div>
+  )
+  }
+  if (this.state.diet) {
+    return (
+      <div>
+        {this.state.diet.map(element => {
+          return (element.split('-').map(word => {
+            let firstletter = word.slice(0, 1)
+            word = `${firstletter.toUpperCase()}${word.slice(1)}`
+            return word
+          }).join(" "))
+        })} Recipes
+      </div>
+    )
+  }
+  return(<div>All Recipes</div>)
+}
+
   render() {
     this.setdata();
+    console.log(this.state.searchlist)
 
     return (
       <React.Fragment>
         <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
           <div className="card my-5">
             <div className="card-body d-flex align-items-center justify-content-between">
-              <div>Keywords: {this.state.keyword}</div>
+{this.setTitle()}
               <div>
                 {this.toNumberString(this.state.hits) || 0} Total Recipes
               </div>
